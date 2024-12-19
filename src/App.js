@@ -1,17 +1,23 @@
 import "./App.css";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import Login from "./components/Login";
 import Navbar from "./components/Navbar";
+import Register from "./components/Register";
+import Home from "./components/Home";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        Learn React
-        <button className="btn btn-primary">primary</button>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Navbar />
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }
