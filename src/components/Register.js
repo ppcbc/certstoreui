@@ -20,10 +20,11 @@ function Register() {
   }, [dispatch]);
 
   function getUser(e) {
+    let { name, value } = e.target;
     setUser(prev => {
       return {
         ...prev,
-        [e.target.name]: e.target.value
+        [name]: value
       };
     });
   }
@@ -36,6 +37,10 @@ function Register() {
       if (response.status === 200) {
         await navigate("/login");
       }
+      await axios.post(http + "api/AddRole/assign-role", {
+        email: user.email,
+        role: "User"
+      });
     } catch (error) {
       console.log(error.message);
     }

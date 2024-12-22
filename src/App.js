@@ -8,6 +8,7 @@ import MyCertificates from "./components/MyCertificates";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Test from "./components/Test";
+import AssignRole from "./components/AssignRole";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/test" element={<Test />} />
+          <Route path="/assignrole" element={<AssignRole />} />
         </Routes>
       </div>
     </Router>

@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 export default function Home() {
   const myToken = useSelector(state => state.token.value.tok);
   const myId = useSelector(state => state.token.value.id);
+  const myRole = useSelector(state => state.token.value.role);
   return (
     <div className="home">
       <h1>Welcome to the Certification Shop</h1>
@@ -23,6 +24,8 @@ export default function Home() {
           <p>{myToken}</p>
           <h1>My Id</h1>
           <p>{myId}</p>
+          <h1>My Role</h1>
+          <p>{myRole}</p>
         </div>
       )}
     </div>

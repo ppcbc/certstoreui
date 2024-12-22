@@ -6,7 +6,7 @@ import http from "../data/http";
 import "../css/ScheduleExam.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setId, setLogReg, setToken } from "../features/loginSlice";
+import { setId, setLogReg, setRole, setToken } from "../features/loginSlice";
 
 function Login() {
   let navigate = useNavigate();
@@ -42,7 +42,15 @@ function Login() {
           Authorization: "Bearer " + response.data.accessToken
         }
       });
+      var resForRole = await axios.get(http + "api/AddRole/get-role", {
+        headers: {
+          // "Content-Type": "application/json",
+          Authorization: "Bearer " + response.data.accessToken
+        }
+      });
       dispatch(setId(res.data.userId));
+      dispatch(setRole(resForRole.data.userRole));
+      console.log(resForRole.data.userRole);
       console.log(res.data.userId);
       console.log(myToken);
       if (response.status === 200) {

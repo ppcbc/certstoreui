@@ -6,7 +6,8 @@ export const logSlice = createSlice({
     value: {
       tok: "",
       log: "",
-      id: ""
+      id: "",
+      role: ""
     }
   },
   reducers: {
@@ -18,11 +19,14 @@ export const logSlice = createSlice({
     },
     setId: (state, action) => {
       state.value.id = action.payload;
+    },
+    setRole: (state, action) => {
+      state.value.role = action.payload;
     }
   }
 });
 
 // Action creators are generated for each case reducer function
-export const { setToken, setLogReg, setId } = logSlice.actions;
+export const { setToken, setLogReg, setId, setRole } = logSlice.actions;
 
 export default logSlice.reducer;
