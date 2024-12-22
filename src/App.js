@@ -9,6 +9,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Test from "./components/Test";
 import AssignRole from "./components/AssignRole";
+import AddExam from "./components/AddExam";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/test" element={<Test />} />
           <Route path="/assignrole" element={<AssignRole />} />
+          <Route path="/addexam" element={<AddExam />} />
         </Routes>
       </div>
     </Router>
