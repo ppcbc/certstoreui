@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
-import "../App.css";
+// import "../App.css";
 import axios from "axios";
 import http from "../data/http";
+import "../css/ScheduleExam.css";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setId, setLogReg, setToken } from "../features/loginSlice";
 
 function Login() {
+  let navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: ""
   });
+
+  const myToken = useSelector(state => state.token.value.tok);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setLogReg("LOGIN"));
+  }, [dispatch]);
 
   function getUser(e) {
     setUser(prev => {
@@ -23,41 +35,68 @@ function Login() {
     e.preventDefault();
     try {
       var response = await axios.post(http + "login", user);
-      console.log(response.data);
+      dispatch(setToken(response.data.accessToken));
+      var res = await axios.get(http + "api/AddRole/get-id", {
+        headers: {
+          // "Content-Type": "application/json",
+          Authorization: "Bearer " + response.data.accessToken
+        }
+      });
+      dispatch(setId(res.data.userId));
+      console.log(res.data.userId);
+      console.log(myToken);
+      if (response.status === 200) {
+        navigate("/");
+      }
     } catch (error) {
       console.log(error.message);
     }
   }
 
   return (
-    <div className="wrapper fadeInDown">
-      <div id="formContent">
-        <div class="fadeIn first">
-          <h2>Login</h2>
+    <form action="" onSubmit={onSubmit}>
+      <div className="schedule-exam">
+        <div className="schedule-box">
+          <div className="my-box">
+            <div className="my-inner-box">
+              <label className="my-label">
+                Email:
+                <input
+                  type="text"
+                  id="login"
+                  className="fadeIn second"
+                  name="email"
+                  placeholder="email"
+                  value={user.email}
+                  onChange={getUser}
+                />
+              </label>
+            </div>
+            <div className="my-inner-box">
+              <label className="my-label">
+                Password:
+                <input
+                  type="password"
+                  id="password"
+                  class="fadeIn third"
+                  name="password"
+                  placeholder="password"
+                  value={user.password}
+                  onChange={getUser}
+                />
+              </label>
+            </div>
+          </div>
+          <button type="submit" class="fadeIn fourth" value="Log In">
+            Login
+          </button>
+          <div className="my-label">
+            <p>If you dont have an account yet click here</p>
+            <Link to="/register">Register</Link>
+          </div>
         </div>
-        <form action="" onSubmit={onSubmit}>
-          <input
-            type="text"
-            id="login"
-            className="fadeIn second"
-            name="email"
-            placeholder="email"
-            value={user.email}
-            onChange={getUser}
-          />
-          <input
-            type="text"
-            id="password"
-            class="fadeIn third"
-            name="password"
-            placeholder="password"
-            value={user.password}
-            onChange={getUser}
-          />
-          <input type="submit" class="fadeIn fourth" value="Log In"></input>
-        </form>
       </div>
-    </div>
+    </form>
   );
 }
 

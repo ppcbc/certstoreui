@@ -1,0 +1,58 @@
+
+.my-certificates {
+    background-color: #b4b5b0; /* Light background for the page */
+    color: #2c3e50; /* Text color matching the header palette */
+    padding: 40px 20px; /* Padding for the container */
+    min-height: 100vh; /* Full height of the viewport */
+    
+    
+}
+
+/* Style for the certificates list */
+.my-certificates ul {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+    margin: 0 auto; /* Center the list within the page */
+    max-width: 600px; /* Limit the width for a clean layout */
+}
+
+/* Style for the main heading */
+.my-certificates h1 {
+    font-size: 2.5rem; /* Larger heading for visibility */
+    margin-bottom: 30px; /* Space below the heading */
+    color: #4b5052; /* Match the palette */
+    text-align: center; /* Center the heading */
+}
+
+
+
+/* Style for each certificate item */
+.my-certificates li {
+    background-color: #9a9c94; /* Slightly lighter background for each item */
+    border: 1.5px solid #2c3e50; /* Subtle border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Padding for each certificate */
+    margin-bottom: 20px; /* Space between items */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover effect for each certificate item */
+.my-certificates li:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Style for certificate title */
+.my-certificates li h2 {
+    font-size: 1.5rem; /* Medium font size for the certificate name */
+    color: #2c3e50; /* Text color */
+    margin-bottom: 10px; /* Space below the title */
+}
+
+/* Style for certificate mark */
+.my-certificates li p {
+    font-size: 1rem; /* Standard font size */
+    color: #4b5052; /* Subtle text color for details */
+    margin: 0; /* Remove default margins */
+}
