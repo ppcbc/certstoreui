@@ -10,7 +10,7 @@ export default function Test() {
   const [test, setTests] = useState([]);
   async function getTests() {
     try {
-      var response = await axios.get(http + "api/Tests", {
+      var response = await axios.get(http + "api/Exams", {
         headers: {
           // "Content-Type": "application/json",
           Authorization: "Bearer " + myToken
@@ -32,10 +32,16 @@ export default function Test() {
       <h1>My Tests</h1>
       <ul>
         {test.map(a => (
-          <li key={a.testId}>
-            <h2>{a.testTitle}</h2>
-            <p>Description: {a.testDescription}</p>
-            <p>Author: {a.testAuthor}</p>
+          <li key={a.examId}>
+            <h2>{a.questionText}</h2>
+            <p>Answer: {a.option1}</p>
+            <p>It is {a.isCorrect1 ? "Correct" : "Wrong"}</p>
+            <p>Answer: {a.option2}</p>
+            <p>It is {a.isCorrect2 ? "Correct" : "Wrong"}</p>
+            <p>Answer: {a.option3}</p>
+            <p>It is {a.isCorrect3 ? "Correct" : "Wrong"}</p>
+            <p>Answer: {a.option4}</p>
+            <p>It is {a.isCorrect4 ? "Correct" : "Wrong"}</p>
           </li>
         ))}
       </ul>

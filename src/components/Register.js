@@ -13,6 +13,8 @@ function Register() {
     password: ""
   });
 
+  const [message, setMessage] = useState("");
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -43,6 +45,11 @@ function Register() {
       });
     } catch (error) {
       console.log(error.message);
+      setUser({
+        email: "",
+        password: ""
+      });
+      setMessage("Wrong credentials try again");
     }
   }
   return (
@@ -82,6 +89,11 @@ function Register() {
           <button type="submit" class="fadeIn fourth" value="Log In">
             Register
           </button>
+          {message !== "" && (
+            <div className="my-label">
+              <p>{message}</p>
+            </div>
+          )}
           <div className="my-label">
             <p>If you are registered user click here</p>
             <Link to="/login">Login</Link>

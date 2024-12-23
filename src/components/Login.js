@@ -15,6 +15,8 @@ function Login() {
     password: ""
   });
 
+  const [message, setMessage] = useState("");
+
   const myToken = useSelector(state => state.token.value.tok);
   const dispatch = useDispatch();
 
@@ -57,6 +59,11 @@ function Login() {
         navigate("/");
       }
     } catch (error) {
+      setUser({
+        email: "",
+        password: ""
+      });
+      setMessage("Wrong credentials try again");
       console.log(error.message);
     }
   }
@@ -98,6 +105,11 @@ function Login() {
           <button type="submit" class="fadeIn fourth" value="Log In">
             Login
           </button>
+          {message !== "" && (
+            <div className="my-label">
+              <p>{message}</p>
+            </div>
+          )}
           <div className="my-label">
             <p>If you dont have an account yet click here</p>
             <Link to="/register">Register</Link>

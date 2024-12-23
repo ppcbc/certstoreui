@@ -81,6 +81,19 @@ function AddExam() {
             </div>
             <div className="my-inner-box">
               <label className="my-label">
+                Price:
+                <input
+                  type="text"
+                  className="fadeIn second"
+                  name="questionText"
+                  placeholder="price"
+                  value={user.questionText}
+                  onChange={getUser}
+                />
+              </label>
+            </div>
+            <div className="my-inner-box">
+              <label className="my-label">
                 Question photo link:
                 <input
                   type="text"
@@ -103,6 +116,10 @@ function AddExam() {
                   value={user.option1}
                   onChange={getUser}
                 />
+                <select name="isCorrect1">
+                  <option value="false">Wrong</option>
+                  <option value="true">Correct</option>
+                </select>
               </label>
             </div>
             <div className="my-inner-box">
@@ -116,6 +133,10 @@ function AddExam() {
                   value={user.option2}
                   onChange={getUser}
                 />
+                <select name="isCorrect1">
+                  <option value="false">Wrong</option>
+                  <option value="true">Correct</option>
+                </select>
               </label>
             </div>
             <div className="my-inner-box">
@@ -129,6 +150,10 @@ function AddExam() {
                   value={user.option3}
                   onChange={getUser}
                 />
+                <select name="isCorrect1">
+                  <option value="false">Wrong</option>
+                  <option value="true">Correct</option>
+                </select>
               </label>
             </div>
             <div className="my-inner-box">
@@ -142,6 +167,10 @@ function AddExam() {
                   value={user.option4}
                   onChange={getUser}
                 />
+                <select name="isCorrect1">
+                  <option value="false">Wrong</option>
+                  <option value="true">Correct</option>
+                </select>
               </label>
             </div>
           </div>
