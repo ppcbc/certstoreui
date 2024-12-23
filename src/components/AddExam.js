@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import React from "react";
-// import "../App.css";
 import axios from "axios";
 import http from "../data/http";
 import "../css/ScheduleExam.css";
@@ -10,62 +9,104 @@ import { setId, setLogReg, setRole, setToken } from "../features/loginSlice";
 
 function AddExam() {
   let navigate = useNavigate();
-  const [user, setUser] = useState({
-    email: "",
-    password: ""
+  const [newExam, setNewExam] = useState({
+    categoryId: 0,
+    questionText: "",
+    questionPhotoLink: "",
+    option1: "",
+    isCorrect1: false,
+    option2: "",
+    isCorrect2: false,
+    option3: "",
+    isCorrect3: false,
+    option4: "",
+    isCorrect4: true
   });
+  const [examCategories, setExamCategories] = useState([]);
+  const [fullCategories, setFullCategories] = useState([]);
+  const [fullCategoryId, setFullCategoryId] = useState(1);
 
   const myToken = useSelector(state => state.token.value.tok);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setLogReg("LOGIN"));
-  }, [dispatch]);
+    getCategories();
+  }, []);
 
-  function getUser(e) {
-    setUser(prev => {
+  async function getCategories() {
+    try {
+      var response = await axios.get(http + "api/ExamCategories", {
+        headers: {
+          Authorization: "Bearer " + myToken
+        }
+      });
+      var res = await axios.get(http + "api/FullCategories", {
+        headers: {
+          Authorization: "Bearer " + myToken
+        }
+      });
+      setExamCategories(response.data);
+      setFullCategories(res.data);
+      console.log(response.data);
+      console.log(res.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+  function onChange(e) {
+    setNewExam(prev => {
       return {
         ...prev,
         [e.target.name]: e.target.value
       };
     });
   }
-
-  async function onSubmit(e) {
-    e.preventDefault();
-    try {
-      var response = await axios.post(http + "login", user);
-      dispatch(setToken(response.data.accessToken));
-      var res = await axios.get(http + "api/AddRole/get-id", {
-        headers: {
-          // "Content-Type": "application/json",
-          Authorization: "Bearer " + response.data.accessToken
-        }
-      });
-      var resForRole = await axios.get(http + "api/AddRole/get-role", {
-        headers: {
-          // "Content-Type": "application/json",
-          Authorization: "Bearer " + response.data.accessToken
-        }
-      });
-      dispatch(setId(res.data.userId));
-      dispatch(setRole(resForRole.data.userRole));
-      console.log(resForRole.data.userRole);
-      console.log(res.data.userId);
-      console.log(myToken);
-      if (response.status === 200) {
-        navigate("/");
-      }
-    } catch (error) {
-      console.log(error.message);
-    }
+  function onChangeFullCategory(e) {
+    setFullCategoryId(e.target.value);
   }
 
   return (
-    <form action="" onSubmit={onSubmit}>
+    <form
+      action=""
+      onSubmit={() => {
+        console.log("ff");
+      }}
+    >
       <div className="schedule-exam">
         <div className="schedule-box">
           <div className="my-box">
+            <div className="my-inner-box">
+              <label className="my-label">
+                Select category:
+                <select
+                  name="id"
+                  value={fullCategoryId}
+                  onChange={onChangeFullCategory}
+                >
+                  {fullCategories.map(a => (
+                    <option key={a.fullId} value={a.fullId}>
+                      {a.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+            <div className="my-inner-box">
+              <label className="my-label">
+                Select exam:
+                <select name="name">
+                  {examCategories
+                    .filter(
+                      a => parseInt(a.fullId) === parseInt(fullCategoryId)
+                    )
+                    .map(a => (
+                      <option key={a.categoryId} value={a.fullId}>
+                        {a.categoryName}
+                      </option>
+                    ))}
+                </select>
+              </label>
+            </div>
             <div className="my-inner-box">
               <label className="my-label">
                 Question Text:
@@ -74,8 +115,8 @@ function AddExam() {
                   className="fadeIn second"
                   name="questionText"
                   placeholder="question text"
-                  value={user.questionText}
-                  onChange={getUser}
+                  value={newExam.questionText}
+                  onChange={onChange}
                 />
               </label>
             </div>
@@ -87,8 +128,8 @@ function AddExam() {
                   className="fadeIn second"
                   name="questionText"
                   placeholder="price"
-                  value={user.questionText}
-                  onChange={getUser}
+                  value={newExam.questionText}
+                  onChange={onChange}
                 />
               </label>
             </div>
@@ -100,8 +141,8 @@ function AddExam() {
                   class="fadeIn third"
                   name="questionPhotoLink"
                   placeholder="question photo link"
-                  value={user.questionPhotoLink}
-                  onChange={getUser}
+                  value={newExam.questionPhotoLink}
+                  onChange={onChange}
                 />
               </label>
             </div>
@@ -113,8 +154,8 @@ function AddExam() {
                   class="fadeIn third"
                   name="option1"
                   placeholder="first question"
-                  value={user.option1}
-                  onChange={getUser}
+                  value={newExam.option1}
+                  onChange={onChange}
                 />
                 <select name="isCorrect1">
                   <option value="false">Wrong</option>
@@ -130,8 +171,8 @@ function AddExam() {
                   class="fadeIn third"
                   name="option2"
                   placeholder="second question"
-                  value={user.option2}
-                  onChange={getUser}
+                  value={newExam.option2}
+                  onChange={onChange}
                 />
                 <select name="isCorrect1">
                   <option value="false">Wrong</option>
@@ -147,8 +188,8 @@ function AddExam() {
                   class="fadeIn third"
                   name="option3"
                   placeholder="third question"
-                  value={user.option3}
-                  onChange={getUser}
+                  value={newExam.option3}
+                  onChange={onChange}
                 />
                 <select name="isCorrect1">
                   <option value="false">Wrong</option>
@@ -164,8 +205,8 @@ function AddExam() {
                   class="fadeIn third"
                   name="option4"
                   placeholder="fourth question"
-                  value={user.option4}
-                  onChange={getUser}
+                  value={newExam.option4}
+                  onChange={onChange}
                 />
                 <select name="isCorrect1">
                   <option value="false">Wrong</option>
