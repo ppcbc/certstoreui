@@ -5,11 +5,18 @@ import http from "../data/http";
 import "../css/ScheduleExam.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setId, setLogReg, setRole, setToken } from "../features/loginSlice";
+import {
+  setFullCategoryId,
+  setId,
+  setLogReg,
+  setRole,
+  setToken
+} from "../features/loginSlice";
 
 function AddExam() {
   let navigate = useNavigate();
   const [newExam, setNewExam] = useState({
+    fullId: 0,
     categoryId: 0,
     questionText: "",
     questionPhotoLink: "",
@@ -20,13 +27,14 @@ function AddExam() {
     option3: "",
     isCorrect3: false,
     option4: "",
-    isCorrect4: true
+    isCorrect4: false
   });
   const [examCategories, setExamCategories] = useState([]);
   const [fullCategories, setFullCategories] = useState([]);
-  const [fullCategoryId, setFullCategoryId] = useState(1);
+  // const [fullCategoryId, setFullCategoryId] = useState(1);
 
   const myToken = useSelector(state => state.token.value.tok);
+  const fullCategoryId = useSelector(state => state.token.value.fullCategoryId);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -54,24 +62,46 @@ function AddExam() {
     }
   }
   function onChange(e) {
+    let { name, value } = e.target;
+    if (parseInt(value) !== NaN) {
+      parseInt(value);
+    }
+    if (value === "true") {
+      value = true;
+    }
+    if (value === "false") {
+      value = false;
+    }
+
     setNewExam(prev => {
       return {
         ...prev,
-        [e.target.name]: e.target.value
+        [name]: value,
+        fullId: fullCategoryId
       };
     });
   }
   function onChangeFullCategory(e) {
-    setFullCategoryId(e.target.value);
+    dispatch(setFullCategoryId(e.target.value));
+  }
+  async function onSubmit(e) {
+    e.preventDefault();
+    console.log(newExam);
+    console.log(examCategories);
+    try {
+      var response = await axios.post(http + "api/Exams", newExam, {
+        headers: {
+          Authorization: "Bearer " + myToken
+        }
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 
   return (
-    <form
-      action=""
-      onSubmit={() => {
-        console.log("ff");
-      }}
-    >
+    <form action="" onSubmit={onSubmit}>
       <div className="schedule-exam">
         <div className="schedule-box">
           <div className="my-box">
@@ -94,13 +124,17 @@ function AddExam() {
             <div className="my-inner-box">
               <label className="my-label">
                 Select exam:
-                <select name="name">
+                <select
+                  name="categoryId"
+                  value={examCategories.categoryId}
+                  onChange={onChange}
+                >
                   {examCategories
                     .filter(
                       a => parseInt(a.fullId) === parseInt(fullCategoryId)
                     )
                     .map(a => (
-                      <option key={a.categoryId} value={a.fullId}>
+                      <option key={a.categoryId} value={a.categoryId}>
                         {a.categoryName}
                       </option>
                     ))}
@@ -115,19 +149,6 @@ function AddExam() {
                   className="fadeIn second"
                   name="questionText"
                   placeholder="question text"
-                  value={newExam.questionText}
-                  onChange={onChange}
-                />
-              </label>
-            </div>
-            <div className="my-inner-box">
-              <label className="my-label">
-                Price:
-                <input
-                  type="text"
-                  className="fadeIn second"
-                  name="questionText"
-                  placeholder="price"
                   value={newExam.questionText}
                   onChange={onChange}
                 />
@@ -157,9 +178,13 @@ function AddExam() {
                   value={newExam.option1}
                   onChange={onChange}
                 />
-                <select name="isCorrect1">
-                  <option value="false">Wrong</option>
-                  <option value="true">Correct</option>
+                <select
+                  name="isCorrect1"
+                  value={newExam.isCorrect1}
+                  onChange={onChange}
+                >
+                  <option value={false}>Wrong</option>
+                  <option value={true}>Correct</option>
                 </select>
               </label>
             </div>
@@ -174,9 +199,13 @@ function AddExam() {
                   value={newExam.option2}
                   onChange={onChange}
                 />
-                <select name="isCorrect1">
-                  <option value="false">Wrong</option>
-                  <option value="true">Correct</option>
+                <select
+                  name="isCorrect2"
+                  value={newExam.isCorrect2}
+                  onChange={onChange}
+                >
+                  <option value={false}>Wrong</option>
+                  <option value={true}>Correct</option>
                 </select>
               </label>
             </div>
@@ -191,9 +220,13 @@ function AddExam() {
                   value={newExam.option3}
                   onChange={onChange}
                 />
-                <select name="isCorrect1">
-                  <option value="false">Wrong</option>
-                  <option value="true">Correct</option>
+                <select
+                  name="isCorrect3"
+                  value={newExam.isCorrect3}
+                  onChange={onChange}
+                >
+                  <option value={false}>Wrong</option>
+                  <option value={true}>Correct</option>
                 </select>
               </label>
             </div>
@@ -208,9 +241,13 @@ function AddExam() {
                   value={newExam.option4}
                   onChange={onChange}
                 />
-                <select name="isCorrect1">
-                  <option value="false">Wrong</option>
-                  <option value="true">Correct</option>
+                <select
+                  name="isCorrect4"
+                  value={newExam.isCorrect4}
+                  onChange={onChange}
+                >
+                  <option value={false}>Wrong</option>
+                  <option value={true}>Correct</option>
                 </select>
               </label>
             </div>
