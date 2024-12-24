@@ -49,6 +49,8 @@ export default function Test() {
             <p>It is {a.isCorrect3 ? "Correct" : "Wrong"}</p>
             <p>Answer: {a.option4}</p>
             <p>It is {a.isCorrect4 ? "Correct" : "Wrong"}</p>
+            <p>exam id {a.examId}</p>
+            <p>category id {a.categoryId}</p>
           </li>
         ))}
       </ul>

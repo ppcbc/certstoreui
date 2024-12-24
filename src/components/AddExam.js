@@ -31,14 +31,21 @@ function AddExam() {
   });
   const [examCategories, setExamCategories] = useState([]);
   const [fullCategories, setFullCategories] = useState([]);
+  const [message, setMessage] = useState("");
+  const [check, setCheck] = useState(false);
+
+  function handleMessage() {
+    setCheck(true);
+    setTimeout(() => {
+      setCheck(false);
+    }, 2000);
+  }
 
   const [imageUrl, setImageUrl] = useState("");
 
   const preset_key = "112898813666492";
   const precet = "certphoto";
   const api_secret = "WiNm8fism4GXfgYe0k8nME36EeY";
-
-  const [image, setImage] = useState();
 
   const myToken = useSelector(state => state.token.value.tok);
   const fullCategoryId = useSelector(state => state.token.value.fullCategoryId);
@@ -57,6 +64,7 @@ function AddExam() {
           Authorization: "Bearer " + myToken
         }
       });
+
       var res = await axios.get(http + "api/FullCategories", {
         headers: {
           Authorization: "Bearer " + myToken
@@ -84,13 +92,14 @@ function AddExam() {
       return {
         ...prev,
         [name]: value,
-        fullId: fullCategoryId,
+        // fullId: fullCategoryId,
         questionPhotoLink: imageUrl
       };
     });
   }
   function onChangeFullCategory(e) {
-    dispatch(setFullCategoryId(e.target.value));
+    // dispatch(setFullCategoryId(e.target.value));
+    const { value } = e.target;
   }
   async function onSubmit(e) {
     e.preventDefault();
@@ -119,8 +128,12 @@ function AddExam() {
           isCorrect4: false
         });
       }
+      setMessage("Exam successfully added");
+      handleMessage();
       console.log(response.data);
     } catch (error) {
+      setMessage("Wrong credentials try again");
+      handleMessage();
       console.log(error.message);
     }
   }
@@ -152,10 +165,11 @@ function AddExam() {
               <label className="my-label">
                 Select category:
                 <select
-                  name="id"
-                  value={fullCategoryId}
-                  onChange={onChangeFullCategory}
+                  name="fullId"
+                  value={newExam.fullId}
+                  onChange={onChange}
                 >
+                  <option value={0}>Category</option>
                   {fullCategories.map(a => (
                     <option key={a.fullId} value={a.fullId}>
                       {a.name}
@@ -172,9 +186,10 @@ function AddExam() {
                   value={examCategories.categoryId}
                   onChange={onChange}
                 >
+                  <option value={0}>Exam</option>
                   {examCategories
                     .filter(
-                      a => parseInt(a.fullId) === parseInt(fullCategoryId)
+                      a => parseInt(a.fullId) === parseInt(newExam.fullId)
                     )
                     .map(a => (
                       <option key={a.categoryId} value={a.categoryId}>
@@ -291,7 +306,7 @@ function AddExam() {
           <button type="submit" class="fadeIn fourth" value="Log In">
             Add
           </button>
-          <div className="my-label"></div>
+          <div className="my-label">{check && <p>{message}</p>}</div>
         </div>
       </div>
     </form>

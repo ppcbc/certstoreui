@@ -47,7 +47,7 @@ function Exam() {
         </div>
         <div className="box box2">Box 2</div>
         <div className="box box3">
-          Box 3<button onClick={getExam}>dose</button>
+          <button onClick={getExam}>Box 3</button>
         </div>
         <div className="box box4">Box 4</div>
         <div className="box box5">Box 5</div>

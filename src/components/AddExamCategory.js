@@ -101,7 +101,7 @@ function AddExamCategory() {
                   value={newCategory.fullId}
                   onChange={onChangeFullCategory}
                 >
-                  <option value={0}>Select a category</option>
+                  <option value={0}>Categories</option>
                   {fullCategories.map(a => (
                     <option key={a.fullId} value={a.fullId}>
                       {a.name}
