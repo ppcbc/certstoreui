@@ -14,7 +14,7 @@ export default function Header() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setLogReg("LOGIN"));
-  }, [dispatch]);
+  }, []);
   function logOut() {
     dispatch(setToken(""));
     dispatch(setId(""));

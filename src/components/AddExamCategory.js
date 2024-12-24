@@ -21,7 +21,7 @@ function AddExamCategory() {
 
   useEffect(() => {
     getFullCategories();
-  }, [myToken]);
+  }, []);
 
   const getFullCategories = async () => {
     try {

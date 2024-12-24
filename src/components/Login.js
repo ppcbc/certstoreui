@@ -27,7 +27,7 @@ function Login() {
     // localStorage.setItem("role", "");
     // localStorage.setItem("fullCategoryId", "");
     dispatch(setLogReg("LOGIN"));
-  }, [dispatch]);
+  }, []);
 
   function getUser(e) {
     setUser(prev => {

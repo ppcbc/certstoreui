@@ -19,7 +19,7 @@ function Register() {
 
   useEffect(() => {
     dispatch(setLogReg("REGISTER"));
-  }, [dispatch]);
+  }, []);
 
   function getUser(e) {
     let { name, value } = e.target;
