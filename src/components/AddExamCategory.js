@@ -9,7 +9,8 @@ import http from "../data/http";
 function AddExamCategory() {
     const [newCategory, setNewCategory] = useState({
         fullId: 0,
-        categoryName: ""
+        categoryName: "",
+        price: ""
     });
     const [fullCategories, setFullCategories] = useState([]);
 
@@ -43,7 +44,12 @@ function AddExamCategory() {
     };
 
     const onChangeFullCategory = e => {
-        dispatch(setFullCategoryId(e.target.value));
+        const { value } = e.target;
+        setNewCategory(prev => ({
+            ...prev,
+            fullId: value
+        }));
+        dispatch(setFullCategoryId(value));
     };
 
     const onSubmit = async e => {
@@ -59,7 +65,8 @@ function AddExamCategory() {
             if (response.status === 201 || response.status === 200) {
                 setNewCategory({
                     fullId: 0,
-                    categoryName: ""
+                    categoryName: "",
+                    price: 0.00
                 });
             }
             console.log(response.data);
@@ -81,6 +88,7 @@ function AddExamCategory() {
                                     value={newCategory.fullId}
                                     onChange={onChangeFullCategory}
                                 >
+                                    <option value={0}>Select a category</option>
                                     {fullCategories.map(a => (
                                         <option key={a.fullId} value={a.fullId}>
                                             {a.name}
@@ -98,6 +106,20 @@ function AddExamCategory() {
                                     name="categoryName"
                                     placeholder="Exam Category Name"
                                     value={newCategory.categoryName}
+                                    onChange={onChange}
+                                />
+                            </label>
+                        </div>
+                        <div className="my-inner-box">
+                            <label className="my-label">
+                                Price:
+                                <input
+                                    type="text"
+                                    inputMode="numeric"
+                                    className="fadeIn third number"
+                                    name="price"
+                                    placeholder="Price"
+                                    value={newCategory.price}
                                     onChange={onChange}
                                 />
                             </label>
