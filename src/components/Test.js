@@ -3,14 +3,10 @@ import "../css/MyCertificates.css";
 import http from "../data/http";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import Image from "./Image";
 
 export default function Test() {
   const myToken = useSelector(state => state.token.value.tok);
-  const [imgStyle, setImgStyle] = useState({
-    width: "100%",
-    height: "100%"
-  });
-  const [checkClick, setCheckClick] = useState(false);
 
   const [test, setTests] = useState([]);
   async function getTests() {
@@ -30,23 +26,6 @@ export default function Test() {
   useEffect(() => {
     getTests();
   }, []);
-  function enlargeImg() {
-    setImgStyle({
-      scale: "2",
-      transform: "0.25s ease"
-    });
-    setCheckClick(false);
-  }
-
-  function resetImg() {
-    setImgStyle({
-      scale: "1",
-      transform: "0.25s ease",
-      width: "100%",
-      height: "100%"
-    });
-    setCheckClick(true);
-  }
 
   return (
     <div className="my-certificates">
@@ -58,13 +37,7 @@ export default function Test() {
 
             {a.questionPhotoLink !== "" && (
               <div className="mytests">
-                <img
-                  className="image"
-                  src={a.questionPhotoLink}
-                  alt="code"
-                  onClick={checkClick ? enlargeImg : resetImg}
-                  style={imgStyle}
-                />
+                <Image link={a.questionPhotoLink} />
               </div>
             )}
             <p>Answer: {a.option1}</p>
