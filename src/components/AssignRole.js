@@ -13,11 +13,23 @@ function AssignRole() {
 
   const [added, setAdded] = useState("");
 
+  function toTitleCase(str) {
+    return str.replace(
+      /\w\S*/g,
+      text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+    );
+  }
+
   function getUser(e) {
+    let { name, value } = e.target;
+    if (name === "role") {
+      value = toTitleCase(value);
+      console.log(value);
+    }
     setUser(prev => {
       return {
         ...prev,
-        [e.target.name]: e.target.value
+        [name]: value
       };
     });
   }

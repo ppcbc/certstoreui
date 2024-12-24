@@ -53,6 +53,7 @@ function AddExam() {
           Authorization: "Bearer " + myToken
         }
       });
+
       setExamCategories(response.data);
       setFullCategories(res.data);
       console.log(response.data);
@@ -66,11 +67,8 @@ function AddExam() {
     if (parseInt(value) !== NaN) {
       parseInt(value);
     }
-    if (value === "true") {
-      value = true;
-    }
-    if (value === "false") {
-      value = false;
+    if (value === "true" || value == "false") {
+      value = value === "true";
     }
 
     setNewExam(prev => {
@@ -94,6 +92,23 @@ function AddExam() {
           Authorization: "Bearer " + myToken
         }
       });
+      console.log(response.status);
+      if (response.status === 201 || response.status === 200) {
+        setNewExam({
+          fullId: 0,
+          categoryId: 0,
+          questionText: "",
+          questionPhotoLink: "",
+          option1: "",
+          isCorrect1: false,
+          option2: "",
+          isCorrect2: false,
+          option3: "",
+          isCorrect3: false,
+          option4: "",
+          isCorrect4: false
+        });
+      }
       console.log(response.data);
     } catch (error) {
       console.log(error.message);
