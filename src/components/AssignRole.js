@@ -41,6 +41,12 @@ function AssignRole() {
         http + `api/AddRole/get-role-by-email/${user.email}`
       );
       console.log(res.data.roles[0]);
+      let myCurrentRole = res.data.roles[0];
+      var resRole = await axios.post(http + "api/AddRole/remove-user-role", {
+        email: user.email,
+        role: myCurrentRole
+      });
+      console.log(resRole.status);
       var response = await axios.post(http + "api/AddRole/assign-role", user);
       if (response.status === 200) {
         setAdded("Role assigned successfully");
@@ -58,29 +64,29 @@ function AssignRole() {
       console.log(error.message);
     }
   }
-  async function onSubmitRemove(e) {
-    e.preventDefault();
-    try {
-      var response = await axios.post(
-        http + "api/AddRole/remove-user-role",
-        user
-      );
-      if (response.status === 200) {
-        setAdded("Role removed successfully");
-        setUser(prev => ({
-          email: "",
-          role: ""
-        }));
-      }
-    } catch (error) {
-      setAdded("Wrong credentials try again");
-      setUser(prev => ({
-        email: "",
-        role: ""
-      }));
-      console.log(error.message);
-    }
-  }
+  // async function onSubmitRemove(e) {
+  //   e.preventDefault();
+  //   try {
+  //     var response = await axios.post(
+  //       http + "api/AddRole/remove-user-role",
+  //       user
+  //     );
+  //     if (response.status === 200) {
+  //       setAdded("Role removed successfully");
+  //       setUser(prev => ({
+  //         email: "",
+  //         role: ""
+  //       }));
+  //     }
+  //   } catch (error) {
+  //     setAdded("Wrong credentials try again");
+  //     setUser(prev => ({
+  //       email: "",
+  //       role: ""
+  //     }));
+  //     console.log(error.message);
+  //   }
+  // }
 
   return (
     <form action="">
@@ -124,7 +130,7 @@ function AssignRole() {
               Assign
             </button>
           </div>
-          <div className="button">
+          {/* <div className="button">
             <button
               type="submit"
               class="fadeIn fourth"
@@ -133,7 +139,7 @@ function AssignRole() {
             >
               Remove
             </button>
-          </div>
+          </div> */}
           <div className="my-label">
             <p>{added}</p>
           </div>
