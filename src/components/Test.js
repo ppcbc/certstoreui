@@ -33,7 +33,7 @@ export default function Test() {
       <ul>
         {test.map(a => (
           <li key={a.examId}>
-            <h2>{a.questionText}</h2>
+            {a.questionText !== "" && <h2>{a.questionText}</h2>}
 
             {a.questionPhotoLink !== "" && (
               <div className="mytests">

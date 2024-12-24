@@ -10,7 +10,7 @@ function Image({ link }) {
 
   function enlargeImg() {
     setImgStyle({
-      scale: "2",
+      scale: "1.5",
       transform: "0.25s ease"
     });
     setCheckClick(false);
