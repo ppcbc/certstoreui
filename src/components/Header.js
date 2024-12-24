@@ -98,6 +98,18 @@ export default function Header() {
               </NavLink>
             </li>
           )}
+          {myToken !== "" && (
+            <li className="nav-item">
+              <NavLink
+                to="/exam"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                EXAM
+              </NavLink>
+            </li>
+          )}
           {myToken === "" ? (
             <li className="nav-item">
               <NavLink
