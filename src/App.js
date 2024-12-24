@@ -10,6 +10,7 @@ import Login from "./components/Login";
 import Test from "./components/Test";
 import AssignRole from "./components/AssignRole";
 import AddExam from "./components/AddExam";
+import UserDetails from "./components/UserDetails";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/test" element={<Test />} />
           <Route path="/assignrole" element={<AssignRole />} />
           <Route path="/addexam" element={<AddExam />} />
+          <Route path="/user-details" element={<UserDetails />} />
         </Routes>
       </div>
     </Router>

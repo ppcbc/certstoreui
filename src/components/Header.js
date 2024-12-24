@@ -23,105 +23,115 @@ export default function Header() {
         <ul className="nav">
           <li className="nav-item">
             <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-              end
+                to="/"
+                className={({isActive}) =>
+                    isActive ? "nav-link active" : "nav-link"
+                }
+                end
             >
               HOME
             </NavLink>
           </li>
           <li className="nav-item">
             <NavLink
-              to="/certifications"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
+                to="/certifications"
+                className={({isActive}) =>
+                    isActive ? "nav-link active" : "nav-link"
+                }
             >
               CERTIFICATIONS
             </NavLink>
           </li>
           <li className="nav-item">
             <NavLink
-              to="/schedule-exam"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
+                to="/schedule-exam"
+                className={({isActive}) =>
+                    isActive ? "nav-link active" : "nav-link"
+                }
             >
               SCHEDULE EXAM
             </NavLink>
           </li>
           <li className="nav-item">
             <NavLink
-              to="/my-certificates"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
+                to="/my-certificates"
+                className={({isActive}) =>
+                    isActive ? "nav-link active" : "nav-link"
+                }
             >
               MY CERTIFICATES
             </NavLink>
           </li>
           {myToken !== "" && (
-            <li className="nav-item">
-              <NavLink
-                to="/test"
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-              >
-                TESTS
-              </NavLink>
-            </li>
+              <li className="nav-item">
+                <NavLink
+                    to="/test"
+                    className={({isActive}) =>
+                        isActive ? "nav-link active" : "nav-link"
+                    }
+                >
+                  TESTS
+                </NavLink>
+              </li>
           )}
           {myRole === "Admin" && (
-            <li className="nav-item">
-              <NavLink
-                to="/addexam"
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-              >
-                ADD EXAM
-              </NavLink>
-            </li>
+              <li className="nav-item">
+                <NavLink
+                    to="/addexam"
+                    className={({isActive}) =>
+                        isActive ? "nav-link active" : "nav-link"
+                    }
+                >
+                  ADD EXAM
+                </NavLink>
+              </li>
           )}
           {myRole === "Admin" && (
-            <li className="nav-item">
-              <NavLink
-                to="/assignrole"
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-              >
-                ASSIGN ROLE
-              </NavLink>
-            </li>
+              <li className="nav-item">
+                <NavLink
+                    to="/assignrole"
+                    className={({isActive}) =>
+                        isActive ? "nav-link active" : "nav-link"
+                    }
+                >
+                  ASSIGN ROLE
+                </NavLink>
+              </li>
           )}
           {myToken === "" ? (
-            <li className="nav-item">
-              <NavLink
-                to="/login"
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-              >
-                {myLog}
-              </NavLink>
-            </li>
+              <li className="nav-item">
+                <NavLink
+                    to="/login"
+                    className={({isActive}) =>
+                        isActive ? "nav-link active" : "nav-link"
+                    }
+                >
+                  {myLog}
+                </NavLink>
+              </li>
           ) : (
-            <li className="nav-item">
-              <NavLink
-                to="/login"
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-                onClick={logOut}
-              >
-                LOGOUT
-              </NavLink>
-            </li>
+              <li className="nav-item">
+                <NavLink
+                    to="/login"
+                    className={({isActive}) =>
+                        isActive ? "nav-link active" : "nav-link"
+                    }
+                    onClick={logOut}
+                >
+                  LOGOUT
+                </NavLink>
+              </li>
           )}
+          <li className="nav-item">
+            <NavLink
+                to="/user-details"
+                className={({isActive}) =>
+                    isActive ? "nav-link active" : "nav-link"
+                }
+            >
+              USER DETAILS
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </header>
