@@ -11,6 +11,7 @@ import Test from "./components/Test";
 import AssignRole from "./components/AssignRole";
 import AddExam from "./components/AddExam";
 import Exam from "./components/Exam";
+import AddExamCategory from "./components/AddExamCategory";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/assignrole" element={<AssignRole />} />
           <Route path="/addexam" element={<AddExam />} />
           <Route path="/exam" element={<Exam />} />
+          <Route path="/addexam-category" element={<AddExamCategory />} />
         </Routes>
       </div>
     </Router>

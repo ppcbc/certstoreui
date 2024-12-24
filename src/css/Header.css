@@ -4,6 +4,10 @@
   /*background-color: #63696e; !* Silver *!*/
   /* padding: 2rem 0; Padding for spacing */
   text-align: center; /* Center align all content inside header */
+  z-index: 10000;
+  position: fixed;
+  top: 0px;
+  width: 100%;
 }
 
 /* Navigation list */

@@ -84,6 +84,18 @@ export default function Header() {
           {myRole === "Admin" && (
             <li className="nav-item">
               <NavLink
+                to="/addexam-category"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                ADD EXAM CATEGORY
+              </NavLink>
+            </li>
+          )}
+          {myRole === "Admin" && (
+            <li className="nav-item">
+              <NavLink
                 to="/addexam"
                 className={({ isActive }) =>
                   isActive ? "nav-link active" : "nav-link"
