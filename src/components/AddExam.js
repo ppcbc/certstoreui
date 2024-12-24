@@ -199,14 +199,6 @@ function AddExam() {
               <label className="my-label">
                 Question photo link:
                 <input type="file" name="image" onChange={handleFile}></input>
-                {/* <input
-                  type="text"
-                  class="fadeIn third"
-                  name="questionPhotoLink"
-                  placeholder="question photo link"
-                  value={newExam.questionPhotoLink}
-                  onChange={onChange}
-                /> */}
               </label>
             </div>
             <div className="my-inner-box">

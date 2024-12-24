@@ -37,6 +37,10 @@ function AssignRole() {
   async function onSubmit(e) {
     e.preventDefault();
     try {
+      var res = await axios.get(
+        http + `api/AddRole/get-role-by-email/${user.email}`
+      );
+      console.log(res.data.roles[0]);
       var response = await axios.post(http + "api/AddRole/assign-role", user);
       if (response.status === 200) {
         setAdded("Role assigned successfully");
