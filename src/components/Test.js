@@ -34,6 +34,14 @@ export default function Test() {
         {test.map(a => (
           <li key={a.examId}>
             <h2>{a.questionText}</h2>
+            {a.questionPhotoLink !== "" && (
+              <img
+                src={a.questionPhotoLink}
+                alt="code"
+                width={400}
+                height={400}
+              />
+            )}
             <p>Answer: {a.option1}</p>
             <p>It is {a.isCorrect1 ? "Correct" : "Wrong"}</p>
             <p>Answer: {a.option2}</p>

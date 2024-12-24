@@ -31,7 +31,14 @@ function AddExam() {
   });
   const [examCategories, setExamCategories] = useState([]);
   const [fullCategories, setFullCategories] = useState([]);
-  // const [fullCategoryId, setFullCategoryId] = useState(1);
+
+  const [imageUrl, setImageUrl] = useState("");
+
+  const preset_key = "112898813666492";
+  const precet = "certphoto";
+  const api_secret = "WiNm8fism4GXfgYe0k8nME36EeY";
+
+  const [image, setImage] = useState();
 
   const myToken = useSelector(state => state.token.value.tok);
   const fullCategoryId = useSelector(state => state.token.value.fullCategoryId);
@@ -75,7 +82,8 @@ function AddExam() {
       return {
         ...prev,
         [name]: value,
-        fullId: fullCategoryId
+        fullId: fullCategoryId,
+        questionPhotoLink: imageUrl
       };
     });
   }
@@ -112,6 +120,24 @@ function AddExam() {
       console.log(response.data);
     } catch (error) {
       console.log(error.message);
+    }
+  }
+
+  async function handleFile(e) {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", precet);
+
+    try {
+      const response = await axios.post(
+        "https://api.cloudinary.com/v1_1/doueltigf/image/upload",
+        formData
+      );
+      setImageUrl(response.data.secure_url);
+      console.log(response.data.secure_url);
+    } catch (error) {
+      console.error("Upload failed:", error.response?.data || error.message);
     }
   }
 
@@ -172,14 +198,15 @@ function AddExam() {
             <div className="my-inner-box">
               <label className="my-label">
                 Question photo link:
-                <input
+                <input type="file" name="image" onChange={handleFile}></input>
+                {/* <input
                   type="text"
                   class="fadeIn third"
                   name="questionPhotoLink"
                   placeholder="question photo link"
                   value={newExam.questionPhotoLink}
                   onChange={onChange}
-                />
+                /> */}
               </label>
             </div>
             <div className="my-inner-box">
