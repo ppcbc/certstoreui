@@ -2,7 +2,7 @@
 .header {
   background-color: #5b5c55; /* Background */
   /*background-color: #63696e; !* Silver *!*/
-  padding: 2rem 0; /* Padding for spacing */
+  /* padding: 2rem 0; Padding for spacing */
   text-align: center; /* Center align all content inside header */
 }
 
@@ -12,13 +12,13 @@
   justify-content: center; /* Center the nav items horizontally */
   align-items: center; /* Center the nav items vertically */
   list-style: none; /* Remove default list styling */
-  padding: 0; /* Remove default padding */
+  padding: 20; /* Remove default padding */
   margin: 0; /* Remove default margin */
 }
 
 /* Navigation items */
 .nav-item {
-  margin: 0 1.5rem;
+  margin: 0 1rem;
 }
 
 /* Navigation links */
@@ -27,13 +27,13 @@
   color: white; /* Default text color */
   font-size: 0.9rem; /* Adjust font size */
   font-weight: 400;
-  transition: all 0.3s ease; /* Smooth hover and focus effects */
+  /* transition: all 0.3s ease; Smooth hover and focus effects */
 }
 
 /* Active link styling */
 .nav-link.active {
   /* border-bottom: 1.5px solid lightgray; Underline active link */
-  padding-bottom: 8px;
+  /* padding-bottom: 8px; */
   font-weight: 800; /* Make active link bold */
   color: white; /* Optional: Different color for active link */
   display: inline-block;
@@ -42,6 +42,6 @@
 /* Hover effect */
 .nav-link:hover {
   /* border-bottom: 1.5px solid lightgray; Underline active link */
-  padding-bottom: 8px;
+  /* padding-bottom: 8px; */
   display: inline-block;
 }
