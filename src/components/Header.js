@@ -74,7 +74,7 @@ export default function Header() {
               </NavLink>
             </li>
           )}
-          <li className="nav-item">
+          {myRole === "Admin" && <li className="nav-item">
             <NavLink
               to="/addexam-category"
               className={({ isActive }) =>
@@ -83,7 +83,7 @@ export default function Header() {
             >
               ADD EXAM CATEGORY
             </NavLink>
-          </li>
+          </li>}
           {myRole === "Admin" && (
             <li className="nav-item">
               <NavLink

@@ -14,6 +14,8 @@ function AddExamCategory() {
     });
     const [fullCategories, setFullCategories] = useState([]);
 
+    const [added, setAdded] = useState("");
+
     const myToken = useSelector(state => state.token.value.tok);
     const dispatch = useDispatch();
 
@@ -68,10 +70,17 @@ function AddExamCategory() {
                     categoryName: "",
                     price: 0.00
                 });
+                setAdded("Category added successfully");
             }
             console.log(response.data);
         } catch (error) {
             console.error(error.message);
+            setNewCategory({
+                fullId: 0,
+                categoryName: "",
+                price: 0.00
+            });
+            setAdded("Wrong credentials try again");
         }
     };
 
@@ -128,10 +137,14 @@ function AddExamCategory() {
                     <button type="submit" className="fadeIn fourth">
                         Add Exam Category
                     </button>
-                    <div className="my-label"></div>
+                    <div className="my-label">
+                        <p>{added}</p>
+                    </div>
                 </div>
             </div>
+
         </form>
+
     );
 }
 
