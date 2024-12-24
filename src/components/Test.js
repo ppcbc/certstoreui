@@ -6,13 +6,17 @@ import { useSelector } from "react-redux";
 
 export default function Test() {
   const myToken = useSelector(state => state.token.value.tok);
+  const [imgStyle, setImgStyle] = useState({
+    width: "100%",
+    height: "100%"
+  });
+  const [checkClick, setCheckClick] = useState(false);
 
   const [test, setTests] = useState([]);
   async function getTests() {
     try {
       var response = await axios.get(http + "api/Exams", {
         headers: {
-          // "Content-Type": "application/json",
           Authorization: "Bearer " + myToken
         }
       });
@@ -26,6 +30,23 @@ export default function Test() {
   useEffect(() => {
     getTests();
   }, []);
+  function enlargeImg() {
+    setImgStyle({
+      scale: "2",
+      transform: "0.25s ease"
+    });
+    setCheckClick(false);
+  }
+
+  function resetImg() {
+    setImgStyle({
+      scale: "1",
+      transform: "0.25s ease",
+      width: "100%",
+      height: "100%"
+    });
+    setCheckClick(true);
+  }
 
   return (
     <div className="my-certificates">
@@ -34,13 +55,17 @@ export default function Test() {
         {test.map(a => (
           <li key={a.examId}>
             <h2>{a.questionText}</h2>
+
             {a.questionPhotoLink !== "" && (
-              <img
-                src={a.questionPhotoLink}
-                alt="code"
-                width={400}
-                height={400}
-              />
+              <div className="mytests">
+                <img
+                  className="image"
+                  src={a.questionPhotoLink}
+                  alt="code"
+                  onClick={checkClick ? enlargeImg : resetImg}
+                  style={imgStyle}
+                />
+              </div>
             )}
             <p>Answer: {a.option1}</p>
             <p>It is {a.isCorrect1 ? "Correct" : "Wrong"}</p>
