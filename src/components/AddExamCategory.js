@@ -68,7 +68,7 @@ function AddExamCategory() {
                 setNewCategory({
                     fullId: 0,
                     categoryName: "",
-                    price: 0.00
+                    price: ""
                 });
                 setAdded("Category added successfully");
             }
@@ -78,7 +78,7 @@ function AddExamCategory() {
             setNewCategory({
                 fullId: 0,
                 categoryName: "",
-                price: 0.00
+                price: ""
             });
             setAdded("Wrong credentials try again");
         }
@@ -123,7 +123,7 @@ function AddExamCategory() {
                             <label className="my-label">
                                 Price:
                                 <input
-                                    type="text"
+                                    type="number"
                                     inputMode="numeric"
                                     className="fadeIn third number"
                                     name="price"
