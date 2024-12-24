@@ -8,6 +8,9 @@ export default function Header() {
   const myLog = useSelector(state => state.token.value.log);
   const myToken = useSelector(state => state.token.value.tok);
   const myRole = useSelector(state => state.token.value.role);
+  // const myLog = localStorage.getItem("log");
+  // const myToken = localStorage.getItem("tok");
+  // const myRole = localStorage.getItem("role");
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setLogReg("LOGIN"));
@@ -16,6 +19,10 @@ export default function Header() {
     dispatch(setToken(""));
     dispatch(setId(""));
     dispatch(setRole(""));
+    localStorage.clear();
+    // localStorage.setItem("tok", "");
+    // localStorage.setItem("id", "");
+    // localStorage.setItem("role", "");
   }
   return (
     <header className="header">

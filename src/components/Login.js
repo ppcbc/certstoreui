@@ -18,9 +18,14 @@ function Login() {
   const [message, setMessage] = useState("");
 
   const myToken = useSelector(state => state.token.value.tok);
+  // const myToken = localStorage.getItem("tok");
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // localStorage.setItem("tok", "");
+    // localStorage.setItem("id", "");
+    // localStorage.setItem("role", "");
+    // localStorage.setItem("fullCategoryId", "");
     dispatch(setLogReg("LOGIN"));
   }, [dispatch]);
 

@@ -7,6 +7,7 @@ import Image from "./Image";
 
 export default function Test() {
   const myToken = useSelector(state => state.token.value.tok);
+  // const myToken = localStorage.getItem("tok");
 
   const [test, setTests] = useState([]);
   async function getTests() {

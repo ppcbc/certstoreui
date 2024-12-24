@@ -42,6 +42,8 @@ function AddExam() {
 
   const myToken = useSelector(state => state.token.value.tok);
   const fullCategoryId = useSelector(state => state.token.value.fullCategoryId);
+  // const myToken = localStorage.getItem("tok");
+  // const fullCategoryId = localStorage.getItem("fullCategoryId");
   const dispatch = useDispatch();
 
   useEffect(() => {
