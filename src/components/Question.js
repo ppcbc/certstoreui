@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/Question.css";
 import Image from "./Image";
+import Answer from "./Answer";
 
 function Question({ Exam, Id }) {
   return (
     <div className="question-container">
       {Exam.question !== "" && (
         <div className="question">
-          <p className="questionText">{Exam.question}</p>
+          <p className="questionText">
+            {Id + 1}. {Exam.question}
+          </p>
         </div>
       )}
       {Exam.photoLink !== "" && (
@@ -15,18 +18,10 @@ function Question({ Exam, Id }) {
           <Image link={Exam.photoLink} />
         </div>
       )}
-      <div className="answer">
-        <p className="answerText">1. {Exam.answer1}</p>
-      </div>
-      <div className="answer">
-        <p className="answerText">2. {Exam.answer2}</p>
-      </div>
-      <div className="answer">
-        <p className="answerText">3. {Exam.answer3}</p>
-      </div>
-      <div className="answer">
-        <p className="answerText">4. {Exam.answer4}</p>
-      </div>
+      <Answer answer={Exam.answer1} />
+      <Answer answer={Exam.answer2} />
+      <Answer answer={Exam.answer3} />
+      <Answer answer={Exam.answer4} />
       {Exam.photoLink === "" && <div className="image"></div>}
       {Exam.question === "" && <div className="question"></div>}
     </div>
