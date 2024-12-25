@@ -1,5 +1,6 @@
-.container {
-  padding: 10px;
+.Questions-container {
+  width: 100px;
   margin: 5px;
-  border: 2px solid rgb(26, 173, 199);
+  background-color: #f8fafc;
+  border: 2px solid #bcccdc;
 }

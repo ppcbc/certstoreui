@@ -12,27 +12,24 @@ import AssignRole from "./components/AssignRole";
 import AddExam from "./components/AddExam";
 import Exam from "./components/Exam";
 import AddExamCategory from "./components/AddExamCategory";
-import "./App.css";
 
 function App() {
   return (
     <Router>
-      <div className="app-container">
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/certifications" element={<Certifications />} />
-          <Route path="/schedule-exam" element={<ScheduleExam />} />
-          <Route path="/my-certificates" element={<MyCertificates />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/test" element={<Test />} />
-          <Route path="/assignrole" element={<AssignRole />} />
-          <Route path="/addexam" element={<AddExam />} />
-          <Route path="/exam" element={<Exam />} />
-          <Route path="/addexam-category" element={<AddExamCategory />} />
-        </Routes>
-      </div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/certifications" element={<Certifications />} />
+        <Route path="/schedule-exam" element={<ScheduleExam />} />
+        <Route path="/my-certificates" element={<MyCertificates />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/test" element={<Test />} />
+        <Route path="/assignrole" element={<AssignRole />} />
+        <Route path="/addexam" element={<AddExam />} />
+        <Route path="/exam" element={<Exam />} />
+        <Route path="/addexam-category" element={<AddExamCategory />} />
+      </Routes>
     </Router>
   );
 }

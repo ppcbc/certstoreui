@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../css/MyCertificates.css";
+// import "../css/MyCertificates.css";
 
 export default function MyCertificates() {
   const [certificates] = useState([

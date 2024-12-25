@@ -6,11 +6,8 @@ export default function Home() {
   const myToken = useSelector(state => state.token.value.tok);
   const myId = useSelector(state => state.token.value.id);
   const myRole = useSelector(state => state.token.value.role);
-  // const myToken = localStorage.getItem("tok");
-  // const myId = localStorage.getItem("id");
-  // const myRole = localStorage.getItem("role");
   return (
-    <div className="home">
+    <div className="my-home">
       <h1>Welcome to the Certification Shop</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod

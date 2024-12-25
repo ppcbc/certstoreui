@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../css/MyCertificates.css";
+import "../css/Image.css";
 
 function Image({ link }) {
   const [imgStyle, setImgStyle] = useState({
@@ -26,7 +26,7 @@ function Image({ link }) {
     setCheckClick(true);
   }
   return (
-    <div className="mytests">
+    <div className="myImage">
       <img
         className="image"
         src={link}

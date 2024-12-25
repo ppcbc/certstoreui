@@ -9,8 +9,8 @@
 .my-certificates ul {
   list-style: none; /* Remove default list styling */
   padding: 0; /* Remove padding */
-  margin: 0 auto; /* Center the list within the page */
-  max-width: 600px;
+  /* margin: 0 auto;  */
+  /* max-width: 600px; */
 }
 
 /* Style for the main heading */
@@ -29,7 +29,8 @@
   padding: 20px; /* Padding for each certificate */
   margin-bottom: 20px; /* Space between items */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 60px;
 }
 
 /* Hover effect for each certificate item */
@@ -50,12 +51,4 @@
   font-size: 1rem; /* Standard font size */
   color: #4b5052; /* Subtle text color for details */
   margin: 0; /* Remove default margins */
-}
-
-.mytests {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 300;
-  height: 300;
 }

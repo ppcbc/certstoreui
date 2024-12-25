@@ -3,7 +3,7 @@ import "../css/AllQuestions.css";
 
 function AllQuestions({ id, getCurrentQuestion }) {
   return (
-    <div className="container" onClick={() => getCurrentQuestion(id)}>
+    <div className="Questions-container" onClick={() => getCurrentQuestion(id)}>
       <p>Question {id + 1}</p>
     </div>
   );

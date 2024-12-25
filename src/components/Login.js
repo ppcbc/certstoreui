@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import React from "react";
-// import "../App.css";
 import axios from "axios";
 import http from "../data/http";
 import "../css/ScheduleExam.css";

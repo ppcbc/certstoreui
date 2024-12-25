@@ -1,30 +1,30 @@
-.home {
-  background-color: #2e4854; /* Background color */
-  color: #fff; /* White text color */
-  display: flex; /* Use flexbox to center content */
-  flex-direction: column; /* Align children (h1 and p) vertically */
+.my-home {
+  background-color: #2e4854;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center; /* Horizontally center the content */
-  /* height: 100vh; Make the container full height of the viewport */
-  text-align: center; /* Center the text */
-  padding: 70px 20px 20px 20px; /* Add padding around the content */
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  padding: 70px 20px 20px 20px;
 }
 
 /* Style for h1 (headline) */
 .home h1 {
   color: lightgray;
   font-weight: 500;
-  font-size: 3.5rem; /* Larger font size for the heading */
-  margin-bottom: 10px; /* Space between heading and paragraph */
+  font-size: 3.5rem;
+  margin-bottom: 10px;
   border-bottom: 2px solid lightgray;
-  padding-bottom: 20px; /* Space between heading text and line */
+  padding-bottom: 20px;
   letter-spacing: 0.5px;
 }
 
 /* Style for p (paragraph) */
 .home p {
   color: lightgray;
-  font-size: 1.2rem; /* Slightly larger text for the paragraph */
-  /* max-width: 850px; */
+  font-size: 1.2rem;
+  max-width: 850px;
   letter-spacing: 0.5px;
 }

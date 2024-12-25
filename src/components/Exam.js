@@ -64,19 +64,7 @@ function Exam() {
         </div>
         <div className="box box2">
           {exams[questionId] && (
-            <Question
-              key={0}
-              question={exams[questionId].question}
-              photoLink={exams[questionId].photoLink}
-              answer1={exams[questionId].answer1}
-              correct1={exams[questionId].correct1}
-              answer2={exams[questionId].answer2}
-              correct2={exams[questionId].correct2}
-              answer3={exams[questionId].answer3}
-              correct3={exams[questionId].correct3}
-              answer4={exams[questionId].answer4}
-              correct4={exams[questionId].correct4}
-            />
+            <Question Exam={exams[questionId]} Id={questionId} />
           )}
         </div>
         <div className="box box3">

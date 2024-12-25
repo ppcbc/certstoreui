@@ -2,38 +2,33 @@ import React from "react";
 import "../css/Question.css";
 import Image from "./Image";
 
-function Question({
-  question,
-  photoLink,
-  answer1,
-  correct1,
-  answer2,
-  correct2,
-  answer3,
-  correct3,
-  answer4,
-  correct4
-}) {
+function Question({ Exam, Id }) {
   return (
     <div className="question-container">
-      <div className="question">
-        <p className="questionText">{question}</p>
-      </div>
-      <div className="image">
-        <Image link={photoLink} />
+      {Exam.question !== "" && (
+        <div className="question">
+          <p className="questionText">{Exam.question}</p>
+        </div>
+      )}
+      {Exam.photoLink !== "" && (
+        <div className="image">
+          <Image link={Exam.photoLink} />
+        </div>
+      )}
+      <div className="answer">
+        <p className="answerText">1. {Exam.answer1}</p>
       </div>
       <div className="answer">
-        <p className="answerText">{answer1}</p>
+        <p className="answerText">2. {Exam.answer2}</p>
       </div>
       <div className="answer">
-        <p className="answerText">{answer2}</p>
+        <p className="answerText">3. {Exam.answer3}</p>
       </div>
       <div className="answer">
-        <p className="answerText">{answer3}</p>
+        <p className="answerText">4. {Exam.answer4}</p>
       </div>
-      <div className="answer">
-        <p className="answerText">{answer4}</p>
-      </div>
+      {Exam.photoLink === "" && <div className="image"></div>}
+      {Exam.question === "" && <div className="question"></div>}
     </div>
   );
 }

@@ -38,7 +38,7 @@ function AddExam() {
     setCheck(true);
     setTimeout(() => {
       setCheck(false);
-    }, 2000);
+    }, 700);
   }
 
   const [imageUrl, setImageUrl] = useState("");
