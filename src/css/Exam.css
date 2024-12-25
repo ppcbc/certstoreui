@@ -28,6 +28,7 @@
   height: 100%;
   justify-items: center;
   border: 2px solid green;
+  background-color: #f8fafc;
 }
 
 .box1 {
@@ -45,7 +46,7 @@
 
 .box2 {
   width: 900px;
-  height: 640px;
+  height: 100%;
   grid-column-start: 2;
   grid-column-end: 3;
   position: relative; /* Important to position Box 5 inside Box 2 */

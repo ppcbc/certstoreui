@@ -15,7 +15,7 @@ function Question({
   correct4
 }) {
   return (
-    <div className="container">
+    <div className="question-container">
       <div className="question">
         <p className="questionText">{question}</p>
       </div>

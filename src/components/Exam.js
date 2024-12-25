@@ -5,8 +5,10 @@ import axios from "axios";
 import Question from "./Question";
 import AllQuestions from "./AllQuestions";
 
+// pass categoryId and category name as parameters
 function Exam() {
   const [exams, setExams] = useState([]);
+  const [questionId, setQuestionId] = useState(0);
 
   async function getExam() {
     try {
@@ -40,31 +42,40 @@ function Exam() {
   useEffect(() => {
     getExam();
   }, []);
+
+  function getQuestion(id) {
+    setQuestionId(id);
+  }
+
   return (
     <div className="container">
       <div className="title">
-        <h1>hello</h1>
+        <h3>Welcome to </h3>
       </div>
       <div className="grid-container">
         <div className="box box1">
           {exams.map((item, index) => (
-            <AllQuestions key={index} id={index} />
+            <AllQuestions
+              key={index}
+              id={index}
+              getCurrentQuestion={getQuestion}
+            />
           ))}
         </div>
         <div className="box box2">
-          {exams[0] && (
+          {exams[questionId] && (
             <Question
               key={0}
-              question={exams[0].question}
-              photoLink={exams[0].photoLink}
-              answer1={exams[0].answer1}
-              correct1={exams[0].correct1}
-              answer2={exams[0].answer2}
-              correct2={exams[0].correct2}
-              answer3={exams[0].answer3}
-              correct3={exams[0].correct3}
-              answer4={exams[0].answer4}
-              correct4={exams[0].correct4}
+              question={exams[questionId].question}
+              photoLink={exams[questionId].photoLink}
+              answer1={exams[questionId].answer1}
+              correct1={exams[questionId].correct1}
+              answer2={exams[questionId].answer2}
+              correct2={exams[questionId].correct2}
+              answer3={exams[questionId].answer3}
+              correct3={exams[questionId].correct3}
+              answer4={exams[questionId].answer4}
+              correct4={exams[questionId].correct4}
             />
           )}
         </div>

@@ -3,14 +3,14 @@ import "../css/MyCertificates.css";
 
 function Image({ link }) {
   const [imgStyle, setImgStyle] = useState({
-    width: "100%",
-    height: "100%"
+    width: "640px",
+    height: "360px"
   });
   const [checkClick, setCheckClick] = useState(false);
 
   function enlargeImg() {
     setImgStyle({
-      scale: "1.5",
+      scale: "1.8",
       transform: "0.25s ease"
     });
     setCheckClick(false);
@@ -20,8 +20,8 @@ function Image({ link }) {
     setImgStyle({
       scale: "1",
       transform: "0.25s ease",
-      width: "100%",
-      height: "100%"
+      width: "640px",
+      height: "360px"
     });
     setCheckClick(true);
   }
