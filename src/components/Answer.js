@@ -14,13 +14,14 @@ function Answer({ answer }) {
       onMouseOut={checkMouseOver}
       style={{ backgroundColor: isMouseOver && "#D9EAFD" }}
     >
-      <p
+      {/* <p
         onMouseOver={checkMouseOver}
         onMouseOut={checkMouseOver}
         className="answerText"
       >
         {answer}
-      </p>
+      </p> */}
+      {answer}
     </div>
   );
 }
