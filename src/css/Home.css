@@ -3,7 +3,7 @@
   color: #fff; /* White text color */
   display: flex; /* Use flexbox to center content */
   flex-direction: column; /* Align children (h1 and p) vertically */
-  justify-content: flex-start; /* Vertically center the content */
+  justify-content: center;
   align-items: center; /* Horizontally center the content */
   /* height: 100vh; Make the container full height of the viewport */
   text-align: center; /* Center the text */
@@ -25,6 +25,6 @@
 .home p {
   color: lightgray;
   font-size: 1.2rem; /* Slightly larger text for the paragraph */
-  max-width: 850px;
+  /* max-width: 850px; */
   letter-spacing: 0.5px;
 }

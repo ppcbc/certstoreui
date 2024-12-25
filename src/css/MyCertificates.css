@@ -2,7 +2,7 @@
   background-color: #b4b5b0; /* Light background for the page */
   color: #2c3e50; /* Text color matching the header palette */
   padding: 40px 20px; /* Padding for the container */
-  min-height: 100vh; /* Full height of the viewport */
+  min-height: 100vh;
 }
 
 /* Style for the certificates list */
@@ -10,7 +10,7 @@
   list-style: none; /* Remove default list styling */
   padding: 0; /* Remove padding */
   margin: 0 auto; /* Center the list within the page */
-  max-width: 600px; /* Limit the width for a clean layout */
+  max-width: 600px;
 }
 
 /* Style for the main heading */

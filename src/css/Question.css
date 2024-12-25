@@ -3,3 +3,26 @@
   margin: 5px;
   border: 2px solid rgb(26, 173, 199);
 }
+.image {
+  width: 600px;
+  background-color: rgb(165, 100, 16);
+  border-radius: 5px;
+}
+.question {
+  border: 2px solid turquoise;
+  background-color: antiquewhite;
+  margin: 2px 0 2px 0;
+  border-radius: 5px;
+}
+.questionText {
+  padding-left: 20px;
+}
+.answer {
+  background-color: rgb(93, 123, 150);
+  border: 2px solid rgb(55, 61, 27);
+  margin: 2px 0 2px 0;
+  border-radius: 5px;
+}
+.answerText {
+  padding-left: 20px;
+}
