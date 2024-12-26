@@ -1,14 +1,14 @@
 .question-container {
   background-color: var(--color1);
   height: 100%;
-  /* padding: 10px; */
+  padding: 20px;
   /* margin: 5px; */
-  /* border: 2px solid #bcccdc; */
-  /* border-radius: 5px; */
+  border: 2px solid var(--color1);
+  border-radius: 5px;
   /* box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; */
-  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 .image {
   width: 640px;

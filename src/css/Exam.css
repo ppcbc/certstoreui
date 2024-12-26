@@ -19,24 +19,30 @@
   margin: 0;
   padding: 0;
 }
+.main-grid {
+}
 
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
   grid-gap: 20px;
-  margin-top: 60px;
+  /* margin-top: 60px; */
   width: 100%;
   height: 650px;
   justify-items: center;
-  border: 2px solid green;
-  background-color: var(--color1);
+  /* border: 2px solid green; */
+  background-color: var(--color2);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .box1 {
-  width: 280px;
-  height: 650px; /* Maintain the set height */
-  border: 2px solid red;
-  background-color: var(--color1);
+  width: 180px;
+  height: 690px; /* Maintain the set height */
+  /* border: 2px solid red; */
+  background-color: var(--color2);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,6 +50,7 @@
   overflow-x: hidden; /* Prevent horizontal scrolling */
   scrollbar-width: thin; /* Firefox scrollbar styling */
   scrollbar-color: var(--color3) var(--color1); /* Scrollbar colors */
+  /* margin-top: 30px; */
 }
 
 .box2 {
@@ -53,10 +60,11 @@
   grid-column-start: 2;
   grid-column-end: 3;
   position: relative; /* Important to position Box 5 inside Box 2 */
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   display: flex;
   justify-content: center;
   align-items: center;
+  /* margin-top: 60px; */
 }
 
 .box3 {
@@ -82,7 +90,7 @@
 .box5 {
   width: 50px;
   height: 14px;
-  border: 2px solid green;
+  /* border: 2px solid green; */
   grid-column-start: 2;
   grid-column-end: 2;
 }

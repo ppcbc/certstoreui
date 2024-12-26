@@ -48,7 +48,6 @@ function Exam() {
   }
 
   return (
-    // <div className="container">
     <div className="grid-container">
       <div className="box box1">
         {exams.map((item, index) => (
@@ -69,7 +68,6 @@ function Exam() {
       <div className="box box5">Box 5</div>
     </div>
   );
-  /* </div> */
 }
 
 export default Exam;
