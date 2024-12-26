@@ -17,8 +17,8 @@ function Exam() {
       let myData = response.data;
       setExams(() => {
         return myData
-          .filter(item => item.categoryId === 1)
-          .map(item => {
+          .filter((item) => item.categoryId === 1)
+          .map((item) => {
             return {
               question: item.questionText,
               photoLink: item.questionPhotoLink,
@@ -29,7 +29,7 @@ function Exam() {
               answer3: item.option3,
               correct3: item.isCorrect3,
               answer4: item.option4,
-              correct4: item.isCorrect4
+              correct4: item.isCorrect4,
             };
           });
       });
@@ -50,15 +50,14 @@ function Exam() {
   return (
     // <div className="container">
     <div className="grid-container">
-      <div className="box box1">
+      <div className="box1">
         {exams.map((item, index) => (
-          <AllQuestions
-            key={index}
-            id={index}
-            getCurrentQuestion={getQuestion}
-          />
+          <div key={index} className="all-question-item">
+            <AllQuestions id={index} getCurrentQuestion={getQuestion} />
+          </div>
         ))}
       </div>
+
       <div className="box box2">
         {exams[questionId] && (
           <Question Exam={exams[questionId]} Id={questionId} />
