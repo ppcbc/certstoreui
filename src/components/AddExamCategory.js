@@ -13,8 +13,8 @@ function AddExamCategory() {
     price: ""
   });
   const [fullCategories, setFullCategories] = useState([]);
-
   const [added, setAdded] = useState("");
+  const [error, setError] = useState("");  //Vallidation1 26/12
 
   const myToken = useSelector(state => state.token.value.tok);
   const dispatch = useDispatch();
@@ -56,6 +56,20 @@ function AddExamCategory() {
 
   const onSubmit = async e => {
     e.preventDefault();
+    //validation  26/12
+    if (newCategory.fullId === 0) {
+      setError("Please select a full category");
+      return;
+    }
+    if (newCategory.categoryName === "") {
+      setError("Please enter a category name");
+      return;
+    }
+    if (newCategory.price === "") {
+      setError("Please enter a price");
+      return;
+    }
+
     console.log(newCategory);
     try {
       const response = await axios.post(
@@ -141,6 +155,7 @@ function AddExamCategory() {
           <button type="submit" className="fadeIn fourth">
             Add Exam Category
           </button>
+          {error && <div style={{ color: 'red' }}>{error}</div>}
           <div className="my-label">
             <p>{added}</p>
           </div>
