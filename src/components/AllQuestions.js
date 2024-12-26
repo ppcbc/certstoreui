@@ -12,7 +12,7 @@ function AllQuestions({ id, getCurrentQuestion }) {
       className="Questions-container"
       onMouseOver={checkMouseOver}
       onMouseOut={checkMouseOver}
-      style={{ backgroundColor: isMouseOver && "#F8FAFC" }}
+      style={{ backgroundColor: isMouseOver && "var(--color3)" }}
       onClick={() => getCurrentQuestion(id)}
     >
       Question {id + 1}

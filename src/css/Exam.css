@@ -1,6 +1,6 @@
 .title {
   position: fixed;
-  top: 30px;
+  top: 35px;
   left: 50%;
   transform: translateX(-50%);
   width: 400px;
@@ -11,6 +11,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 400;
+  font-size: medium;
 }
 
 .title h3 {
@@ -27,7 +29,7 @@
   height: 100%;
   justify-items: center;
   border: 2px solid green;
-  background-color: #f8fafc;
+  background-color: var(--color1);
 }
 
 .box1 {
@@ -42,7 +44,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #f8fafc;
+  background-color: var(--color1);
 }
 
 .box2 {
@@ -60,7 +62,7 @@
 
 .box3 {
   width: 130px;
-  height: 20px;
+  height: 14px;
   border: 2px solid red;
   grid-column-start: 2;
   grid-column-end: 3;
@@ -70,7 +72,7 @@
 
 .box4 {
   width: 50px;
-  height: 20px;
+  height: 14px;
   border: 2px solid red;
   grid-column-start: 2;
   grid-column-end: 3;
@@ -80,7 +82,7 @@
 
 .box5 {
   width: 50px;
-  height: 20px;
+  height: 14px;
   border: 2px solid green;
   grid-column-start: 2;
   grid-column-end: 2;

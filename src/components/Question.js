@@ -18,10 +18,10 @@ function Question({ Exam, Id }) {
           <Image link={Exam.photoLink} />
         </div>
       )}
-      <Answer answer={Exam.answer1} />
-      <Answer answer={Exam.answer2} />
-      <Answer answer={Exam.answer3} />
-      <Answer answer={Exam.answer4} />
+      <Answer answer={Exam.answer1} correct={Exam.correct1} number={"A"} />
+      <Answer answer={Exam.answer2} correct={Exam.correct2} number={"B"} />
+      <Answer answer={Exam.answer3} correct={Exam.correct3} number={"C"} />
+      <Answer answer={Exam.answer4} correct={Exam.correct4} number={"D"} />
       {Exam.photoLink === "" && <div className="image"></div>}
       {Exam.question === "" && <div className="question"></div>}
     </div>

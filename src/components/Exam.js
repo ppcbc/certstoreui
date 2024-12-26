@@ -50,7 +50,7 @@ function Exam() {
   return (
     <div className="container">
       <div className="title">
-        <h3>Welcome to </h3>
+        <p>Welcome to </p>
       </div>
       <div className="grid-container">
         <div className="box box1">
@@ -67,9 +67,7 @@ function Exam() {
             <Question Exam={exams[questionId]} Id={questionId} />
           )}
         </div>
-        <div className="box box3">
-          <button onClick={getExam}>Box 3</button>
-        </div>
+        <div className="box box3">Box 3</div>
         <div className="box box4">Box 4</div>
         <div className="box box5">Box 5</div>
       </div>

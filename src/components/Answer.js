@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "../css/Answer.css";
 
-function Answer({ answer }) {
+function Answer({ answer, correct, number }) {
   const [isMouseOver, setIsMouseOver] = useState(false);
+  const [select, setSelect] = useState({});
 
-  function checkMouseOver({ number, answer }) {
+  function checkMouseOver() {
     setIsMouseOver(!isMouseOver);
   }
   return (
@@ -12,16 +13,9 @@ function Answer({ answer }) {
       className="answer"
       onMouseOver={checkMouseOver}
       onMouseOut={checkMouseOver}
-      style={{ backgroundColor: isMouseOver && "#D9EAFD" }}
+      style={{ backgroundColor: isMouseOver && "var(--color3)" }}
     >
-      {/* <p
-        onMouseOver={checkMouseOver}
-        onMouseOut={checkMouseOver}
-        className="answerText"
-      >
-        {answer}
-      </p> */}
-      {answer}
+      {number}: {answer}
     </div>
   );
 }

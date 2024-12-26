@@ -1,6 +1,6 @@
 /* Header container styling */
 .header {
-  background-color: #5b5c55; /* Background */
+  background-color: var(--color5);
   /*background-color: #63696e; !* Silver *!*/
   /* padding: 2rem 0; Padding for spacing */
   text-align: center; /* Center align all content inside header */
@@ -28,9 +28,9 @@
 /* Navigation links */
 .nav-link {
   text-decoration: none; /* Remove default underline */
-  color: white; /* Default text color */
-  font-size: 0.9rem; /* Adjust font size */
-  font-weight: 400;
+  color: white;
+  font-size: 0.9em;
+  /* font-weight: 400; */
   /* transition: all 0.3s ease; Smooth hover and focus effects */
 }
 
@@ -38,9 +38,10 @@
 .nav-link.active {
   /* border-bottom: 1.5px solid lightgray; Underline active link */
   /* padding-bottom: 8px; */
-  font-weight: 800; /* Make active link bold */
-  color: white; /* Optional: Different color for active link */
+  /* font-weight: 800;  */
+  color: black;
   display: inline-block;
+  background-color: var(--color3);
 }
 
 /* Hover effect */
@@ -48,4 +49,6 @@
   /* border-bottom: 1.5px solid lightgray; Underline active link */
   /* padding-bottom: 8px; */
   display: inline-block;
+  background-color: var(--color1);
+  color: black;
 }
