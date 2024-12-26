@@ -9,11 +9,17 @@ import AllQuestions from "./AllQuestions";
 function Exam() {
   const [exams, setExams] = useState([]);
   const [questionId, setQuestionId] = useState(0);
+  const [idCorrect, setIdCorrect] = useState({
+    id: 0,
+    isCorrect: false
+  });
+  const [results, setResults] = useState([]);
+  const [counter, setCounter] = useState(0);
 
   async function getExam() {
     try {
       let response = await axios.get(http + "api/exams");
-      console.log(response.data);
+      // console.log(response.data);
       let myData = response.data;
       setExams(() => {
         return myData
@@ -33,7 +39,7 @@ function Exam() {
             };
           });
       });
-      console.log(exams);
+      // console.log(exams);
     } catch (error) {
       console.log(error.message);
     }
@@ -45,6 +51,20 @@ function Exam() {
 
   function getQuestion(id) {
     setQuestionId(id);
+  }
+
+  function checkCorrect(isCorrect) {
+    console.log(isCorrect);
+    setIdCorrect(isCorrect);
+
+    // setResults(prev => (prev[isCorrect.id] = isCorrect.isCorrect));
+    setResults(prev => {
+      return [...prev, isCorrect];
+    });
+    setExams(prev => prev.filter((a, i) => i !== isCorrect.id));
+    if (isCorrect.isCorrect === true) {
+      setCounter(prev => prev + 1);
+    }
   }
 
   return (
@@ -60,11 +80,29 @@ function Exam() {
       </div>
       <div className="box box2">
         {exams[questionId] && (
-          <Question Exam={exams[questionId]} Id={questionId} />
+          <Question
+            idIsCorrect={checkCorrect}
+            Exam={exams[questionId]}
+            Id={questionId}
+            isCorrect={checkCorrect}
+          />
         )}
       </div>
-      <div className="box box3">Box 3</div>
-      <div className="box box4">Box 4</div>
+      <div className="box box3">
+        Box 3 <br />
+        Correct Answers: {counter}
+      </div>
+      <div className="box box4">
+        Box 4 <br />
+        <ul>
+          {results.length > 0 &&
+            results.map((a, index) => (
+              <li Key={index}>
+                {a.id} is {a.isCorrect ? "correct" : "wrong"}
+              </li>
+            ))}
+        </ul>
+      </div>
       <div className="box box5">Box 5</div>
     </div>
   );

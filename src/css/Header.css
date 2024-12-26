@@ -22,7 +22,7 @@
 
 .nav-right {
   margin-left: auto;
-  margin-right: 10px;
+  margin-right: 40px;
   /* padding-right: 25px; */
 }
 
@@ -44,6 +44,7 @@
   /* color: var(--color4); */
   color: white;
   border-radius: 2px;
+  font-weight: 600;
 }
 nav h1 {
   margin-right: auto;
