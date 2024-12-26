@@ -52,6 +52,15 @@
   scrollbar-color: var(--color3) var(--color1); /* Scrollbar colors */
   /* margin-top: 30px; */
 }
+.hidesb::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hidesb {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
 
 .box2 {
   width: 900px;

@@ -1,9 +1,9 @@
 .header {
   background-color: var(--color6);
-  /* z-index: 10000; */
-  /* position: fixed; */
+  z-index: 10000;
+  position: fixed;
   /* top: 0; */
-  /* width: 100%; */
+  width: 100%;
   padding: 18px;
   /* padding: 2rem 0; */
 }

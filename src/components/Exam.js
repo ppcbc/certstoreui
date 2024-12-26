@@ -49,7 +49,7 @@ function Exam() {
 
   return (
     <div className="grid-container">
-      <div className="box box1">
+      <div className="box box1 hidesb">
         {exams.map((item, index) => (
           <AllQuestions
             key={index}
