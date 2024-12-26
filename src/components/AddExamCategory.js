@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
-import "../css/ScheduleExam.css";
+// import "../css/ScheduleExam.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setFullCategoryId } from "../features/loginSlice";
 import http from "../data/http";

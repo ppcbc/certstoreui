@@ -33,13 +33,13 @@
   font-weight: 600;
   color: var(--color4);
   background-color: var(--color1);
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 .nav-link:hover {
   background-color: var(--color1);
   color: var(--color4);
-  border-radius: 5px;
+  border-radius: 3px;
 }
 nav h1 {
   margin-right: auto;

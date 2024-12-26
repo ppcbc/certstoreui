@@ -24,23 +24,7 @@ body {
   text-align: center;
   /* color: var(--color4); */
 }
-/* nav {
-  display: flex;
-  margin: 0 auto 0px;
-  gap: 10px;
-  align-items: center;
-}
-nav h1 {
-  margin-right: auto;
-}
-nav a {
-  color: var(--color3);
-  padding: 4px 10px;
-}
-nav a.active {
-  color: black;
-  background: var(--color1);
-} */
+
 @media (min-width: 1920px) {
   .app-container {
     width: 1920px;
