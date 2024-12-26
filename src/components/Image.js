@@ -10,18 +10,28 @@ function Image({ link }) {
 
   function enlargeImg() {
     setImgStyle({
-      scale: "1.8",
-      transform: "0.25s ease"
+      scale: "1.4",
+      // transform: "0.25s ease",
+      position: "fixed",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%) scale(1.4)",
+      zIndex: 1000000,
+      border: "2px solid var(--color2)"
     });
     setCheckClick(false);
   }
 
   function resetImg() {
     setImgStyle({
-      scale: "1",
-      transform: "0.25s ease",
+      transition: "transform 0.25s ease",
+      position: "static",
+      top: "unset",
+      left: "unset",
+      transform: "none",
       width: "640px",
-      height: "360px"
+      height: "360px",
+      zIndex: "unset"
     });
     setCheckClick(true);
   }

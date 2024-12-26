@@ -24,7 +24,7 @@ body {
   text-align: center;
   /* color: var(--color4); */
 }
-nav {
+/* nav {
   display: flex;
   margin: 0 auto 0px;
   gap: 10px;
@@ -40,8 +40,7 @@ nav a {
 nav a.active {
   color: black;
   background: var(--color1);
-  /* text-decoration: none; */
-}
+} */
 @media (min-width: 1920px) {
   .app-container {
     width: 1920px;
@@ -65,6 +64,7 @@ nav a.active {
   --color5: #505861; */
   --color1: #ffffff;
   --color2: #b4b5b0;
+  --color21: #9a9c94;
   --color3: #78909c;
   --color4: #2e4854;
   --color5: #182931;

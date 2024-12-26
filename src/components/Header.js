@@ -14,7 +14,7 @@ export default function Header() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setLogReg("LOGIN"));
-  }, []);
+  }, [dispatch]);
   function logOut() {
     dispatch(setToken(""));
     dispatch(setId(""));
@@ -130,7 +130,7 @@ export default function Header() {
             </li>
           )}
           {myToken === "" ? (
-            <li className="nav-item">
+            <li className="nav-item nav-right">
               <NavLink
                 to="/login"
                 className={({ isActive }) =>
@@ -141,7 +141,7 @@ export default function Header() {
               </NavLink>
             </li>
           ) : (
-            <li className="nav-item">
+            <li className="nav-item nav-right">
               <NavLink
                 to="/login"
                 className={({ isActive }) =>

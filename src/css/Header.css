@@ -1,54 +1,50 @@
-/* Header container styling */
 .header {
   background-color: var(--color5);
-  /*background-color: #63696e; !* Silver *!*/
-  /* padding: 2rem 0; Padding for spacing */
-  text-align: center; /* Center align all content inside header */
   z-index: 10000;
   position: fixed;
-  top: 0px;
+  top: 0;
   width: 100%;
+  padding: 12px;
 }
 
-/* Navigation list */
 .nav {
-  display: flex; /* Arrange items in a row */
-  justify-content: center; /* Center the nav items horizontally */
-  align-items: center; /* Center the nav items vertically */
-  list-style: none; /* Remove default list styling */
-  padding: 20; /* Remove default padding */
-  margin: 0; /* Remove default margin */
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-/* Navigation items */
 .nav-item {
-  margin: 0 1rem;
+  margin: 0 0.5rem;
 }
 
-/* Navigation links */
+.nav-right {
+  margin-left: auto;
+}
+
 .nav-link {
-  text-decoration: none; /* Remove default underline */
+  text-decoration: none;
   color: white;
   font-size: 0.9em;
-  /* font-weight: 400; */
-  /* transition: all 0.3s ease; Smooth hover and focus effects */
 }
 
-/* Active link styling */
 .nav-link.active {
-  /* border-bottom: 1.5px solid lightgray; Underline active link */
-  /* padding-bottom: 8px; */
   font-weight: 600;
-  color: white;
-  display: inline-block;
-  background-color: var(--color4);
+  color: var(--color4);
+  background-color: var(--color1);
+  border-radius: 5px;
 }
 
-/* Hover effect */
 .nav-link:hover {
-  /* border-bottom: 1.5px solid lightgray; Underline active link */
-  /* padding-bottom: 8px; */
-  display: inline-block;
-  background-color: var(--color4);
-  color: white;
+  background-color: var(--color1);
+  color: var(--color4);
+  border-radius: 5px;
+}
+nav h1 {
+  margin-right: auto;
+}
+nav a {
+  color: var(--color3);
+  padding: 4px 10px;
 }
