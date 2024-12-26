@@ -7,11 +7,11 @@ import ScheduleExam from "./components/ScheduleExam";
 import MyCertificates from "./components/MyCertificates";
 import Register from "./components/Register";
 import Login from "./components/Login";
-import Test from "./components/Test";
 import AssignRole from "./components/AssignRole";
 import AddExam from "./components/AddExam";
 import Exam from "./components/Exam";
 import AddExamCategory from "./components/AddExamCategory";
+import "./App.css";
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
         <Route path="/my-certificates" element={<MyCertificates />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/test" element={<Test />} />
+        {/* <Route path="/test" element={<Test />} /> */}
         <Route path="/assignrole" element={<AssignRole />} />
         <Route path="/addexam" element={<AddExam />} />
         <Route path="/exam" element={<Exam />} />

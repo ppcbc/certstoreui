@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
 import http from "../data/http";
-import "../css/ScheduleExam.css";
+// import "../css/ScheduleExam.css";
+import "../css/AddExam.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -158,10 +159,10 @@ function AddExam() {
 
   return (
     <form action="" onSubmit={onSubmit}>
-      <div className="schedule-exam">
-        <div className="schedule-box">
-          <div className="my-box">
-            <div className="my-inner-box">
+      <div className="add-exam">
+        <div className="add-box">
+          <div className="add-my-box">
+            <div className="add-my-inner-box align-left">
               <label className="my-label">
                 Select category:
                 <select
@@ -178,8 +179,8 @@ function AddExam() {
                 </select>
               </label>
             </div>
-            <div className="my-inner-box">
-              <label className="my-label">
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
                 Select exam:
                 <select
                   name="categoryId"
@@ -199,7 +200,7 @@ function AddExam() {
                 </select>
               </label>
             </div>
-            <div className="my-inner-box">
+            <div className="add-my-inner-box">
               <label className="my-label">
                 Question Text:
                 <input
@@ -212,13 +213,13 @@ function AddExam() {
                 />
               </label>
             </div>
-            <div className="my-inner-box">
+            <div className="add-my-inner-box">
               <label className="my-label">
                 Question photo link:
                 <input type="file" name="image" onChange={handleFile}></input>
               </label>
             </div>
-            <div className="my-inner-box">
+            <div className="add-my-inner-box">
               <label className="my-label">
                 First question:
                 <input
@@ -239,8 +240,8 @@ function AddExam() {
                 </select>
               </label>
             </div>
-            <div className="my-inner-box">
-              <label className="my-label">
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
                 Second question:
                 <input
                   type="text"
@@ -260,8 +261,8 @@ function AddExam() {
                 </select>
               </label>
             </div>
-            <div className="my-inner-box">
-              <label className="my-label">
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
                 Third question:
                 <input
                   type="text"
@@ -281,8 +282,8 @@ function AddExam() {
                 </select>
               </label>
             </div>
-            <div className="my-inner-box">
-              <label className="my-label">
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
                 Fourth question:
                 <input
                   type="text"
@@ -306,7 +307,7 @@ function AddExam() {
           <button type="submit" class="fadeIn fourth" value="Log In">
             Add
           </button>
-          <div className="my-label">{check && <p>{message}</p>}</div>
+          <div className="add-my-label">{check && <p>{message}</p>}</div>
         </div>
       </div>
     </form>

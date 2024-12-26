@@ -1,10 +1,11 @@
 .header {
-  background-color: var(--color5);
-  z-index: 10000;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 12px;
+  background-color: var(--color6);
+  /* z-index: 10000; */
+  /* position: fixed; */
+  /* top: 0; */
+  /* width: 100%; */
+  padding: 18px;
+  /* padding: 2rem 0; */
 }
 
 .nav {
@@ -21,7 +22,8 @@
 
 .nav-right {
   margin-left: auto;
-  margin-right: 20px;
+  /* margin-right: 25px; */
+  padding-right: 25px;
 }
 
 .nav-link {
@@ -32,14 +34,15 @@
 
 .nav-link.active {
   font-weight: 600;
-  color: var(--color4);
-  background-color: var(--color1);
+  /* color: var(--color4); */
+  /* background-color: var(--color1); */
   border-radius: 2px;
 }
 
 .nav-link:hover {
-  background-color: var(--color1);
-  color: var(--color4);
+  /* background-color: var(--color1); */
+  /* color: var(--color4); */
+  color: white;
   border-radius: 2px;
 }
 nav h1 {

@@ -69,7 +69,7 @@ export default function Header() {
               MY CERTIFICATES
             </NavLink>
           </li>
-          {myToken !== "" && (
+          {/* {myToken !== "" && (
             <li className="nav-item">
               <NavLink
                 to="/test"
@@ -80,7 +80,7 @@ export default function Header() {
                 TESTS
               </NavLink>
             </li>
-          )}
+          )} */}
           {myRole === "Admin" && (
             <li className="nav-item">
               <NavLink
