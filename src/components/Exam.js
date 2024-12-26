@@ -48,31 +48,28 @@ function Exam() {
   }
 
   return (
-    <div className="container">
-      <div className="title">
-        <p>Welcome to </p>
+    // <div className="container">
+    <div className="grid-container">
+      <div className="box box1">
+        {exams.map((item, index) => (
+          <AllQuestions
+            key={index}
+            id={index}
+            getCurrentQuestion={getQuestion}
+          />
+        ))}
       </div>
-      <div className="grid-container">
-        <div className="box box1">
-          {exams.map((item, index) => (
-            <AllQuestions
-              key={index}
-              id={index}
-              getCurrentQuestion={getQuestion}
-            />
-          ))}
-        </div>
-        <div className="box box2">
-          {exams[questionId] && (
-            <Question Exam={exams[questionId]} Id={questionId} />
-          )}
-        </div>
-        <div className="box box3">Box 3</div>
-        <div className="box box4">Box 4</div>
-        <div className="box box5">Box 5</div>
+      <div className="box box2">
+        {exams[questionId] && (
+          <Question Exam={exams[questionId]} Id={questionId} />
+        )}
       </div>
+      <div className="box box3">Box 3</div>
+      <div className="box box4">Box 4</div>
+      <div className="box box5">Box 5</div>
     </div>
   );
+  /* </div> */
 }
 
 export default Exam;

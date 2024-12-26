@@ -38,10 +38,10 @@
 .nav-link.active {
   /* border-bottom: 1.5px solid lightgray; Underline active link */
   /* padding-bottom: 8px; */
-  /* font-weight: 800;  */
-  color: black;
+  font-weight: 600;
+  color: white;
   display: inline-block;
-  background-color: var(--color3);
+  background-color: var(--color4);
 }
 
 /* Hover effect */
@@ -49,6 +49,6 @@
   /* border-bottom: 1.5px solid lightgray; Underline active link */
   /* padding-bottom: 8px; */
   display: inline-block;
-  background-color: var(--color3);
-  color: black;
+  background-color: var(--color4);
+  color: white;
 }

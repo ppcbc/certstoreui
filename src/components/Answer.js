@@ -13,7 +13,7 @@ function Answer({ answer, correct, number }) {
       className="answer"
       onMouseOver={checkMouseOver}
       onMouseOut={checkMouseOver}
-      style={{ backgroundColor: isMouseOver && "var(--color3)" }}
+      style={{ backgroundColor: isMouseOver && "var(--color2)" }}
     >
       {number}: {answer}
     </div>

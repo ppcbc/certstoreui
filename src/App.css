@@ -40,7 +40,7 @@ nav a {
 nav a.active {
   color: black;
   background: var(--color1);
-  text-decoration: none;
+  /* text-decoration: none; */
 }
 @media (min-width: 1920px) {
   .app-container {
@@ -58,9 +58,14 @@ nav a.active {
   }
 }
 :root {
-  --color1: #f8fafc;
+  /* --color1: #f8fafc;
   --color2: #bcccdc;
   --color3: #d9eafd;
   --color4: #9aa6b2;
-  --color5: #505861;
+  --color5: #505861; */
+  --color1: #ffffff;
+  --color2: #b4b5b0;
+  --color3: #78909c;
+  --color4: #2e4854;
+  --color5: #182931;
 }
