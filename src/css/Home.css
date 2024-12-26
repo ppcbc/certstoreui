@@ -5,11 +5,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* height: 100vh; */
   text-align: center;
   padding: 70px 90px 70px 90px;
-  width: 100vw;
-  max-width: 100vw;
+  /* width: 100vw; */
+  /* max-width: 100vw; */
   word-wrap: break-word;
 }
 
@@ -29,7 +29,7 @@
 .my-home p {
   color: lightgray;
   font-size: 1.2rem;
-  max-width: 1800px;
+  max-width: 1200px;
   letter-spacing: 0.5px;
   word-wrap: break-word;
   text-align: left;
