@@ -49,6 +49,6 @@
   /* border-bottom: 1.5px solid lightgray; Underline active link */
   /* padding-bottom: 8px; */
   display: inline-block;
-  background-color: var(--color1);
+  background-color: var(--color3);
   color: black;
 }
