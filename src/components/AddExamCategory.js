@@ -10,6 +10,7 @@ function AddExamCategory() {
   const [newCategory, setNewCategory] = useState({
     fullId: 0,
     categoryName: "",
+    categoryDescription: "",
     price: ""
   });
   const [fullCategories, setFullCategories] = useState([]);
@@ -72,6 +73,7 @@ function AddExamCategory() {
         setNewCategory({
           fullId: 0,
           categoryName: "",
+          categoryDescription: "",
           price: ""
         });
         setAdded("Category added successfully");
@@ -82,6 +84,7 @@ function AddExamCategory() {
       setNewCategory({
         fullId: 0,
         categoryName: "",
+        categoryDescription: "",
         price: ""
       });
       setAdded("Wrong credentials try again");
@@ -123,6 +126,20 @@ function AddExamCategory() {
                 />
               </label>
             </div>
+            <div className="my-inner-box">
+              <label className="my-label">
+                Exam Category Description:
+                <input
+                  type="text"
+                  className="fadeIn second"
+                  name="categoryDescription"
+                  placeholder="Exam Category Description"
+                  value={newCategory.categoryDescription}
+                  onChange={onChange}
+                />
+              </label>
+            </div>
+
             <div className="my-inner-box">
               <label className="my-label">
                 Price:
