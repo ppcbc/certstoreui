@@ -26,6 +26,8 @@ function Exam() {
           .filter(item => item.categoryId === 1)
           .map(item => {
             return {
+              examId: item.examId,
+              categoryId: item.categoryId,
               question: item.questionText,
               photoLink: item.questionPhotoLink,
               answer1: item.option1,
@@ -72,7 +74,7 @@ function Exam() {
       <div className="box box1 hidesb">
         {exams.map((item, index) => (
           <AllQuestions
-            key={index}
+            key={item.examId}
             id={index}
             getCurrentQuestion={getQuestion}
           />
