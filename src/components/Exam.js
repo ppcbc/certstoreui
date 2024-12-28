@@ -8,7 +8,7 @@ import AllQuestions from "./AllQuestions";
 // pass categoryId and category name as parameters
 function Exam() {
   const [exams, setExams] = useState([]);
-  const [questionId, setQuestionId] = useState(0);
+  const [questionNumber, setQuestionNumber] = useState(0);
   const [idCorrect, setIdCorrect] = useState({
     id: 0,
     isCorrect: false
@@ -37,7 +37,8 @@ function Exam() {
               answer3: item.option3,
               correct3: item.isCorrect3,
               answer4: item.option4,
-              correct4: item.isCorrect4
+              correct4: item.isCorrect4,
+              isAnswered: false
             };
           });
       });
@@ -51,8 +52,8 @@ function Exam() {
     getExam();
   }, []);
 
-  function getQuestion(id) {
-    setQuestionId(id);
+  function getQuestion(currentQuestion) {
+    setQuestionNumber(currentQuestion);
   }
 
   function checkCorrect(isCorrect) {
@@ -63,7 +64,11 @@ function Exam() {
     setResults(prev => {
       return [...prev, isCorrect];
     });
-    setExams(prev => prev.filter((a, i) => i !== isCorrect.id));
+    // setExams(prev => prev.filter((a, i) => i !== isCorrect.id));
+    // setExams(prev => {
+    //   prev[isCorrect.id].isAnswered = true;
+    // });
+
     if (isCorrect.isCorrect === true) {
       setCounter(prev => prev + 1);
     }
@@ -75,17 +80,19 @@ function Exam() {
         {exams.map((item, index) => (
           <AllQuestions
             key={item.examId}
-            id={index}
+            id={item.examId}
+            currentQuestion={index}
             getCurrentQuestion={getQuestion}
+            isAnswered={item.isAnswered}
           />
         ))}
       </div>
       <div className="box box2">
-        {exams[questionId] && (
+        {exams[questionNumber] && (
           <Question
             idIsCorrect={checkCorrect}
-            Exam={exams[questionId]}
-            Id={questionId}
+            Exam={exams[questionNumber]}
+            Id={questionNumber}
             isCorrect={checkCorrect}
           />
         )}

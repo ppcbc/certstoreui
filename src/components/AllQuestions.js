@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import "../css/AllQuestions.css";
 
-function AllQuestions({ id, getCurrentQuestion }) {
+function AllQuestions({ id, getCurrentQuestion, currentQuestion, isAnswered }) {
   const [isMouseOver, setIsMouseOver] = useState(false);
+  const [answered, setAnswered] = useState(false);
 
   function checkMouseOver({ number, answer }) {
     setIsMouseOver(!isMouseOver);
+  }
+
+  function answerThis() {
+    setAnswered(true);
+    getCurrentQuestion(currentQuestion);
   }
   return (
     <div
@@ -13,12 +19,13 @@ function AllQuestions({ id, getCurrentQuestion }) {
       onMouseOver={checkMouseOver}
       onMouseOut={checkMouseOver}
       style={{
-        backgroundColor: isMouseOver && "var(--color7)",
+        backgroundColor:
+          (isMouseOver && "var(--color7)") || (isAnswered && "var(--color6)"),
         color: isMouseOver && "white"
       }}
-      onClick={() => getCurrentQuestion(id)}
+      onClick={answerThis}
     >
-      Question {id + 1}
+      Question {currentQuestion + 1}
     </div>
   );
 }
