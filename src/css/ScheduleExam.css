@@ -3,11 +3,11 @@
   background-color: #b4b5b0; /* Light background for the page */
   color: #2c3e50; /* Text color matching the header palette */
   padding: 40px 20px; /* Padding for the container */
-  min-height: 100vh; /* Full height of the viewport */
+  min-height: 100vh;
   display: flex; /* Center align items */
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-  position: relative; /* Enable precise positioning of child elements */
+  position: relative;
 }
 
 /* Style for the box containing the form elements */
@@ -19,6 +19,7 @@
   text-align: left; /* Align text to the left for a form layout */
   width: 500px; /* Increased width for the box */
   transform: translateY(-130px); /* Slightly higher positioning */
+  margin-top: 100px;
 }
 
 /* Style for the h1 (main heading) */

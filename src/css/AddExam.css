@@ -19,6 +19,7 @@
   text-align: left; /* Align text to the left for a form layout */
   width: 500px; /* Increased width for the box */
   transform: translateY(-130px); /* Slightly higher positioning */
+  margin-top: 180px;
 }
 
 /* Style for the h1 (main heading) */
