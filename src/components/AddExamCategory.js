@@ -11,13 +11,13 @@ function AddExamCategory() {
     fullId: 0,
     categoryName: "",
     categoryDescription: "",
-    price: ""
+    price: "",
   });
   const [fullCategories, setFullCategories] = useState([]);
 
   const [added, setAdded] = useState("");
 
-  const myToken = useSelector(state => state.token.value.tok);
+  const myToken = useSelector((state) => state.token.value.tok);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,8 +28,8 @@ function AddExamCategory() {
     try {
       const res = await axios.get(http + "api/FullCategories", {
         headers: {
-          Authorization: "Bearer " + myToken
-        }
+          Authorization: "Bearer " + myToken,
+        },
       });
       setFullCategories(res.data);
       console.log(res.data);
@@ -38,24 +38,24 @@ function AddExamCategory() {
     }
   };
 
-  const onChange = e => {
+  const onChange = (e) => {
     const { name, value } = e.target;
-    setNewCategory(prev => ({
+    setNewCategory((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
-  const onChangeFullCategory = e => {
+  const onChangeFullCategory = (e) => {
     const { value } = e.target;
-    setNewCategory(prev => ({
+    setNewCategory((prev) => ({
       ...prev,
-      fullId: value
+      fullId: value,
     }));
     dispatch(setFullCategoryId(value));
   };
 
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     console.log(newCategory);
     try {
@@ -64,8 +64,8 @@ function AddExamCategory() {
         newCategory,
         {
           headers: {
-            Authorization: "Bearer " + myToken
-          }
+            Authorization: "Bearer " + myToken,
+          },
         }
       );
       console.log(response.status);
@@ -74,7 +74,7 @@ function AddExamCategory() {
           fullId: 0,
           categoryName: "",
           categoryDescription: "",
-          price: ""
+          price: "",
         });
         setAdded("Category added successfully");
       }
@@ -85,7 +85,7 @@ function AddExamCategory() {
         fullId: 0,
         categoryName: "",
         categoryDescription: "",
-        price: ""
+        price: "",
       });
       setAdded("Wrong credentials try again");
     }
@@ -105,7 +105,7 @@ function AddExamCategory() {
                   onChange={onChangeFullCategory}
                 >
                   <option value={0}>Categories</option>
-                  {fullCategories.map(a => (
+                  {fullCategories.map((a) => (
                     <option key={a.fullId} value={a.fullId}>
                       {a.name}
                     </option>
@@ -113,6 +113,8 @@ function AddExamCategory() {
                 </select>
               </label>
             </div>
+
+            {/* Category Name Input with 25 characters limit */}
             <div className="my-inner-box">
               <label className="my-label">
                 Exam Category Name:
@@ -123,9 +125,13 @@ function AddExamCategory() {
                   placeholder="Exam Category Name"
                   value={newCategory.categoryName}
                   onChange={onChange}
+                  maxLength="25" // Limiting to 25 characters
                 />
+                <p>{newCategory.categoryName.length}/25 characters</p>
               </label>
             </div>
+
+            {/* Category Description Input with 60 characters limit */}
             <div className="my-inner-box">
               <label className="my-label">
                 Exam Category Description:
@@ -136,7 +142,9 @@ function AddExamCategory() {
                   placeholder="Exam Category Description"
                   value={newCategory.categoryDescription}
                   onChange={onChange}
+                  maxLength="60" // Limiting to 60 characters
                 />
+                <p>{newCategory.categoryDescription.length}/60 characters</p>
               </label>
             </div>
 
@@ -155,9 +163,11 @@ function AddExamCategory() {
               </label>
             </div>
           </div>
+
           <button type="submit" className="fadeIn fourth">
             Add Exam Category
           </button>
+
           <div className="my-label">
             <p>{added}</p>
           </div>

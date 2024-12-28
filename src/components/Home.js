@@ -1,11 +1,13 @@
 import React from "react";
 import "../css/Home.css";
 import { useSelector } from "react-redux";
+import Footer from "./Footer";
 
 export default function Home() {
-  const myToken = useSelector(state => state.token.value.tok);
-  const myId = useSelector(state => state.token.value.id);
-  const myRole = useSelector(state => state.token.value.role);
+  const myToken = useSelector((state) => state.token.value.tok);
+  const myId = useSelector((state) => state.token.value.id);
+  const myRole = useSelector((state) => state.token.value.role);
+
   return (
     <div className="my-home">
       <h1>Welcome to the Certification Shop</h1>
@@ -28,6 +30,9 @@ export default function Home() {
           <p>{myRole}</p>
         </div>
       )}
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
