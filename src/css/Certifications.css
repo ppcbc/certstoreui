@@ -1,10 +1,10 @@
+
 /* Style for the .certifications container */
 .certifications {
     background-color: #b4b5b0; /* Light background for the page */
     color: #2c3e50; /* Text color matching the header palette */
     padding: 40px 20px; /* Padding for the container */
     text-align: center; /* Center the heading and general text */
-    min-height: 100vh; /* Full height of the viewport */
 }
 
 /* Style for the h1 (main heading) */
