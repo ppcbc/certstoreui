@@ -80,7 +80,7 @@
 .add-my-box {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   padding-bottom: 20px;
 }

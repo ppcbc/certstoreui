@@ -215,7 +215,7 @@ function AddExam() {
             </div>
             <div className="add-my-inner-box">
               <label className="my-label">
-                Question photo link:
+                Question photo link (less than 10mb):
                 <input type="file" name="image" onChange={handleFile}></input>
               </label>
             </div>
