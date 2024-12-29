@@ -5,7 +5,6 @@ import axios from "axios";
 import Question from "./Question";
 import AllQuestions from "./AllQuestions";
 
-// pass categoryId and category name as parameters
 function Exam() {
   const [exams, setExams] = useState([]);
   const [questionNumber, setQuestionNumber] = useState(0);
@@ -16,16 +15,16 @@ function Exam() {
   });
   const [results, setResults] = useState([]);
   const [counter, setCounter] = useState(0);
+  const [finish, setFinish] = useState(false);
 
   async function getExam() {
     try {
       let response = await axios.get(http + "api/exams");
-      // console.log(response.data);
       let myData = response.data;
       setExams(() => {
         return myData
           .filter(item => item.categoryId === 1)
-          .map(item => {
+          .map((item, index) => {
             return {
               examId: item.examId,
               categoryId: item.categoryId,
@@ -40,11 +39,10 @@ function Exam() {
               answer4: item.option4,
               correct4: item.isCorrect4,
               isAnswered: false,
-              selected: false
+              selected: index === 0 ? true : false
             };
           });
       });
-      // console.log(exams);
     } catch (error) {
       console.log(error.message);
     }
@@ -82,27 +80,15 @@ function Exam() {
   }
 
   function checkCorrect(isCorrect) {
-    // console.log(isCorrect);
     setIdCorrect(isCorrect);
 
-    let answeredExam = exams.filter(item => item.examId === isCorrect.Id);
-    // console.log(answeredExam);
-    // let filteredExams = exams.filter(prev => prev.examId !== isCorrect.Id);
     let filteredExams = exams;
-    // console.log(isCorrect.questionNumber);
     filteredExams[isCorrect.questionNumber].isAnswered = true;
-    // console.log(filteredExams[isCorrect.questionNumber]);
     setExams(prev => filteredExams);
 
-    // setResults(prev => (prev[isCorrect.id] = isCorrect.isCorrect));
     setResults(prev => {
       return [...prev, isCorrect];
     });
-
-    // setExams(prev => prev.filter((a, i) => i !== isCorrect.id));
-    // setExams(prev => {
-    //   prev[isCorrect.id].isAnswered = true;
-    // });
 
     if (isCorrect.isCorrect === true) {
       setCounter(prev => prev + 1);
@@ -111,7 +97,7 @@ function Exam() {
 
   return (
     <div className="grid-container">
-      <h3 className="exam-title">hi</h3>
+      {/* <h3 className="exam-title">hi</h3> */}
       <div className="grid-inner1">
         <div className="box box1 hidesb">
           {exams.map((item, index) => (
@@ -136,8 +122,10 @@ function Exam() {
             />
           )}
         </div>
+        <div className="box1"></div>
       </div>
-      <div className="box box3">
+
+      {/* <div className="box box3">
         Box 3 <br />
         Correct Answers: {counter}
       </div>
@@ -152,7 +140,7 @@ function Exam() {
             ))}
         </ul>
       </div>
-      <div className="box box5">Box 5</div>
+      <div className="box box5">Box 5</div> */}
     </div>
   );
 }

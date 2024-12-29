@@ -1,7 +1,9 @@
 .question-container {
   background-color: var(--color1);
   height: 100%;
-  padding: 20px;
+  /* padding: 20px; */
+  padding: 20px 120px 20px 120px;
+  margin-left: 40px;
   /* margin: 5px; */
   border: 2px solid var(--color1);
   border-radius: 5px;
@@ -9,6 +11,9 @@
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; */
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .image {
   width: 640px;
@@ -29,4 +34,8 @@
 .questionText {
   padding-left: 20px;
   /* color: var(--color1); */
+}
+.question-buttons {
+  display: flex;
+  justify-content: space-around;
 }

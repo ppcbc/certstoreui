@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation
+} from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Certifications from "./components/Certifications";
@@ -15,10 +20,15 @@ import "./App.css";
 import UserDetails from "./components/UserDetails";
 import FullCategories from "./components/FullCategories";
 
-function App() {
+function Layout() {
+  const location = useLocation();
+  const hideHeaderRoutes = ["/exam"];
+
+  const shouldShowHeader = !hideHeaderRoutes.includes(location.pathname);
+
   return (
-    <Router>
-      <Header />
+    <>
+      {shouldShowHeader && <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/certifications" element={<Certifications />} />
@@ -33,8 +43,39 @@ function App() {
         <Route path="/user-details" element={<UserDetails />} />
         <Route path="/addfull-category" element={<FullCategories />} />
       </Routes>
+    </>
+  );
+}
+
+// Main App component
+function App() {
+  return (
+    <Router>
+      <Layout />
     </Router>
   );
 }
+
+// function App() {
+//   return (
+//     <Router>
+//       <Header />
+//       <Routes>
+//         <Route path="/" element={<Home />} />
+//         <Route path="/certifications" element={<Certifications />} />
+//         <Route path="/schedule-exam" element={<ScheduleExam />} />
+//         <Route path="/my-certificates" element={<MyCertificates />} />
+//         <Route path="/login" element={<Login />} />
+//         <Route path="/register" element={<Register />} />
+//         <Route path="/assignrole" element={<AssignRole />} />
+//         <Route path="/addexam" element={<AddExam />} />
+//         <Route path="/exam" element={<Exam />} />
+//         <Route path="/addexam-category" element={<AddExamCategory />} />
+//         <Route path="/user-details" element={<UserDetails />} />
+//         <Route path="/addfull-category" element={<FullCategories />} />
+//       </Routes>
+//     </Router>
+//   );
+// }
 
 export default App;

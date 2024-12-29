@@ -64,6 +64,10 @@ function Question({ Exam, questionNumber, idIsCorrect }) {
       />
       {Exam.photoLink === "" && <div className="image"></div>}
       {Exam.question === "" && <div className="question"></div>}
+      <div className="question-buttons">
+        <div className="question">previous</div>
+        <div className="question">next</div>
+      </div>
     </div>
   );
 }
