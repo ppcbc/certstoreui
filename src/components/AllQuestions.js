@@ -27,7 +27,7 @@ function AllQuestions({
       style={{
         backgroundColor:
           (isMouseOver && "var(--color7)") ||
-          (isAnswered && "var(--color5)") ||
+          (isAnswered && "var(--color9)") ||
           (selected && "var(--color7"),
         color:
           (isMouseOver && "white") ||

@@ -11,7 +11,7 @@ function ExamButton({ children }) {
       className="question-button"
       onMouseOut={checkMouseOver}
       onMouseOver={checkMouseOver}
-      style={{ backgroundColor: isMouseOver && "var(--color5" }}
+      style={{ backgroundColor: isMouseOver && "var(--color9" }}
     >
       {children}
     </div>

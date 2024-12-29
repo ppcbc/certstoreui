@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
-import "../css/ScheduleExam.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setFullCategoryId } from "../features/loginSlice";
+import "../css/AddExamCategory.css";
 import http from "../data/http";
 
 function AddExamCategory() {
@@ -11,13 +11,22 @@ function AddExamCategory() {
     fullId: 0,
     categoryName: "",
     categoryDescription: ""
+    // price: ""
   });
   const [fullCategories, setFullCategories] = useState([]);
-
   const [added, setAdded] = useState("");
+  const [error, setError] = useState("");
+  const [check, setCheck] = useState(false);
 
   const myToken = useSelector(state => state.token.value.tok);
   const dispatch = useDispatch();
+
+  function handleMessage() {
+    setCheck(true);
+    setTimeout(() => {
+      setCheck(false);
+    }, 700);
+  }
 
   useEffect(() => {
     getFullCategories();
@@ -56,6 +65,21 @@ function AddExamCategory() {
 
   const onSubmit = async e => {
     e.preventDefault();
+
+    // Validation
+    if (newCategory.fullId === 0) {
+      setError("Please select a full category");
+      return;
+    }
+    if (newCategory.categoryName === "") {
+      setError("Please enter a category name");
+      return;
+    }
+    if (newCategory.categoryDescription === "") {
+      setError("Please enter a category description");
+      return;
+    }
+
     console.log(newCategory);
     try {
       const response = await axios.post(
@@ -73,8 +97,11 @@ function AddExamCategory() {
           fullId: 0,
           categoryName: "",
           categoryDescription: ""
+          // price: ""
         });
         setAdded("Category added successfully");
+        handleMessage();
+        setError("");
       }
       console.log(response.data);
     } catch (error) {
@@ -83,18 +110,20 @@ function AddExamCategory() {
         fullId: 0,
         categoryName: "",
         categoryDescription: ""
+        // price: ""
       });
       setAdded("Wrong credentials try again");
+      handleMessage();
     }
   };
 
   return (
     <form onSubmit={onSubmit}>
-      <div className="schedule-exam">
-        <div className="schedule-box">
-          <div className="my-box add-some">
-            <div className="my-inner-box">
-              <label className="my-label">
+      <div className="add-exam-category">
+        <div className="add-exam-box">
+          <div className="add-exam-inner-box">
+            <div className="add-exam-field">
+              <label className="add-exam-label">
                 Select Full Category:
                 <select
                   name="fullId"
@@ -110,12 +139,11 @@ function AddExamCategory() {
                 </select>
               </label>
             </div>
-            <div className="my-inner-box">
-              <label className="my-label">
+            <div className="add-exam-field">
+              <label className="add-exam-label">
                 Exam Category Name:
                 <input
                   type="text"
-                  className="fadeIn second"
                   name="categoryName"
                   placeholder="Exam Category Name"
                   value={newCategory.categoryName}
@@ -123,12 +151,11 @@ function AddExamCategory() {
                 />
               </label>
             </div>
-            <div className="my-inner-box">
-              <label className="my-label">
+            <div className="add-exam-field">
+              <label className="add-exam-label">
                 Exam Category Description:
                 <input
                   type="text"
-                  className="fadeIn second"
                   name="categoryDescription"
                   placeholder="Exam Category Description"
                   value={newCategory.categoryDescription}
@@ -136,13 +163,31 @@ function AddExamCategory() {
                 />
               </label>
             </div>
+            {/*}
+            <div className="add-exam-field">
+              <label className="add-exam-label">
+                Price:
+                <input
+                  type="number"
+                  inputMode="numeric"
+                  name="price"
+                  placeholder="Price"
+                  value={newCategory.price}
+                  onChange={onChange}
+                />
+              </label>
+            </div>
+            */}
           </div>
-          <button type="submit" className="fadeIn fourth">
+          <button type="submit" className="submit-btn">
             Add Exam Category
           </button>
-          <div className="my-label">
-            <p>{added}</p>
-          </div>
+          {error && (
+            <div className="add-exam-label">
+              <p style={{ color: "red" }}>{error}</p>
+            </div>
+          )}
+          <div className="add-exam-label">{check && <p>{added}</p>}</div>
         </div>
       </div>
     </form>

@@ -112,6 +112,6 @@ input[type="number"] {
   -moz-appearance: textfield; /* Firefox */
 }
 
-align-left {
+.align-left {
   text-align: left;
 }
