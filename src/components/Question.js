@@ -3,7 +3,7 @@ import "../css/Question.css";
 import Image from "./Image";
 import Answer from "./Answer";
 
-function Question({ Exam, Id, idIsCorrect }) {
+function Question({ Exam, questionNumber, idIsCorrect }) {
   // const [idIsCorrect, setIdIsCorrect] = useState({
   //   id: 0,
   //   isCorrect: false
@@ -13,8 +13,6 @@ function Question({ Exam, Id, idIsCorrect }) {
   function getId() {}
 
   function getAnswer(isCorrect) {
-    // console.log(isCorrect);
-
     idIsCorrect(isCorrect);
   }
 
@@ -23,7 +21,7 @@ function Question({ Exam, Id, idIsCorrect }) {
       {Exam.question !== "" && (
         <div className="question">
           <p className="questionText">
-            {Id + 1}. {Exam.question}
+            {questionNumber + 1}. {Exam.question}
           </p>
         </div>
       )}
@@ -36,28 +34,32 @@ function Question({ Exam, Id, idIsCorrect }) {
         answer={Exam.answer1}
         correct={Exam.correct1}
         number={"A"}
-        id={Id}
+        questionNumber={questionNumber}
+        Id={Exam.examId}
         getAnswer={getAnswer}
       />
       <Answer
         answer={Exam.answer2}
         correct={Exam.correct2}
         number={"B"}
-        id={Id}
+        questionNumber={questionNumber}
+        Id={Exam.examId}
         getAnswer={getAnswer}
       />
       <Answer
         answer={Exam.answer3}
         correct={Exam.correct3}
         number={"C"}
-        id={Id}
+        questionNumber={questionNumber}
+        Id={Exam.examId}
         getAnswer={getAnswer}
       />
       <Answer
         answer={Exam.answer4}
         correct={Exam.correct4}
         number={"D"}
-        id={Id}
+        questionNumber={questionNumber}
+        Id={Exam.examId}
         getAnswer={getAnswer}
       />
       {Exam.photoLink === "" && <div className="image"></div>}

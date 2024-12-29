@@ -10,8 +10,9 @@ function Exam() {
   const [exams, setExams] = useState([]);
   const [questionNumber, setQuestionNumber] = useState(0);
   const [idCorrect, setIdCorrect] = useState({
-    id: 0,
-    isCorrect: false
+    questionNumber: 0,
+    isCorrect: false,
+    answered: false
   });
   const [results, setResults] = useState([]);
   const [counter, setCounter] = useState(0);
@@ -60,10 +61,19 @@ function Exam() {
     console.log(isCorrect);
     setIdCorrect(isCorrect);
 
+    let answeredExam = exams.filter(item => item.examId === isCorrect.Id);
+    console.log(answeredExam);
+    let filteredExams = exams.filter(prev => prev.examId !== isCorrect.Id);
+    filteredExams[0].isAnswered = true;
+    filteredExams.push(answeredExam[0]);
+    setExams(prev => filteredExams);
+    console.log(filteredExams);
+
     // setResults(prev => (prev[isCorrect.id] = isCorrect.isCorrect));
     setResults(prev => {
       return [...prev, isCorrect];
     });
+
     // setExams(prev => prev.filter((a, i) => i !== isCorrect.id));
     // setExams(prev => {
     //   prev[isCorrect.id].isAnswered = true;
@@ -90,9 +100,10 @@ function Exam() {
       <div className="box box2">
         {exams[questionNumber] && (
           <Question
+            Key={exams[questionNumber]}
             idIsCorrect={checkCorrect}
             Exam={exams[questionNumber]}
-            Id={questionNumber}
+            questionNumber={questionNumber}
             isCorrect={checkCorrect}
           />
         )}
