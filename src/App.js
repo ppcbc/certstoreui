@@ -13,6 +13,7 @@ import Exam from "./components/Exam";
 import AddExamCategory from "./components/AddExamCategory";
 import "./App.css";
 import UserDetails from "./components/UserDetails";
+import FullCategories from "./components/FullCategories";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/exam" element={<Exam />} />
         <Route path="/addexam-category" element={<AddExamCategory />} />
         <Route path="/user-details" element={<UserDetails />} />
+        <Route path="/addfull-category" element={<FullCategories />} />
       </Routes>
     </Router>
   );
