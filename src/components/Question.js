@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../css/Question.css";
 import Image from "./Image";
 import Answer from "./Answer";
+import ExamButton from "./ExamButton";
 
 function Question({ Exam, questionNumber, idIsCorrect }) {
   // const [idIsCorrect, setIdIsCorrect] = useState({
@@ -65,8 +66,8 @@ function Question({ Exam, questionNumber, idIsCorrect }) {
       {Exam.photoLink === "" && <div className="image"></div>}
       {Exam.question === "" && <div className="question"></div>}
       <div className="question-buttons">
-        <div className="question">previous</div>
-        <div className="question">next</div>
+        <ExamButton>Previous</ExamButton>
+        <ExamButton>Next</ExamButton>
       </div>
     </div>
   );

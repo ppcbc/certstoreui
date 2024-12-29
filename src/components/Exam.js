@@ -124,23 +124,6 @@ function Exam() {
         </div>
         <div className="box1"></div>
       </div>
-
-      {/* <div className="box box3">
-        Box 3 <br />
-        Correct Answers: {counter}
-      </div>
-      <div className="box box4">
-        Box 4 <br />
-        <ul>
-          {results.length > 0 &&
-            results.map((a, index) => (
-              <li Key={index}>
-                {a.id} is {a.isCorrect ? "correct" : "wrong"}
-              </li>
-            ))}
-        </ul>
-      </div>
-      <div className="box box5">Box 5</div> */}
     </div>
   );
 }
