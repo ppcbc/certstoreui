@@ -56,26 +56,4 @@ function App() {
   );
 }
 
-// function App() {
-//   return (
-//     <Router>
-//       <Header />
-//       <Routes>
-//         <Route path="/" element={<Home />} />
-//         <Route path="/certifications" element={<Certifications />} />
-//         <Route path="/schedule-exam" element={<ScheduleExam />} />
-//         <Route path="/my-certificates" element={<MyCertificates />} />
-//         <Route path="/login" element={<Login />} />
-//         <Route path="/register" element={<Register />} />
-//         <Route path="/assignrole" element={<AssignRole />} />
-//         <Route path="/addexam" element={<AddExam />} />
-//         <Route path="/exam" element={<Exam />} />
-//         <Route path="/addexam-category" element={<AddExamCategory />} />
-//         <Route path="/user-details" element={<UserDetails />} />
-//         <Route path="/addfull-category" element={<FullCategories />} />
-//       </Routes>
-//     </Router>
-//   );
-// }
-
 export default App;
