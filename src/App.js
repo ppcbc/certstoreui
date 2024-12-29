@@ -19,6 +19,7 @@ import AddExamCategory from "./components/AddExamCategory";
 import "./App.css";
 import UserDetails from "./components/UserDetails";
 import FullCategories from "./components/FullCategories";
+import UpdateExamCategory from "./components/UpdateExamCategory";
 
 function Layout() {
   const location = useLocation();
@@ -40,6 +41,7 @@ function Layout() {
         <Route path="/addexam" element={<AddExam />} />
         <Route path="/exam" element={<Exam />} />
         <Route path="/addexam-category" element={<AddExamCategory />} />
+        <Route path="/updateexam-category" element={<UpdateExamCategory />} />
         <Route path="/user-details" element={<UserDetails />} />
         <Route path="/addfull-category" element={<FullCategories />} />
       </Routes>

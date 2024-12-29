@@ -69,18 +69,7 @@ export default function Header() {
               MY CERTIFICATES
             </NavLink>
           </li>
-          {/* {myToken !== "" && (
-            <li className="nav-item">
-              <NavLink
-                to="/test"
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-              >
-                TESTS
-              </NavLink>
-            </li>
-          )} */}
+
           {myRole === "Admin" && (
             <li className="nav-item">
               <NavLink
@@ -108,6 +97,18 @@ export default function Header() {
           {myRole === "Admin" && (
             <li className="nav-item">
               <NavLink
+                to="/updateexam-category"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                UPDATE EXAM CATEGORY
+              </NavLink>
+            </li>
+          )}
+          {myRole === "Admin" && (
+            <li className="nav-item">
+              <NavLink
                 to="/addexam"
                 className={({ isActive }) =>
                   isActive ? "nav-link active" : "nav-link"
@@ -117,6 +118,7 @@ export default function Header() {
               </NavLink>
             </li>
           )}
+
           <li className="nav-item">
             <NavLink
               to="/user-details"
