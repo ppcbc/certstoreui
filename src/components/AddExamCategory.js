@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
-import "../css/ScheduleExam.css";
+import "../css/AddExamCategory.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setFullCategoryId } from "../features/loginSlice";
 import http from "../data/http";
@@ -90,8 +90,8 @@ function AddExamCategory() {
 
   return (
     <form onSubmit={onSubmit}>
-      <div className="schedule-exam">
-        <div className="schedule-box">
+      <div className="addexamcategory-exam">
+        <div className="addexamcategory-box">
           <div className="my-box add-some">
             <div className="my-inner-box">
               <label className="my-label">

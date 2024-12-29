@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import "../App.css";
+import "../css/Register.css";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setLogReg } from "../features/loginSlice";
@@ -54,8 +54,8 @@ function Register() {
   }
   return (
     <form action="" onSubmit={onSubmit}>
-      <div className="schedule-exam">
-        <div className="schedule-box">
+      <div className="register-exam">
+        <div className="register-box">
           <div className="my-box">
             <div className="my-inner-box">
               <label className="my-label">

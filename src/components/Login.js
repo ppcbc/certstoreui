@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
 import http from "../data/http";
-import "../css/ScheduleExam.css";
+import "../css/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setId, setLogReg, setRole, setToken } from "../features/loginSlice";
@@ -74,8 +74,8 @@ function Login() {
 
   return (
     <form action="" onSubmit={onSubmit}>
-      <div className="schedule-exam">
-        <div className="schedule-box">
+      <div className="login-exam">
+        <div className="login-box">
           <div className="my-box">
             <div className="my-inner-box">
               <label className="my-label">
