@@ -66,19 +66,6 @@ function Exam() {
     setExams(prev => fullExams);
   }
 
-  function checkSelect(currentQuestion) {
-    let fullExams = exams.map(prev => {
-      return {
-        ...prev,
-        selected: false
-      };
-    });
-    setExams(prev => fullExams);
-    fullExams[currentQuestion].selected = true;
-    console.log(fullExams);
-    setExams(prev => fullExams);
-  }
-
   function checkCorrect(isCorrect) {
     setIdCorrect(isCorrect);
 
@@ -92,6 +79,31 @@ function Exam() {
 
     if (isCorrect.isCorrect === true) {
       setCounter(prev => prev + 1);
+    }
+  }
+  function nextOrPrevious(what) {
+    let filteredExam = exams.filter((prev, index) => prev.selected === true);
+    let fullExam = exams;
+    let index = fullExam.indexOf(filteredExam[0]);
+    if (what === "previous" && index > 0) {
+      fullExam = exams.map(prev => {
+        return {
+          ...prev,
+          selected: false
+        };
+      });
+      fullExam[index - 1].selected = true;
+      setExams(prev => fullExam);
+    }
+    if (what === "next" && index < exams.length) {
+      fullExam = exams.map(prev => {
+        return {
+          ...prev,
+          selected: false
+        };
+      });
+      fullExam[index + 1].selected = true;
+      setExams(prev => fullExam);
     }
   }
 
@@ -119,6 +131,7 @@ function Exam() {
               Exam={exams[questionNumber]}
               questionNumber={questionNumber}
               isCorrect={checkCorrect}
+              nextOrPrevious={nextOrPrevious}
             />
           )}
         </div>

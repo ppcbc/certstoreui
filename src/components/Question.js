@@ -4,7 +4,7 @@ import Image from "./Image";
 import Answer from "./Answer";
 import ExamButton from "./ExamButton";
 
-function Question({ Exam, questionNumber, idIsCorrect }) {
+function Question({ Exam, questionNumber, idIsCorrect, nextOrPrevious }) {
   // const [idIsCorrect, setIdIsCorrect] = useState({
   //   id: 0,
   //   isCorrect: false
@@ -66,8 +66,12 @@ function Question({ Exam, questionNumber, idIsCorrect }) {
       {Exam.photoLink === "" && <div className="image"></div>}
       {Exam.question === "" && <div className="question"></div>}
       <div className="question-buttons">
-        <ExamButton>Previous</ExamButton>
-        <ExamButton>Next</ExamButton>
+        <ExamButton nextOrPrevious={nextOrPrevious} what="previous">
+          Previous
+        </ExamButton>
+        <ExamButton nextOrPrevious={nextOrPrevious} what="next">
+          Next
+        </ExamButton>
       </div>
     </div>
   );
