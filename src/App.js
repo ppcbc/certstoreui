@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import Home from "./components/Home";
 import Certifications from "./components/Certifications";
+import Home from "./components/Home";
 import ScheduleExam from "./components/ScheduleExam";
 import MyCertificates from "./components/MyCertificates";
 import Register from "./components/Register";
@@ -18,7 +18,6 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
         <Route path="/certifications" element={<Certifications />} />
         <Route path="/schedule-exam" element={<ScheduleExam />} />
         <Route path="/my-certificates" element={<MyCertificates />} />
@@ -29,6 +28,7 @@ function App() {
         <Route path="/addexam" element={<AddExam />} />
         <Route path="/exam" element={<Exam />} />
         <Route path="/addexam-category" element={<AddExamCategory />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </Router>
   );

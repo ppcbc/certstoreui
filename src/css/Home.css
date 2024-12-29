@@ -1,14 +1,4 @@
-/*.my-home {*/
-/*  background-color: #2e4854; !* Background color *!*/
-/*  color: #fff; !* White text color *!*/
-/*  display: flex; !* Use flexbox to center content *!*/
-/*  flex-direction: column; !* Align children (h1 and p) vertically *!*/
-/*  justify-content: flex-start; !* Vertically center the content *!*/
-/*  align-items: center; !* Horizontally center the content *!*/
-/*  text-align: center; !* Center the text *!*/
-/*  padding: 70px 20px 20px 20px; !* Add padding around the content *!*/
-/*  word-wrap: break-word;*/
-/*}*/
+
 
 .my-home {
   background-color: #2e4854; /* Fallback background color */
@@ -24,6 +14,7 @@
   text-align: center; /* Center the text */
   padding: 70px 20px 20px 20px; /* Add padding around the content */
   word-wrap: break-word;
+  height: 80vh; /* Afairei tin foto pou perisseve apo katw */
 }
 
 
@@ -51,29 +42,31 @@
   font-size: 1.2rem; /* Slightly larger text for the paragraph */
   max-width: 850px;
   letter-spacing: 0.5px;
+  margin-bottom: 50px;
   padding-bottom: 20px;
 }
 
 /* Style for the .certifications container */
-.certifications {
+.preview-certifications {
   background-color: #b4b5b0; /* Light background for the section */
   color: #2c3e50; /* Text color matching the header palette */
   padding: 40px 20px; /* Padding for the container */
   text-align: center; /* Center the heading and general text */
-  margin-top: 30px; /* Add space above the section */
   width: 100%;
 }
 
 /* Style for the h1 (Featured Certifications title) */
-.certifications h1 {
+.preview-certifications h1 {
   font-size: 2.5rem; /* Large heading */
-  margin-bottom: 30px; /* Space below the heading */
+  margin-top: 1px;
+  margin-bottom: 20px; /* Space below the heading */
   color: #4b5052; /* Match the palette */
-  /* Removed border/underline styles */
+  font-weight: bold;
+  letter-spacing: 0.1px;
 }
 
 /* Style for the list of certifications */
-.certifications ul {
+.preview-certifications ul {
   list-style: none; /* Remove default list styling */
   padding: 0; /* Remove padding */
   flex-grow: 1;
@@ -84,7 +77,7 @@
 }
 
 /* Style for each certification box */
-.certifications li {
+.preview-certifications li {
   background-color: #2e4854; /* Darker background for each box */
   border: 1px solid gray; /* Subtle border */
   border-radius: 8px; /* Rounded corners */
@@ -97,47 +90,49 @@
 }
 
 /* Hover effect for each box */
-.certifications li:hover {
+.preview-certifications li:hover {
   transform: translateY(-5px); /* Slight lift on hover */
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
 }
 
 /* Style for certification name (h2) */
-.certifications li h2 {
+.preview-certifications li h2 {
   font-size: 1.5rem; /* Medium font size */
   margin-bottom: 20px; /* Space below the title */
   color: white; /* White text for titles */
 }
 
 /* Style for certification description */
-.certifications li p:nth-of-type(1) {
+.preview-certifications li p:nth-of-type(1) {
   font-size: 0.9rem; /* Slightly smaller font for descriptions */
-  margin-bottom: 25px; /* Space below description */
+  margin-bottom: 10px; /* Space below description */
   color: #dfe6e9; /* Slightly lighter text color for contrast */
   line-height: 1.4; /* Improve readability */
 }
 
 /* Style for the price text (p) */
-.certifications li p:nth-of-type(2) {
+.preview-certifications li p:nth-of-type(2) {
   font-size: 1.3rem; /* Slightly larger font for visibility */
-  margin-bottom: 30px; /* Space below the price */
+  margin-top: 2px;
+  margin-bottom: 12px; /* Space below the price */
   color: white; /* White text for prices */
 }
 
 /* Style for the "Buy Voucher" button */
-.certifications li button {
+.preview-certifications li button {
   background-color: #597785; /* Blue button background */
   color: #fff; /* White text color */
   border: none; /* Remove border */
   border-radius: 5px; /* Rounded corners */
   padding: 10px 20px; /* Button padding */
+  margin-bottom: 22px;
   cursor: pointer; /* Pointer cursor on hover */
   font-size: 1rem; /* Font size for button text */
   transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
 /* Hover effect for the button */
-.certifications li button:hover {
+.preview-certifications li button:hover {
   background-color: #78909c; /* Darker blue on hover */
   font-weight: 600; /* Make text bolder on hover */
 }

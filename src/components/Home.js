@@ -1,7 +1,7 @@
 import React from "react";
-import "../css/Home.css";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom"; // Import Link for navigation
+import "../css/Home.css";
 
 export default function Home() {
   const myToken = useSelector((state) => state.token.value.tok);
@@ -54,7 +54,7 @@ export default function Home() {
               <p>{myRole}</p>
             </div>
         )}
-        <div className="certifications">
+        <div className="preview-certifications">
           <h1>Available Certifications</h1>
           <ul>
             {availableCertifications.map((certification) => (
