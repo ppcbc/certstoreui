@@ -126,3 +126,29 @@
 .button {
   padding: 10px;
 }
+
+.userdetails-error-message {
+  color: red;
+  font-size: 12px; 
+  text-align: right;
+  margin-top: -5px;
+  margin-bottom: 15px; 
+  margin-left: 5px;
+  padding-right: 3px;
+}
+
+.userdetails-error-message.gender-error {
+  color: red;
+  font-size: 12px;  
+  text-align: center;
+  margin-top: 15px;
+  padding: 0 5px; 
+}
+
+.userdetails-success-message {
+  color: var(--color4);
+  font-size: 16px;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 0px;
+}

@@ -14,9 +14,9 @@ export default function UserDetails() {
     MiddleName: "",
     LastName: "",
     Gender: "",
-    NativeLanguage: "",
+    NativeLanguage: "greek",
     DateOfBirth: "",
-    PhotoIdType: "",
+    PhotoIdType: "National Card",
     PhotoIdNumber: "",
     PhotoIdIssueDate: "",
     Address: "",
@@ -29,6 +29,9 @@ export default function UserDetails() {
     LandlinePhone: ""
   });
 
+  const [validationMessages, setValidationMessages] = useState({});
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  
   function getDetails(e) {
     let { name, value } = e.target;
     setDetails(prev => {
@@ -39,9 +42,60 @@ export default function UserDetails() {
     });
   }
 
+  function validateForm() {
+    const errors = {};
+
+    if (!details.Name.trim()) errors.Name = "First Name is required";
+
+    if (!details.LastName.trim()) errors.LastName = "Last Name is required";
+
+    // if (!details.Gender) errors.Gender = "Gender is required.";
+
+    if (!details.NativeLanguage) errors.NativeLanguage = "Native Language is required";
+
+    if (!details.DateOfBirth) errors.DateOfBirth = "Date of Birth is required";
+
+    if (!details.PhotoIdType) errors.PhotoIdType = "Photo ID Type is required";
+
+    if (!details.PhotoIdNumber.trim()) errors.PhotoIdNumber = "Photo ID Number is required";
+
+    if (!details.PhotoIdIssueDate.trim()) errors.PhotoIdIssueDate = "Photo Issue Date is required";
+    
+    if (!details.Address.trim()) errors.Address = "Address is required";
+
+    if (!details.StateProvince.trim()) errors.StateProvince = "State/Province is required";
+
+    if (!details.City.trim()) errors.City = "City is required";
+
+    if (!details.PostalCode.trim()) errors.PostalCode = "Postal Code is required";
+
+    if (!details.CountryOfResidence.trim()) errors.CountryOfResidence = "Country Of Residence is required";
+
+    if (!details.MobileNumber.trim()) {
+      errors.MobileNumber = "Mobile Number is required";
+    } else {
+      const mobileRegex = /^[0-9]+$/; 
+      if (!details.MobileNumber.match(mobileRegex)) {
+        errors.MobileNumber = "Mobile Number should contain only numbers";
+      }
+    }
+
+    setValidationMessages(errors);
+
+    return Object.keys(errors).length === 0;
+  }
+
+
+  function onSubmit(e) {
+    e.preventDefault();
+    if (validateForm()) {
+      console.log("Form submitted with details: ", details);
+      setFormSubmitted(true);
+    }
+  }
+
   return (
-    // <form action="" onSubmit={onSubmit}>
-    <form>
+    <form onSubmit={onSubmit}>
       <div className="user-details">
         <div className="user-details-box">
           <h1>Personal Details</h1>
@@ -60,6 +114,7 @@ export default function UserDetails() {
                 />
               </label>
             </div>
+            {validationMessages.Name && <p className="userdetails-error-message">{validationMessages.Name}</p>}
             <div className="userdetails-inner-box">
               <label className="userdetails-label">
                 Middle Name:
@@ -88,6 +143,7 @@ export default function UserDetails() {
                 />
               </label>
             </div>
+            {validationMessages.LastName && <p className="userdetails-error-message">{validationMessages.LastName}</p>}
             <div className="my-inner-genderbox">
               <p className="my-genderlabel-title">Gender:</p>
               <label className="my-genderlabel">
@@ -98,6 +154,7 @@ export default function UserDetails() {
                 <input type="radio" id="female" name="Gender" value="female" />
                 Female
               </label>
+              {/*{validationMessages.Gender && <p className="userdetails-error-message gender-error">{validationMessages.Gender}</p>}*/}
             </div>
             <div className="userdetails-inner-box">
               <label className="userdetails-label">
@@ -121,6 +178,7 @@ export default function UserDetails() {
                 </select>
               </label>
             </div>
+            {validationMessages.NativeLanguage && <p className="userdetails-error-message">{validationMessages.NativeLanguage}</p>}
             <div className="userdetails-inner-box">
               <label className="userdetails-label">
                 Date Of Birth:
@@ -135,6 +193,7 @@ export default function UserDetails() {
                 />
               </label>
             </div>
+            {validationMessages.DateOfBirth && <p className="userdetails-error-message">{validationMessages.DateOfBirth}</p>}
             <div className="userdetails-inner-box">
               <label className="userdetails-label">
                 Photo Id Type:
@@ -151,6 +210,7 @@ export default function UserDetails() {
                 </select>
               </label>
             </div>
+            {validationMessages.PhotoIdType && <p className="userdetails-error-message">{validationMessages.PhotoIdType}</p>}
             <div className="userdetails-inner-box">
               <label className="userdetails-label">
                 Photo Id Number:
@@ -165,6 +225,7 @@ export default function UserDetails() {
                 />
               </label>
             </div>
+            {validationMessages.PhotoIdNumber && <p className="userdetails-error-message">{validationMessages.PhotoIdNumber}</p>}
           </div>
           <div className="userdetails-inner-box">
             <label className="userdetails-label">
@@ -180,6 +241,7 @@ export default function UserDetails() {
               />
             </label>
           </div>
+          {validationMessages.PhotoIdIssueDate && <p className="userdetails-error-message">{validationMessages.PhotoIdIssueDate}</p>}
           <div className="userdetails-inner-box">
             <label className="userdetails-label">
               Address:
@@ -194,6 +256,7 @@ export default function UserDetails() {
               />
             </label>
           </div>
+          {validationMessages.Address && <p className="userdetails-error-message">{validationMessages.Address}</p>}
           <div className="userdetails-inner-box">
             <label className="userdetails-label">
               Address Line 2:
@@ -222,6 +285,7 @@ export default function UserDetails() {
               />
             </label>
           </div>
+          {validationMessages.StateProvince && <p className="userdetails-error-message">{validationMessages.StateProvince}</p>}
           <div className="userdetails-inner-box">
             <label className="userdetails-label">
               City:
@@ -236,6 +300,7 @@ export default function UserDetails() {
               />
             </label>
           </div>
+          {validationMessages.City && <p className="userdetails-error-message">{validationMessages.City}</p>}
           <div className="userdetails-inner-box">
             <label className="userdetails-label">
               Postal Code:
@@ -250,6 +315,7 @@ export default function UserDetails() {
               />
             </label>
           </div>
+          {validationMessages.PostalCode && <p className="userdetails-error-message">{validationMessages.PostalCode}</p>}
           <div className="userdetails-inner-box">
             <label className="userdetails-label">
               Country Of Residence:
@@ -264,6 +330,7 @@ export default function UserDetails() {
               />
             </label>
           </div>
+          {validationMessages.CountryOfResidence && <p className="userdetails-error-message">{validationMessages.CountryOfResidence}</p>}
           <div className="userdetails-inner-box">
             <label className="userdetails-label">
               Mobile Number:
@@ -278,6 +345,7 @@ export default function UserDetails() {
               />
             </label>
           </div>
+          {validationMessages.MobileNumber && <p className="userdetails-error-message">{validationMessages.MobileNumber}</p>}
           <div className="userdetails-inner-box">
             <label className="userdetails-label">
               Landline:
@@ -296,6 +364,9 @@ export default function UserDetails() {
           <button type="submit" class="fadeIn fourth" value="Submit">
             Submit
           </button>
+          {formSubmitted && (
+              <p className="userdetails-success-message">Form submitted successfully!</p>
+          )}
         </div>
       </div>
     </form>
