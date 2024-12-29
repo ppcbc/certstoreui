@@ -3,8 +3,16 @@ import "../css/Question.css";
 import Image from "./Image";
 import Answer from "./Answer";
 import ExamButton from "./ExamButton";
+import FinishButton from "./FinishButton";
 
-function Question({ Exam, questionNumber, idIsCorrect, nextOrPrevious }) {
+function Question({
+  Exam,
+  questionNumber,
+  idIsCorrect,
+  nextOrPrevious,
+  timeLeft,
+  finish
+}) {
   // const [idIsCorrect, setIdIsCorrect] = useState({
   //   id: 0,
   //   isCorrect: false
@@ -19,6 +27,17 @@ function Question({ Exam, questionNumber, idIsCorrect, nextOrPrevious }) {
 
   return (
     <div className="question-container">
+      <div className="question-title">
+        <p>
+          Time Left:{" "}
+          {Math.floor(timeLeft / 3600) > 0
+            ? `${Math.floor(timeLeft / 3600)}h ` // Display hours if greater than 0
+            : ""}
+          {Math.floor((timeLeft % 3600) / 60)}m{" "}
+          {String(timeLeft % 60).padStart(2, "0")}s
+        </p>
+        <FinishButton finish={finish}>Finish Exam</FinishButton>
+      </div>
       {Exam.question !== "" && (
         <div className="question">
           <p className="questionText">
