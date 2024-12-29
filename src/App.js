@@ -12,6 +12,7 @@ import AddExam from "./components/AddExam";
 import Exam from "./components/Exam";
 import AddExamCategory from "./components/AddExamCategory";
 import "./App.css";
+import UserDetails from "./components/UserDetails";
 
 function App() {
   return (
@@ -24,11 +25,11 @@ function App() {
         <Route path="/my-certificates" element={<MyCertificates />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        {/* <Route path="/test" element={<Test />} /> */}
         <Route path="/assignrole" element={<AssignRole />} />
         <Route path="/addexam" element={<AddExam />} />
         <Route path="/exam" element={<Exam />} />
         <Route path="/addexam-category" element={<AddExamCategory />} />
+        <Route path="/user-details" element={<UserDetails />} />
       </Routes>
     </Router>
   );

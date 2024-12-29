@@ -105,6 +105,16 @@ export default function Header() {
               </NavLink>
             </li>
           )}
+          <li className="nav-item">
+            <NavLink
+              to="/user-details"
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+            >
+              USER DETAILS
+            </NavLink>
+          </li>
           {myRole === "Admin" && (
             <li className="nav-item">
               <NavLink
