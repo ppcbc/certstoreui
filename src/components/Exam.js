@@ -62,7 +62,6 @@ function Exam() {
     });
     setExams(prev => fullExams);
     fullExams[currentQuestion].selected = true;
-    console.log(fullExams);
     setExams(prev => fullExams);
   }
 
@@ -92,18 +91,22 @@ function Exam() {
           selected: false
         };
       });
+      setExams(prev => fullExam);
       fullExam[index - 1].selected = true;
       setExams(prev => fullExam);
+      setQuestionNumber(index - 1);
     }
-    if (what === "next" && index < exams.length) {
+    if (what === "next" && index < exams.length - 1) {
       fullExam = exams.map(prev => {
         return {
           ...prev,
           selected: false
         };
       });
+      setExams(prev => fullExam);
       fullExam[index + 1].selected = true;
       setExams(prev => fullExam);
+      setQuestionNumber(index + 1);
     }
   }
 
