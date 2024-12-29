@@ -39,7 +39,8 @@ function Exam() {
               correct3: item.isCorrect3,
               answer4: item.option4,
               correct4: item.isCorrect4,
-              isAnswered: false
+              isAnswered: false,
+              selected: false
             };
           });
       });
@@ -55,10 +56,33 @@ function Exam() {
 
   function getQuestion(currentQuestion) {
     setQuestionNumber(currentQuestion);
+    let fullExams = exams.map(prev => {
+      return {
+        ...prev,
+        selected: false
+      };
+    });
+    setExams(prev => fullExams);
+    fullExams[currentQuestion].selected = true;
+    console.log(fullExams);
+    setExams(prev => fullExams);
+  }
+
+  function checkSelect(currentQuestion) {
+    let fullExams = exams.map(prev => {
+      return {
+        ...prev,
+        selected: false
+      };
+    });
+    setExams(prev => fullExams);
+    fullExams[currentQuestion].selected = true;
+    console.log(fullExams);
+    setExams(prev => fullExams);
   }
 
   function checkCorrect(isCorrect) {
-    console.log(isCorrect);
+    // console.log(isCorrect);
     setIdCorrect(isCorrect);
 
     let answeredExam = exams.filter(item => item.examId === isCorrect.Id);
@@ -67,7 +91,7 @@ function Exam() {
     let filteredExams = exams;
     // console.log(isCorrect.questionNumber);
     filteredExams[isCorrect.questionNumber].isAnswered = true;
-    console.log(filteredExams[isCorrect.questionNumber]);
+    // console.log(filteredExams[isCorrect.questionNumber]);
     setExams(prev => filteredExams);
 
     // setResults(prev => (prev[isCorrect.id] = isCorrect.isCorrect));
@@ -97,6 +121,7 @@ function Exam() {
               currentQuestion={index}
               getCurrentQuestion={getQuestion}
               isAnswered={item.isAnswered}
+              selected={item.selected}
             />
           ))}
         </div>
