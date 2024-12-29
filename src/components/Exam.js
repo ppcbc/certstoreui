@@ -62,12 +62,13 @@ function Exam() {
     setIdCorrect(isCorrect);
 
     let answeredExam = exams.filter(item => item.examId === isCorrect.Id);
-    console.log(answeredExam);
-    let filteredExams = exams.filter(prev => prev.examId !== isCorrect.Id);
-    filteredExams[0].isAnswered = true;
-    filteredExams.push(answeredExam[0]);
+    // console.log(answeredExam);
+    // let filteredExams = exams.filter(prev => prev.examId !== isCorrect.Id);
+    let filteredExams = exams;
+    // console.log(isCorrect.questionNumber);
+    filteredExams[isCorrect.questionNumber].isAnswered = true;
+    console.log(filteredExams[isCorrect.questionNumber]);
     setExams(prev => filteredExams);
-    console.log(filteredExams);
 
     // setResults(prev => (prev[isCorrect.id] = isCorrect.isCorrect));
     setResults(prev => {
