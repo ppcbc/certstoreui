@@ -1,31 +1,20 @@
-.title {
-  position: fixed;
-  top: 35px;
-  left: 50%;
-  transform: translateX(-50%);
+.exam-title {
+  /* transform: translateX(-50%); */
   width: 400px;
-  height: 20px;
   border: 2px solid red;
   text-align: center;
-  margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 400;
   font-size: medium;
-}
-
-.title h3 {
-  margin: 0;
-  padding: 0;
-}
-.main-grid {
+  padding: 10px;
 }
 
 .grid-container {
-  display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
-  grid-gap: 20px;
+  /* display: grid; */
+  /* grid-template-columns: 1fr 4fr 1fr; */
+  /* grid-gap: 20px; */
   /* margin-top: 60px; */
   width: 100%;
   /* height: 650px; */
@@ -35,43 +24,48 @@
   background-color: var(--color2);
   /* height: 100vh; */
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   /* padding-top: 170px; */
-  padding-bottom: 170px;
+  /* padding-bottom: 170px; */
+}
+
+.grid-inner1 {
+  display: flex;
+  flex-direction: row;
 }
 
 .box1 {
   width: 180px;
-  height: 690px; /* Maintain the set height */
-  /* border: 2px solid red; */
+  height: 690px;
   background-color: var(--color2);
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: auto; /* Enable vertical scrolling */
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  scrollbar-width: thin; /* Firefox scrollbar styling */
-  scrollbar-color: var(--color3) var(--color1); /* Scrollbar colors */
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color3) var(--color1);
   /* margin-top: 30px; */
 }
 .hidesb::-webkit-scrollbar {
-  display: none;
+  /* display: none; */
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .hidesb {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  /* -ms-overflow-style: none;  */
+  /* scrollbar-width: none;  */
 }
 
 .box2 {
   width: 900px;
   /* height: 100%; */
-  height: 650px;
+  height: 690px;
   grid-column-start: 2;
   grid-column-end: 3;
-  position: relative; /* Important to position Box 5 inside Box 2 */
+  position: relative;
   /* border: 2px solid blue; */
   display: flex;
   justify-content: center;

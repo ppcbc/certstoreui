@@ -87,27 +87,30 @@ function Exam() {
 
   return (
     <div className="grid-container">
-      <div className="box box1 hidesb">
-        {exams.map((item, index) => (
-          <AllQuestions
-            key={item.examId}
-            id={item.examId}
-            currentQuestion={index}
-            getCurrentQuestion={getQuestion}
-            isAnswered={item.isAnswered}
-          />
-        ))}
-      </div>
-      <div className="box box2">
-        {exams[questionNumber] && (
-          <Question
-            Key={exams[questionNumber]}
-            idIsCorrect={checkCorrect}
-            Exam={exams[questionNumber]}
-            questionNumber={questionNumber}
-            isCorrect={checkCorrect}
-          />
-        )}
+      <h3 className="exam-title">hi</h3>
+      <div className="grid-inner1">
+        <div className="box box1 hidesb">
+          {exams.map((item, index) => (
+            <AllQuestions
+              key={item.examId}
+              id={item.examId}
+              currentQuestion={index}
+              getCurrentQuestion={getQuestion}
+              isAnswered={item.isAnswered}
+            />
+          ))}
+        </div>
+        <div className="box box2">
+          {exams[questionNumber] && (
+            <Question
+              Key={exams[questionNumber]}
+              idIsCorrect={checkCorrect}
+              Exam={exams[questionNumber]}
+              questionNumber={questionNumber}
+              isCorrect={checkCorrect}
+            />
+          )}
+        </div>
       </div>
       <div className="box box3">
         Box 3 <br />
