@@ -78,6 +78,7 @@
 /* Style for the button */
 .user-details-box button {
   background-color: #597785; /* Blue button background */
+  margin-top: 15px;
   color: white; /* White text color */
   border: none; /* Remove border */
   border-radius: 5px; /* Rounded corners */
@@ -104,16 +105,16 @@
 /*    padding-bottom: 20px;*/
 /*}*/
 
-.my-inner-box {
+.userdetails-inner-box {
   display: flex;
-  width: 100%;
+  width: 98.5%;
   flex-direction: row; /* Keep elements on the same line */
   align-items: center; /* Align elements vertically */
   justify-content: space-between;
   padding: 10px;
 }
 
-.my-label {
+.userdetails-label {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

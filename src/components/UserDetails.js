@@ -46,8 +46,8 @@ export default function UserDetails() {
         <div className="user-details-box">
           <h1>Personal Details</h1>
           <div className>
-            <div className="my-inner-box">
-              <label className="my-label">
+            <div className="userdetails-inner-box">
+              <label className="userdetails-label">
                 First Name:
                 <input
                   type="text"
@@ -60,8 +60,8 @@ export default function UserDetails() {
                 />
               </label>
             </div>
-            <div className="my-inner-box">
-              <label className="my-label">
+            <div className="userdetails-inner-box">
+              <label className="userdetails-label">
                 Middle Name:
                 <input
                   type="text"
@@ -74,8 +74,8 @@ export default function UserDetails() {
                 />
               </label>
             </div>
-            <div className="my-inner-box">
-              <label className="my-label">
+            <div className="userdetails-inner-box">
+              <label className="userdetails-label">
                 Last Name:
                 <input
                   type="text"
@@ -99,8 +99,8 @@ export default function UserDetails() {
                 Female
               </label>
             </div>
-            <div className="my-inner-box">
-              <label className="my-label">
+            <div className="userdetails-inner-box">
+              <label className="userdetails-label">
                 Native Language:
                 <select
                   id="NativeLanguage"
@@ -121,8 +121,8 @@ export default function UserDetails() {
                 </select>
               </label>
             </div>
-            <div className="my-inner-box">
-              <label className="my-label">
+            <div className="userdetails-inner-box">
+              <label className="userdetails-label">
                 Date Of Birth:
                 <input
                   type="date"
@@ -135,8 +135,8 @@ export default function UserDetails() {
                 />
               </label>
             </div>
-            <div className="my-inner-box">
-              <label className="my-label">
+            <div className="userdetails-inner-box">
+              <label className="userdetails-label">
                 Photo Id Type:
                 <select
                   id="PhotoIdType"
@@ -151,8 +151,8 @@ export default function UserDetails() {
                 </select>
               </label>
             </div>
-            <div className="my-inner-box">
-              <label className="my-label">
+            <div className="userdetails-inner-box">
+              <label className="userdetails-label">
                 Photo Id Number:
                 <input
                   type="text"
@@ -166,8 +166,8 @@ export default function UserDetails() {
               </label>
             </div>
           </div>
-          <div className="my-inner-box">
-            <label className="my-label">
+          <div className="userdetails-inner-box">
+            <label className="userdetails-label">
               Photo Id Issue Date:
               <input
                 type="date"
@@ -180,8 +180,8 @@ export default function UserDetails() {
               />
             </label>
           </div>
-          <div className="my-inner-box">
-            <label className="my-label">
+          <div className="userdetails-inner-box">
+            <label className="userdetails-label">
               Address:
               <input
                 type="text"
@@ -194,8 +194,8 @@ export default function UserDetails() {
               />
             </label>
           </div>
-          <div className="my-inner-box">
-            <label className="my-label">
+          <div className="userdetails-inner-box">
+            <label className="userdetails-label">
               Address Line 2:
               <input
                 type="text"
@@ -208,8 +208,8 @@ export default function UserDetails() {
               />
             </label>
           </div>
-          <div className="my-inner-box">
-            <label className="my-label">
+          <div className="userdetails-inner-box">
+            <label className="userdetails-label">
               State/Province:
               <input
                 type="text"
@@ -222,8 +222,8 @@ export default function UserDetails() {
               />
             </label>
           </div>
-          <div className="my-inner-box">
-            <label className="my-label">
+          <div className="userdetails-inner-box">
+            <label className="userdetails-label">
               City:
               <input
                 type="text"
@@ -236,8 +236,8 @@ export default function UserDetails() {
               />
             </label>
           </div>
-          <div className="my-inner-box">
-            <label className="my-label">
+          <div className="userdetails-inner-box">
+            <label className="userdetails-label">
               Postal Code:
               <input
                 type="text"
@@ -250,8 +250,8 @@ export default function UserDetails() {
               />
             </label>
           </div>
-          <div className="my-inner-box">
-            <label className="my-label">
+          <div className="userdetails-inner-box">
+            <label className="userdetails-label">
               Country Of Residence:
               <input
                 type="text"
@@ -264,8 +264,8 @@ export default function UserDetails() {
               />
             </label>
           </div>
-          <div className="my-inner-box">
-            <label className="my-label">
+          <div className="userdetails-inner-box">
+            <label className="userdetails-label">
               Mobile Number:
               <input
                 type="text"
@@ -278,8 +278,8 @@ export default function UserDetails() {
               />
             </label>
           </div>
-          <div className="my-inner-box">
-            <label className="my-label">
+          <div className="userdetails-inner-box">
+            <label className="userdetails-label">
               Landline:
               <input
                 type="text"
