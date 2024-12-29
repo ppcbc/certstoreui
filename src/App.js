@@ -11,6 +11,7 @@ import AssignRole from "./components/AssignRole";
 import AddExam from "./components/AddExam";
 import Exam from "./components/Exam";
 import AddExamCategory from "./components/AddExamCategory";
+import UpdateExamCategory from "./components/UpdateExamCategory";
 import "./App.css";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/addexam" element={<AddExam />} />
         <Route path="/exam" element={<Exam />} />
         <Route path="/addexam-category" element={<AddExamCategory />} />
+        <Route path="/updateexam-category" element={<UpdateExamCategory />} />
       </Routes>
     </Router>
   );

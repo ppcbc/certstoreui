@@ -1,24 +1,32 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
-import "../css/ScheduleExam.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setFullCategoryId } from "../features/loginSlice";
+import "../css/AddExamCategory.css";
 import http from "../data/http";
 
 function AddExamCategory() {
   const [newCategory, setNewCategory] = useState({
     fullId: 0,
     categoryName: "",
-    categoryDescription: "",
-    price: ""
+    categoryDescription: ""
+    // price: ""
   });
   const [fullCategories, setFullCategories] = useState([]);
-
   const [added, setAdded] = useState("");
+  const [error, setError] = useState("");
+  const [check, setCheck] = useState(false);
 
   const myToken = useSelector(state => state.token.value.tok);
   const dispatch = useDispatch();
+
+  function handleMessage() {
+    setCheck(true);
+    setTimeout(() => {
+      setCheck(false);
+    }, 700);
+  }
 
   useEffect(() => {
     getFullCategories();
@@ -57,6 +65,21 @@ function AddExamCategory() {
 
   const onSubmit = async e => {
     e.preventDefault();
+
+    // Validation
+    if (newCategory.fullId === 0) {
+      setError("Please select a full category");
+      return;
+    }
+    if (newCategory.categoryName === "") {
+      setError("Please enter a category name");
+      return;
+    }
+    if (newCategory.categoryDescription === "") {
+      setError("Please enter a category description");
+      return;
+    }
+
     console.log(newCategory);
     try {
       const response = await axios.post(
@@ -73,10 +96,12 @@ function AddExamCategory() {
         setNewCategory({
           fullId: 0,
           categoryName: "",
-          categoryDescription: "",
-          price: ""
+          categoryDescription: ""
+          // price: ""
         });
         setAdded("Category added successfully");
+        handleMessage();
+        setError("");
       }
       console.log(response.data);
     } catch (error) {
@@ -84,10 +109,11 @@ function AddExamCategory() {
       setNewCategory({
         fullId: 0,
         categoryName: "",
-        categoryDescription: "",
-        price: ""
+        categoryDescription: ""
+        // price: ""
       });
       setAdded("Wrong credentials try again");
+      handleMessage();
     }
   };
 
@@ -139,7 +165,7 @@ function AddExamCategory() {
                 />
               </label>
             </div>
-
+            {/*}
             <div className="my-inner-box">
               <label className="my-label">
                 Price:
@@ -154,12 +180,19 @@ function AddExamCategory() {
                 />
               </label>
             </div>
+            */}
           </div>
           <button type="submit" className="fadeIn fourth">
             Add Exam Category
           </button>
+          {error && (
+            <div className="my-label">
+              <p style={{ color: "red" }}>{error}</p>
+            </div>
+          )}
           <div className="my-label">
-            <p>{added}</p>
+            {check && <p>{added}</p>}
+
           </div>
         </div>
       </div>
