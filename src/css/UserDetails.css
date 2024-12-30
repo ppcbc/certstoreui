@@ -78,6 +78,7 @@
 /* Style for the button */
 .user-details-box button {
   background-color: #597785; /* Blue button background */
+  margin-top: 15px;
   color: white; /* White text color */
   border: none; /* Remove border */
   border-radius: 5px; /* Rounded corners */
@@ -104,24 +105,50 @@
 /*    padding-bottom: 20px;*/
 /*}*/
 
-.my-inner-box {
+.userdetails-inner-box {
   display: flex;
-  width: 100%;
+  width: 98.5%;
   flex-direction: row; /* Keep elements on the same line */
   align-items: center; /* Align elements vertically */
   justify-content: space-between;
   padding: 10px;
 }
 
-.my-label {
+.userdetails-label {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-  width: 100%;
+  width: 100%; /* Make the label take full width */
 }
 
 .button {
   padding: 10px;
+}
+
+.userdetails-error-message {
+  color: red;
+  font-size: 12px;
+  text-align: right;
+  margin-top: -5px;
+  margin-bottom: 15px;
+  margin-left: 5px;
+  padding-right: 3px;
+}
+
+.userdetails-error-message.gender-error {
+  color: red;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 15px;
+  padding: 0 5px;
+}
+
+.userdetails-success-message {
+  color: var(--color4);
+  font-size: 16px;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 0px;
 }
