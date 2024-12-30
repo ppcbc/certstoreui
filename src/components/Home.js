@@ -77,7 +77,7 @@ export default function Home() {
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt
         mollit anim id est laborum.
       </p>
-      {myToken !== "" && (
+      {/* {myToken !== "" && (
         <div>
           <h1>My Token</h1>
           <p>{myToken}</p>
@@ -86,7 +86,7 @@ export default function Home() {
           <h1>My Role</h1>
           <p>{myRole}</p>
         </div>
-      )}
+      )} */}
       <div className="preview-certifications">
         <h1>Available Certifications</h1>
         <ul>
