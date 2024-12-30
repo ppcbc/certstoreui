@@ -73,7 +73,7 @@
   text-align: center; /* Center the text */
   padding: 70px 20px 20px 20px; /* Add padding around the content */
   word-wrap: break-word;
-  /* height: 80vh;  */
+  height: 80vh; 
 }
 
 /* Style for h1 (headline) */

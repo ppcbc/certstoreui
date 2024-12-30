@@ -1,0 +1,81 @@
+/* Style for the .admin-panel container */
+.admin-panel {
+    background-color: var(--color4); /* Light background for the page */
+    color: var(--color2); /* Text color matching the header palette */
+    padding: 40px 20px; /* Padding for the container */
+    text-align: center; /* Center the heading and general text */
+    min-height: 100vh; /* Full height of the viewport */
+}
+
+/* Style for the h1 (main heading) */
+.admin-panel h1 {
+    font-size: 2.5rem; /* Large heading */
+    margin-top: 70px;
+    margin-bottom: 30px; /* Space below the heading */
+    color: lightgray;
+    font-weight: 500;
+}
+
+/* Style for the list container */
+.admin-panel ul {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+    display: flex; /* Use flexbox to align items */
+    flex-wrap: wrap; /* Allow wrapping to the next line for responsiveness */
+    justify-content: center; /* Center the items in the container */
+    gap: 20px; /* Space between items */
+}
+
+/* Style for each list item */
+.admin-panel li {
+    background-color: var(--color7); /* Darker background for each box */
+    border: 1px solid var(--color10); /* Subtle border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    padding: 20px; /* Internal padding */
+    width: 250px; /* Fixed width for each box */
+    min-height: 75px; /* Ensure consistent height */
+    display: flex; /* Use flexbox */
+    align-items: center; /* Vertically center content */
+    justify-content: space-between; /* Space between h2 and button */
+    text-align: left; /* Align text to the left */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+/* Style for the h2 title */
+.admin-panel li h2 {
+    font-size: 1.2rem; /* Medium font size */
+    color: white; /* White text for titles */
+    margin: 0; /* Remove default margin */
+    flex-grow: 1; /* Allow h2 to take up available space */
+}
+
+/* Flex container for h2 and button */
+.admin-panel li .item-header {
+    display: flex; /* Flexbox for title and button alignment */
+    justify-content: space-between; /* Align title to the left and button to the right */
+    align-items: center; /* Vertically align title and button */
+    width: 100%; /* Full width of the container */
+}
+
+
+/* Style for the button */
+.admin-panel li button {
+    background-color: var(--color4); /* Button background */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 14px 24px; /* Adjusted button size */
+    margin-right: 5px;
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1rem; /* Button text size */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Hover effect for the button */
+.admin-panel li button:hover {
+    background-color: var(--color10); /* Darker button background on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+    font-weight: 600; /* Make text bolder on hover */
+}

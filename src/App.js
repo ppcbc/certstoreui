@@ -10,6 +10,7 @@ import Home from "./components/Home";
 import Certifications from "./components/Certifications";
 import ScheduleExam from "./components/ScheduleExam";
 import MyCertificates from "./components/MyCertificates";
+import AdminPanel from "./components/AdminPanel";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import AssignRole from "./components/AssignRole";
@@ -21,6 +22,7 @@ import UserDetails from "./components/UserDetails";
 import FullCategories from "./components/FullCategories";
 import UpdateExamCategory from "./components/UpdateExamCategory";
 import Finish from "./components/Finish";
+
 
 function Layout() {
   const location = useLocation();
@@ -36,6 +38,7 @@ function Layout() {
         <Route path="/certifications" element={<Certifications />} />
         <Route path="/schedule-exam" element={<ScheduleExam />} />
         <Route path="/my-certificates" element={<MyCertificates />} />
+        <Route path="/adminpanel" element={<AdminPanel />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/assignrole" element={<AssignRole />} />
