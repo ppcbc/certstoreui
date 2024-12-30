@@ -215,7 +215,7 @@ function AddExam() {
             </div>
             <div className="add-my-inner-box">
               <label className="my-label">
-                Question photo link (Less than 10mb):
+                Upload foto for code snipped (Less than 10mb):
                 <label for="file-upload" className="custom-file-upload">
                   Upload Photo
                   <input

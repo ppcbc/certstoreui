@@ -1,95 +1,90 @@
+:root {
+  --color1: #ffffff; /* White */
+  --color2: #b4b5b0; /* Light Gray Background */
+  --color21: #9a9c94; /* Darker Light Gray */
+  --color3: #78909c; /* Light Blue-Grey */
+  --color4: #2e4854; /* Dark Blue-Grey */
+  --color5: #182931; /* Very Dark Blue */
+  --color6: #5b5c55; /* Muted Gray */
+  --color7: #597785; /* Muted Blue-Grey */
+  --color8: #4b5052; /* Dark Grey */
+  --color9: #2c3e50; /* Navy Blue-Grey */
+}
+
 /* Style for the .schedule-exam container */
 .add-exam {
-  background-color: #b4b5b0; /* Light background for the page */
-  color: #2c3e50; /* Text color matching the header palette */
-  padding: 40px 20px; /* Padding for the container */
+  background-color: var(--color2); /* Light background for the page */
+  color: var(--color9); /* Text color matching the header palette */
+  padding: 40px 20px;
   min-height: 100vh; /* Full height of the viewport */
   display: flex; /* Center align items */
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-  position: relative; /* Enable precise positioning of child elements */
+  position: relative;
 }
 
 /* Style for the box containing the form elements */
 .add-box {
-  /* background-color: #ffffff; 
-  border-radius: 10px; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-  padding: 40px; 
-  text-align: left; 
-  width: 500px; 
-  transform: translateY(-130px); 
-  margin-top: 180px; */
-  background-color: #ffffff; /* White background for contrast */
+  background-color: var(--color1); /* White background for contrast */
   border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  padding: 40px; /* Increased padding for a spacious layout */
-  /*text-align: left; !* Align text to the left for a form layout *!*/
-  width: 800px; /* Increased width for the box */
-  transform: translateY(20px); /* Slightly higher positioning */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 40px;
+  width: 800px;
+  transform: translateY(20px);
+}
+
+.add-box input:focus,
+.add-box select:focus {
+  border-color: var(--color7); /* Highlight border on focus */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  outline: none;
 }
 
 /* Style for the h1 (main heading) */
-/* .add-box h1 {
-  font-size: 1.8rem; 
-  margin: 3px 10px; 
-  color: #4b5052; 
-} */
-
-/* Style for the label */
 .add-box h1 {
-  font-size: 2rem; /* Larger heading for the wider box */
-  margin-bottom: 30px; /* Space below the heading */
+  font-size: 2rem;
+  margin-bottom: 30px;
   margin: 3px 10px;
-  color: #4b5052; /* Match the palette */
-  text-align: center; /* Keep the heading centered */
+  color: var(--color8);
+  text-align: center;
 }
 
 /* Style for the input (date picker) */
 .add-box input {
-  /* padding: 10px;
-  border: 1px solid;
+  flex: 5;
+  padding: 10px;
+  border: 1px solid var(--color6);
   border-radius: 5px;
-  margin-top: 5px;
-  margin-bottom: 20px;
   font-size: 1rem;
-  width: calc(100% - 20px);
+  width: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; */
-  flex: 5; /* Allow input/select to take available space */
-  padding: 10px; /* Add padding for comfort */
-  border: 1px solid #ccc; /* Subtle border */
-  border-radius: 5px; /* Rounded corners */
-  font-size: 1rem; /* Font size for readability */
-  width: auto; /* Prevent full-width stretching */
-  /*width: calc(100% - 20px);*/
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth interaction */
-}
-.add-box select {
-  flex: 1;
-  padding: 10px; /* Add padding for comfort */
-  border: 1px solid #ccc; /* Subtle border */
-  border-radius: 5px; /* Rounded corners */
-  font-size: 1rem; /* Font size for readability */
-  /*width: 100%; !* Prevent full-width stretching *!*/
-  width: calc(100% - 80px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth interaction */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Style for input focus */
+/* Style for select elements */
+.add-box select {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid var(--color6);
+  border-radius: 5px;
+  font-size: 1rem;
+  width: calc(100% - 80px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus effect for input and select */
 .add-box input:focus,
-.user-details-box select:focus {
-  border-color: #597785;
+.add-box select:focus {
+  border-color: var(--color7);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   outline: none;
 }
 
 /* Style for the button */
 .add-box button {
-  background-color: #597785;
-  color: white;
+  background-color: var(--color7);
+  color: var(--color1);
   border: none;
   border-radius: 5px;
   padding: 12px 20px;
@@ -102,23 +97,13 @@
 
 /* Hover effect for the button */
 .add-box button:hover {
-  background-color: #78909c;
+  background-color: var(--color3);
   transform: translateY(-2px);
   font-weight: 600;
 }
 
-.add-my-box {
-  /* display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding-bottom: 20px; */
-}
+/* Inner box styles */
 .add-my-inner-box {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 10px; */
   display: flex;
   width: 100%;
   flex-direction: row;
@@ -126,42 +111,27 @@
   justify-content: space-between;
   padding: 10px;
 }
+
+/* Label styles */
 .add-my-label {
-  /* display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   gap: 8px;
   width: 100%;
+  color: var(--color9);
 }
 
-.add-button {
-  padding: 10px;
-}
-
-/* input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-input[type="number"] {
-  -moz-appearance: textfield; 
-}
-
-.align-left {
-  text-align: left;
-} */
+/* File upload input */
 input[type="file"] {
   display: none;
 }
 
+/* Custom file upload button */
 .custom-file-upload {
-  background-color: #597785;
-  color: white;
+  background-color: var(--color7);
+  color: var(--color1);
   border: none;
   border-radius: 5px;
   padding: 12px 20px;
@@ -174,8 +144,10 @@ input[type="file"] {
   justify-content: center;
   align-items: center;
 }
+
+/* Hover effect for file upload */
 .custom-file-upload:hover {
-  background-color: #78909c;
+  background-color: var(--color3);
   transform: translateY(-2px);
   font-weight: 600;
 }
