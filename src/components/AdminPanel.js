@@ -1,0 +1,48 @@
+import React from "react";
+import "../App.css";
+import "../css/AdminPanel.css";
+import { setLogReg } from "../features/loginSlice";
+import http from "../data/http";
+import { Link, useNavigate } from "react-router-dom";
+
+export default function AdminPanel() {
+  const navigate = useNavigate();
+  return (
+    <div className="admin-panel">
+      <h1>Admin Panel</h1>
+      <ul>
+        <li>
+          <div className="item-header">
+            <h2>ADD FULL EXAM CATEGORY</h2>
+            <button onClick={() => navigate("/addfull-category")}>Go</button>
+          </div>
+        </li>
+        <li>
+          <div className="item-header">
+            <h2>ADD EXAM CATEGORY</h2>
+            <button onClick={() => navigate("/addexam-category")}>Go</button>
+          </div>
+        </li>
+        <li>
+          <div className="item-header">
+            <h2>UPDATE EXAM CATEGORY</h2>
+            <button onClick={() => navigate("/updateexam-category")}>Go</button>
+          </div>
+        </li>
+        <li>
+          <div className="item-header">
+            <h2>ADD EXAM</h2>
+            <button onClick={() => navigate("/addexam")}>Go</button>
+          </div>
+        </li>
+        <li>
+          <div className="item-header">
+            <h2>ASSIGN ROLE</h2>
+            <button onClick={() => navigate("/assignrole")}>Go</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  );
+}
+// <button onClick={() => handleBuy(certification)}>Go</button>

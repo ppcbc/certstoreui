@@ -131,11 +131,11 @@ function AddExamCategory() {
                   onChange={onChange}
                 >
                   <option value={0}>Category</option>
-                  {/* {fullCategories.map(a => (
+                  {fullCategories.map(a => (
                     <option key={a.fullId} value={a.fullId}>
                       {a.name}
                     </option>
-                  ))} */}
+                  ))}
                 </select>
               </label>
             </div>
