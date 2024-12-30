@@ -11,7 +11,7 @@
 }
 
 .add-exam-box {
-  background-color: var(color--1);
+  background-color: var(--color1);
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 40px;
@@ -25,20 +25,20 @@
   font-size: 1.8rem;
   /* margin-bottom: 30px; */
   margin: 3px 10px;
-  color: var(color--8);
+  color: var(--color8);
 }
 .add-exam-box h1 {
   font-size: 2rem;
   margin-bottom: 30px;
   margin: 3px 10px;
-  color: var(color--8);
+  color: var(--color8);
   text-align: center;
 }
 
 .add-exam-label {
   /* font-size: 1.2rem; */
   font-size: 1.8rem;
-  color: var(color--8);
+  color: var(--color8);
   /* margin-bottom: 5px; */
   margin: 3px 10px;
 }
@@ -79,7 +79,7 @@
 }
 
 .add-exam-box button:hover {
-  background-color: var(color--8);
+  background-color: var(--color3);
   transform: translateY(-2px);
   font-weight: 600;
 }

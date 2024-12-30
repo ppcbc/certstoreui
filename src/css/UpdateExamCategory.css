@@ -20,7 +20,7 @@
 
 /* Style for the box containing the form elements */
 .update-box {
-  background-color: var(--color1);
+  background-color: #ffffff;
   /* White background for contrast */
   border-radius: 10px;
   /* Rounded corners */
@@ -30,7 +30,7 @@
   /* Increased padding for a spacious layout */
   text-align: left;
   /* Align text to the left for a form layout */
-  width: 500px;
+  width: 800px;
   /* Increased width for the box */
   transform: translateY(-130px);
   /* Slightly higher positioning */
@@ -38,9 +38,10 @@
 
 /* Style for the h1 (main heading) */
 .update-box h1 {
-  font-size: 2rem;
+  font-size: 0.7rem;
   /* Larger heading for the wider box */
   margin-bottom: 30px;
+  margin: 3px 10px;
   /* Space below the heading */
   color: var(--color8);
   /* Match the palette */
@@ -50,42 +51,60 @@
 
 /* Style for the label */
 .update-label {
-  font-size: 1.2rem;
+  font-size: 1rem;
   /* Font size for the label */
   color: var(--color8);
   /* Match the palette */
-  margin-bottom: 5px;
-  /* Space below the label */
+  margin: 3px 10px;
+  /* Margin for spacing */
+  text-align: left;
+  /* Align text to the left */
+  display: flex;
+  /* Align the label and select in a row */
+  align-items: center;
+  /* Align items vertically */
+  justify-content: space-between;
+  /* Space out the label and select */
+  width: 100%;
 }
 
-/* Style for the input fields */
-.update-box input[type="date"],
-.update-box input[type="number"],
-.update-box input[type="text"] {
+/* Adjusting the select element within the label */
+.update-label select {
+  flex: 1;
+  /* Allow the select to take available space */
+  margin-left: 10px;
+  /* Add margin to the left of the dropdown */
+  width: calc(100% - 80px);
+  /* Make the dropdown capture the size of the box */
+}
+
+/* Style for input and select fields */
+.update-box input,
+.update-box select {
   padding: 10px;
   /* Add padding for comfort */
   border: 1px solid #ccc;
   /* Subtle border */
   border-radius: 5px;
   /* Rounded corners */
-  margin-top: 5px;
-  /* Space above the input */
-  margin-bottom: 20px;
-  /* Space below the input */
   font-size: 1rem;
   /* Font size for readability */
-  width: calc(100% - 20px);
-  /* Full width minus padding for responsiveness */
+  width: 100%;
+  /* Full width */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   /* Subtle shadow */
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   /* Smooth interaction */
+  /* margin-top: 5px; */
+  /* Margin for spacing */
+  /* margin-bottom: 20px; */
+
+  /* Margin for spacing */
 }
 
 /* Style for input focus */
-.update-box input[type="date"]:focus,
-.update-box input[type="number"]:focus,
-.update-box input[type="text"]:focus {
+.update-box input:focus,
+.update-box select:focus {
   border-color: var(--color7);
   /* Highlight border on focus */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -128,27 +147,34 @@
   /* Make text bolder on hover */
 }
 
-/* Additional styles for nested elements */
 .update-inner-box {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* Align items in a column */
+  align-items: flex-start;
+  /* Align items to the left */
   justify-content: space-between;
   padding-bottom: 20px;
 }
 
 .update-inner-field {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-around;
   padding: 10px;
+  width: 100%;
+  align-items: center;
 }
 
 .update-label {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  /* Align label and dropdown in a row */
+  justify-content: space-between;
+  /* Align items to fill the container */
   align-items: center;
+  width: 100%;
+  /* Align items vertically */
 }
 
 .update-button {
