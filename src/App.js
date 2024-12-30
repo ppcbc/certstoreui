@@ -23,6 +23,9 @@ import UpdateExamCategory from "./components/UpdateExamCategory";
 import Finish from "./components/Finish";
 import CertExam from "./components/CertExam";
 import AdminPanel from "./components/AdminPanel";
+import Footer from "./components/Footer";
+import ContactUs from "./components/ContactUs";
+import About from "./components/About";
 
 function Layout() {
   const location = useLocation();
@@ -50,7 +53,10 @@ function Layout() {
         <Route path="/addfull-category" element={<FullCategories />} />
         <Route path="/finish" element={<Finish />} />
         <Route path="/add-certexam" element={<CertExam />} />
+        <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/about-us" element={<About />} />
       </Routes>
+      {shouldShowHeader && <Footer />}
     </>
   );
 }

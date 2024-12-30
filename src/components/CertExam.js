@@ -16,19 +16,13 @@ import {
 
 function AddExam() {
   let navigate = useNavigate();
-  const [newExam, setNewExam] = useState({
-    fullId: 0,
-    categoryId: 0,
-    questionText: "",
-    questionPhotoLink: "",
-    option1: "",
-    isCorrect1: false,
-    option2: "",
-    isCorrect2: false,
-    option3: "",
-    isCorrect3: false,
-    option4: "",
-    isCorrect4: false
+  const [certExam, setCertExam] = useState({
+    fullId: "",
+    categoryId: "",
+    testTitle: "",
+    testDescription: "",
+    price: "",
+    examQuestions: []
   });
   const [examCategories, setExamCategories] = useState([]);
   const [fullCategories, setFullCategories] = useState([]);
@@ -42,17 +36,7 @@ function AddExam() {
     }, 700);
   }
 
-  const [imageUrl, setImageUrl] = useState("");
-
-  const preset_key = "112898813666492";
-  const precet = "certphoto";
-  const api_secret = "WiNm8fism4GXfgYe0k8nME36EeY";
-
   const myToken = useSelector(state => state.token.value.tok);
-  const fullCategoryId = useSelector(state => state.token.value.fullCategoryId);
-  // const myToken = localStorage.getItem("tok");
-  // const fullCategoryId = localStorage.getItem("fullCategoryId");
-  const dispatch = useDispatch();
 
   useEffect(() => {
     getCategories();
@@ -89,44 +73,33 @@ function AddExam() {
       value = value === "true";
     }
 
-    setNewExam(prev => {
+    setCertExam(prev => {
       return {
         ...prev,
-        [name]: value,
-        // fullId: fullCategoryId,
-        questionPhotoLink: imageUrl
+        [name]: value
       };
     });
   }
-  function onChangeFullCategory(e) {
-    // dispatch(setFullCategoryId(e.target.value));
-    const { value } = e.target;
-  }
+
   async function onSubmit(e) {
     e.preventDefault();
-    console.log(newExam);
+    console.log(certExam);
     console.log(examCategories);
     try {
-      var response = await axios.post(http + "api/Exams", newExam, {
+      var response = await axios.post(http + "api/Exams", certExam, {
         headers: {
           Authorization: "Bearer " + myToken
         }
       });
       console.log(response.status);
       if (response.status === 201 || response.status === 200) {
-        setNewExam({
-          fullId: 0,
-          categoryId: 0,
-          questionText: "",
-          questionPhotoLink: "",
-          option1: "",
-          isCorrect1: false,
-          option2: "",
-          isCorrect2: false,
-          option3: "",
-          isCorrect3: false,
-          option4: "",
-          isCorrect4: false
+        setCertExam({
+          fullId: "",
+          categoryId: "",
+          testTitle: "",
+          testDescription: "",
+          price: "",
+          examQuestions: []
         });
       }
       setMessage("Exam successfully added");
@@ -136,24 +109,6 @@ function AddExam() {
       setMessage("Wrong credentials try again");
       handleMessage();
       console.log(error.message);
-    }
-  }
-
-  async function handleFile(e) {
-    const file = e.target.files[0];
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", precet);
-
-    try {
-      const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/doueltigf/image/upload",
-        formData
-      );
-      setImageUrl(response.data.secure_url);
-      console.log(response.data.secure_url);
-    } catch (error) {
-      console.error("Upload failed:", error.response?.data || error.message);
     }
   }
 
@@ -170,7 +125,7 @@ function AddExam() {
                   className="fadeIn second"
                   name="questionText"
                   placeholder="question text"
-                  value={newExam.questionText}
+                  value={certExam.testTitle}
                   onChange={onChange}
                 />
               </label>
@@ -183,7 +138,7 @@ function AddExam() {
                   className="fadeIn second"
                   name="questionText"
                   placeholder="question text"
-                  value={newExam.questionText}
+                  value={certExam.testDescription}
                   onChange={onChange}
                 />
               </label>
@@ -193,7 +148,7 @@ function AddExam() {
                 Select category:
                 <select
                   name="fullId"
-                  value={newExam.fullId}
+                  value={certExam.fullId}
                   onChange={onChange}
                 >
                   <option value={0}>Category</option>
@@ -216,7 +171,7 @@ function AddExam() {
                   <option value={0}>Exam</option>
                   {examCategories
                     .filter(
-                      a => parseInt(a.fullId) === parseInt(newExam.fullId)
+                      a => parseInt(a.fullId) === parseInt(certExam.fullId)
                     )
                     .map(a => (
                       <option key={a.categoryId} value={a.categoryId}>
@@ -228,24 +183,7 @@ function AddExam() {
             </div>
 
             <div className="add-my-inner-box">
-              <label className="add-my-label">
-                First question:
-                <input
-                  type="text"
-                  name="option1"
-                  placeholder="first question"
-                  value={newExam.option1}
-                  onChange={onChange}
-                />
-                <select
-                  name="isCorrect1"
-                  value={newExam.isCorrect1}
-                  onChange={onChange}
-                >
-                  <option value={false}>Wrong</option>
-                  <option value={true}>Correct</option>
-                </select>
-              </label>
+              <label className="add-my-label">First question:</label>
             </div>
           </div>
           <div className="add-my-inner-box">

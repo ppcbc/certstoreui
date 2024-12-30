@@ -1,6 +1,7 @@
 /* Style for the .schedule-exam container */
 .add-exam {
-  background-color: var(--color2); /* Light background for the page */
+  /* background-color: red; */
+  background-color: var(--color2);
   color: var(--color9); /* Text color matching the header palette */
   padding: 40px 20px;
   min-height: 100vh; /* Full height of the viewport */
