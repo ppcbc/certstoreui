@@ -69,7 +69,7 @@ function AddExam() {
     if (parseInt(value) !== NaN) {
       parseInt(value);
     }
-    if (value === "true" || value == "false") {
+    if (value === "true" || value === "false") {
       value = value === "true";
     }
 
@@ -86,7 +86,7 @@ function AddExam() {
     console.log(certExam);
     console.log(examCategories);
     try {
-      var response = await axios.post(http + "api/Exams", certExam, {
+      var response = await axios.post(http + "api/CertExams", certExam, {
         headers: {
           Authorization: "Bearer " + myToken
         }
@@ -116,6 +116,7 @@ function AddExam() {
     <form action="" onSubmit={onSubmit}>
       <div className="add-exam">
         <div className="add-box">
+          <h1>Add Certification Exam</h1>
           <div className="add-my-box">
             <div className="add-my-inner-box">
               <label className="add-my-label">

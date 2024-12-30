@@ -162,6 +162,7 @@ function UpdateExamCategory() {
     <form onSubmit={onSubmit}>
       <div className="update-exam">
         <div className="update-box">
+          <h1>Update Exam Category</h1>
           <div className="update-inner-box">
             <div className="update-inner-field">
               <label className="update-label">

@@ -92,6 +92,7 @@ function AssignRole() {
     <form action="">
       <div className="schedule-exam">
         <div className="schedule-box">
+          <h1>Assign Role</h1>
           <div className="my-box">
             <div className="my-inner-box">
               <label className="my-label">

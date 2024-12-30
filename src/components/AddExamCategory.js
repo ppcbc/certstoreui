@@ -121,6 +121,7 @@ function AddExamCategory() {
     <form action="" onSubmit={onSubmit}>
       <div className="add-exam-category">
         <div className="add-box">
+          <h1>Add Exam Category</h1>
           <div className="add-my-box">
             <div className="add-my-inner-box">
               <label className="add-my-label">

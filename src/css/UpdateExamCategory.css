@@ -38,15 +38,11 @@
 
 /* Style for the h1 (main heading) */
 .update-box h1 {
-  font-size: 0.7rem;
-  /* Larger heading for the wider box */
-  margin-bottom: 30px;
-  margin: 3px 10px;
-  /* Space below the heading */
-  color: #4b5052;
-  /* Match the palette */
-  text-align: center;
-  /* Keep the heading centered */
+  font-size: 2rem; /* Larger heading for the wider box */
+  margin: 3px 10px; /* Space below the heading */
+  margin-bottom: 30px; /* Space below the heading */
+  color: var(--color8); /* Match the palette */
+  text-align: center; /* Keep the heading centered */
 }
 
 /* Style for the label */

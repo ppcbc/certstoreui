@@ -103,7 +103,7 @@ export default function UserDetails() {
     <form onSubmit={onSubmit}>
       <div className="user-details">
         <div className="user-details-box">
-          {/* <h1>Personal Details</h1> */}
+          <h1>Personal Details</h1>
           <div className>
             <div className="userdetails-inner-box">
               <label className="userdetails-label">

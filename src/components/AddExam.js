@@ -161,6 +161,7 @@ function AddExam() {
     <form action="" onSubmit={onSubmit}>
       <div className="add-exam">
         <div className="add-box">
+          <h1>Add Exam</h1>
           <div className="add-my-box">
             <div className="add-my-inner-box">
               <label className="add-my-label">
