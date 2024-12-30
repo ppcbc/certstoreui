@@ -38,7 +38,7 @@
 
 /* Style for the input (date picker) */
 .add-box input {
-  flex: 5;
+  flex: 7;
   padding: 10px;
   border: 1px solid var(--color6);
   border-radius: 5px;
@@ -137,4 +137,7 @@ input[type="file"] {
   background-color: var(--color3);
   transform: translateY(-2px);
   font-weight: 600;
+}
+.button {
+  padding: 10px;
 }

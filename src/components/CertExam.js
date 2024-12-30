@@ -14,7 +14,7 @@ import {
   setToken
 } from "../features/loginSlice";
 
-function CertExam() {
+function AddExam() {
   let navigate = useNavigate();
   const [newExam, setNewExam] = useState({
     fullId: 0,
@@ -163,7 +163,7 @@ function CertExam() {
         <div className="add-box">
           <div className="add-my-box">
             <div className="add-my-inner-box">
-              <label className="my-label">
+              <label className="add-my-label">
                 Certification title:
                 <input
                   type="text"
@@ -176,7 +176,7 @@ function CertExam() {
               </label>
             </div>
             <div className="add-my-inner-box">
-              <label className="my-label">
+              <label className="add-my-label">
                 Certification description:
                 <input
                   type="text"
@@ -189,7 +189,7 @@ function CertExam() {
               </label>
             </div>
             <div className="add-my-inner-box">
-              <label className="my-label">
+              <label className="add-my-label">
                 Select category:
                 <select
                   name="fullId"
@@ -226,19 +226,6 @@ function CertExam() {
                 </select>
               </label>
             </div>
-            <div className="add-my-inner-box">
-              <label className="my-label">
-                Question Text:
-                <input
-                  type="text"
-                  className="fadeIn second"
-                  name="questionText"
-                  placeholder="question text"
-                  value={newExam.questionText}
-                  onChange={onChange}
-                />
-              </label>
-            </div>
 
             <div className="add-my-inner-box">
               <label className="add-my-label">
@@ -261,9 +248,11 @@ function CertExam() {
               </label>
             </div>
           </div>
-          <button type="submit" class="fadeIn fourth" value="Log In">
-            Add
-          </button>
+          <div className="add-my-inner-box">
+            <button type="submit" class="fadeIn fourth" value="submit">
+              Add
+            </button>
+          </div>
           <div className="add-my-label">{check && <p>{message}</p>}</div>
         </div>
       </div>
@@ -271,4 +260,4 @@ function CertExam() {
   );
 }
 
-export default CertExam;
+export default AddExam;

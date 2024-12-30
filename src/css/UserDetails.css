@@ -97,13 +97,13 @@
   font-weight: 600; /* Make text bolder on hover */
 }
 
-/*.my-box {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    align-items: flex-start;*/
-/*    justify-content: space-between;*/
-/*    padding-bottom: 20px;*/
-/*}*/
+/* .my-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 20px;
+} */
 
 .userdetails-inner-box {
   display: flex;

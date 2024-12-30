@@ -162,8 +162,8 @@ function AddExam() {
       <div className="add-exam">
         <div className="add-box">
           <div className="add-my-box">
-            <div className="add-my-inner-box align-left">
-              <label className="my-label">
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
                 Select category:
                 <select
                   name="fullId"
@@ -201,7 +201,7 @@ function AddExam() {
               </label>
             </div>
             <div className="add-my-inner-box">
-              <label className="my-label">
+              <label className="add-my-label">
                 Question Text:
                 <input
                   type="text"
@@ -214,7 +214,7 @@ function AddExam() {
               </label>
             </div>
             <div className="add-my-inner-box">
-              <label className="my-label">
+              <label className="add-my-label">
                 Upload foto for code snipped (Less than 10mb):
                 <label for="file-upload" className="custom-file-upload">
                   Upload Photo
@@ -311,9 +311,11 @@ function AddExam() {
               </label>
             </div>
           </div>
-          <button type="submit" class="fadeIn fourth" value="Log In">
-            Add
-          </button>
+          <div className="add-my-inner-box">
+            <button type="submit" class="fadeIn fourth" value="submit">
+              Add
+            </button>
+          </div>
           <div className="add-my-label">{check && <p>{message}</p>}</div>
         </div>
       </div>
