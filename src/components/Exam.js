@@ -154,7 +154,6 @@ function Exam() {
 
   return (
     <div className="grid-container">
-      {/* <h3 className="exam-title">hi</h3> */}
       {!finish ? (
         <>
           <div className="grid-inner1">
@@ -188,7 +187,7 @@ function Exam() {
           </div>
         </>
       ) : (
-        <Finish score={counter / exams.length} />
+        <Finish score={`${counter} / ${exams.length}`} />
       )}
     </div>
   );

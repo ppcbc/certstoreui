@@ -44,7 +44,7 @@ export default function UserDetails() {
     <form>
       <div className="user-details">
         <div className="user-details-box">
-          <h1>Personal Details</h1>
+          {/* <h1>Personal Details</h1> */}
           <div className>
             <div className="my-inner-box">
               <label className="my-label">

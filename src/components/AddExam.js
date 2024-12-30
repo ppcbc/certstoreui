@@ -215,16 +215,23 @@ function AddExam() {
             </div>
             <div className="add-my-inner-box">
               <label className="my-label">
-                Question photo link (less than 10mb):
-                <input type="file" name="image" onChange={handleFile}></input>
+                Question photo link (Less than 10mb):
+                <label for="file-upload" className="custom-file-upload">
+                  Upload Photo
+                  <input
+                    id="file-upload"
+                    type="file"
+                    name="image"
+                    onChange={handleFile}
+                  ></input>
+                </label>
               </label>
             </div>
             <div className="add-my-inner-box">
-              <label className="my-label">
+              <label className="add-my-label">
                 First question:
                 <input
                   type="text"
-                  class="fadeIn third"
                   name="option1"
                   placeholder="first question"
                   value={newExam.option1}
@@ -245,7 +252,7 @@ function AddExam() {
                 Second question:
                 <input
                   type="text"
-                  class="fadeIn third"
+                  className="fadeIn third"
                   name="option2"
                   placeholder="second question"
                   value={newExam.option2}
@@ -266,7 +273,7 @@ function AddExam() {
                 Third question:
                 <input
                   type="text"
-                  class="fadeIn third"
+                  className="fadeIn third"
                   name="option3"
                   placeholder="third question"
                   value={newExam.option3}

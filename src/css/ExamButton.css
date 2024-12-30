@@ -13,4 +13,5 @@
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; */
   color: white;
   background-color: var(--color7);
+  font-weight: 600;
 }

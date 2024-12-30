@@ -27,7 +27,7 @@ function Answer({ answer, correct, number, getAnswer, questionNumber, Id }) {
         color: isMouseOver && "white"
       }}
     >
-      {number}: {answer}
+      <span className="make-larger">{number}</span>: {answer}
     </div>
   );
 }
