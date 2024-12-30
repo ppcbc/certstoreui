@@ -60,13 +60,13 @@
 .add-exam-box input[type="date"]:focus,
 .add-exam-box input[type="number"]:focus,
 .add-exam-box input[type="text"]:focus {
-  border-color: #597785;
+  border-color: var(--color7);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   outline: none;
 }
 
 .add-exam-box button {
-  background-color: #597785;
+  background-color: var(--color7);
   color: white;
   border: none;
   border-radius: 5px;
