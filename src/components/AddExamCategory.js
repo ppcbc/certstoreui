@@ -118,76 +118,64 @@ function AddExamCategory() {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form action="" onSubmit={onSubmit}>
       <div className="add-exam-category">
-        <div className="add-exam-box">
-          <div className="add-exam-inner-box">
-            <div className="add-exam-field">
-              <label className="add-exam-label">
-                Select Full Category:
+        <div className="add-box">
+          <div className="add-my-box">
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
+                Select category:
                 <select
                   name="fullId"
-                  value={newCategory.fullId}
-                  onChange={onChangeFullCategory}
+                  // value={newExam.fullId}
+                  onChange={onChange}
                 >
-                  <option value={0}>Categories</option>
-                  {fullCategories.map(a => (
+                  <option value={0}>Category</option>
+                  {/* {fullCategories.map(a => (
                     <option key={a.fullId} value={a.fullId}>
                       {a.name}
                     </option>
-                  ))}
+                  ))} */}
                 </select>
               </label>
             </div>
-            <div className="add-exam-field">
-              <label className="add-exam-label">
-                Exam Category Name:
+
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
+                Exam category name:
                 <input
                   type="text"
-                  name="categoryName"
-                  placeholder="Exam Category Name"
-                  value={newCategory.categoryName}
+                  className="fadeIn second"
+                  name="questionText"
+                  placeholder="Exam category name"
+                  // value={newExam.questionText}
                   onChange={onChange}
                 />
               </label>
             </div>
-            <div className="add-exam-field">
-              <label className="add-exam-label">
-                Exam Category Description:
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
+                Exam category description:
                 <input
                   type="text"
-                  name="categoryDescription"
-                  placeholder="Exam Category Description"
-                  value={newCategory.categoryDescription}
+                  className="fadeIn second"
+                  name="questionText"
+                  placeholder="Exam category description"
+                  // value={newExam.questionText}
                   onChange={onChange}
                 />
               </label>
             </div>
-            {/*}
-            <div className="add-exam-field">
-              <label className="add-exam-label">
-                Price:
-                <input
-                  type="number"
-                  inputMode="numeric"
-                  name="price"
-                  placeholder="Price"
-                  value={newCategory.price}
-                  onChange={onChange}
-                />
-              </label>
-            </div>
-            */}
+
+
+
           </div>
-          <button type="submit" className="submit-btn">
-            Add Exam Category
-          </button>
-          {error && (
-            <div className="add-exam-label">
-              <p style={{ color: "red" }}>{error}</p>
-            </div>
-          )}
-          <div className="add-exam-label">{check && <p>{added}</p>}</div>
+          <div className="add-my-inner-box">
+            <button type="submit" class="fadeIn fourth" value="Log In">
+              Add
+            </button>
+          </div>
+          {/* <div className="add-my-label">{check && <p>{message}</p>}</div> */}
         </div>
       </div>
     </form>
