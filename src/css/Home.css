@@ -179,7 +179,7 @@
 /* Style for the "Buy Voucher" button */
 .preview-certifications li button {
   background-color: var(--color7); /* Blue button background */
-  color: #fff; /* White text color */
+  color: var(--color1); /* White text color */
   border: none; /* Remove border */
   border-radius: 5px; /* Rounded corners */
   padding: 10px 20px; /* Button padding */

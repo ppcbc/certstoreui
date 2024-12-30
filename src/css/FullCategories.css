@@ -30,7 +30,7 @@
 /* Style for each category item */
 .fullcategories li {
   background-color: var(--color1); /* White background for each item */
-  border: 1.5px solid #2c3e50; /* Subtle border */
+  border: 1.5px solid var(--color9); /* Subtle border */
   border-radius: 10px; /* Rounded corners */
   padding: 20px; /* Padding for each category */
   margin-bottom: 20px; /* Space between items */
