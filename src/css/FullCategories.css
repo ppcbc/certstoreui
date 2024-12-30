@@ -1,6 +1,6 @@
 .fullcategories {
-  background-color: #f5f5f5; /* Light background for the page */
-  color: #2c3e50;
+  background-color: var(--color10); /* Light background for the page */
+  color: var(--color9);
   padding: 40px 20px; /* Padding for the container */
   min-height: 100vh;
   display: flex; /* Center align items */
@@ -21,7 +21,7 @@
 .fullcategories h1 {
   font-size: 2.5rem; /* Larger heading for visibility */
   margin-bottom: 30px; /* Space below the heading */
-  color: #34495e; /* Match the palette */
+  color: var(--color11); /* Match the palette */
   text-align: center; /* Center the heading */
   text-transform: uppercase; /* Uppercase for a modern look */
   letter-spacing: 2px; /* Spacing between letters */
@@ -29,7 +29,7 @@
 
 /* Style for each category item */
 .fullcategories li {
-  background-color: #ffffff; /* White background for each item */
+  background-color: var(--color1); /* White background for each item */
   border: 1.5px solid #2c3e50; /* Subtle border */
   border-radius: 10px; /* Rounded corners */
   padding: 20px; /* Padding for each category */
@@ -47,7 +47,7 @@
 /* Style for category title */
 .fullcategories li h2 {
   font-size: 1.8rem; /* Medium font size for the category name */
-  color: #2c3e50; /* Text color */
+  color: var(--color9); /* Text color */
   margin-bottom: 10px; /* Space below the title */
   text-transform: capitalize; /* Capitalize for a clean look */
 }

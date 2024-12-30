@@ -1,6 +1,6 @@
 .my-certificates {
-  background-color: #b4b5b0; /* Light background for the page */
-  color: #2c3e50; /* Text color matching the header palette */
+  background-color: var(--color2); /* Light background for the page */
+  color: var(--color9); /* Text color matching the header palette */
   padding: 40px 20px; /* Padding for the container */
   min-height: 100vh;
 }
@@ -17,14 +17,16 @@
 .my-certificates h1 {
   font-size: 2.5rem; /* Larger heading for visibility */
   margin-bottom: 30px; /* Space below the heading */
-  color: #4b5052; /* Match the palette */
+  color: var(--color8); /* Match the palette */
   text-align: center; /* Center the heading */
 }
 
 /* Style for each certificate item */
 .my-certificates li {
-  background-color: #9a9c94; /* Slightly lighter background for each item */
-  border: 1.5px solid #2c3e50; /* Subtle border */
+  background-color: var(
+    --color21
+  ); /* Slightly lighter background for each item */
+  border: 1.5px var(--color9); /* Subtle border */
   border-radius: 8px; /* Rounded corners */
   padding: 20px; /* Padding for each certificate */
   margin-bottom: 20px; /* Space between items */
@@ -42,14 +44,14 @@
 /* Style for certificate title */
 .my-certificates li h2 img {
   font-size: 1.5rem; /* Medium font size for the certificate name */
-  color: #2c3e50; /* Text color */
+  color: var(--color9); /* Text color */
   margin-bottom: 10px; /* Space below the title */
 }
 
 /* Style for certificate mark */
 .my-certificates li p img {
   font-size: 1rem; /* Standard font size */
-  color: #4b5052; /* Subtle text color for details */
+  color: var(--color8); /* Subtle text color for details */
   margin: 0; /* Remove default margins */
 }
 

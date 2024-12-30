@@ -1,7 +1,7 @@
 /* Style for the .schedule-exam container */
 .schedule-exam {
-  background-color: #b4b5b0; /* Light background for the page */
-  color: #2c3e50; /* Text color matching the header palette */
+  background-color: var(--color2); /* Light background for the page */
+  color: var(--color9); /* Text color matching the header palette */
   padding: 40px 20px; /* Padding for the container */
   min-height: 100vh;
   display: flex; /* Center align items */
@@ -12,7 +12,7 @@
 
 /* Style for the box containing the form elements */
 .schedule-box {
-  background-color: #ffffff; /* White background for contrast */
+  background-color: var(--color1); /* White background for contrast */
   border-radius: 10px; /* Rounded corners */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   padding: 40px; /* Increased padding for a spacious layout */
@@ -26,14 +26,14 @@
 .schedule-box h1 {
   font-size: 1.8rem; /* Slightly smaller font size for the box */
   margin: 3px 10px; /* Space below the heading */
-  color: #4b5052; /* Match the palette */
+  color: var(--color8); /* Match the palette */
 }
 
 /* Style for the label */
 .schedule-box h1 {
   font-size: 2rem; /* Larger heading for the wider box */
   margin-bottom: 30px; /* Space below the heading */
-  color: #4b5052; /* Match the palette */
+  color: var(--color8); /* Match the palette */
   text-align: center; /* Keep the heading centered */
 }
 
@@ -52,14 +52,14 @@
 
 /* Style for input focus */
 .schedule-box input[type="date"]:focus {
-  border-color: #597785; /* Highlight border on focus */
+  border-color: var(--color7); /* Highlight border on focus */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
   outline: none; /* Remove default outline */
 }
 
 /* Style for the button */
 .schedule-box button {
-  background-color: #597785; /* Blue button background */
+  background-color: var(--color7); /* Blue button background */
   color: white; /* White text color */
   border: none; /* Remove border */
   border-radius: 5px; /* Rounded corners */
@@ -73,7 +73,7 @@
 
 /* Hover effect for the button */
 .schedule-box button:hover {
-  background-color: #78909c; /* Darker blue on hover */
+  background-color: var(--color3); /* Darker blue on hover */
   transform: translateY(-2px); /* Slight lift on hover */
   font-weight: 600; /* Make text bolder on hover */
 }

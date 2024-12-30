@@ -1,8 +1,8 @@
 /* Style for the .update-exam container */
 .update-exam {
-  background-color: #b4b5b0;
+  background-color: var(--color2);
   /* Light background for the page */
-  color: #2c3e50;
+  color: var(--color9);
   /* Text color matching the header palette */
   padding: 40px 20px;
   /* Padding for the container */
@@ -20,7 +20,7 @@
 
 /* Style for the box containing the form elements */
 .update-box {
-  background-color: #ffffff;
+  background-color: var(--color1);
   /* White background for contrast */
   border-radius: 10px;
   /* Rounded corners */
@@ -42,7 +42,7 @@
   /* Larger heading for the wider box */
   margin-bottom: 30px;
   /* Space below the heading */
-  color: #4b5052;
+  color: var(--color8);
   /* Match the palette */
   text-align: center;
   /* Keep the heading centered */
@@ -52,7 +52,7 @@
 .update-label {
   font-size: 1.2rem;
   /* Font size for the label */
-  color: #4b5052;
+  color: var(--color8);
   /* Match the palette */
   margin-bottom: 5px;
   /* Space below the label */
@@ -86,7 +86,7 @@
 .update-box input[type="date"]:focus,
 .update-box input[type="number"]:focus,
 .update-box input[type="text"]:focus {
-  border-color: #597785;
+  border-color: var(--color7);
   /* Highlight border on focus */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   /* Enhanced shadow */
@@ -96,7 +96,7 @@
 
 /* Style for the button */
 .update-box button {
-  background-color: #597785;
+  background-color: var(--color7);
   /* Blue button background */
   color: white;
   /* White text color */
@@ -120,7 +120,7 @@
 
 /* Hover effect for the button */
 .update-box button:hover {
-  background-color: #78909c;
+  background-color: var(--color3);
   /* Darker blue on hover */
   transform: translateY(-2px);
   /* Slight lift on hover */
