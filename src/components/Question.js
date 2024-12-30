@@ -11,18 +11,21 @@ function Question({
   idIsCorrect,
   nextOrPrevious,
   timeLeft,
-  finish
+  finish,
+  selectedAnswer
 }) {
   // const [idIsCorrect, setIdIsCorrect] = useState({
   //   id: 0,
   //   isCorrect: false
   // });
   const [counter, setCounter] = useState(0);
+  // const [selectedAnswer, setSelectedAnswer] = useState(null);
 
   function getId() {}
 
   function getAnswer(isCorrect) {
     idIsCorrect(isCorrect);
+    // setSelectedAnswer(isCorrect.selectedAnswer);
   }
 
   return (
@@ -58,6 +61,7 @@ function Question({
         questionNumber={questionNumber}
         Id={Exam.examId}
         getAnswer={getAnswer}
+        selectedAnswer={selectedAnswer}
       />
       <Answer
         answer={Exam.answer2}
@@ -66,6 +70,7 @@ function Question({
         questionNumber={questionNumber}
         Id={Exam.examId}
         getAnswer={getAnswer}
+        selectedAnswer={selectedAnswer}
       />
       <Answer
         answer={Exam.answer3}
@@ -74,6 +79,7 @@ function Question({
         questionNumber={questionNumber}
         Id={Exam.examId}
         getAnswer={getAnswer}
+        selectedAnswer={selectedAnswer}
       />
       <Answer
         answer={Exam.answer4}
@@ -82,6 +88,7 @@ function Question({
         questionNumber={questionNumber}
         Id={Exam.examId}
         getAnswer={getAnswer}
+        selectedAnswer={selectedAnswer}
       />
       {Exam.photoLink === "" && <div className="image"></div>}
       {Exam.question === "" && <div className="question"></div>}

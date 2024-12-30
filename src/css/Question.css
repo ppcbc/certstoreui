@@ -39,6 +39,8 @@
 .question-buttons {
   display: flex;
   justify-content: center;
+  align-items: center;
+  padding: 2px;
 }
 .question-title {
   display: flex;

@@ -21,6 +21,7 @@ function Exam() {
   const [timeLeft, setTimeLeft] = useState(0);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [answeredQuestions, setAnsweredQuestions] = useState({});
 
   let navigate = useNavigate();
 
@@ -100,6 +101,11 @@ function Exam() {
   }
 
   function checkCorrect(isCorrect) {
+    setAnsweredQuestions(prev => ({
+      ...prev,
+      [isCorrect.questionNumber]: isCorrect.selectedAnswer
+    }));
+
     setIdCorrect(isCorrect);
 
     let filteredExams = exams;
@@ -172,7 +178,7 @@ function Exam() {
             <div className="box box2">
               {exams[questionNumber] && (
                 <Question
-                  Key={exams[questionNumber]}
+                  Key={exams[questionNumber].examId}
                   idIsCorrect={checkCorrect}
                   Exam={exams[questionNumber]}
                   questionNumber={questionNumber}
@@ -180,6 +186,7 @@ function Exam() {
                   nextOrPrevious={nextOrPrevious}
                   timeLeft={timeLeft}
                   finish={handleFinishExam}
+                  selectedAnswer={answeredQuestions[questionNumber] || null}
                 />
               )}
             </div>

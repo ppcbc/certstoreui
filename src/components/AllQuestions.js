@@ -15,6 +15,10 @@ function AllQuestions({
     setIsMouseOver(!isMouseOver);
   }
 
+  if (selected) {
+    isAnswered = false;
+  }
+
   function answerThis() {
     // selected(currentQuestion);
     getCurrentQuestion(currentQuestion);
