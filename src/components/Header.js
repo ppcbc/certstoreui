@@ -70,7 +70,7 @@ export default function Header() {
             </NavLink>
           </li>
 
-          {myRole === "Admin" && (
+          {/* {myRole === "Admin" && (
             <li className="nav-item">
               <NavLink
                 to="/addfull-category"
@@ -81,7 +81,7 @@ export default function Header() {
                 ADD FULL EXAM CATEGORY
               </NavLink>
             </li>
-          )}
+          )} */}
           {myRole === "Admin" && (
             <li className="nav-item">
               <NavLink
@@ -94,7 +94,7 @@ export default function Header() {
               </NavLink>
             </li>
           )}
-          {myRole === "Admin" && (
+          {/*  {myRole === "Admin" && (
             <li className="nav-item">
               <NavLink
                 to="/addexam-category"
@@ -129,7 +129,7 @@ export default function Header() {
                 ADD EXAM
               </NavLink>
             </li>
-          )}
+          )} */}
           {myRole === "Admin" && (
             <li className="nav-item">
               <NavLink
@@ -152,7 +152,7 @@ export default function Header() {
               USER DETAILS
             </NavLink>
           </li>
-          {myRole === "Admin" && (
+          {/* {myRole === "Admin" && (
             <li className="nav-item">
               <NavLink
                 to="/assignrole"
@@ -163,7 +163,7 @@ export default function Header() {
                 ASSIGN ROLE
               </NavLink>
             </li>
-          )}
+          )} */}
           {myToken !== "" && (
             <li className="nav-item">
               <NavLink
