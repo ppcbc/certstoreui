@@ -45,7 +45,7 @@ function Answer({
         color: isSelected || isMouseOver ? "white" : "black"
       }}
     >
-      <span className="make-larger">{number}</span>: {answer}
+      <span className="make-larger">{number}:</span> {answer}
     </div>
   );
 }

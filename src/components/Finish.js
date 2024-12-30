@@ -1,8 +1,9 @@
 import React from "react";
+import "../css/Finish.css";
 
 function Finish({ score }) {
   return (
-    <div>
+    <div className="finish-container">
       <h1>Finish</h1>
       <h2>score: {score}</h2>
     </div>

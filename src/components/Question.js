@@ -44,7 +44,7 @@ function Question({
       {Exam.question !== "" && (
         <div className="question">
           <p className="questionText">
-            <span className="make-larger">{questionNumber + 1}</span>.{" "}
+            <span className="make-larger">{questionNumber + 1}.</span>{" "}
             {Exam.question}
           </p>
         </div>
