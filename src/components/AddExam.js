@@ -202,7 +202,7 @@ function AddExam() {
             </div>
             <div className="add-my-inner-box">
               <label className="add-my-label">
-                Question Text:
+                Question text:
                 <input
                   type="text"
                   className="fadeIn second"
