@@ -146,7 +146,7 @@ input[type="file"] {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
 .my-checkbox {
@@ -158,7 +158,7 @@ input[type="file"] {
   transform: scale(2);
 }
 .certexam-first-label {
-  margin-right: 40px;
+  margin-right: 20px;
   font-weight: 600;
 }
 .num-of-questions {
@@ -170,5 +170,12 @@ input[type="file"] {
   margin-right: 20px;
 }
 .num-title {
+  margin-right: 20px;
+}
+.my-select-checkbox {
+  display: flex;
+  justify-content: space-between;
+}
+.select-text {
   margin-right: 20px;
 }

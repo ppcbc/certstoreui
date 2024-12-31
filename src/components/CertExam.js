@@ -12,12 +12,12 @@ import {
   setRole,
   setToken
 } from "../features/loginSlice";
+import SelectExamAndQuestions from "./SelectExamAndQuestions";
 
-function AddExam() {
+function CertExam() {
   let navigate = useNavigate();
   const [certExam, setCertExam] = useState({
     fullId: "",
-    categoryId: "",
     testTitle: "",
     testDescription: "",
     price: "",
@@ -28,6 +28,59 @@ function AddExam() {
   const [allExams, setAllExams] = useState([]);
   const [message, setMessage] = useState("");
   const [check, setCheck] = useState(false);
+
+  const [excategoryIds, setExCategoryIds] = useState([]);
+  const [selectedExams, setSelectedExams] = useState([]);
+  const [combinedExams, setCombinedExams] = useState([]);
+
+  function handleExCategoryId(e, categoryId) {
+    let { checked, type, value, name } = e.target;
+
+    if (checked === "true" || checked === "false") {
+      checked = checked === "true";
+    }
+    if (parseInt(categoryId) !== NaN) {
+      parseInt(categoryId);
+    }
+
+    console.log(checked);
+    console.log(categoryId);
+    if (checked === true) {
+      setExCategoryIds(prev => {
+        return [
+          ...prev,
+          {
+            categoryId: categoryId,
+            selected: checked
+          }
+        ];
+      });
+    } else {
+      setExCategoryIds(prev =>
+        prev.filter(a => parseInt(a.categoryId) !== parseInt(categoryId))
+      );
+    }
+    console.log(selectedExams);
+  }
+  function handleSelectedExams(e, categoryId) {
+    let { name, value } = e.target;
+    if (parseInt(value) !== NaN) {
+      parseInt(value);
+    }
+    if (parseInt(categoryId) !== NaN) {
+      parseInt(categoryId);
+    }
+    setSelectedExams(prev => {
+      return [
+        ...prev,
+        {
+          categoryId: categoryId,
+          number: value
+        }
+      ];
+    });
+  }
+
   function handleMessage() {
     setCheck(true);
     setTimeout(() => {
@@ -61,7 +114,6 @@ function AddExam() {
       setExamCategories(response.data);
       setFullCategories(res.data);
       setAllExams(ress.data);
-      console.log(ress.data);
     } catch (error) {
       console.log(error.message);
     }
@@ -85,28 +137,62 @@ function AddExam() {
 
   async function onSubmit(e) {
     e.preventDefault();
-    console.log(certExam);
-    console.log(examCategories);
+
+    console.log("excategoryids");
+    console.log(excategoryIds);
     try {
-      var response = await axios.post(http + "api/CertExams", certExam, {
-        headers: {
-          Authorization: "Bearer " + myToken
-        }
-      });
-      console.log(response.status);
-      if (response.status === 201 || response.status === 200) {
-        setCertExam({
-          fullId: "",
-          categoryId: "",
-          testTitle: "",
-          testDescription: "",
-          price: "",
-          examQuestions: []
+      let combinedSelectedExams = excategoryIds
+        .filter(item => item.selected) // Only selected categories
+        .map(item => {
+          const selectedExam = selectedExams.find(
+            exam => exam.categoryId === item.categoryId
+          );
+          return {
+            categoryId: item.categoryId,
+            selected: item.selected,
+            number: selectedExam ? selectedExam.number : null // Include number if available
+          };
         });
-      }
+      combinedSelectedExams = combinedSelectedExams.filter(
+        a => a.number !== null
+      );
+
+      setCombinedExams(combinedSelectedExams);
+      console.log("certexams");
+      console.log(certExam);
+
+      //   let myObject = certExam.map(a => {
+      //     return {
+      //       ...a,
+      //       examQuestions: combinedSelectedExams
+      //     };
+      //   });
+
+      console.log("MYoBJECT");
+      console.log("MYoBJECT");
+      console.log("MYoBJECT");
+      console.log("MYoBJECT");
+      console.log("MYoBJECT");
+      //   console.log(myObject);
+
+      //   var response = await axios.post(http + "api/CertExams", myObject, {
+      //     headers: {
+      //       Authorization: "Bearer " + myToken
+      //     }
+      //   });
+      //   console.log(response.status);
+      //   if (response.status === 201 || response.status === 200) {
+      //     setCertExam({
+      //       fullId: "",
+      //       testTitle: "",
+      //       testDescription: "",
+      //       price: "",
+      //       examQuestions: []
+      //     });
+      //   }
       setMessage("Exam successfully added");
       handleMessage();
-      console.log(response.data);
+      //   console.log(response.data);
     } catch (error) {
       setMessage("Wrong credentials try again");
       handleMessage();
@@ -172,32 +258,46 @@ function AddExam() {
           {examCategories
             .filter(a => parseInt(a.fullId) === parseInt(certExam.fullId))
             .map((exam, index) => (
-              <div className="certexam-my-inner-box">
-                <label className="certexam-my-label">
-                  <div className="certexam-first-label">
-                    {exam.categoryName}
-                  </div>
-                  <div className="num-of-questions">
-                    <span className="num-title">Number of Questions:</span>
-                    <select name="selectedNumber" onChange={onChange}>
-                      <option value="disabled"> select a number</option>
-                      {[1, 2, 3, 4, 5].map((number, index) => (
-                        <option key={number} value={index}>
-                          {index}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </label>
-                <div className="my-checkbox-container">
-                  <input
-                    className="my-checkbox"
-                    type="checkbox"
-                    name="examCheckbox"
-                    onChange={onChange}
-                  />
-                </div>
-              </div>
+              <SelectExamAndQuestions
+                Key={exam.examId}
+                exam={exam}
+                allExams={allExams}
+                onChange={onChange}
+                handleExCategoryId={handleExCategoryId}
+                handleSelectedExams={handleSelectedExams}
+                catId={exam.categoryId}
+              />
+              //   <div Key={exam.examId} className="certexam-my-inner-box">
+              //     <label className="certexam-my-label">
+              //       <div className="certexam-first-label">
+              //         {exam.categoryName}
+              //       </div>
+              //       <div className="num-of-questions">
+              //         <span className="num-title">Number of Questions:</span>
+              //         <select name="selectedNumber" onChange={onChange}>
+              //           <option value="disabled"> select a number</option>
+              //           {allExams
+              //             .filter(
+              //               a =>
+              //                 parseInt(a.categoryId) === parseInt(exam.categoryId)
+              //             )
+              //             .map((number, index) => (
+              //               <option key={number} value={index + 1}>
+              //                 {index + 1}
+              //               </option>
+              //             ))}
+              //         </select>
+              //       </div>
+              //     </label>
+              //     <div className="my-checkbox-container">
+              //       <input
+              //         className="my-checkbox"
+              //         type="checkbox"
+              //         name="examCheckbox"
+              //         onChange={handleExCategoryId}
+              //       />
+              //     </div>
+              //   </div>
             ))}
 
           <div className="certexam-my-inner-box">
@@ -212,4 +312,4 @@ function AddExam() {
   );
 }
 
-export default AddExam;
+export default CertExam;

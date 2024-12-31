@@ -13,11 +13,13 @@ function FullCategories() {
     const [added, setAdded] = useState("");
     const [error, setError] = useState("");
     const [check, setCheck] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const myToken = useSelector(state => state.token.value.tok);
     const dispatch = useDispatch();
 
-    function handleMessage() {
+    function handleMessage(message) {
+        setAdded(message);
         setCheck(true);
         setTimeout(() => {
             setCheck(false);
@@ -29,6 +31,7 @@ function FullCategories() {
     }, []);
 
     const getFullCategories = async () => {
+        setLoading(true);
         try {
             const response = await fetch(http + "api/FullCategories", {
                 headers: {
@@ -39,6 +42,9 @@ function FullCategories() {
             setFullCategories(data);
         } catch (error) {
             console.error('Error fetching categories:', error);
+            handleMessage("Error fetching categories. Please try again.");
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -73,6 +79,7 @@ function FullCategories() {
             return;
         }
 
+        setLoading(true);
         try {
             const response = await fetch(http + "api/FullCategories", {
                 method: "POST",
@@ -87,15 +94,15 @@ function FullCategories() {
                     name: "",
                     description: ""
                 });
-                setAdded("Category added successfully");
-                handleMessage();
+                handleMessage("Category added successfully");
                 setError("");
                 getFullCategories();
             }
         } catch (error) {
             console.error('Error adding category:', error);
-            setAdded("Error adding category. Please try again.");
-            handleMessage();
+            handleMessage("Error adding category. Please try again.");
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -104,6 +111,7 @@ function FullCategories() {
             return;
         }
 
+        setLoading(true);
         try {
             const response = await fetch(http + `api/FullCategories/${categoryId}`, {
                 method: "DELETE",
@@ -112,14 +120,14 @@ function FullCategories() {
                 }
             });
             if (response.status === 204) {
-                setAdded("Category deleted successfully");
-                handleMessage();
+                handleMessage("Category deleted successfully");
                 getFullCategories();
             }
         } catch (error) {
             console.error('Error deleting category:', error);
-            setAdded("Error deleting category. Please try again.");
-            handleMessage();
+            handleMessage("Error deleting category. Please try again.");
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -128,33 +136,34 @@ function FullCategories() {
             <div className="fullcategories">
                 <div className="fullcategories-box">
                     <div className="fullcategories-inner-box">
+                        <h2 className="fullcategories-label not-bold">Add Full Category</h2>
                         <div className="fullcategories-field">
                             <label className="fullcategories-label">
                                 Category Name:
-                                <input
-                                    type="text"
-                                    name="name"
-                                    placeholder="Category Name"
-                                    value={newCategory.name}
-                                    onChange={onChange}
-                                />
                             </label>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Category Name"
+                                value={newCategory.name}
+                                onChange={onChange}
+                            />
                         </div>
                         <div className="fullcategories-field">
                             <label className="fullcategories-label">
                                 Category Description:
-                                <input
-                                    type="text"
-                                    name="description"
-                                    placeholder="Category Description"
-                                    value={newCategory.description}
-                                    onChange={onChange}
-                                />
                             </label>
+                            <input
+                                type="text"
+                                name="description"
+                                placeholder="Category Description"
+                                value={newCategory.description}
+                                onChange={onChange}
+                            />
                         </div>
                     </div>
                     <button type="submit" className="submit-btn">
-                        Add Category
+                        Add
                     </button>
                     {error && (
                         <div className="fullcategories-label">
@@ -163,15 +172,19 @@ function FullCategories() {
                     )}
                     <div className="fullcategories-label">{check && <p>{added}</p>}</div>
                 </div>
-                <ul>
-                    {fullCategories.map((category) => (
-                        <li key={category.fullId}>
-                            <h2>{category.name}</h2>
-                            <p>{category.description}</p>
-                            <button onClick={() => onDelete(category.fullId)}>Delete</button>
-                        </li>
-                    ))}
-                </ul>
+                {loading ? (
+                    <p>Loading...</p>
+                ) : (
+                    <ul>
+                        {fullCategories.map((category) => (
+                            <li key={category.fullId}>
+                                <h2>{category.name}</h2>
+                                <p>{category.description}</p>
+                                <button onClick={() => onDelete(category.fullId)}>Delete</button>
+                            </li>
+                        ))}
+                    </ul>
+                )}
             </div>
         </form>
     );

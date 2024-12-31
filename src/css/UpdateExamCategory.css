@@ -38,11 +38,16 @@
 
 /* Style for the h1 (main heading) */
 .update-box h1 {
-  font-size: 2rem; /* Larger heading for the wider box */
-  margin: 3px 10px; /* Space below the heading */
-  margin-bottom: 30px; /* Space below the heading */
-  color: var(--color8); /* Match the palette */
-  text-align: center; /* Keep the heading centered */
+  font-size: 2rem;
+  /* Larger heading for the wider box */
+  margin: 3px 10px;
+  /* Space below the heading */
+  margin-bottom: 30px;
+  /* Space below the heading */
+  color: var(--color8);
+  /* Match the palette */
+  text-align: center;
+  /* Keep the heading centered */
 }
 
 /* Style for the label */
@@ -185,8 +190,7 @@ input::-webkit-inner-spin-button {
   /* Remove default margins */
 }
 
-/* Firefox style for number inputs */
-input[type="number"] {
+Firefox style for number inputs input[type="number"] {
   -moz-appearance: textfield;
   /* Firefox */
 }
@@ -194,4 +198,14 @@ input[type="number"] {
 /* Alignment class */
 .align-left {
   text-align: left;
+}
+
+.UpdateExamCategory-error-message {
+  color: red;
+  font-size: 12px;
+  text-align: right;
+  margin-top: -5px;
+  margin-bottom: 15px;
+  margin-left: 5px;
+  padding-right: 3px;
 }
