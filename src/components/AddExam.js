@@ -93,13 +93,11 @@ function AddExam() {
       return {
         ...prev,
         [name]: value,
-        // fullId: fullCategoryId,
         questionPhotoLink: imageUrl
       };
     });
   }
   function onChangeFullCategory(e) {
-    // dispatch(setFullCategoryId(e.target.value));
     const { value } = e.target;
   }
   async function onSubmit(e) {
