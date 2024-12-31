@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <p>&copy; 2024 Peoplecert bootcamp. All Rights Reserved.</p>
+        <p>&copy; 2024 PeopleCert bootcamp. All Rights Reserved.</p>
         <div className="footer-links">
           <NavLink to="/contact-us">Contact Us</NavLink>
           <NavLink to="/about-us">About</NavLink>
