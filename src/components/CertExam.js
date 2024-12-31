@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
 import http from "../data/http";
-// import "../css/ScheduleExam.css";
 import "../css/AddExam.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -125,7 +124,7 @@ function AddExam() {
                   type="text"
                   className="fadeIn second"
                   name="questionText"
-                  placeholder="question text"
+                  placeholder="Certification Title"
                   value={certExam.testTitle}
                   onChange={onChange}
                 />
@@ -138,8 +137,21 @@ function AddExam() {
                   type="text"
                   className="fadeIn second"
                   name="questionText"
-                  placeholder="question text"
+                  placeholder="Certification Description"
                   value={certExam.testDescription}
+                  onChange={onChange}
+                />
+              </label>
+            </div>
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
+                Certification Price:
+                <input
+                  type="number"
+                  className="fadeIn second"
+                  name="price"
+                  placeholder="Price"
+                  value={certExam.price}
                   onChange={onChange}
                 />
               </label>
