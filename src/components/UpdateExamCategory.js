@@ -3,7 +3,6 @@ import React from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setFullCategoryId } from "../features/loginSlice";
-//import "../css/AddExamCategory.css";
 import "../css/UpdateExamCategory.css";
 import http from "../data/http";
 
@@ -13,12 +12,12 @@ function UpdateExamCategory() {
     categoryId: 0,
     categoryName: "",
     categoryDescription: ""
-    //price: ""
   });
   const [fullCategories, setFullCategories] = useState([]);
   const [examCategories, setExamCategories] = useState([]);
   const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
+  const [validationMessages, setValidationMessages] = useState({});
   const [check, setCheck] = useState(false);
 
   const myToken = useSelector(state => state.token.value.tok);
@@ -44,7 +43,7 @@ function UpdateExamCategory() {
       console.error("Error fetching full categories:", error.message);
     }
   }, [myToken]);
-  // Use -> !!useCallback!!
+
   const getExamCategories = useCallback(async () => {
     try {
       const res = await axios.get(http + "api/ExamCategories", {
@@ -92,10 +91,9 @@ function UpdateExamCategory() {
     setCategoryToUpdate(prev => ({
       ...prev,
       fullId: parseInt(value),
-      categoryId: 0, // Reset categoryId when changing full category
+      categoryId: 0,
       categoryName: "",
       categoryDescription: ""
-      //price: ""
     }));
     dispatch(setFullCategoryId(value));
     console.log("Selected full category:", value);
@@ -111,31 +109,32 @@ function UpdateExamCategory() {
     fetchCategoryData(value);
   };
 
-  const onSubmit = async e => {
-    e.preventDefault();
-
-    // Validation
+  const validate = () => {
+    let errors = {};
     if (categoryToUpdate.fullId === 0) {
-      setError("Please select a full category");
-      return;
+      errors.fullId = "Please select a full category";
     }
     if (categoryToUpdate.categoryId === 0) {
-      setError("Please select an exam category");
-      return;
+      errors.categoryId = "Please select an exam category";
     }
     if (categoryToUpdate.categoryName === "") {
-      setError("Please enter a category name");
-      return;
+      errors.categoryName = "Please enter a category name";
     }
-    // if (categoryToUpdate.price === "") {
-    //     setError("Please enter a price");
-    //     return;
-    // }
+    if (categoryToUpdate.categoryDescription === "") {
+      errors.categoryDescription = "Please enter a category description";
+    }
+    setValidationMessages(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const onSubmit = async e => {
+    e.preventDefault();
+    if (!validate()) return;
 
     console.log("Submitted category:", categoryToUpdate);
     try {
       const response = await axios.put(
-        `${http}api/ExamCategories/${categoryToUpdate.categoryId}`, // Use categoryId for the PUT request
+        `${http}api/ExamCategories/${categoryToUpdate.categoryId}`,
         categoryToUpdate,
         {
           headers: {
@@ -143,11 +142,11 @@ function UpdateExamCategory() {
           }
         }
       );
-      console.log("Update response status:", response.status); // !!Responce status 200 or 204!!
+      console.log("Update response status:", response.status);
       if (response.status === 200 || response.status === 204) {
         setMessage("Category updated successfully");
         handleMessage();
-        setError("");
+        setValidationMessages({});
       } else {
         setMessage("Failed to update category");
       }
@@ -180,6 +179,9 @@ function UpdateExamCategory() {
                   ))}
                 </select>
               </label>
+              {validationMessages.fullId && (
+                <p className="UpdateExamCategory-error-message">{validationMessages.fullId}</p>
+              )}
             </div>
             {examCategories.length > 0 && categoryToUpdate.fullId !== 0 && (
               <div className="update-inner-field">
@@ -200,6 +202,9 @@ function UpdateExamCategory() {
                       ))}
                   </select>
                 </label>
+                {validationMessages.categoryId && (
+                  <p className="UpdateExamCategory-error-message">{validationMessages.categoryId}</p>
+                )}
               </div>
             )}
             {categoryToUpdate.categoryId !== 0 && (
@@ -216,6 +221,9 @@ function UpdateExamCategory() {
                       onChange={onChange}
                     />
                   </label>
+                  {validationMessages.categoryName && (
+                    <p className="UpdateExamCategory-error-message">{validationMessages.categoryName}</p>
+                  )}
                 </div>
                 <div className="update-inner-field">
                   <label className="update-label">
@@ -229,37 +237,25 @@ function UpdateExamCategory() {
                       onChange={onChange}
                     />
                   </label>
+                  {validationMessages.categoryDescription && (
+                    <p className="UpdateExamCategory-error-message">{validationMessages.categoryDescription}</p>
+                  )}
                 </div>
-                {/* <div className="update-inner-field">
-                                    <label className="update-label">
-                                        Price:
-                                        <input
-                                            type="number"
-                                            inputMode="numeric"
-                                            className="fadeIn third number"
-                                            name="price"
-                                            placeholder="Price"
-                                            value={categoryToUpdate.price}
-                                            onChange={onChange}
-                                        />
-                                    </label>
-                                </div> */}
               </>
             )}
           </div>
           <button type="submit" className="fadeIn fourth">
             Update Exam Category
           </button>
-          {error && (
-            <div className="update-label">
-              <p style={{ color: "red" }}>{error}</p>
-            </div>
-          )}
-          <div className="update-label">{check && <p>{message}</p>}</div>
+          <div className="update-label">
+            {check && <p>{message}</p>}
+          </div>
         </div>
       </div>
     </form>
   );
+
+
 }
 
 export default UpdateExamCategory;

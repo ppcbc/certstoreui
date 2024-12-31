@@ -20,12 +20,12 @@
     margin-top: 180px;
 }
 
-    .fullcategories-box h1 {
-        font-size: 2rem;
-        margin-bottom: 30px;
-        color: #4b5052;
-        text-align: center;
-    }
+.fullcategories-box h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #4b5052;
+    text-align: center;
+}
 
 .fullcategories-label {
     font-size: 1.8rem;
@@ -45,11 +45,11 @@
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-    .fullcategories-box input[type="text"]:focus {
-        border-color: #597785;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        outline: none;
-    }
+.fullcategories-box input[type="text"]:focus {
+    border-color: #597785;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
 
 .fullcategories-box .submit-btn {
     background-color: #597785;
@@ -64,11 +64,11 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-    .fullcategories-box .submit-btn:hover {
-        background-color: #78909c;
-        transform: translateY(-2px);
-        font-weight: 600;
-    }
+.fullcategories-box .submit-btn:hover {
+    background-color: #78909c;
+    transform: translateY(-2px);
+    font-weight: 600;
+}
 
 .fullcategories-inner-box {
     display: flex;
@@ -132,22 +132,23 @@ input[type="number"] {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-    .fullcategories li:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
+.fullcategories li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
 
-    .fullcategories li h2 {
-        font-size: 1.8rem;
-        color: #2c3e50;
-        margin-bottom: 10px;
-        text-transform: capitalize;
-    }
+.fullcategories li h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
 
-    .fullcategories li p {
-        font-size: 1rem;
-        color: #4b5052;
-    }
+.fullcategories li p {
+    font-size: 1rem;
+    color: #4b5052;
+}
+
 .fullcategories ul {
     display: none;
 }

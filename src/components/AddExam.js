@@ -34,15 +34,9 @@ function AddExam() {
   const [fullCategories, setFullCategories] = useState([]);
   const [message, setMessage] = useState("");
   const [check, setCheck] = useState(false);
-
-  function handleMessage() {
-    setCheck(true);
-    setTimeout(() => {
-      setCheck(false);
-    }, 700);
-  }
-
+  const [errors, setErrors] = useState({});
   const [imageUrl, setImageUrl] = useState("");
+  const [validationMessages, setValidationMessages] = useState({});
 
   const preset_key = "112898813666492";
   const precet = "certphoto";
@@ -50,8 +44,6 @@ function AddExam() {
 
   const myToken = useSelector(state => state.token.value.tok);
   const fullCategoryId = useSelector(state => state.token.value.fullCategoryId);
-  // const myToken = localStorage.getItem("tok");
-  // const fullCategoryId = localStorage.getItem("fullCategoryId");
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -80,6 +72,22 @@ function AddExam() {
       console.log(error.message);
     }
   }
+
+  function validate() {
+    let tempErrors = {};
+    if (!newExam.fullId) tempErrors.fullId = "Category is required";
+    if (!newExam.categoryId) tempErrors.categoryId = "Exam is required";
+    if (!newExam.questionText) tempErrors.questionText = "Question text is required";
+    if (!newExam.option1) tempErrors.option1 = "First question is required";
+    if (!newExam.option2) tempErrors.option2 = "Second question is required";
+    if (!newExam.option3) tempErrors.option3 = "Third question is required";
+    if (!newExam.option4) tempErrors.option4 = "Fourth question is required";
+    if (!imageUrl) tempErrors.imageUrl = "Please upload a valid image";
+    setErrors(tempErrors);
+    setValidationMessages(errors);
+    return Object.keys(tempErrors).length === 0;
+  }
+
   function onChange(e) {
     let { name, value } = e.target;
     if (parseInt(value) !== NaN) {
@@ -93,17 +101,19 @@ function AddExam() {
       return {
         ...prev,
         [name]: value,
-        // fullId: fullCategoryId,
         questionPhotoLink: imageUrl
       };
     });
   }
+
   function onChangeFullCategory(e) {
-    // dispatch(setFullCategoryId(e.target.value));
     const { value } = e.target;
   }
+
   async function onSubmit(e) {
     e.preventDefault();
+    if (!validate()) return;
+
     console.log(newExam);
     console.log(examCategories);
     try {
@@ -157,6 +167,12 @@ function AddExam() {
     }
   }
 
+  function handleMessage() {
+    setCheck(true);
+    setTimeout(() => {
+      setCheck(false);
+    }, 700);
+  }
   return (
     <form action="" onSubmit={onSubmit}>
       <div className="add-exam">
@@ -178,14 +194,20 @@ function AddExam() {
                     </option>
                   ))}
                 </select>
+
               </label>
             </div>
+            {validationMessages.fullId && (
+              <p className="AddExam-error-message">
+                {validationMessages.fullId}
+              </p>
+            )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
                 Select exam:
                 <select
                   name="categoryId"
-                  value={examCategories.categoryId}
+                  value={newExam.categoryId}
                   onChange={onChange}
                 >
                   <option value={0}>Exam</option>
@@ -199,8 +221,14 @@ function AddExam() {
                       </option>
                     ))}
                 </select>
+
               </label>
             </div>
+            {validationMessages.categoryId && (
+              <p className="AddExam-error-message">
+                {validationMessages.categoryId}
+              </p>
+            )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
                 Question text:
@@ -212,12 +240,18 @@ function AddExam() {
                   value={newExam.questionText}
                   onChange={onChange}
                 />
+
               </label>
             </div>
+            {validationMessages.questionText && (
+              <p className="AddExam-error-message">
+                {validationMessages.questionText}
+              </p>
+            )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
-                Upload foto for code snipped (Less than 10mb):
-                <label for="file-upload" className="custom-file-upload">
+                Upload photo for code snippet (Less than 10MB):
+                <label htmlFor="file-upload" className="custom-file-upload">
                   Upload Photo
                   <input
                     id="file-upload"
@@ -226,8 +260,14 @@ function AddExam() {
                     onChange={handleFile}
                   ></input>
                 </label>
+
               </label>
             </div>
+            {validationMessages.imageUrl && (
+              <p className="AddExam-error-message">
+                {validationMessages.imageUrl}
+              </p>
+            )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
                 First question:
@@ -246,8 +286,14 @@ function AddExam() {
                   <option value={false}>Wrong</option>
                   <option value={true}>Correct</option>
                 </select>
+
               </label>
             </div>
+            {validationMessages.option1 && (
+              <p className="AddExam-error-message">
+                {validationMessages.option1}
+              </p>
+            )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
                 Second question:
@@ -267,8 +313,14 @@ function AddExam() {
                   <option value={false}>Wrong</option>
                   <option value={true}>Correct</option>
                 </select>
+
               </label>
             </div>
+            {validationMessages.option2 && (
+              <p className="AddExam-error-message">
+                {validationMessages.option2}
+              </p>
+            )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
                 Third question:
@@ -288,14 +340,20 @@ function AddExam() {
                   <option value={false}>Wrong</option>
                   <option value={true}>Correct</option>
                 </select>
+
               </label>
             </div>
+            {validationMessages.option3 && (
+              <p className="AddExam-error-message">
+                {validationMessages.option3}
+              </p>
+            )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
                 Fourth question:
                 <input
                   type="text"
-                  class="fadeIn third"
+                  className="fadeIn third"
                   name="option4"
                   placeholder="fourth question"
                   value={newExam.option4}
@@ -309,15 +367,23 @@ function AddExam() {
                   <option value={false}>Wrong</option>
                   <option value={true}>Correct</option>
                 </select>
+
               </label>
             </div>
+            {validationMessages.option4 && (
+              <p className="AddExam-error-message">
+                {validationMessages.option4}
+              </p>
+            )}
           </div>
           <div className="add-my-inner-box">
-            <button type="submit" class="fadeIn fourth" value="submit">
+            <button type="submit" className="fadeIn fourth" value="submit">
               Add
             </button>
           </div>
-          <div className="add-my-label">{check && <p>{message}</p>}</div>
+          <div className="add-my-label">
+            {check && <p style={{ color: 'black' }}>{message}</p>}
+          </div>
         </div>
       </div>
     </form>
@@ -325,3 +391,4 @@ function AddExam() {
 }
 
 export default AddExam;
+//back

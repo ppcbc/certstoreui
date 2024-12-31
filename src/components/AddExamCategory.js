@@ -11,22 +11,14 @@ function AddExamCategory() {
     fullId: 0,
     categoryName: "",
     categoryDescription: ""
-    // price: ""
   });
   const [fullCategories, setFullCategories] = useState([]);
   const [added, setAdded] = useState("");
-  const [error, setError] = useState("");
+  const [validationMessages, setValidationMessages] = useState({});
   const [check, setCheck] = useState(false);
 
   const myToken = useSelector(state => state.token.value.tok);
   const dispatch = useDispatch();
-
-  function handleMessage() {
-    setCheck(true);
-    setTimeout(() => {
-      setCheck(false);
-    }, 700);
-  }
 
   useEffect(() => {
     getFullCategories();
@@ -44,6 +36,21 @@ function AddExamCategory() {
     } catch (error) {
       console.error(error.message);
     }
+  };
+
+  const validate = () => {
+    let errors = {};
+    if (newCategory.fullId === 0) {
+      errors.fullId = "Please select a full category";
+    }
+    if (newCategory.categoryName === "") {
+      errors.categoryName = "Please enter a category name";
+    }
+    if (newCategory.categoryDescription === "") {
+      errors.categoryDescription = "Please enter a category description";
+    }
+    setValidationMessages(errors);
+    return Object.keys(errors).length === 0;
   };
 
   const onChange = e => {
@@ -65,20 +72,7 @@ function AddExamCategory() {
 
   const onSubmit = async e => {
     e.preventDefault();
-
-    // Validation
-    if (newCategory.fullId === 0) {
-      setError("Please select a full category");
-      return;
-    }
-    if (newCategory.categoryName === "") {
-      setError("Please enter a category name");
-      return;
-    }
-    if (newCategory.categoryDescription === "") {
-      setError("Please enter a category description");
-      return;
-    }
+    if (!validate()) return;
 
     console.log(newCategory);
     try {
@@ -97,11 +91,10 @@ function AddExamCategory() {
           fullId: 0,
           categoryName: "",
           categoryDescription: ""
-          // price: ""
         });
         setAdded("Category added successfully");
         handleMessage();
-        setError("");
+        setValidationMessages({});
       }
       console.log(response.data);
     } catch (error) {
@@ -110,12 +103,18 @@ function AddExamCategory() {
         fullId: 0,
         categoryName: "",
         categoryDescription: ""
-        // price: ""
       });
       setAdded("Wrong credentials try again");
       handleMessage();
     }
   };
+
+  function handleMessage() {
+    setCheck(true);
+    setTimeout(() => {
+      setCheck(false);
+    }, 700);
+  }
 
   return (
     <form action="" onSubmit={onSubmit}>
@@ -128,8 +127,8 @@ function AddExamCategory() {
                 Select category:
                 <select
                   name="fullId"
-                  // value={newExam.fullId}
-                  onChange={onChange}
+                  value={newCategory.fullId}
+                  onChange={onChangeFullCategory}
                 >
                   <option value={0}>Category</option>
                   {fullCategories.map(a => (
@@ -139,41 +138,54 @@ function AddExamCategory() {
                   ))}
                 </select>
               </label>
-            </div>
 
+            </div>
+            {validationMessages.fullId && (
+              <p className="AddExamCategory-error-message">{validationMessages.fullId}</p>
+            )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
                 Exam category name:
                 <input
                   type="text"
                   className="fadeIn second"
-                  name="questionText"
+                  name="categoryName"
                   placeholder="Exam category name"
-                  // value={newExam.questionText}
+                  value={newCategory.categoryName}
                   onChange={onChange}
                 />
               </label>
+
             </div>
+            {validationMessages.categoryName && (
+              <p className="AddExamCategory-error-message">{validationMessages.categoryName}</p>
+            )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
                 Exam category description:
                 <input
                   type="text"
                   className="fadeIn second"
-                  name="questionText"
+                  name="categoryDescription"
                   placeholder="Exam category description"
-                  // value={newExam.questionText}
+                  value={newCategory.categoryDescription}
                   onChange={onChange}
                 />
               </label>
+
             </div>
+            {validationMessages.categoryDescription && (
+              <p className="AddExamCategory-error-message">{validationMessages.categoryDescription}</p>
+            )}
           </div>
           <div className="add-my-inner-box">
-            <button type="submit" class="fadeIn fourth" value="Log In">
+            <button type="submit" className="fadeIn fourth" value="Log In">
               Add
             </button>
           </div>
-          {/* <div className="add-my-label">{check && <p>{message}</p>}</div> */}
+          <div className="add-my-label">
+            {check && <p>{added}</p>}
+          </div>
         </div>
       </div>
     </form>
