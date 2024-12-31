@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import '../css/Certifications.css'
+import { Link } from 'react-router-dom';
+import '../css/Certifications.css';
 
 export default function Certifications() {
     const [certifications] = useState([
@@ -45,15 +46,26 @@ export default function Certifications() {
         alert(`Bought voucher for ${certification.name}`);
     };
 
+    const truncateDescription = (text, maxLength) => {
+        if (text.length > maxLength) {
+            return text.slice(0, maxLength) + '...';
+        }
+        return text;
+    };
+
     return (
         <div className="certifications">
             <h1>Available Certifications</h1>
             <ul>
                 {certifications.map((certification) => (
-                    <li key={certification.id}>
-                        <h2>{certification.name}</h2>
-                        <p>{certification.description}</p>
-                        <p>Price: ${certification.price}</p>
+                    <li key={certification.id} className="certification-box">
+                        <Link to="/detailed-certifications" className="certification-link">
+                            <div>
+                                <h2>{certification.name}</h2>
+                                <p>{truncateDescription(certification.description, 100)}</p>
+                                <p>Price: ${certification.price}</p>
+                            </div>
+                        </Link>
                         <button onClick={() => handleBuy(certification)}>Buy Voucher</button>
                     </li>
                 ))}

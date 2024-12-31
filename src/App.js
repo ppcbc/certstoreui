@@ -8,6 +8,7 @@ import {
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Certifications from "./components/Certifications";
+import DetailedCertification from "./components/DetailedCertification";
 import ScheduleExam from "./components/ScheduleExam";
 import MyCertificates from "./components/MyCertificates";
 import Register from "./components/Register";
@@ -27,6 +28,7 @@ import Footer from "./components/Footer";
 import ContactUs from "./components/ContactUs";
 import About from "./components/About";
 
+
 function Layout() {
   const location = useLocation();
   const hideHeaderRoutes = ["/exam"];
@@ -39,6 +41,7 @@ function Layout() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/certifications" element={<Certifications />} />
+        <Route path="/detailed-certifications" element={<DetailedCertification />} />
         <Route path="/schedule-exam" element={<ScheduleExam />} />
         <Route path="/my-certificates" element={<MyCertificates />} />
         <Route path="/adminpanel" element={<AdminPanel />} />

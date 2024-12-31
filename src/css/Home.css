@@ -1,4 +1,63 @@
+/* .my-home {
+  background-color: #2e4854;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 70px 90px 70px 90px;
+  word-wrap: break-word;
+}
 
+.my-home h1 {
+  color: lightgray;
+  font-weight: 500;
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  border-bottom: 2px solid lightgray;
+  padding-bottom: 20px;
+  letter-spacing: 0.5px;
+  padding: 20px;
+}
+
+.my-home p {
+  color: lightgray;
+  font-size: 1.2rem;
+  max-width: 1200px;
+  letter-spacing: 0.5px;
+  word-wrap: break-word;
+  text-align: left;
+} */
+
+/* .my-home {
+  background-color:
+  color: #fff; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: flex-start; 
+  align-items: center; 
+  text-align: center; 
+  padding: 70px 20px 20px 20px; 
+  word-wrap: break-word;
+}
+
+.my-home h1 {
+  color: lightgray;
+  font-weight: 500;
+  font-size: 3.5rem; 
+  margin-bottom: 10px; 
+  border-bottom: 2px solid lightgray;
+  padding-bottom: 20px; 
+  letter-spacing: 0.5px;
+}
+
+.my-home p {
+  color: lightgray;
+  font-size: 1.2rem; 
+  max-width: 850px;
+  letter-spacing: 0.5px;
+} */
 
 .my-home {
   background-color: #2e4854; /* Fallback background color */
@@ -77,6 +136,10 @@
   flex-wrap: wrap; /* Allow wrapping to next line for responsiveness */
   justify-content: center; /* Center the items in the container */
   gap: 20px; /* Space between items */
+}
+
+.preview-certifications ul a {
+  text-decoration: none !important;; /* Ensure links within ul have no underline */
 }
 
 /* Style for each certification box */
