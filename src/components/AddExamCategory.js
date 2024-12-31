@@ -127,15 +127,15 @@ function AddExamCategory() {
                 Select category:
                 <select
                   name="fullId"
-                  // value={newExam.fullId}
-                  onChange={onChange}
+                  value={newCategory.fullId}
+                  onChange={onChangeFullCategory}
                 >
                   <option value={0}>Category</option>
-                  {/* {fullCategories.map(a => (
+                  {fullCategories.map(a => (
                     <option key={a.fullId} value={a.fullId}>
                       {a.name}
                     </option>
-                  ))} */}
+                  ))}
                 </select>
               </label>
             </div>
@@ -146,9 +146,9 @@ function AddExamCategory() {
                 <input
                   type="text"
                   className="fadeIn second"
-                  name="questionText"
+                  name="categoryName"
                   placeholder="Exam category name"
-                  // value={newExam.questionText}
+                  value={newCategory.categoryName}
                   onChange={onChange}
                 />
               </label>
@@ -159,23 +159,27 @@ function AddExamCategory() {
                 <input
                   type="text"
                   className="fadeIn second"
-                  name="questionText"
+                  name="categoryDescription"
                   placeholder="Exam category description"
-                  // value={newExam.questionText}
+                  value={newCategory.categoryDescription}
                   onChange={onChange}
                 />
               </label>
             </div>
-
-
-
           </div>
           <div className="add-my-inner-box">
-            <button type="submit" class="fadeIn fourth" value="Log In">
+            <button type="submit" className="fadeIn fourth">
               Add
             </button>
           </div>
-          {/* <div className="add-my-label">{check && <p>{message}</p>}</div> */}
+          {error && (
+            <div className="add-my-label">
+              <p style={{ color: "red" }}>{error}</p>
+            </div>
+          )}
+          <div className="add-my-label">
+            {check && <p>{added}</p>}
+          </div>
         </div>
       </div>
     </form>
