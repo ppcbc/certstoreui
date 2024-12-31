@@ -4,7 +4,7 @@ import "../css/Finish.css";
 function Finish({ score }) {
   return (
     <div className="finish-container">
-      <h1>Finish</h1>
+      <h1>Finished !!!</h1>
       <h2>score: {score}</h2>
     </div>
   );
