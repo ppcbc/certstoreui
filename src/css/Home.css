@@ -1,63 +1,4 @@
-/* .my-home {
-  background-color: #2e4854;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: center;
-  padding: 70px 90px 70px 90px;
-  word-wrap: break-word;
-}
 
-.my-home h1 {
-  color: lightgray;
-  font-weight: 500;
-  font-size: 3.5rem;
-  margin-bottom: 10px;
-  border-bottom: 2px solid lightgray;
-  padding-bottom: 20px;
-  letter-spacing: 0.5px;
-  padding: 20px;
-}
-
-.my-home p {
-  color: lightgray;
-  font-size: 1.2rem;
-  max-width: 1200px;
-  letter-spacing: 0.5px;
-  word-wrap: break-word;
-  text-align: left;
-} */
-
-/* .my-home {
-  background-color:
-  color: #fff; 
-  display: flex; 
-  flex-direction: column; 
-  justify-content: flex-start; 
-  align-items: center; 
-  text-align: center; 
-  padding: 70px 20px 20px 20px; 
-  word-wrap: break-word;
-}
-
-.my-home h1 {
-  color: lightgray;
-  font-weight: 500;
-  font-size: 3.5rem; 
-  margin-bottom: 10px; 
-  border-bottom: 2px solid lightgray;
-  padding-bottom: 20px; 
-  letter-spacing: 0.5px;
-}
-
-.my-home p {
-  color: lightgray;
-  font-size: 1.2rem; 
-  max-width: 850px;
-  letter-spacing: 0.5px;
-} */
 
 .my-home {
   background-color: #2e4854; /* Fallback background color */
@@ -73,7 +14,9 @@
   text-align: center; /* Center the text */
   padding: 70px 20px 20px 20px; /* Add padding around the content */
   word-wrap: break-word;
-  height: 100vh;
+  min-height: 100vh; /* Ensure the section takes up at least the full viewport height */
+  box-sizing: border-box; /* Include padding in height calculation */
+  margin-bottom: -25px;
 }
 
 /* Style for h1 (headline) */
@@ -111,6 +54,8 @@
   padding: 40px 20px; /* Padding for the container */
   text-align: center; /* Center the heading and general text */
   width: 100%;
+  position: relative; /* Prevent it from overlapping other sections */
+  margin-top: 0;
 }
 
 /* Style for the h1 (Featured Certifications title) */

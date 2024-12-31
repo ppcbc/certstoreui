@@ -1,12 +1,30 @@
+/* Ensure the entire page uses flexbox */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Container for the entire page */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%; /* Ensures the root container spans the full height */
+}
+
+/* Main content area */
+main {
+  flex-grow: 1; /* Ensures content takes up available space */
+}
+
 .footer {
-  background-color: var(--color6);
-  color: white;
-  /* padding: 20px 0; */
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  z-index: 1000;
+  background-color: var(--color6); /* Footer background */
+  color: white; /* Text color */
+  position: relative; /* Keep it at the bottom of the page content */
+  width: 100%; /* Full width */
+  text-align: center; /* Center align text */
+  padding: 4px 0; /* Adjust padding as needed */
 }
 
 .footer-content {
@@ -15,21 +33,25 @@
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 8px 20px; /* Add some padding for spacing */
 }
+
+.footer-content p {
+  font-size: 0.85em; 
+  margin-left: 20px;
+}
+
 .footer-links {
-  text-decoration: none;
-  color: white;
-  font-size: 0.9em;
+  display: flex;
 }
 
 .footer-links a {
   color: white;
   text-decoration: none;
   margin: 0 15px;
+  font-size: 0.85em;
 }
 
 .footer-links a:hover {
-  color: white;
   font-weight: 600;
 }
