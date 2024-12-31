@@ -159,37 +159,36 @@ function CertExam() {
 
       setCombinedExams(combinedSelectedExams);
       console.log("certexams");
+
+      let myObject = {
+        ...certExam,
+        price: parseInt(certExam.price),
+        examQuestions: combinedSelectedExams
+      };
+
+      console.log("MYoBJECT");
+      console.log("MYoBJECT");
+      console.log("MYoBJECT");
+      console.log("MYoBJECT");
+      console.log("MYoBJECT");
       console.log(certExam);
+      console.log(myObject);
 
-      //   let myObject = certExam.map(a => {
-      //     return {
-      //       ...a,
-      //       examQuestions: combinedSelectedExams
-      //     };
-      //   });
-
-      console.log("MYoBJECT");
-      console.log("MYoBJECT");
-      console.log("MYoBJECT");
-      console.log("MYoBJECT");
-      console.log("MYoBJECT");
-      //   console.log(myObject);
-
-      //   var response = await axios.post(http + "api/CertExams", myObject, {
-      //     headers: {
-      //       Authorization: "Bearer " + myToken
-      //     }
-      //   });
-      //   console.log(response.status);
-      //   if (response.status === 201 || response.status === 200) {
-      //     setCertExam({
-      //       fullId: "",
-      //       testTitle: "",
-      //       testDescription: "",
-      //       price: "",
-      //       examQuestions: []
-      //     });
-      //   }
+      var response = await axios.post(http + "api/CertExams", myObject, {
+        headers: {
+          Authorization: "Bearer " + myToken
+        }
+      });
+      console.log(response.status);
+      if (response.status === 201 || response.status === 200) {
+        setCertExam({
+          fullId: "",
+          testTitle: "",
+          testDescription: "",
+          price: "",
+          examQuestions: []
+        });
+      }
       setMessage("Exam successfully added");
       handleMessage();
       //   console.log(response.data);
@@ -201,7 +200,7 @@ function CertExam() {
   }
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} action="submit">
       <div className="certexam">
         <div className="certexam-box">
           <h1>Add Certification Exam</h1>
@@ -259,7 +258,7 @@ function CertExam() {
             .filter(a => parseInt(a.fullId) === parseInt(certExam.fullId))
             .map((exam, index) => (
               <SelectExamAndQuestions
-                Key={exam.examId}
+                key={index}
                 exam={exam}
                 allExams={allExams}
                 onChange={onChange}
@@ -267,37 +266,6 @@ function CertExam() {
                 handleSelectedExams={handleSelectedExams}
                 catId={exam.categoryId}
               />
-              //   <div Key={exam.examId} className="certexam-my-inner-box">
-              //     <label className="certexam-my-label">
-              //       <div className="certexam-first-label">
-              //         {exam.categoryName}
-              //       </div>
-              //       <div className="num-of-questions">
-              //         <span className="num-title">Number of Questions:</span>
-              //         <select name="selectedNumber" onChange={onChange}>
-              //           <option value="disabled"> select a number</option>
-              //           {allExams
-              //             .filter(
-              //               a =>
-              //                 parseInt(a.categoryId) === parseInt(exam.categoryId)
-              //             )
-              //             .map((number, index) => (
-              //               <option key={number} value={index + 1}>
-              //                 {index + 1}
-              //               </option>
-              //             ))}
-              //         </select>
-              //       </div>
-              //     </label>
-              //     <div className="my-checkbox-container">
-              //       <input
-              //         className="my-checkbox"
-              //         type="checkbox"
-              //         name="examCheckbox"
-              //         onChange={handleExCategoryId}
-              //       />
-              //     </div>
-              //   </div>
             ))}
 
           <div className="certexam-my-inner-box">
