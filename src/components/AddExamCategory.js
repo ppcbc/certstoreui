@@ -16,12 +16,13 @@ function AddExamCategory() {
   });
   const [fullCategories, setFullCategories] = useState([]);
   const [added, setAdded] = useState("");
-  const [error, setError] = useState("");
+  //const [error, setError] = useState("");
+  const [validationMessages, setValidationMessages] = useState({});
   const [check, setCheck] = useState(false);
 
   const myToken = useSelector(state => state.token.value.tok);
   const dispatch = useDispatch();
-
+  //time
   function handleMessage() {
     setCheck(true);
     setTimeout(() => {
@@ -46,6 +47,20 @@ function AddExamCategory() {
       console.error(error.message);
     }
   };
+  const validate = () => {
+    let errors = {};
+    if (newCategory.fullId === 0) {
+      errors.fullId = "Please select a full category";
+    }
+    if (newCategory.categoryName === "") {
+      errors.categoryName = "Please enter a category name";
+    }
+    if (newCategory.categoryDescription === "") {
+      errors.categoryDescription = "Please enter a category description";
+    }
+    setValidationMessages(errors);
+    return Object.keys(errors).length === 0;
+  };
 
   const onChange = e => {
     const { name, value } = e.target;
@@ -68,18 +83,19 @@ function AddExamCategory() {
     e.preventDefault();
 
     // Validation
-    if (newCategory.fullId === 0) {
-      setError("Please select a full category");
-      return;
-    }
-    if (newCategory.categoryName === "") {
-      setError("Please enter a category name");
-      return;
-    }
-    if (newCategory.categoryDescription === "") {
-      setError("Please enter a category description");
-      return;
-    }
+    // if (newCategory.fullId === 0) {
+    //   setError("Please select a full category");
+    //   return;
+    // }
+    // if (newCategory.categoryName === "") {
+    //   setError("Please enter a category name");
+    //   return;
+    // }
+    // if (newCategory.categoryDescription === "") {
+    //   setError("Please enter a category description");
+    //   return;
+    // }
+    if (!validate()) return;
 
     console.log(newCategory);
     try {
@@ -102,7 +118,8 @@ function AddExamCategory() {
         });
         setAdded("Category added successfully");
         handleMessage();
-        setError("");
+        //setError("");
+        setValidationMessages({});
       }
       console.log(response.data);
     } catch (error) {
@@ -118,74 +135,93 @@ function AddExamCategory() {
     }
   };
 
-  return (
-    <div className="add-exam-category-main">
-      <form action="" onSubmit={onSubmit}>
-        <div className="add-exam-category">
-          <div className="add-exam-box">
-            <h1>Add Exam Category</h1>
-            <div>
-              <div className="add-my-inner-box">
-                <label className="add-exam-label">
-                  Select category:
-                  <select
-                    name="fullId"
-                    value={newCategory.fullId}
-                    onChange={onChangeFullCategory}
-                  >
-                    <option value={0}>Category</option>
-                    {fullCategories.map(a => (
-                      <option key={a.fullId} value={a.fullId}>
-                        {a.name}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-              </div>
+  function handleMessage() {
+    setCheck(true);
+    setTimeout(() => {
+      setCheck(false);
+    }, 700);
+  }
 
-              <div className="add-my-inner-box">
-                <label className="add-exam-label">
-                  Exam category name:
-                  <input
-                    type="text"
-                    className="fadeIn second"
-                    name="categoryName"
-                    placeholder="Exam category name"
-                    value={newCategory.categoryName}
-                    onChange={onChange}
-                  />
-                </label>
+  return (
+    <form action="" onSubmit={onSubmit}>
+      <div className="add-exam-category-main">
+        <div className="add-exam-category-box">
+          <div className="add-exam-category">
+            <div className="add-exam-box">
+              <h1>Add Exam Category</h1>
+              <div>
+                <div className="add-exam-inner-box">
+                  <label className="add-exam-label">
+                    Select category:
+                    <select
+                      name="fullId"
+                      value={newCategory.fullId}
+                      onChange={onChangeFullCategory}
+                    >
+                      <option value={0}>Category</option>
+                      {fullCategories.map(a => (
+                        <option key={a.fullId} value={a.fullId}>
+                          {a.name}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                </div>
+                {validationMessages.fullId && (
+                  <p className="AddExamCategory-error-message">{validationMessages.fullId}</p>
+                )}
+                <div className="add-exam-inner-box">
+                  <label className="add-exam-label">
+                    Exam category name:
+                    <input
+                      type="text"
+                      className="fadeIn second"
+                      name="categoryName"
+                      placeholder="Exam category name"
+                      value={newCategory.categoryName}
+                      onChange={onChange}
+                    />
+                  </label>
+                </div>
+                {validationMessages.categoryName && (
+                  <p className="AddExamCategory-error-message">{validationMessages.categoryName}</p>
+                )}
+                <div className="add-exam-inner-box">
+                  <label className="add-exam-label">
+                    Exam category description:
+                    <input
+                      type="text"
+                      className="fadeIn second"
+                      name="categoryDescription"
+                      placeholder="Exam category description"
+                      value={newCategory.categoryDescription}
+                      onChange={onChange}
+                    />
+                  </label>
+                </div>
+                {validationMessages.categoryDescription && (
+                  <p className="AddExamCategory-error-message">{validationMessages.categoryDescription}</p>
+                )}
               </div>
-              <div className="add-my-inner-box">
-                <label className="add-exam-label">
-                  Exam category description:
-                  <input
-                    type="text"
-                    className="fadeIn second"
-                    name="categoryDescription"
-                    placeholder="Exam category description"
-                    value={newCategory.categoryDescription}
-                    onChange={onChange}
-                  />
-                </label>
+              <div className="add-exam-inner-box">
+                <button type="submit" className="fadeIn fourth" value="log in">
+                  Add
+                </button>
               </div>
+              {/* {error && (
+                <div className="add-exam-label">
+                  <p style={{ color: "red" }}>{error}</p>
+                </div>
+              )} */}
+
+              <div className="add-exam-label">{check && <p>{added}</p>}</div>
             </div>
-            <div className="add-my-inner-box">
-              <button type="submit" className="fadeIn fourth">
-                Add
-              </button>
-            </div>
-            {error && (
-              <div className="add-exam-label">
-                <p style={{ color: "red" }}>{error}</p>
-              </div>
-            )}
-            <div className="add-exam-label">{check && <p>{added}</p>}</div>
           </div>
+
+          <Footer color={"var(--color7)"} />
         </div>
-      </form>
-      <Footer color={"var(--color7)"} />
-    </div>
+      </div>
+    </form>
   );
 }
 
