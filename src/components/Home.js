@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/Home.css";
 import axios from "axios";
 import http from "../data/http";
@@ -15,6 +15,7 @@ export default function Home() {
   useEffect(() => {
     fetchCertifications();
   }, []);
+  const navigate = useNavigate();
 
   const fetchCertifications = async () => {
     try {
@@ -71,7 +72,8 @@ export default function Home() {
                 </Link>
                 <button
                   onClick={() =>
-                    alert(`Bought voucher for ${certification.name}`)
+                    // alert(`Bought voucher for ${certification.name}`)
+                    navigate("/payment")
                   }
                 >
                   Buy Voucher

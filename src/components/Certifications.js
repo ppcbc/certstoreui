@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/Certifications.css";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -9,6 +9,8 @@ import Footer from "./Footer";
 export default function Certifications() {
   const [certifications, setCertifications] = useState([]);
   const myToken = useSelector(state => state.token.value.tok);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchCertifications();
@@ -29,7 +31,8 @@ export default function Certifications() {
   };
 
   const handleBuy = certification => {
-    alert(`Bought voucher for ${certification.categoryName}`);
+    // alert(`Bought voucher for ${certification.categoryName}`);
+    navigate("/payment");
   };
 
   const truncateDescription = (text, maxLength) => {
