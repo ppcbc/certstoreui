@@ -1,4 +1,7 @@
 /* Style for the .admin-panel container */
+.admin-panel-main {
+  background-color: var(--color4);
+}
 .admin-panel {
   background-color: var(--color4); /* Light background for the page */
   color: var(--color2); /* Text color matching the header palette */
