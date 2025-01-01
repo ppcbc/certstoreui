@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../css/ScheduleExam.css";
 import Footer from "./Footer";
+import StartExam from "./StartExam";
 
 export default function ScheduleExam() {
   const [selectedDate, setSelectedDate] = useState("");
@@ -18,6 +19,7 @@ export default function ScheduleExam() {
       <div className="schedule-exam">
         <div className="schedule-box">
           <h1>Schedule Your Exam</h1>
+          <StartExam>START</StartExam>
           <label>
             Select Date:
             <input
@@ -26,6 +28,7 @@ export default function ScheduleExam() {
               onChange={e => setSelectedDate(e.target.value)}
             />
           </label>
+
           <button onClick={handleSchedule}>Schedule Exam</button>
         </div>
       </div>

@@ -27,6 +27,7 @@ import Footer from "./components/Footer";
 import ContactUs from "./components/ContactUs";
 import About from "./components/About";
 import DetailedCertification from "./components/DetailedCertification";
+import StartExam from "./components/StartExam";
 
 function Layout() {
   const location = useLocation();
@@ -37,6 +38,7 @@ function Layout() {
   return (
     <>
       {shouldShowHeader && <Header />}
+      {/* <div className="container-app"> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/certifications" element={<Certifications />} />
@@ -60,7 +62,9 @@ function Layout() {
         <Route path="/add-certexam" element={<CertExam />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/about-us" element={<About />} />
+        <Route path="/start-exam" element={<StartExam />} />
       </Routes>
+      {/* </div> */}
       {/* {shouldShowHeader && <Footer color={"red"} />} */}
     </>
   );

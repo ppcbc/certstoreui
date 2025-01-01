@@ -130,6 +130,7 @@ function AddExamCategory() {
                   Select category:
                   <select
                     name="fullId"
+                    className="fadeIn third"
                     value={newCategory.fullId}
                     onChange={onChangeFullCategory}
                   >
