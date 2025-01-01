@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../css/StartExam.css";
-import axios from "axios";
+import axios, { all } from "axios";
 import { useSelector } from "react-redux";
 import http from "../data/http";
+import shuffle from "../data/shuffle";
 
 function StartExam({ children, certId }) {
   const [isMouseOver, setIsMouseOver] = useState(false);
@@ -16,8 +17,7 @@ function StartExam({ children, certId }) {
   });
 
   useEffect(() => {
-    let theCertExam = async () => await getCertExams(20);
-    console.log(theCertExam);
+    getCertExams(20);
   }, []);
 
   const myToken = useSelector(state => state.token.value.tok);
@@ -35,10 +35,15 @@ function StartExam({ children, certId }) {
         }
       });
 
+      console.log(response.data);
       setCertExam(response.data);
+      let myExams = response.data.examQuestions;
+      console.log(myExams);
 
-      //   console.log(response.data);
-      return response.data;
+      var res = await axios.get(http + "api/exams");
+      let allExams = res.data;
+      shuffle(allExams);
+      console.log(allExams);
     } catch (error) {
       console.log(error.message);
     }
