@@ -6,6 +6,8 @@ import Question from "./Question";
 import AllQuestions from "./AllQuestions";
 import { Link, useNavigate } from "react-router-dom";
 import Finish from "./Finish";
+import shuffle from "../data/shuffle";
+import { useSelector } from "react-redux";
 
 function Exam() {
   const [exams, setExams] = useState([]);
@@ -23,44 +25,104 @@ function Exam() {
   const [loading, setLoading] = useState(true);
   const [answeredQuestions, setAnsweredQuestions] = useState({});
 
+  const myToken = useSelector(state => state.token.value.tok);
+
   let navigate = useNavigate();
+
+  // async function getExam() {
+  //   try {
+  //     let response = await axios.get(http + "api/exams");
+  //     let myData = response.data;
+  //     const filteredExams = myData
+  //       .filter(item => item.categoryId === 1)
+  //       .map((item, index) => ({
+  //         examId: item.examId,
+  //         categoryId: item.categoryId,
+  //         question: item.questionText,
+  //         photoLink: item.questionPhotoLink,
+  //         answer1: item.option1,
+  //         correct1: item.isCorrect1,
+  //         answer2: item.option2,
+  //         correct2: item.isCorrect2,
+  //         answer3: item.option3,
+  //         correct3: item.isCorrect3,
+  //         answer4: item.option4,
+  //         correct4: item.isCorrect4,
+  //         isAnswered: false,
+  //         selected: index === 0
+  //       }));
+
+  //     setExams(filteredExams);
+
+  //     if (filteredExams.length > 0) {
+  //       setTimeLeft(filteredExams.length * 150);
+  //       setIsTimerRunning(true);
+  //     }
+
+  //     setLoading(false);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // }
 
   async function getExam() {
     try {
-      let response = await axios.get(http + "api/exams");
-      let myData = response.data;
-      const filteredExams = myData
-        .filter(item => item.categoryId === 1)
-        .map((item, index) => ({
-          examId: item.examId,
-          categoryId: item.categoryId,
-          question: item.questionText,
-          photoLink: item.questionPhotoLink,
-          answer1: item.option1,
-          correct1: item.isCorrect1,
-          answer2: item.option2,
-          correct2: item.isCorrect2,
-          answer3: item.option3,
-          correct3: item.isCorrect3,
-          answer4: item.option4,
-          correct4: item.isCorrect4,
-          isAnswered: false,
-          selected: index === 0
-        }));
+      var response = await axios.get(http + `api/CertExams/${22}`, {
+        headers: {
+          Authorization: "Bearer " + myToken
+        }
+      });
 
+      // setCertExam(response.data);
+      let myExams = response.data.examQuestions;
+      // console.log(myExams);
+
+      var res = await axios.get(http + "api/exams");
+      let allExams = res.data;
+      let selectedExams = [];
+
+      for (let i = 0; i < myExams.length; i++) {
+        selectedExams[i] = allExams.filter(
+          item => parseInt(item.categoryId) === parseInt(myExams[i].categoryId)
+        );
+      }
+      let finalExams = [];
+      for (let i = 0; i < selectedExams.length; i++) {
+        shuffle(selectedExams[i]);
+        for (let y = 0; y < myExams[i].number; y++) {
+          finalExams.push(selectedExams[i][y]);
+        }
+      }
+      let filteredExams = finalExams.map((item, index) => ({
+        examId: item.examId,
+        categoryId: item.categoryId,
+        question: item.questionText,
+        photoLink: item.questionPhotoLink,
+        answer1: item.option1,
+        correct1: item.isCorrect1,
+        answer2: item.option2,
+        correct2: item.isCorrect2,
+        answer3: item.option3,
+        correct3: item.isCorrect3,
+        answer4: item.option4,
+        correct4: item.isCorrect4,
+        isAnswered: false,
+        selected: index === 0
+      }));
       setExams(filteredExams);
-
       if (filteredExams.length > 0) {
         setTimeLeft(filteredExams.length * 150);
         setIsTimerRunning(true);
       }
 
       setLoading(false);
+      console.log("final exams");
+      console.log(finalExams);
+      console.log(filteredExams);
     } catch (error) {
       console.log(error.message);
     }
   }
-
   useEffect(() => {
     getExam();
   }, []);
