@@ -2,6 +2,7 @@
   /* background-color: var(--color5); */
   background-color: #b4b5b0;
 }
+
 .my-home {
   background-color: #2e4854; /* Fallback background color */
   background-image: url("../images/main_image_grayscale_cropped.jpg"); /* Add the image */
@@ -158,4 +159,7 @@
 .explore-link:hover {
   color: #5b5c55;
   font-weight: 800;
+}
+.certification-link {
+  text-decoration: none;
 }

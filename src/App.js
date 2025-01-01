@@ -26,6 +26,7 @@ import AdminPanel from "./components/AdminPanel";
 import Footer from "./components/Footer";
 import ContactUs from "./components/ContactUs";
 import About from "./components/About";
+import DetailedCertification from "./components/DetailedCertification";
 
 function Layout() {
   const location = useLocation();
@@ -39,6 +40,10 @@ function Layout() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/certifications" element={<Certifications />} />
+        <Route
+          path="/detailed-certification/:certExamId"
+          element={<DetailedCertification />}
+        />
         <Route path="/schedule-exam" element={<ScheduleExam />} />
         <Route path="/my-certificates" element={<MyCertificates />} />
         <Route path="/adminpanel" element={<AdminPanel />} />
