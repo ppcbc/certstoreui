@@ -32,7 +32,7 @@ export default function ScheduleExam() {
           <button onClick={handleSchedule}>Schedule Exam</button>
         </div>
       </div>
-      <Footer color={"var(--color7)"} />
+      <Footer color={"var(--color4)"} />
     </div>
   );
 }

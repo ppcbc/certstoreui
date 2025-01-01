@@ -79,18 +79,6 @@ export default function Header() {
             </NavLink>
           </li>
 
-          {/* {myRole === "Admin" && (
-            <li className="nav-item">
-              <NavLink
-                to="/addfull-category"
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-              >
-                ADD FULL EXAM CATEGORY
-              </NavLink>
-            </li>
-          )} */}
           {myRole === "Admin" && (
             <li className="nav-item">
               <NavLink
@@ -114,6 +102,18 @@ export default function Header() {
               USER DETAILS
             </NavLink>
           </li>
+          {myToken !== "" && (
+            <li className="nav-item">
+              <NavLink
+                to="/payment"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                PAYMENT
+              </NavLink>
+            </li>
+          )}
 
           {myToken !== "" && (
             <li className="nav-item">

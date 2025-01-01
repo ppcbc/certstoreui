@@ -85,7 +85,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      <Footer color={"var(--color7)"} />
+      <Footer color={"var(--color4)"} />
     </div>
   );
 }

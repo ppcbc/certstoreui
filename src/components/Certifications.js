@@ -65,7 +65,7 @@ export default function Certifications() {
           ))}
         </ul>
       </div>
-      <Footer color={"var(--color7)"} />
+      <Footer color={"var(--color4)"} />
     </div>
   );
 }

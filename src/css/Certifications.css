@@ -10,6 +10,7 @@
   padding: 40px 20px; /* Padding for the container */
   text-align: center; /* Center the heading and general text */
   min-height: 100vh; /* Full height of the viewport */
+  margin-top: 40px;
 }
 
 /* Style for the h1 (main heading) */

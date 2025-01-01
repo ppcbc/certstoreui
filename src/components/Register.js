@@ -103,7 +103,7 @@ function Register() {
           </div>
         </div>
       </form>
-      <Footer color={"var(--color7)"} />
+      <Footer color={"var(--color4)"} />
     </div>
   );
 }

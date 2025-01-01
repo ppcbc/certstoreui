@@ -28,6 +28,7 @@ import ContactUs from "./components/ContactUs";
 import About from "./components/About";
 import DetailedCertification from "./components/DetailedCertification";
 import StartExam from "./components/StartExam";
+import PaymentPage from "./components/PaymentPage";
 
 function Layout() {
   const location = useLocation();
@@ -63,6 +64,7 @@ function Layout() {
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/about-us" element={<About />} />
         <Route path="/start-exam" element={<StartExam />} />
+        <Route path="/payment" element={<PaymentPage />} />
       </Routes>
       {/* </div> */}
       {/* {shouldShowHeader && <Footer color={"red"} />} */}
