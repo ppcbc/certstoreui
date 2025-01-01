@@ -11,6 +11,7 @@
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   position: relative; /* Enable precise positioning of child elements */
+  margin-top: 40px;
 }
 
 /* Style for the h1 (main heading) */
