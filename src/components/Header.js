@@ -94,54 +94,7 @@ export default function Header() {
               </NavLink>
             </li>
           )}
-          {/*  {myRole === "Admin" && (
-            <li className="nav-item">
-              <NavLink
-                to="/addexam-category"
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-              >
-                ADD EXAM CATEGORY
-              </NavLink>
-            </li>
-          )}
-          {myRole === "Admin" && (
-            <li className="nav-item">
-              <NavLink
-                to="/updateexam-category"
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-              >
-                UPDATE EXAM CATEGORY
-              </NavLink>
-            </li>
-          )}
-          {myRole === "Admin" && (
-            <li className="nav-item">
-              <NavLink
-                to="/addexam"
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-              >
-                ADD EXAM
-              </NavLink>
-            </li>
-          )} */}
-          {myRole === "Admin" && (
-            <li className="nav-item">
-              <NavLink
-                to="/add-certexam"
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-              >
-                ADD CERT EXAM
-              </NavLink>
-            </li>
-          )}
+
           <li className="nav-item">
             <NavLink
               to="/user-details"
@@ -152,18 +105,7 @@ export default function Header() {
               USER DETAILS
             </NavLink>
           </li>
-          {/* {myRole === "Admin" && (
-            <li className="nav-item">
-              <NavLink
-                to="/assignrole"
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-              >
-                ASSIGN ROLE
-              </NavLink>
-            </li>
-          )} */}
+
           {myToken !== "" && (
             <li className="nav-item">
               <NavLink

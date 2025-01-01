@@ -6,6 +6,7 @@ import { setFullCategoryId } from "../features/loginSlice";
 //import "../css/AddExamCategory.css";
 import "../css/UpdateExamCategory.css";
 import http from "../data/http";
+import Footer from "./Footer";
 
 function UpdateExamCategory() {
   const [categoryToUpdate, setCategoryToUpdate] = useState({
@@ -159,78 +160,79 @@ function UpdateExamCategory() {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <div className="update-exam">
-        <div className="update-box">
-          <h1>Update Exam Category</h1>
-          <div className="update-inner-box">
-            <div className="update-inner-field">
-              <label className="update-label">
-                Select Full Category:
-                <select
-                  name="fullId"
-                  value={categoryToUpdate.fullId}
-                  onChange={onChangeFullCategory}
-                >
-                  <option value={0}>Categories</option>
-                  {fullCategories.map(a => (
-                    <option key={a.fullId} value={a.fullId}>
-                      {a.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            </div>
-            {examCategories.length > 0 && categoryToUpdate.fullId !== 0 && (
+    <div className="update-exam-main">
+      <form onSubmit={onSubmit}>
+        <div className="update-exam">
+          <div className="update-box">
+            <h1>Update Exam Category</h1>
+            <div className="update-inner-box">
               <div className="update-inner-field">
                 <label className="update-label">
-                  Select Exam Category:
+                  Select Full Category:
                   <select
-                    name="categoryId"
-                    value={categoryToUpdate.categoryId}
-                    onChange={onChangeExamCategory}
+                    name="fullId"
+                    value={categoryToUpdate.fullId}
+                    onChange={onChangeFullCategory}
                   >
-                    <option value={0}>Select an exam category</option>
-                    {examCategories
-                      .filter(ec => ec.fullId === categoryToUpdate.fullId)
-                      .map(a => (
-                        <option key={a.categoryId} value={a.categoryId}>
-                          {a.categoryName}
-                        </option>
-                      ))}
+                    <option value={0}>Categories</option>
+                    {fullCategories.map(a => (
+                      <option key={a.fullId} value={a.fullId}>
+                        {a.name}
+                      </option>
+                    ))}
                   </select>
                 </label>
               </div>
-            )}
-            {categoryToUpdate.categoryId !== 0 && (
-              <>
+              {examCategories.length > 0 && categoryToUpdate.fullId !== 0 && (
                 <div className="update-inner-field">
                   <label className="update-label">
-                    Exam Category Name:
-                    <input
-                      type="text"
-                      className="fadeIn second"
-                      name="categoryName"
-                      placeholder="Exam Category Name"
-                      value={categoryToUpdate.categoryName}
-                      onChange={onChange}
-                    />
+                    Select Exam Category:
+                    <select
+                      name="categoryId"
+                      value={categoryToUpdate.categoryId}
+                      onChange={onChangeExamCategory}
+                    >
+                      <option value={0}>Select an exam category</option>
+                      {examCategories
+                        .filter(ec => ec.fullId === categoryToUpdate.fullId)
+                        .map(a => (
+                          <option key={a.categoryId} value={a.categoryId}>
+                            {a.categoryName}
+                          </option>
+                        ))}
+                    </select>
                   </label>
                 </div>
-                <div className="update-inner-field">
-                  <label className="update-label">
-                    Exam Category Description:
-                    <input
-                      type="text"
-                      className="fadeIn second"
-                      name="categoryDescription"
-                      placeholder="Exam Category Description"
-                      value={categoryToUpdate.categoryDescription}
-                      onChange={onChange}
-                    />
-                  </label>
-                </div>
-                {/* <div className="update-inner-field">
+              )}
+              {categoryToUpdate.categoryId !== 0 && (
+                <>
+                  <div className="update-inner-field">
+                    <label className="update-label">
+                      Exam Category Name:
+                      <input
+                        type="text"
+                        className="fadeIn second"
+                        name="categoryName"
+                        placeholder="Exam Category Name"
+                        value={categoryToUpdate.categoryName}
+                        onChange={onChange}
+                      />
+                    </label>
+                  </div>
+                  <div className="update-inner-field">
+                    <label className="update-label">
+                      Exam Category Description:
+                      <input
+                        type="text"
+                        className="fadeIn second"
+                        name="categoryDescription"
+                        placeholder="Exam Category Description"
+                        value={categoryToUpdate.categoryDescription}
+                        onChange={onChange}
+                      />
+                    </label>
+                  </div>
+                  {/* <div className="update-inner-field">
                                     <label className="update-label">
                                         Price:
                                         <input
@@ -244,21 +246,23 @@ function UpdateExamCategory() {
                                         />
                                     </label>
                                 </div> */}
-              </>
-            )}
-          </div>
-          <button type="submit" className="fadeIn fourth">
-            Update Exam Category
-          </button>
-          {error && (
-            <div className="update-label">
-              <p style={{ color: "red" }}>{error}</p>
+                </>
+              )}
             </div>
-          )}
-          <div className="update-label">{check && <p>{message}</p>}</div>
+            <button type="submit" className="fadeIn fourth">
+              Update Exam Category
+            </button>
+            {error && (
+              <div className="update-label">
+                <p style={{ color: "red" }}>{error}</p>
+              </div>
+            )}
+            <div className="update-label">{check && <p>{message}</p>}</div>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+      <Footer color={"var(--color5)"} />
+    </div>
   );
 }
 

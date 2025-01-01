@@ -56,7 +56,7 @@ function Layout() {
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/about-us" element={<About />} />
       </Routes>
-      {shouldShowHeader && <Footer />}
+      {/* {shouldShowHeader && <Footer color={"red"} />} */}
     </>
   );
 }

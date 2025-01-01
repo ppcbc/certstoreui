@@ -1,4 +1,7 @@
 /* Style for the .register-details container */
+.user-details-main {
+  background-color: var(--color2);
+}
 .user-details {
   background-color: var(--color2); /* Light background for the page */
   color: var(--color9); /* Text color matching the header palette */

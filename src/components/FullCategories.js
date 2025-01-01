@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setFullCategoryId } from "../features/loginSlice";
 import "../css/FullCategories.css";
 import http from "../data/http";
+import Footer from "./Footer";
 
 function FullCategory() {
   const [newCategory, setNewCategory] = useState({
@@ -80,52 +81,55 @@ function FullCategory() {
   };
 
   return (
-    <form action="" onSubmit={onSubmit}>
-      <div className="fullcategory-category">
-        <div className="add-box">
-          <h1>Add Full Exam Category</h1>
-          <div className="add-my-box">
-            <div className="fullcategory-inner-box">
-              <label className="add-my-label">
-                Full exam category name:
-                <input
-                  type="text"
-                  className="fadeIn second"
-                  name="name"
-                  placeholder="Full exam category name"
-                  value={newCategory.name}
-                  onChange={onChange}
-                />
-              </label>
+    <div className="fullcategory-main">
+      <form action="" onSubmit={onSubmit}>
+        <div className="fullcategory-category">
+          <div className="fullcategory-box">
+            <h1>Add Full Exam Category</h1>
+            <div>
+              <div className="fullcategory-inner-box">
+                <label className="fullcategory-label">
+                  Full exam category name:
+                  <input
+                    type="text"
+                    className="fadeIn second"
+                    name="name"
+                    placeholder="Full exam category name"
+                    value={newCategory.name}
+                    onChange={onChange}
+                  />
+                </label>
+              </div>
+              <div className="fullcategory-inner-box">
+                <label className="fullcategory-label">
+                  Full exam category description:
+                  <input
+                    type="text"
+                    className="fadeIn second"
+                    name="description"
+                    placeholder="Full exam category description"
+                    value={newCategory.description}
+                    onChange={onChange}
+                  />
+                </label>
+              </div>
             </div>
             <div className="fullcategory-inner-box">
-              <label className="add-my-label">
-                Full exam category description:
-                <input
-                  type="text"
-                  className="fadeIn second"
-                  name="description"
-                  placeholder="Full exam category description"
-                  value={newCategory.description}
-                  onChange={onChange}
-                />
-              </label>
+              <button type="submit" className="fadeIn fourth">
+                Add
+              </button>
             </div>
+            {error && (
+              <div className="fullcategory-label">
+                <p style={{ color: "red" }}>{error}</p>
+              </div>
+            )}
+            <div className="fullcategory-label">{check && <p>{added}</p>}</div>
           </div>
-          <div className="fullcategory-inner-box">
-            <button type="submit" className="fadeIn fourth">
-              Add
-            </button>
-          </div>
-          {error && (
-            <div className="add-my-label">
-              <p style={{ color: "red" }}>{error}</p>
-            </div>
-          )}
-          <div className="add-my-label">{check && <p>{added}</p>}</div>
         </div>
-      </div>
-    </form>
+      </form>
+      <Footer color={"var(--color5)"} />
+    </div>
   );
 }
 

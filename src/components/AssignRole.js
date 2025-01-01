@@ -4,6 +4,7 @@ import React from "react";
 import axios from "axios";
 import http from "../data/http";
 import "../css/ScheduleExam.css";
+import Footer from "./Footer";
 
 function AssignRole() {
   const [user, setUser] = useState({
@@ -89,49 +90,50 @@ function AssignRole() {
   // }
 
   return (
-    <form action="">
-      <div className="schedule-exam">
-        <div className="schedule-box">
-          <h1>Assign Role</h1>
-          <div className="my-box">
-            <div className="my-inner-box">
-              <label className="my-label">
-                Email:
-                <input
-                  type="text"
-                  className="fadeIn second"
-                  name="email"
-                  placeholder="email"
-                  value={user.email}
-                  onChange={getUser}
-                />
-              </label>
+    <div className="schedule-exam-main">
+      <form action="">
+        <div className="schedule-exam">
+          <div className="schedule-box">
+            <h1>Assign Role</h1>
+            <div className="my-box">
+              <div className="my-inner-box">
+                <label className="my-label">
+                  Email:
+                  <input
+                    type="text"
+                    className="fadeIn second"
+                    name="email"
+                    placeholder="email"
+                    value={user.email}
+                    onChange={getUser}
+                  />
+                </label>
+              </div>
+              <div className="my-inner-box">
+                <label className="my-label">
+                  Role:
+                  <input
+                    type="text"
+                    class="fadeIn third"
+                    name="role"
+                    placeholder="role"
+                    value={user.role}
+                    onChange={getUser}
+                  />
+                </label>
+              </div>
             </div>
-            <div className="my-inner-box">
-              <label className="my-label">
-                Role:
-                <input
-                  type="text"
-                  class="fadeIn third"
-                  name="role"
-                  placeholder="role"
-                  value={user.role}
-                  onChange={getUser}
-                />
-              </label>
+            <div className="button">
+              <button
+                type="submit"
+                class="fadeIn fourth"
+                value="Log In"
+                onClick={onSubmit}
+              >
+                Assign
+              </button>
             </div>
-          </div>
-          <div className="button">
-            <button
-              type="submit"
-              class="fadeIn fourth"
-              value="Log In"
-              onClick={onSubmit}
-            >
-              Assign
-            </button>
-          </div>
-          {/* <div className="button">
+            {/* <div className="button">
             <button
               type="submit"
               class="fadeIn fourth"
@@ -141,12 +143,14 @@ function AssignRole() {
               Remove
             </button>
           </div> */}
-          <div className="my-label">
-            <p>{added}</p>
+            <div className="my-label">
+              <p>{added}</p>
+            </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+      <Footer color={"var(--color7)"} />
+    </div>
   );
 }
 

@@ -1,4 +1,7 @@
 /* Style for the .update-exam container */
+.update-exam-main {
+  background-color: #b4b5b0;
+}
 .update-exam {
   background-color: #b4b5b0;
   /* Light background for the page */

@@ -13,6 +13,7 @@ import {
   setToken
 } from "../features/loginSlice";
 import SelectExamAndQuestions from "./SelectExamAndQuestions";
+import Footer from "./Footer";
 
 function CertExam() {
   let navigate = useNavigate();
@@ -190,83 +191,90 @@ function CertExam() {
   }
 
   return (
-    <form onSubmit={onSubmit} action="submit">
-      <div className="certexam">
-        <div className="certexam-box">
-          <h1>Add Certification Exam</h1>
-          <div className="certexam-my-inner-box">
-            <label className="certexam-my-label">
-              Certification Title:
-              <input
-                type="text"
-                name="testTitle"
-                placeholder="Certification Title"
-                value={certExam.testTitle}
-                onChange={onChange}
-              />
-            </label>
-          </div>
-          <div className="certexam-my-inner-box">
-            <label className="certexam-my-label">
-              Certification Description:
-              <input
-                type="text"
-                name="testDescription"
-                placeholder="Certification Description"
-                value={certExam.testDescription}
-                onChange={onChange}
-              />
-            </label>
-          </div>
-          <div className="certexam-my-inner-box">
-            <label className="certexam-my-label">
-              Certification Price:
-              <input
-                type="number"
-                name="price"
-                placeholder="Price"
-                value={certExam.price}
-                onChange={onChange}
-              />
-            </label>
-          </div>
-          <div className="certexam-my-inner-box">
-            <label className="certexam-my-label">
-              Select Category:
-              <select name="fullId" value={certExam.fullId} onChange={onChange}>
-                <option value="">Category</option>
-                {fullCategories.map(a => (
-                  <option key={a.fullId} value={a.fullId}>
-                    {a.name}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </div>
+    <div className="certexam-main">
+      <form onSubmit={onSubmit} action="submit">
+        <div className="certexam">
+          <div className="certexam-box">
+            <h1>Add Certification Exam</h1>
+            <div className="certexam-my-inner-box">
+              <label className="certexam-my-label">
+                Certification Title:
+                <input
+                  type="text"
+                  name="testTitle"
+                  placeholder="Certification Title"
+                  value={certExam.testTitle}
+                  onChange={onChange}
+                />
+              </label>
+            </div>
+            <div className="certexam-my-inner-box">
+              <label className="certexam-my-label">
+                Certification Description:
+                <input
+                  type="text"
+                  name="testDescription"
+                  placeholder="Certification Description"
+                  value={certExam.testDescription}
+                  onChange={onChange}
+                />
+              </label>
+            </div>
+            <div className="certexam-my-inner-box">
+              <label className="certexam-my-label">
+                Certification Price:
+                <input
+                  type="number"
+                  name="price"
+                  placeholder="Price"
+                  value={certExam.price}
+                  onChange={onChange}
+                />
+              </label>
+            </div>
+            <div className="certexam-my-inner-box">
+              <label className="certexam-my-label">
+                Select Category:
+                <select
+                  name="fullId"
+                  value={certExam.fullId}
+                  onChange={onChange}
+                >
+                  <option value="">Category</option>
+                  {fullCategories.map(a => (
+                    <option key={a.fullId} value={a.fullId}>
+                      {a.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
 
-          {examCategories
-            .filter(a => parseInt(a.fullId) === parseInt(certExam.fullId))
-            .map((exam, index) => (
-              <SelectExamAndQuestions
-                key={index}
-                exam={exam}
-                allExams={allExams}
-                onChange={onChange}
-                handleExCategoryId={handleExCategoryId}
-                handleSelectedExams={handleSelectedExams}
-                catId={exam.categoryId}
-              />
-            ))}
+            {examCategories
+              .filter(a => parseInt(a.fullId) === parseInt(certExam.fullId))
+              .map((exam, index) => (
+                <SelectExamAndQuestions
+                  key={index}
+                  exam={exam}
+                  allExams={allExams}
+                  onChange={onChange}
+                  handleExCategoryId={handleExCategoryId}
+                  handleSelectedExams={handleSelectedExams}
+                  catId={exam.categoryId}
+                />
+              ))}
 
-          <div className="certexam-my-inner-box">
-            <button type="submit" className="fadeIn fourth">
-              Add
-            </button>
+            <div className="certexam-my-inner-box">
+              <button type="submit" className="fadeIn fourth">
+                Add
+              </button>
+            </div>
+            <div className="certexam-my-label">{check && <p>{message}</p>}</div>
           </div>
-          <div className="certexam-my-label">{check && <p>{message}</p>}</div>
         </div>
-      </div>
-    </form>
+      </form>
+      <Footer color={"var(--color7)"} />
+    </div>
   );
 }
 

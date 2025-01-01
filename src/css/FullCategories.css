@@ -1,4 +1,7 @@
 /* Style for the .fullcategory-container */
+.fullcategory-main {
+  background-color: #b4b5b0;
+}
 .fullcategory-category {
   background-color: #b4b5b0;
   color: #2c3e50;
@@ -11,15 +14,14 @@
 }
 
 .fullcategory-box {
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--color1); /* White background for contrast */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   padding: 40px;
-  text-align: left;
-  width: 500px;
-  transform: translateY(-130px);
-  margin-top: 180px;
+  width: 800px;
+  transform: translateY(20px);
 }
+
 .fullcategory-box h1 {
   font-size: 1.8rem;
   /* margin-bottom: 30px; */
@@ -36,29 +38,38 @@
 }
 
 .fullcategory-label {
-  font-size: 1.8rem;
-  color: #4b5052;
-  margin: 3px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  color: var(--color9);
 }
-
-.fullcategory-box input[type="date"],
-.fullcategory-box input[type="number"],
-.fullcategory-box input[type="text"] {
+.fullcategory-box input {
+  flex: 7;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color6);
   border-radius: 5px;
-  margin-top: 5px;
-  margin-bottom: 20px;
   font-size: 1rem;
-  width: calc(100% - 20px);
+  width: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.fullcategory-box select {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid var(--color6);
+  border-radius: 5px;
+  font-size: 1rem;
+  width: calc(100% - 80px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.fullcategory-box input[type="date"]:focus,
-.fullcategory-box input[type="number"]:focus,
-.fullcategory-box input[type="text"]:focus {
-  border-color: #597785;
+.fullcategory-box input:focus,
+fullcategory-box select:focus {
+  border-color: var(--color7);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   outline: none;
 }

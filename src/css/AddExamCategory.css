@@ -1,24 +1,26 @@
 /* Style for the .add-exam-category container */
+.add-exam-category-main {
+  background-color: var(--color2);
+}
 .add-exam-category {
   background-color: #b4b5b0;
   color: #2c3e50;
   padding: 40px 20px;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
 }
 
 .add-exam-box {
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--color1); /* White background for contrast */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   padding: 40px;
-  text-align: left;
-  width: 500px;
-  transform: translateY(-130px);
-  margin-top: 180px;
+  width: 800px;
+  transform: translateY(20px);
 }
 
 .add-exam-box h1 {
@@ -36,31 +38,39 @@
 }
 
 .add-exam-label {
-  /* font-size: 1.2rem; */
-  font-size: 1.8rem;
-  color: #4b5052;
-  /* margin-bottom: 5px; */
-  margin: 3px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  color: var(--color9);
 }
 
-.add-exam-box input[type="date"],
-.add-exam-box input[type="number"],
-.add-exam-box input[type="text"] {
+.add-exam-box input {
+  flex: 7;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color6);
   border-radius: 5px;
-  margin-top: 5px;
-  margin-bottom: 20px;
   font-size: 1rem;
-  width: calc(100% - 20px);
+  width: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.add-exam-box select {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid var(--color6);
+  border-radius: 5px;
+  font-size: 1rem;
+  width: calc(100% - 80px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.add-exam-box input[type="date"]:focus,
-.add-exam-box input[type="number"]:focus,
-.add-exam-box input[type="text"]:focus {
-  border-color: #597785;
+.add-exam-box input:focus,
+.add-box-box select:focus {
+  border-color: var(--color7);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   outline: none;
 }

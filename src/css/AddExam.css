@@ -1,4 +1,7 @@
 /* Style for the .schedule-exam container */
+.add-exam-main {
+  background-color: var(--color2);
+}
 .add-exam {
   /* background-color: red; */
   background-color: var(--color2);

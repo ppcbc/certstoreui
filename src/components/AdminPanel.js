@@ -38,6 +38,12 @@ export default function AdminPanel() {
         </li>
         <li>
           <div className="item-header">
+            <h2>ADD CERT FULL EXAM</h2>
+            <button onClick={() => navigate("/add-certexam")}>Go</button>
+          </div>
+        </li>
+        <li>
+          <div className="item-header">
             <h2>ASSIGN ROLE</h2>
             <button onClick={() => navigate("/assignrole")}>Go</button>
           </div>

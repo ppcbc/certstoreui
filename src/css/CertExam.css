@@ -1,4 +1,7 @@
 /* Style for the .certexam container */
+.certexam-main {
+  background-color: var(--color2);
+}
 .certexam {
   background-color: var(--color2);
   color: var(--color9); /* Text color matching the header palette */

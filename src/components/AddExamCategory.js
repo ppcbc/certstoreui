@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setFullCategoryId } from "../features/loginSlice";
 import "../css/AddExamCategory.css";
 import http from "../data/http";
+import Footer from "./Footer";
 
 function AddExamCategory() {
   const [newCategory, setNewCategory] = useState({
@@ -118,70 +119,73 @@ function AddExamCategory() {
   };
 
   return (
-    <form action="" onSubmit={onSubmit}>
-      <div className="add-exam-category">
-        <div className="add-box">
-          <h1>Add Exam Category</h1>
-          <div className="add-my-box">
-            <div className="add-my-inner-box">
-              <label className="add-my-label">
-                Select category:
-                <select
-                  name="fullId"
-                  value={newCategory.fullId}
-                  onChange={onChangeFullCategory}
-                >
-                  <option value={0}>Category</option>
-                  {fullCategories.map(a => (
-                    <option key={a.fullId} value={a.fullId}>
-                      {a.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            </div>
+    <div className="add-exam-category-main">
+      <form action="" onSubmit={onSubmit}>
+        <div className="add-exam-category">
+          <div className="add-exam-box">
+            <h1>Add Exam Category</h1>
+            <div>
+              <div className="add-my-inner-box">
+                <label className="add-exam-label">
+                  Select category:
+                  <select
+                    name="fullId"
+                    value={newCategory.fullId}
+                    onChange={onChangeFullCategory}
+                  >
+                    <option value={0}>Category</option>
+                    {fullCategories.map(a => (
+                      <option key={a.fullId} value={a.fullId}>
+                        {a.name}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              </div>
 
-            <div className="add-my-inner-box">
-              <label className="add-my-label">
-                Exam category name:
-                <input
-                  type="text"
-                  className="fadeIn second"
-                  name="categoryName"
-                  placeholder="Exam category name"
-                  value={newCategory.categoryName}
-                  onChange={onChange}
-                />
-              </label>
+              <div className="add-my-inner-box">
+                <label className="add-exam-label">
+                  Exam category name:
+                  <input
+                    type="text"
+                    className="fadeIn second"
+                    name="categoryName"
+                    placeholder="Exam category name"
+                    value={newCategory.categoryName}
+                    onChange={onChange}
+                  />
+                </label>
+              </div>
+              <div className="add-my-inner-box">
+                <label className="add-exam-label">
+                  Exam category description:
+                  <input
+                    type="text"
+                    className="fadeIn second"
+                    name="categoryDescription"
+                    placeholder="Exam category description"
+                    value={newCategory.categoryDescription}
+                    onChange={onChange}
+                  />
+                </label>
+              </div>
             </div>
             <div className="add-my-inner-box">
-              <label className="add-my-label">
-                Exam category description:
-                <input
-                  type="text"
-                  className="fadeIn second"
-                  name="categoryDescription"
-                  placeholder="Exam category description"
-                  value={newCategory.categoryDescription}
-                  onChange={onChange}
-                />
-              </label>
+              <button type="submit" className="fadeIn fourth">
+                Add
+              </button>
             </div>
+            {error && (
+              <div className="add-exam-label">
+                <p style={{ color: "red" }}>{error}</p>
+              </div>
+            )}
+            <div className="add-exam-label">{check && <p>{added}</p>}</div>
           </div>
-          <div className="add-my-inner-box">
-            <button type="submit" className="fadeIn fourth">
-              Add
-            </button>
-          </div>
-          {error && (
-            <div className="add-my-label">
-              <p style={{ color: "red" }}>{error}</p>
-            </div>
-          )}
-          <div className="add-my-label">{check && <p>{added}</p>}</div>
         </div>
-      </div>
-    </form>
+      </form>
+      <Footer color={"var(--color7)"} />
+    </div>
   );
 }
 

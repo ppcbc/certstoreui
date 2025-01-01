@@ -1,11 +1,11 @@
 /* Ensure the entire page uses flexbox */
 html,
-body {
+/* body {
   height: 100%;
   margin: 0;
   display: flex;
   flex-direction: column;
-}
+} */
 
 /* Container for the entire page */
 #root {
@@ -20,7 +20,7 @@ main {
 }
 
 .footer {
-  background-color: var(--color6);
+  background-color: inherit;
   color: white; /* Text color */
   position: relative;
   width: 100%; /* Full width */
