@@ -2,21 +2,26 @@
 .add-exam-category-main {
   background-color: var(--color2);
 }
+
 .add-exam-category {
   background-color: #b4b5b0;
   color: #2c3e50;
   padding: 40px 20px;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
 }
 
 .add-exam-box {
-  background-color: var(--color1); /* White background for contrast */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-color: var(--color1);
+  /* White background for contrast */
+  border-radius: 10px;
+  /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow */
   padding: 40px;
   width: 800px;
   transform: translateY(20px);
@@ -28,12 +33,18 @@
   margin: 3px 10px;
   color: #4b5052;
 }
+
 .add-exam-box h1 {
-  font-size: 2rem; /* Larger heading for the wider box */
-  margin: 3px 10px; /* Space below the heading */
-  margin-bottom: 30px; /* Space below the heading */
-  color: var(--color8); /* Match the palette */
-  text-align: center; /* Keep the heading centered */
+  font-size: 2rem;
+  /* Larger heading for the wider box */
+  margin: 3px 10px;
+  /* Space below the heading */
+  margin-bottom: 30px;
+  /* Space below the heading */
+  color: var(--color8);
+  /* Match the palette */
+  text-align: center;
+  /* Keep the heading centered */
 }
 
 .add-exam-label {
@@ -56,6 +67,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
 .add-exam-box select {
   flex: 1;
   padding: 10px;
@@ -131,4 +143,14 @@ input[type="number"] {
 
 .align-left {
   text-align: left;
+}
+
+.AddExamCategory-error-message {
+  color: red;
+  font-size: 12px;
+  text-align: right;
+  margin-top: -5px;
+  margin-bottom: 15px;
+  margin-left: 5px;
+  padding-right: 3px;
 }
