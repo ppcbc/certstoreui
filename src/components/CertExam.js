@@ -158,21 +158,12 @@ function CertExam() {
       );
 
       setCombinedExams(combinedSelectedExams);
-      console.log("certexams");
 
       let myObject = {
         ...certExam,
         price: parseInt(certExam.price),
         examQuestions: combinedSelectedExams
       };
-
-      console.log("MYoBJECT");
-      console.log("MYoBJECT");
-      console.log("MYoBJECT");
-      console.log("MYoBJECT");
-      console.log("MYoBJECT");
-      console.log(certExam);
-      console.log(myObject);
 
       var response = await axios.post(http + "api/CertExams", myObject, {
         headers: {
@@ -191,7 +182,6 @@ function CertExam() {
       }
       setMessage("Exam successfully added");
       handleMessage();
-      //   console.log(response.data);
     } catch (error) {
       setMessage("Wrong credentials try again");
       handleMessage();

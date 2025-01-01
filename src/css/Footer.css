@@ -20,9 +20,9 @@ main {
 }
 
 .footer {
-  background-color: var(--color6); /* Footer background */
+  background-color: var(--color6);
   color: white; /* Text color */
-  position: relative; /* Keep it at the bottom of the page content */
+  position: relative;
   width: 100%; /* Full width */
   text-align: center; /* Center align text */
   padding: 4px 0; /* Adjust padding as needed */

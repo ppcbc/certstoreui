@@ -4,6 +4,7 @@ import "../css/AdminPanel.css";
 import { setLogReg } from "../features/loginSlice";
 import http from "../data/http";
 import { Link, useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 export default function AdminPanel() {
   const navigate = useNavigate();
