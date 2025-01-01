@@ -6,6 +6,7 @@ import "../css/ScheduleExam.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setId, setLogReg, setRole, setToken } from "../features/loginSlice";
+import Footer from "./Footer";
 
 function Login() {
   let navigate = useNavigate();
@@ -73,54 +74,57 @@ function Login() {
   }
 
   return (
-    <form action="" onSubmit={onSubmit}>
-      <div className="schedule-exam">
-        <div className="schedule-box">
-          <div className="my-box">
-            <div className="my-inner-box">
-              <label className="my-label">
-                Email:
-                <input
-                  type="text"
-                  id="login"
-                  className="fadeIn second"
-                  name="email"
-                  placeholder="email"
-                  value={user.email}
-                  onChange={getUser}
-                />
-              </label>
+    <div className="schedule-exam-main">
+      <form action="" onSubmit={onSubmit}>
+        <div className="schedule-exam">
+          <div className="schedule-box">
+            <div className="my-box">
+              <div className="my-inner-box">
+                <label className="my-label">
+                  Email:
+                  <input
+                    type="text"
+                    id="login"
+                    className="fadeIn second"
+                    name="email"
+                    placeholder="email"
+                    value={user.email}
+                    onChange={getUser}
+                  />
+                </label>
+              </div>
+              <div className="my-inner-box">
+                <label className="my-label">
+                  Password:
+                  <input
+                    type="password"
+                    id="password"
+                    class="fadeIn third"
+                    name="password"
+                    placeholder="password"
+                    value={user.password}
+                    onChange={getUser}
+                  />
+                </label>
+              </div>
             </div>
-            <div className="my-inner-box">
-              <label className="my-label">
-                Password:
-                <input
-                  type="password"
-                  id="password"
-                  class="fadeIn third"
-                  name="password"
-                  placeholder="password"
-                  value={user.password}
-                  onChange={getUser}
-                />
-              </label>
-            </div>
-          </div>
-          <button type="submit" class="fadeIn fourth" value="Log In">
-            Login
-          </button>
-          {message !== "" && (
+            <button type="submit" class="fadeIn fourth" value="Log In">
+              Login
+            </button>
+            {message !== "" && (
+              <div className="my-label">
+                <p>{message}</p>
+              </div>
+            )}
             <div className="my-label">
-              <p>{message}</p>
+              <p>If you dont have an account yet click here</p>
+              <Link to="/register">Register</Link>
             </div>
-          )}
-          <div className="my-label">
-            <p>If you dont have an account yet click here</p>
-            <Link to="/register">Register</Link>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+      <Footer color={"var(--color7)"} />
+    </div>
   );
 }
 
