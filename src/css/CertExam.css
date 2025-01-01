@@ -2,22 +2,31 @@
 .certexam-main {
   background-color: var(--color2);
 }
+
 .certexam {
   background-color: var(--color2);
-  color: var(--color9); /* Text color matching the header palette */
+  color: var(--color9);
+  /* Text color matching the header palette */
   padding: 40px 20px;
-  min-height: 100vh; /* Full height of the viewport */
-  display: flex; /* Center align items */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  min-height: 100vh;
+  /* Full height of the viewport */
+  display: flex;
+  /* Center align items */
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
   position: relative;
 }
 
 /* Style for the box containing the form elements */
 .certexam-box {
-  background-color: var(--color1); /* White background for contrast */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-color: var(--color1);
+  /* White background for contrast */
+  border-radius: 10px;
+  /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow */
   padding: 40px;
   width: 800px;
   transform: translateY(20px);
@@ -25,18 +34,24 @@
 
 .certexam-box input:focus,
 .certexam-box select:focus {
-  border-color: var(--color7); /* Highlight border on focus */
+  border-color: var(--color7);
+  /* Highlight border on focus */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   outline: none;
 }
 
 /* Style for the h1 (main heading) */
 .certexam-box h1 {
-  font-size: 2rem; /* Larger heading for the wider box */
-  margin: 3px 10px; /* Space below the heading */
-  margin-bottom: 30px; /* Space below the heading */
-  color: var(--color8); /* Match the palette */
-  text-align: center; /* Keep the heading centered */
+  font-size: 2rem;
+  /* Larger heading for the wider box */
+  margin: 3px 10px;
+  /* Space below the heading */
+  margin-bottom: 30px;
+  /* Space below the heading */
+  color: var(--color8);
+  /* Match the palette */
+  text-align: center;
+  /* Keep the heading centered */
 }
 
 /* Style for the input (date picker) */
@@ -145,6 +160,7 @@ input[type="file"] {
 .button {
   padding: 10px;
 }
+
 .my-checkbox-container {
   display: flex;
   justify-content: center;
@@ -160,10 +176,12 @@ input[type="file"] {
   display: inline;
   transform: scale(2);
 }
+
 .certexam-first-label {
   margin-right: 20px;
   font-weight: 600;
 }
+
 .num-of-questions {
   width: 80%;
   display: flex;
@@ -172,13 +190,26 @@ input[type="file"] {
   justify-content: space-around;
   margin-right: 20px;
 }
+
 .num-title {
   margin-right: 20px;
 }
+
 .my-select-checkbox {
   display: flex;
   justify-content: space-between;
 }
+
 .select-text {
   margin-right: 20px;
+}
+
+.CertExam-error-message {
+  color: red;
+  font-size: 12px;
+  text-align: right;
+  margin-top: -5px;
+  margin-bottom: 15px;
+  margin-left: 5px;
+  padding-right: 3px;
 }
