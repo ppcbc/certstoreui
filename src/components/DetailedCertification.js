@@ -40,6 +40,7 @@ import { useParams } from "react-router-dom";
 import "../css/DetailedCertification.css";
 import axios from "axios";
 import http from "../data/http";
+import Footer from "./Footer";
 
 export default function DetailedCertification() {
   const { certExamId } = useParams();
@@ -73,21 +74,24 @@ export default function DetailedCertification() {
   }
 
   return (
-    <div className="detailed_certification">
-      <ul>
-        <li>
-          <h2>{certification.testTitle}</h2>
-          <p>{certification.testDescription}</p>
-          <p>Price: ${certification.price || "N/A"}</p>
-          <p className="skill-level">
-            Skill level: {certification.skillLevel || "N/A"}
-          </p>
-          <p className="duration">
-            Duration: {certification.duration || "N/A"}
-          </p>
-          <button onClick={handleBuy}>Buy Voucher</button>
-        </li>
-      </ul>
+    <div className="detailed_certification-main">
+      <div className="detailed_certification">
+        <ul>
+          <li>
+            <h2>{certification.testTitle}</h2>
+            <p>{certification.testDescription}</p>
+            <p>Price: ${certification.price || "N/A"}</p>
+            <p className="skill-level">
+              Skill level: {certification.skillLevel || "N/A"}
+            </p>
+            <p className="duration">
+              Duration: {certification.duration || "N/A"}
+            </p>
+            <button onClick={handleBuy}>Buy Voucher</button>
+          </li>
+        </ul>
+      </div>
+      <Footer color={"var(--color7"} />
     </div>
   );
 }

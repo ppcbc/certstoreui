@@ -4,6 +4,7 @@ import "../css/Certifications.css";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import http from "../data/http";
+import Footer from "./Footer";
 
 export default function Certifications() {
   const [certifications, setCertifications] = useState([]);
@@ -64,6 +65,7 @@ export default function Certifications() {
           ))}
         </ul>
       </div>
+      <Footer color={"var(--color7)"} />
     </div>
   );
 }
