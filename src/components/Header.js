@@ -28,7 +28,7 @@ export default function Header() {
     <header className="header">
       <nav>
         <ul className="nav">
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <NavLink
               to="/"
               className={({ isActive }) =>
@@ -37,6 +37,15 @@ export default function Header() {
               end
             >
               HOME
+            </NavLink>
+          </li> */}
+          <li className="nav-item logo-item">
+            <NavLink to="/" className="nav-link logo-link">
+              <img
+                src="../images/logo.svg"
+                alt="Certification Shop Logo"
+                className="logo"
+              />
             </NavLink>
           </li>
           <li className="nav-item">

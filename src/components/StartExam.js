@@ -38,12 +38,38 @@ function StartExam({ children, certId }) {
       console.log(response.data);
       setCertExam(response.data);
       let myExams = response.data.examQuestions;
-      console.log(myExams);
+      // console.log(myExams);
 
       var res = await axios.get(http + "api/exams");
       let allExams = res.data;
-      shuffle(allExams);
-      console.log(allExams);
+      // shuffle(allExams);
+      // console.log(allExams);
+      let selectedExams = [];
+
+      for (let i = 0; i < myExams.length; i++) {
+        selectedExams[i] = allExams.filter(
+          item => item.categoryId == myExams[i].categoryId
+        );
+      }
+      let finalExams = [];
+      for (let i = 0; i < selectedExams.length; i++) {
+        shuffle(selectedExams[i]);
+        // console.log(selectedExams[i]);
+        // console.log(myExams[i].number);
+        // console.log(`selectedExams[${i}]`);
+        // console.log(selectedExams[i]);
+        for (let y = 0; y < myExams[i].number; y++) {
+          // console.log(selectedExams[y]);
+          finalExams.push(selectedExams[i][y]);
+          // console.log("y is");
+          // console.log(y);
+        }
+      }
+      console.log("final exams");
+      console.log(finalExams);
+
+      // console.log(selectedExams);
+      // console.log(response.data);
     } catch (error) {
       console.log(error.message);
     }
