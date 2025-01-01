@@ -8,6 +8,7 @@ import {
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Certifications from "./components/Certifications";
+import DetailedCertification from "./components/DetailedCertification";
 import ScheduleExam from "./components/ScheduleExam";
 import MyCertificates from "./components/MyCertificates";
 import Register from "./components/Register";
@@ -27,6 +28,7 @@ import Footer from "./components/Footer";
 import ContactUs from "./components/ContactUs";
 import About from "./components/About";
 
+
 function Layout() {
   const location = useLocation();
   const hideHeaderRoutes = ["/exam"];
@@ -34,39 +36,39 @@ function Layout() {
   const shouldShowHeader = !hideHeaderRoutes.includes(location.pathname);
 
   return (
-    <>
-      {shouldShowHeader && <Header />}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/certifications" element={<Certifications />} />
-        <Route path="/schedule-exam" element={<ScheduleExam />} />
-        <Route path="/my-certificates" element={<MyCertificates />} />
-        <Route path="/adminpanel" element={<AdminPanel />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/assignrole" element={<AssignRole />} />
-        <Route path="/addexam" element={<AddExam />} />
-        <Route path="/exam" element={<Exam />} />
-        <Route path="/addexam-category" element={<AddExamCategory />} />
-        <Route path="/updateexam-category" element={<UpdateExamCategory />} />
-        <Route path="/user-details" element={<UserDetails />} />
-        <Route path="/addfull-category" element={<FullCategories />} />
-        <Route path="/finish" element={<Finish />} />
-        <Route path="/add-certexam" element={<CertExam />} />
-        <Route path="/contact-us" element={<ContactUs />} />
-        <Route path="/about-us" element={<About />} />
-      </Routes>
-      {shouldShowHeader && <Footer />}
-    </>
+      <>
+        {shouldShowHeader && <Header />}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/certifications" element={<Certifications />} />
+          <Route path="/detailed-certification/:certExamId" element={<DetailedCertification />} />
+          <Route path="/schedule-exam" element={<ScheduleExam />} />
+          <Route path="/my-certificates" element={<MyCertificates />} />
+          <Route path="/adminpanel" element={<AdminPanel />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/assignrole" element={<AssignRole />} />
+          <Route path="/addexam" element={<AddExam />} />
+          <Route path="/exam" element={<Exam />} />
+          <Route path="/addexam-category" element={<AddExamCategory />} />
+          <Route path="/updateexam-category" element={<UpdateExamCategory />} />
+          <Route path="/user-details" element={<UserDetails />} />
+          <Route path="/addfull-category" element={<FullCategories />} />
+          <Route path="/finish" element={<Finish />} />
+          <Route path="/add-certexam" element={<CertExam />} />
+          <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/about-us" element={<About />} />
+        </Routes>
+        {shouldShowHeader && <Footer />}
+      </>
   );
 }
 
-// Main App component
 function App() {
   return (
-    <Router>
-      <Layout />
-    </Router>
+      <Router>
+        <Layout />
+      </Router>
   );
 }
 
