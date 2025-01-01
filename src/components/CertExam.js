@@ -33,6 +33,8 @@ function CertExam() {
   const [excategoryIds, setExCategoryIds] = useState([]);
   const [selectedExams, setSelectedExams] = useState([]);
   const [combinedExams, setCombinedExams] = useState([]);
+  const [validationMessages, setValidationMessages] = useState({});
+  const [errors, setErrors] = useState({});
 
   function handleExCategoryId(e, categoryId) {
     let { checked, type, value, name } = e.target;
@@ -136,11 +138,27 @@ function CertExam() {
     });
   }
 
+  const validate = () => {
+    let tempErrors = {};
+    if (!certExam.testTitle) tempErrors.testTitle = "Certification title is required";
+    if (!certExam.testDescription) tempErrors.testDescription = "Certification description is required";
+    if (!certExam.price) tempErrors.price = "Certification price is required";
+    if (!certExam.fullId) tempErrors.fullId = "Category is required";
+    if (!excategoryIds.some(item => item.selected)) tempErrors.examQuestions = "At least one category must be selected";
+    if (!selectedExams.length) tempErrors.examQuestions = "At least one question must be selected";
+
+    setErrors(tempErrors);
+    setValidationMessages(tempErrors);
+    return Object.keys(tempErrors).length === 0;
+  }
+
   async function onSubmit(e) {
     e.preventDefault();
+    if (!validate()) return;
 
     console.log("excategoryids");
     console.log(excategoryIds);
+
     try {
       let combinedSelectedExams = excategoryIds
         .filter(item => item.selected) // Only selected categories
@@ -208,6 +226,9 @@ function CertExam() {
                 />
               </label>
             </div>
+            {validationMessages.testTitle && (
+              <p className="CertExam-error-message">{validationMessages.testTitle}</p>
+            )}
             <div className="certexam-my-inner-box">
               <label className="certexam-my-label">
                 Certification Description:
@@ -220,6 +241,9 @@ function CertExam() {
                 />
               </label>
             </div>
+            {validationMessages.testDescription && (
+              <p className="CertExam-error-message">{validationMessages.testDescription}</p>
+            )}
             <div className="certexam-my-inner-box">
               <label className="certexam-my-label">
                 Certification Price:
@@ -232,6 +256,9 @@ function CertExam() {
                 />
               </label>
             </div>
+            {validationMessages.price && (
+              <p className="CertExam-error-message">{validationMessages.price}</p>
+            )}
             <div className="certexam-my-inner-box">
               <label className="certexam-my-label">
                 Select Category:
@@ -248,8 +275,10 @@ function CertExam() {
                   ))}
                 </select>
               </label>
+              {validationMessages.fullId && (
+                <p className="CertExam-error-message">{validationMessages.fullId}</p>
+              )}
             </div>
-
             {examCategories
               .filter(a => parseInt(a.fullId) === parseInt(certExam.fullId))
               .map((exam, index) => (
@@ -263,7 +292,9 @@ function CertExam() {
                   catId={exam.categoryId}
                 />
               ))}
-
+            {validationMessages.examQuestions && (
+              <p className="CertExam-error-message">{validationMessages.examQuestions}</p>
+            )}
             <div className="certexam-my-inner-box">
               <button type="submit" className="fadeIn fourth">
                 Add
