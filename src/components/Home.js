@@ -35,6 +35,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom"; // Import Link for navigation
 import "../css/Home.css";
+import Footer from "./Footer";
 
 export default function Home() {
   const myToken = useSelector(state => state.token.value.tok);
@@ -65,19 +66,20 @@ export default function Home() {
   ];
 
   return (
-    <div className="my-home">
-      <h1>Welcome to the Certification Shop</h1>
-      <hr className="divider" />
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
-      </p>
-      {/* {myToken !== "" && (
+    <div className="my-home-main">
+      <div className="my-home">
+        <h1>Welcome to the Certification Shop</h1>
+        <hr className="divider" />
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        {/* {myToken !== "" && (
         <div>
           <h1>My Token</h1>
           <p>{myToken}</p>
@@ -87,29 +89,31 @@ export default function Home() {
           <p>{myRole}</p>
         </div>
       )} */}
-      <div className="preview-certifications">
-        <h1>Available Certifications</h1>
-        <ul>
-          {availableCertifications.map(certification => (
-            <li key={certification.id}>
-              <h2>{certification.name}</h2>
-              <p>{certification.description}</p>
-              <p>Price: ${certification.price}</p>
-              <button
-                onClick={() =>
-                  alert(`Bought voucher for ${certification.name}`)
-                }
-              >
-                Buy Voucher
-              </button>
-            </li>
-          ))}
-        </ul>
-        {/* "EXPLORE ALL CERTIFICATIONS" link */}
-        <Link to="/certifications" className="explore-link">
-          Explore all Certifications →
-        </Link>
+        <div className="preview-certifications">
+          <h1>Available Certifications</h1>
+          <ul>
+            {availableCertifications.map(certification => (
+              <li key={certification.id}>
+                <h2>{certification.name}</h2>
+                <p>{certification.description}</p>
+                <p>Price: ${certification.price}</p>
+                <button
+                  onClick={() =>
+                    alert(`Bought voucher for ${certification.name}`)
+                  }
+                >
+                  Buy Voucher
+                </button>
+              </li>
+            ))}
+          </ul>
+          {/* "EXPLORE ALL CERTIFICATIONS" link */}
+          <Link to="/certifications" className="explore-link">
+            Explore all Certifications →
+          </Link>
+        </div>
       </div>
+      <Footer color={"var(--color7)"} />
     </div>
   );
 }

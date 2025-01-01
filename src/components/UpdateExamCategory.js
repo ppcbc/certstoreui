@@ -261,7 +261,7 @@ function UpdateExamCategory() {
           </div>
         </div>
       </form>
-      <Footer color={"var(--color5)"} />
+      <Footer color={"var(--color7)"} />
     </div>
   );
 }

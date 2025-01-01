@@ -1,3 +1,7 @@
+.my-home-main {
+  /* background-color: var(--color5); */
+  background-color: #b4b5b0;
+}
 .my-home {
   background-color: #2e4854; /* Fallback background color */
   background-image: url("../images/main_image_grayscale_cropped.jpg"); /* Add the image */

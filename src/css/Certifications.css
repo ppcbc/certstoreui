@@ -1,4 +1,7 @@
 /* Style for the .certifications container */
+.certifications-main {
+  background-color: var(--color2);
+}
 .certifications {
   background-color: #b4b5b0; /* Light background for the page */
   color: #2c3e50; /* Text color matching the header palette */
