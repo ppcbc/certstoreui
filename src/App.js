@@ -30,6 +30,8 @@ import DetailedCertification from "./components/DetailedCertification";
 import StartExam from "./components/StartExam";
 import PaymentPage from "./components/PaymentPage";
 import DeleteExam from "./components/DeleteExam";
+import DeleteExamCategory from "./components/DeleteExamCategory";
+import DeleteFullExamCategory from "./components/DeleteFullExamCategory";
 
 function Layout() {
   const location = useLocation();
@@ -67,6 +69,8 @@ function Layout() {
         <Route path="/start-exam" element={<StartExam />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/delete-exam" element={<DeleteExam />} />
+        <Route path="/delete-exam-category" element={<DeleteExamCategory />} />
+        <Route path="/delete-full-exam-category" element={<DeleteFullExamCategory />} />
       </Routes>
       {/* </div> */}
       {/* {shouldShowHeader && <Footer color={"red"} />} */}

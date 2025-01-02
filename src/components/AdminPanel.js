@@ -15,8 +15,14 @@ export default function AdminPanel() {
         <ul>
           <li>
             <div className="item-header">
-              <h2>ADD FULL EXAM CATEGORY</h2>
-              <button onClick={() => navigate("/addfull-category")}>Go</button>
+              <h2>ADD EXAM</h2>
+              <button onClick={() => navigate("/addexam")}>Go</button>
+            </div>
+          </li>
+          <li>
+            <div className="item-header">
+              <h2>DELETE EXAM</h2>
+              <button onClick={() => navigate("/delete-exam")}>Go</button>
             </div>
           </li>
           <li>
@@ -32,17 +38,24 @@ export default function AdminPanel() {
                 Go
               </button>
             </div>
+
           </li>
           <li>
             <div className="item-header">
-              <h2>ADD EXAM</h2>
-              <button onClick={() => navigate("/addexam")}>Go</button>
+              <h2>DELETE EXAM CATEGORY</h2>
+              <button onClick={() => navigate("/delete-exam-category")}>Go</button>
             </div>
           </li>
           <li>
             <div className="item-header">
-              <h2>DELETE EXAM</h2>
-              <button onClick={() => navigate("/delete-exam")}>Go</button>
+              <h2>ADD FULL EXAM CATEGORY</h2>
+              <button onClick={() => navigate("/addfull-category")}>Go</button>
+            </div>
+          </li>
+          <li>
+            <div className="item-header">
+              <h2>DELETE FULL EXAM CATEGORY</h2>
+              <button onClick={() => navigate("/delete-full-exam-category")}>Go</button>
             </div>
           </li>
           <li>
