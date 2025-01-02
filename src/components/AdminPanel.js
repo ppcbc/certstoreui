@@ -41,6 +41,12 @@ export default function AdminPanel() {
           </li>
           <li>
             <div className="item-header">
+              <h2>DELETE EXAM</h2>
+              <button onClick={() => navigate("/delete-exam")}>Go</button>
+            </div>
+          </li>
+          <li>
+            <div className="item-header">
               <h2>ADD CERT FULL EXAM</h2>
               <button onClick={() => navigate("/add-certexam")}>Go</button>
             </div>
