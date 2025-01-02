@@ -12,9 +12,9 @@ function ContactUs() {
     message: ""
   });
 
-  const SERVICE_ID = "service_pcnlvdn";
-  const TEMPLATE_ID = "template_gzx3srk";
-  const PUBLIC_KEY = "J5azwiizeCADNy__Z";
+  const SERVICE_ID = "service_npme68t";
+  const TEMPLATE_ID = "template_gfbfryk";
+  const PUBLIC_KEY = "I5jkOGujZmwf2oE2s";
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -59,10 +59,10 @@ function ContactUs() {
   return (
     <form onSubmit={handleSubmit}>
       <div className="contactus-container">
-        <div className="add-box">
+        <div className="contactus-box">
           <h1 className="h1-form"> Contact Us </h1>
-          <div className="my-box">
-            <div className="my-inner-box">
+          <div className="mycontact-box">
+            <div className="my-inner-contactbox">
               <input
                 type="text"
                 id="name"
@@ -75,7 +75,7 @@ function ContactUs() {
               />
             </div>
 
-            <div className="my-inner-box">
+            <div className="my-inner-contactbox">
               <input
                 type="text"
                 id="email"
@@ -88,7 +88,7 @@ function ContactUs() {
               />
             </div>
 
-            <div className="my-inner-box">
+            <div className="my-inner-contactbox">
               <input
                 type="text"
                 id="subject"
@@ -100,7 +100,7 @@ function ContactUs() {
               />
             </div>
 
-            <div className="my-inner-box">
+            <div className="my-inner-contactbox">
               <textarea
                 id="message"
                 className="fadeIn second"
@@ -113,7 +113,7 @@ function ContactUs() {
               />
             </div>
 
-            <button type="submit" className="send-button">
+            <button type="submit" className="sendcontact-button">
               Send Message
             </button>
           </div>

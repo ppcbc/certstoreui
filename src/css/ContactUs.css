@@ -10,15 +10,15 @@
   position: relative; /* Enable precise positioning of child elements */
 }
 
-.add-box h1 {
+.contactus-box h1 {
   font-size: 2rem; /* Larger heading for the wider box */
   margin: 3px 10px; /* Space below the heading */
-  margin-bottom: 30px; /* Space below the heading */
+  margin-bottom: 20px; /* Space below the heading */
   color: var(--color8); /* Match the palette */
   text-align: center; /* Keep the heading centered */
 }
 
-.add-box {
+.contactus-box {
   background-color: var(--color1); /* White background for contrast */
   border-radius: 10px; /* Rounded corners */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
@@ -28,7 +28,7 @@
   transform: translateY(20px); /* Slightly higher positioning */
 }
 
-.add-box-label {
+.contactus-box-label {
   /* font-size: 1.2rem; */
   font-size: 1.8rem;
   color: #4b5052;
@@ -36,8 +36,8 @@
   margin: 3px 10px;
 }
 
-.add-box input[type="text"],
-.add-box textarea {
+.mycontact-box input[type="text"],
+.mycontact-box textarea{
   flex: 1; /* Allow input/select to take available space */
   padding: 10px; /* Add padding for comfort */
   border: 1px solid #ccc; /* Subtle border */
@@ -49,14 +49,14 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth interaction */
 }
 
-.add-box textarea:focus,
-.add-box input[type="text"]:focus {
+.contact-box textarea:focus,
+.contact-box input[type="text"]:focus {
   border-color: var(--color7); /* Highlight border on focus */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
   outline: none; /* Remove default outline */
 }
 
-.add-box button {
+.contactus-box button {
   background-color: var(--color7); /* Blue button background */
   margin-top: 15px;
   color: white; /* White text color */
@@ -70,13 +70,13 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-.add-box button:hover {
+.mycontact-box button:hover {
   background-color: var(--color3); /* Darker blue on hover */
   transform: translateY(-2px); /* Slight lift on hover */
   font-weight: 600; /* Make text bolder on hover */
 }
 
-.my-inner-box {
+.my-inner-contactbox {
   display: flex;
   width: 98.5%;
   flex-direction: row; /* Keep elements on the same line */
@@ -85,50 +85,9 @@
   padding: 10px;
 }
 
-.add-exam-field {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+.sendcontact-button {
   padding: 10px;
 }
-
-.userdetails-inner-box {
-  display: flex;
-  width: 98.5%;
-  flex-direction: row; /* Keep elements on the same line */
-  align-items: center; /* Align elements vertically */
-  justify-content: space-between;
-  padding: 10px;
-}
-
-.my-label {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  width: 100%; /* Make the label take full width */
-}
-/* .add-box-label {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-} */
-
-.send-button {
-  padding: 10px;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* input[type="number"] {
-  -moz-appearance: textfield;
-} */
 
 .align-left {
   text-align: left;
