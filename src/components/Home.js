@@ -69,7 +69,7 @@ export default function Home() {
         </div>
 
         <div className="preview-certifications">
-          <h1>Available Certifications</h1>
+          <h1>Most Popular Certifications</h1>
           <ul>
             {certifications.slice(0, 3).map(certification => (
               <Certification
