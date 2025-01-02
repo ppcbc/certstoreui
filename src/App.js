@@ -29,6 +29,7 @@ import About from "./components/About";
 import DetailedCertification from "./components/DetailedCertification";
 import StartExam from "./components/StartExam";
 import PaymentPage from "./components/PaymentPage";
+import DeleteExam from "./components/DeleteExam";
 
 function Layout() {
   const location = useLocation();
@@ -54,6 +55,7 @@ function Layout() {
         <Route path="/register" element={<Register />} />
         <Route path="/assignrole" element={<AssignRole />} />
         <Route path="/addexam" element={<AddExam />} />
+        <Route path="/deleteexam" element={<DeleteExam />} />
         <Route path="/exam" element={<Exam />} />
         <Route path="/addexam-category" element={<AddExamCategory />} />
         <Route path="/updateexam-category" element={<UpdateExamCategory />} />
