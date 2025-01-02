@@ -67,16 +67,13 @@ function Exam() {
 
   async function getExam() {
     try {
-      var response = await axios.get(http + `api/CertExams/${22}`, {
+      var response = await axios.get(http + `api/CertExams/${25}`, {
         headers: {
           Authorization: "Bearer " + myToken
         }
       });
 
-      // setCertExam(response.data);
       let myExams = response.data.examQuestions;
-      // console.log(myExams);
-
       var res = await axios.get(http + "api/exams");
       let allExams = res.data;
       let selectedExams = [];
@@ -86,6 +83,7 @@ function Exam() {
           item => parseInt(item.categoryId) === parseInt(myExams[i].categoryId)
         );
       }
+
       let finalExams = [];
       for (let i = 0; i < selectedExams.length; i++) {
         shuffle(selectedExams[i]);
@@ -93,6 +91,7 @@ function Exam() {
           finalExams.push(selectedExams[i][y]);
         }
       }
+
       let filteredExams = finalExams.map((item, index) => ({
         examId: item.examId,
         categoryId: item.categoryId,
@@ -111,14 +110,11 @@ function Exam() {
       }));
       setExams(filteredExams);
       if (filteredExams.length > 0) {
-        setTimeLeft(filteredExams.length * 150);
+        setTimeLeft(filteredExams.length * 130);
         setIsTimerRunning(true);
       }
 
       setLoading(false);
-      console.log("final exams");
-      console.log(finalExams);
-      console.log(filteredExams);
     } catch (error) {
       console.log(error.message);
     }
