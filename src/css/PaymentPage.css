@@ -1,0 +1,85 @@
+.payment-category {
+  background-color: var(--color2);
+  color: var(--color9);
+  padding: 40px 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Style for the box containing the form elements */
+.payment-add-box {
+  background-color: var(--color1); /* White background for contrast */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 30px; /* Increased padding for a spacious layout */
+  width: 400px; /* Increased width for the box */
+  transform: translateY(20px); /* Slightly higher positioning */
+  text-align: left;
+}
+
+/* Style for the h1 (main heading) */
+.payment-add-box h1 {
+  font-size: 2rem; /* Larger heading for the wider box */
+  margin: 3px 10px; /* Space below the heading */
+  margin-bottom: 30px; /* Space below the heading */
+  color: var(--color8); /* Match the palette */
+  text-align: center; /* Keep the heading centered */
+}
+
+.payment-inner-box {
+  display: flex;
+  width: calc(100% - 10px);
+  flex-direction: row; /* Keep elements on the same line */
+  align-items: center; /* Align elements vertically */
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.payment-add-box input {
+  flex: 1; /* Allow input/select to take available space */
+  padding: 10px; /* Add padding for comfort */
+  border: 1px solid #ccc; /* Subtle border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1rem; /* Font size for readability */
+  width: calc(100% - 20px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth interaction */
+}
+
+.payment-add-box input:focus {
+  border-color: var(--color7); /* Highlight border on focus */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  outline: none; /* Remove default outline */
+}
+
+.payment-add-my-label {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  width: 100%; /* Make the label take full width */
+}
+
+.payment-category button {
+  background-color: var(--color7); /* Blue button background */
+  margin-top: 9px;
+  color: white; /* White text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 12px 20px; /* Button padding */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1rem; /* Font size for button text */
+  width: 100%; /* Full width for uniformity */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.payment-category button:hover {
+  background-color: var(--color3); /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+  font-weight: 600; /* Make text bolder on hover */
+}

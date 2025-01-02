@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import '../css/PaymentPage.css';
+import "../css/PaymentPage.css";
 
 function PaymentPage() {
   const [cardDetails, setCardDetails] = useState({
@@ -26,11 +26,11 @@ function PaymentPage() {
   return (
     <form action="" onSubmit={handleSubmit}>
       <div className="payment-category">
-        <div className="add-box">
+        <div className="payment-add-box">
           <h1>Payment Information</h1>
-          <div className="add-my-box">
+          <div className>
             <div className="payment-inner-box">
-              <label className="add-my-label">
+              <label className="payment-add-my-label">
                 Card Number:
                 <input
                   type="text"
@@ -43,7 +43,7 @@ function PaymentPage() {
               </label>
             </div>
             <div className="payment-inner-box">
-              <label className="add-my-label">
+              <label className="payment-add-my-label">
                 Expiry Date:
                 <input
                   type="text"
@@ -56,7 +56,7 @@ function PaymentPage() {
               </label>
             </div>
             <div className="payment-inner-box">
-              <label className="add-my-label">
+              <label className="payment-add-my-label">
                 CVV:
                 <input
                   type="text"
@@ -69,7 +69,7 @@ function PaymentPage() {
               </label>
             </div>
             <div className="payment-inner-box">
-              <label className="add-my-label">
+              <label className="payment-add-my-label">
                 Card Holder Name:
                 <input
                   type="text"
