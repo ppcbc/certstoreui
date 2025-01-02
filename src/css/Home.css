@@ -4,12 +4,12 @@
 }
 
 .my-home {
-  background-color: #2e4854; /* Fallback background color */
-  background-image: url("../images/main_image_grayscale_cropped.jpg"); /* Add the image */
-  background-size: cover; /* Ensure the image covers the entire section */
-  background-position: center; /* Center the image */
-  background-blend-mode: overlay; /* Blend the image with the background color */
-  color: #fff; /* White text color */
+  background-color: #b4b5b0;
+  /* background-color: #2e4854; */
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+  color: #fff;
   display: flex; /* Use flexbox to center content */
   flex-direction: column; /* Align children (h1 and p) vertically */
   justify-content: flex-start; /* Vertically center the content */
@@ -20,6 +20,24 @@
   min-height: 100vh; /* Ensure the section takes up at least the full viewport height */
   box-sizing: border-box; /* Include padding in height calculation */
   margin-bottom: -25px;
+}
+.my-home-upper {
+  display: flex; /* Use flexbox to center content */
+  flex-direction: column; /* Align children (h1 and p) vertically */
+  justify-content: flex-start; /* Vertically center the content */
+  align-items: center; /* Horizontally center the content */
+  text-align: center; /* Center the text */
+  background-color: #2e4854; /* Fallback background color */
+  padding: 70px 20px 60px 20px; /* Add padding around the content */
+
+  background-image: url("../images/main_image_grayscale_cropped.jpg");
+  background-blend-mode: overlay; /* Blend the image with the background color */
+  background-size: cover; /* Ensure the image covers the entire section */
+  background-position: center; /* Center the image */
+  color: #fff; /* White text color */
+  width: 100%;
+  word-wrap: break-word;
+  margin-top: -5px;
 }
 
 /* Style for h1 (headline) */
