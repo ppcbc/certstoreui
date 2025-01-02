@@ -5,6 +5,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import http from "../data/http";
 import Footer from "./Footer";
+import Certification from "./Certification";
 
 export default function Certifications() {
   const [certifications, setCertifications] = useState([]);
@@ -52,23 +53,10 @@ export default function Certifications() {
         <h1>Available Certifications</h1>
         <ul>
           {certifications.map(certification => (
-            <li key={certification.certExamId} className="certification-box">
-              <Link
-                to={`/detailed-certification/${certification.certExamId}`}
-                className="certification-link"
-              >
-                <div>
-                  <h2>{certification.testTitle}</h2>
-                  <p>
-                    {truncateDescription(certification.testDescription, 100)}
-                  </p>
-                  <p>Price: ${certification.price || "N/A"}</p>
-                </div>
-              </Link>
-              <button onClick={() => handleBuy(certification)}>
-                Buy Voucher
-              </button>
-            </li>
+            <Certification
+              certification={certification}
+              key={certification.certExamId}
+            />
           ))}
         </ul>
       </div>
