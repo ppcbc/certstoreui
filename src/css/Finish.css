@@ -1,7 +1,59 @@
+
+
 .finish-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    transition: all 0.3s ease-in-out;
 }
+
+    .finish-container:hover {
+        transform: scale(1.02);
+    }
+
+    .finish-container h1 {
+        font-size: 3rem;
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+    .finish-container h2 {
+        font-size: 1.75rem;
+        color: #555;
+        margin-bottom: 15px;
+    }
+
+        .finish-container h2:last-child {
+            margin-bottom: 0;
+        }
+
+    .finish-container .status-pass {
+        color: #4caf50;
+    }
+
+    .finish-container .status-fail {
+        color: #f44336; 
+    }
+
+.download-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .download-button:hover {
+        background-color: #0056b3;
+    }
