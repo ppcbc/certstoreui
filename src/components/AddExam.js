@@ -90,12 +90,13 @@ function AddExam() {
     if (!newExam.fullId) tempErrors.fullId = "Category is required";
     if (!newExam.categoryId) tempErrors.categoryId = "Exam is required";
     if (!newExam.questionText && !imageUrl)
-      tempErrors.questionText = "Question text is required";
+      tempErrors.questionText =
+        "Either question text or a valid image is required";
     if (!newExam.option1) tempErrors.option1 = "First question is required";
     if (!newExam.option2) tempErrors.option2 = "Second question is required";
     if (!newExam.option3) tempErrors.option3 = "Third question is required";
     if (!newExam.option4) tempErrors.option4 = "Fourth question is required";
-    if (!imageUrl) tempErrors.imageUrl = "Please upload a valid image";
+
     setErrors(tempErrors);
     setValidationMessages(errors);
     return Object.keys(tempErrors).length === 0;
