@@ -28,7 +28,7 @@ function Certification({ certification }) {
         <div>
           <h2>{certification.testTitle}</h2>
           <p>{truncateDescription(certification.testDescription, 100)}</p>
-          <p>Price: ${certification.price || "N/A"}</p>
+          <p>Price: €{certification.price || "N/A"}</p>
         </div>
       </Link>
       <button onClick={() => handleBuy(certification)}>Buy Voucher</button>

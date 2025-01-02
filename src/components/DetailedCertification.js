@@ -80,13 +80,13 @@ export default function DetailedCertification() {
           <li>
             <h2>{certification.testTitle}</h2>
             <p>{certification.testDescription}</p>
-            <p>Price: ${certification.price || "N/A"}</p>
-            <p className="skill-level">
+            <p>Price: €{certification.price || "N/A"}</p>
+            {/* <p className="skill-level">
               Skill level: {certification.skillLevel || "N/A"}
             </p>
             <p className="duration">
               Duration: {certification.duration || "N/A"}
-            </p>
+            </p> */}
             <button onClick={handleBuy}>Buy Voucher</button>
           </li>
         </ul>
