@@ -41,7 +41,7 @@
 }
 
 /* Style for p (paragraph) */
-.my-home p {
+.my-home .main-text {
   color: lightgray;
   font-size: 1.2rem; /* Slightly larger text for the paragraph */
   max-width: 850px;
@@ -162,4 +162,14 @@
 }
 .certification-link {
   text-decoration: none;
+}
+
+.question-certify {
+  color: lightgray;
+  font-weight: 500;
+  font-size: 2rem; /* Larger font size for the heading */
+  margin-bottom: 10px; /* Space between heading and paragraph */
+  padding-bottom: 10px; /* Space between heading text and line */
+  letter-spacing: 0.5px;
+
 }
