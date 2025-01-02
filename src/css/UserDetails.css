@@ -156,3 +156,13 @@
   margin-top: 15px;
   margin-bottom: 0px;
 }
+
+.submituserdetails-error-message {
+  color: red;
+  font-size: 12px;
+  text-align: right;
+  margin-top: 4px;
+  margin-bottom: 15px;
+  margin-left: 5px;
+  padding-right: 3px;
+}
