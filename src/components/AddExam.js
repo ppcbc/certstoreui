@@ -191,192 +191,189 @@ function AddExam() {
         <div className="add-exam">
           <div className="add-box">
             <h1>Add Exam</h1>
-            {/* <div className="add-my-box"> */}
-            <div>
-              <div className="add-my-inner-box">
-                <label className="add-my-label">
-                  Select category:
-                  <select
-                    name="fullId"
-                    value={newExam.fullId}
-                    onChange={onChange}
-                  >
-                    <option value={0}>Category</option>
-                    {fullCategories.map(a => (
-                      <option key={a.fullId} value={a.fullId}>
-                        {a.name}
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
+                Select category:
+                <select
+                  name="fullId"
+                  value={newExam.fullId}
+                  onChange={onChange}
+                >
+                  <option value={0}>Category</option>
+                  {fullCategories.map(a => (
+                    <option key={a.fullId} value={a.fullId}>
+                      {a.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+            {validationMessages.fullId && (
+              <p className="AddExam-error-message">
+                {validationMessages.fullId}
+              </p>
+            )}
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
+                Select exam:
+                <select
+                  name="categoryId"
+                  value={examCategories.categoryId}
+                  onChange={onChange}
+                >
+                  <option value={0}>Exam</option>
+                  {examCategories
+                    .filter(
+                      a => parseInt(a.fullId) === parseInt(newExam.fullId)
+                    )
+                    .map(a => (
+                      <option key={a.categoryId} value={a.categoryId}>
+                        {a.categoryName}
                       </option>
                     ))}
-                  </select>
-                </label>
-              </div>
-              {validationMessages.fullId && (
-                <p className="AddExam-error-message">
-                  {validationMessages.fullId}
-                </p>
-              )}
-              <div className="add-my-inner-box">
-                <label className="add-my-label">
-                  Select exam:
-                  <select
-                    name="categoryId"
-                    value={examCategories.categoryId}
-                    onChange={onChange}
-                  >
-                    <option value={0}>Exam</option>
-                    {examCategories
-                      .filter(
-                        a => parseInt(a.fullId) === parseInt(newExam.fullId)
-                      )
-                      .map(a => (
-                        <option key={a.categoryId} value={a.categoryId}>
-                          {a.categoryName}
-                        </option>
-                      ))}
-                  </select>
-                </label>
-              </div>
-              {validationMessages.categoryId && (
-                <p className="AddExam-error-message">
-                  {validationMessages.categoryId}
-                </p>
-              )}
-              <div className="add-my-inner-box">
-                <label className="add-my-label">
-                  Question text:
-                  <input
-                    type="text"
-                    className="fadeIn second"
-                    name="questionText"
-                    placeholder="question text"
-                    value={newExam.questionText}
-                    onChange={onChange}
-                  />
-                </label>
-              </div>
-              {validationMessages.questionText && (
-                <p className="AddExam-error-message">
-                  {validationMessages.questionText}
-                </p>
-              )}
-              <div className="add-my-inner-box">
-                <label className="add-my-label">
-                  Upload foto for code snipped (Less than 10mb):
-                  <label for="file-upload" className="custom-file-upload">
-                    Upload Photo
-                    <input
-                      id="file-upload"
-                      type="file"
-                      name="image"
-                      onChange={handleFile}
-                    ></input>
-                  </label>
-                </label>
-              </div>
-              {validationMessages.imageUrl && (
-                <p className="AddExam-error-message">
-                  {validationMessages.imageUrl}
-                </p>
-              )}
-              <div className="add-my-inner-box">
-                <label className="add-my-label">
-                  First question:
-                  <input
-                    type="text"
-                    name="option1"
-                    placeholder="first question"
-                    value={newExam.option1}
-                    onChange={onChange}
-                  />
-                  <select
-                    name="isCorrect1"
-                    value={newExam.isCorrect1}
-                    onChange={onChange}
-                  >
-                    <option value={false}>Wrong</option>
-                    <option value={true}>Correct</option>
-                  </select>
-                </label>
-              </div>
-              <div className="add-my-inner-box">
-                <label className="add-my-label">
-                  Second question:
-                  <input
-                    type="text"
-                    className="fadeIn third"
-                    name="option2"
-                    placeholder="second question"
-                    value={newExam.option2}
-                    onChange={onChange}
-                  />
-                  <select
-                    name="isCorrect2"
-                    value={newExam.isCorrect2}
-                    onChange={onChange}
-                  >
-                    <option value={false}>Wrong</option>
-                    <option value={true}>Correct</option>
-                  </select>
-                </label>
-              </div>
-              {validationMessages.option2 && (
-                <p className="AddExam-error-message">
-                  {validationMessages.option2}
-                </p>
-              )}
-              <div className="add-my-inner-box">
-                <label className="add-my-label">
-                  Third question:
-                  <input
-                    type="text"
-                    className="fadeIn third"
-                    name="option3"
-                    placeholder="third question"
-                    value={newExam.option3}
-                    onChange={onChange}
-                  />
-                  <select
-                    name="isCorrect3"
-                    value={newExam.isCorrect3}
-                    onChange={onChange}
-                  >
-                    <option value={false}>Wrong</option>
-                    <option value={true}>Correct</option>
-                  </select>
-                </label>
-              </div>
-              {validationMessages.option3 && (
-                <p className="AddExam-error-message">
-                  {validationMessages.option3}
-                </p>
-              )}
-              <div className="add-my-inner-box">
-                <label className="add-my-label">
-                  Fourth question:
-                  <input
-                    type="text"
-                    class="fadeIn third"
-                    name="option4"
-                    placeholder="fourth question"
-                    value={newExam.option4}
-                    onChange={onChange}
-                  />
-                  <select
-                    name="isCorrect4"
-                    value={newExam.isCorrect4}
-                    onChange={onChange}
-                  >
-                    <option value={false}>Wrong</option>
-                    <option value={true}>Correct</option>
-                  </select>
-                </label>
-              </div>
-              {validationMessages.option4 && (
-                <p className="AddExam-error-message">
-                  {validationMessages.option4}
-                </p>
-              )}
+                </select>
+              </label>
             </div>
+            {validationMessages.categoryId && (
+              <p className="AddExam-error-message">
+                {validationMessages.categoryId}
+              </p>
+            )}
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
+                Question text:
+                <input
+                  type="text"
+                  className="fadeIn second"
+                  name="questionText"
+                  placeholder="question text"
+                  value={newExam.questionText}
+                  onChange={onChange}
+                />
+              </label>
+            </div>
+            {validationMessages.questionText && (
+              <p className="AddExam-error-message">
+                {validationMessages.questionText}
+              </p>
+            )}
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
+                Upload foto for code snipped (Less than 10mb):
+                <label for="file-upload" className="custom-file-upload">
+                  Upload Photo
+                  <input
+                    id="file-upload"
+                    type="file"
+                    name="image"
+                    onChange={handleFile}
+                  ></input>
+                </label>
+              </label>
+            </div>
+            {validationMessages.imageUrl && (
+              <p className="AddExam-error-message">
+                {validationMessages.imageUrl}
+              </p>
+            )}
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
+                First question:
+                <input
+                  type="text"
+                  name="option1"
+                  placeholder="first question"
+                  value={newExam.option1}
+                  onChange={onChange}
+                />
+                <select
+                  name="isCorrect1"
+                  value={newExam.isCorrect1}
+                  onChange={onChange}
+                >
+                  <option value={false}>Wrong</option>
+                  <option value={true}>Correct</option>
+                </select>
+              </label>
+            </div>
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
+                Second question:
+                <input
+                  type="text"
+                  className="fadeIn third"
+                  name="option2"
+                  placeholder="second question"
+                  value={newExam.option2}
+                  onChange={onChange}
+                />
+                <select
+                  name="isCorrect2"
+                  value={newExam.isCorrect2}
+                  onChange={onChange}
+                >
+                  <option value={false}>Wrong</option>
+                  <option value={true}>Correct</option>
+                </select>
+              </label>
+            </div>
+            {validationMessages.option2 && (
+              <p className="AddExam-error-message">
+                {validationMessages.option2}
+              </p>
+            )}
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
+                Third question:
+                <input
+                  type="text"
+                  className="fadeIn third"
+                  name="option3"
+                  placeholder="third question"
+                  value={newExam.option3}
+                  onChange={onChange}
+                />
+                <select
+                  name="isCorrect3"
+                  value={newExam.isCorrect3}
+                  onChange={onChange}
+                >
+                  <option value={false}>Wrong</option>
+                  <option value={true}>Correct</option>
+                </select>
+              </label>
+            </div>
+            {validationMessages.option3 && (
+              <p className="AddExam-error-message">
+                {validationMessages.option3}
+              </p>
+            )}
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
+                Fourth question:
+                <input
+                  type="text"
+                  class="fadeIn third"
+                  name="option4"
+                  placeholder="fourth question"
+                  value={newExam.option4}
+                  onChange={onChange}
+                />
+                <select
+                  name="isCorrect4"
+                  value={newExam.isCorrect4}
+                  onChange={onChange}
+                >
+                  <option value={false}>Wrong</option>
+                  <option value={true}>Correct</option>
+                </select>
+              </label>
+            </div>
+            {validationMessages.option4 && (
+              <p className="AddExam-error-message">
+                {validationMessages.option4}
+              </p>
+            )}
             <div className="add-my-inner-box">
               <button type="submit" class="fadeIn fourth" value="submit">
                 Add

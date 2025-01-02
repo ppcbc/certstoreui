@@ -32,7 +32,11 @@ export default function Certifications() {
 
   const handleBuy = certification => {
     // alert(`Bought voucher for ${certification.categoryName}`);
-    navigate("/payment");
+    if (myToken) {
+      navigate("/payment");
+    } else {
+      navigate("/register");
+    }
   };
 
   const truncateDescription = (text, maxLength) => {

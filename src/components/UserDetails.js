@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../App.css";
 import "../css/UserDetails.css";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLogReg } from "../features/loginSlice";
 import http from "../data/http";
 import { Link, useNavigate } from "react-router-dom";
@@ -11,34 +11,45 @@ import Footer from "./Footer";
 export default function UserDetails() {
   let navigate = useNavigate();
   const [details, setDetails] = useState({
-    Name: "",
-    MiddleName: "",
-    LastName: "",
-    Gender: "",
-    NativeLanguage: "greek",
-    DateOfBirth: "",
-    PhotoIdType: "National Card",
-    PhotoIdNumber: "",
-    PhotoIdIssueDate: "",
-    Address: "",
-    AddressLine2: "",
-    StateProvince: "",
-    City: "",
-    PostalCode: "",
-    CountryOfResidence: "",
-    MobileNumber: "",
-    LandlinePhone: ""
+    id: "",
+    name: "",
+    middleName: "",
+    lastName: "",
+    gender: "",
+    nativeLanguage: "greek",
+    dateOfBirth: "",
+    photoIdType: "National Card",
+    photoIdNumber: "",
+    photoIdIssueDate: "",
+    address: "",
+    addressLine2: "",
+    stateProvince: "",
+    city: "",
+    postalCode: "",
+    countryOfResidence: "",
+    mobileNumber: "",
+    landlinePhone: ""
   });
 
   const [validationMessages, setValidationMessages] = useState({});
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+
+  const myToken = useSelector(state => state.token.value.tok);
+  const myId = useSelector(state => state.token.value.id);
+  const dispatch = useDispatch();
 
   function getDetails(e) {
     let { name, value } = e.target;
+    if (parseInt(value) !== NaN) {
+      parseInt(value);
+    }
     setDetails(prev => {
       return {
         ...prev,
-        [name]: value
+        [name]: value,
+        ["id"]: myId
       };
     });
   }
@@ -46,44 +57,44 @@ export default function UserDetails() {
   function validateForm() {
     const errors = {};
 
-    if (!details.Name.trim()) errors.Name = "First Name is required";
+    if (!details.name.trim()) errors.name = "First Name is required";
 
-    if (!details.LastName.trim()) errors.LastName = "Last Name is required";
+    if (!details.lastName.trim()) errors.lastName = "Last Name is required";
 
     // if (!details.Gender) errors.Gender = "Gender is required.";
 
-    if (!details.NativeLanguage)
-      errors.NativeLanguage = "Native Language is required";
+    if (!details.nativeLanguage)
+      errors.nativeLanguage = "Native Language is required";
 
-    if (!details.DateOfBirth) errors.DateOfBirth = "Date of Birth is required";
+    if (!details.dateOfBirth) errors.dateOfBirth = "Date of Birth is required";
 
-    if (!details.PhotoIdType) errors.PhotoIdType = "Photo ID Type is required";
+    if (!details.photoIdType) errors.photoIdType = "Photo ID Type is required";
 
-    if (!details.PhotoIdNumber.trim())
-      errors.PhotoIdNumber = "Photo ID Number is required";
+    if (!details.photoIdNumber.trim())
+      errors.photoIdNumber = "Photo ID Number is required";
 
-    if (!details.PhotoIdIssueDate.trim())
-      errors.PhotoIdIssueDate = "Photo Issue Date is required";
+    if (!details.photoIdIssueDate.trim())
+      errors.photoIdIssueDate = "Photo Issue Date is required";
 
-    if (!details.Address.trim()) errors.Address = "Address is required";
+    if (!details.address.trim()) errors.address = "Address is required";
 
-    if (!details.StateProvince.trim())
-      errors.StateProvince = "State/Province is required";
+    if (!details.stateProvince.trim())
+      errors.stateProvince = "State/Province is required";
 
-    if (!details.City.trim()) errors.City = "City is required";
+    if (!details.city.trim()) errors.city = "City is required";
 
-    if (!details.PostalCode.trim())
-      errors.PostalCode = "Postal Code is required";
+    if (!details.postalCode.trim())
+      errors.postalCode = "Postal Code is required";
 
-    if (!details.CountryOfResidence.trim())
-      errors.CountryOfResidence = "Country Of Residence is required";
+    if (!details.countryOfResidence.trim())
+      errors.countryOfResidence = "Country Of Residence is required";
 
-    if (!details.MobileNumber.trim()) {
-      errors.MobileNumber = "Mobile Number is required";
+    if (!details.mobileNumber.trim()) {
+      errors.mobileNumber = "Mobile Number is required";
     } else {
       const mobileRegex = /^[0-9]+$/;
-      if (!details.MobileNumber.match(mobileRegex)) {
-        errors.MobileNumber = "Mobile Number should contain only numbers";
+      if (!details.mobileNumber.match(mobileRegex)) {
+        errors.mobileNumber = "Mobile Number should contain only numbers";
       }
     }
 
@@ -92,11 +103,26 @@ export default function UserDetails() {
     return Object.keys(errors).length === 0;
   }
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
+    console.log(details);
     if (validateForm()) {
-      console.log("Form submitted with details: ", details);
-      setFormSubmitted(true);
+      try {
+        const response = await axios.post(http + "api/UserDetails", details, {
+          headers: {
+            Authorization: "Bearer " + myToken
+          }
+        });
+        if (response.status === 201 || response.status === 200) {
+          setSuccessMessage("Form submitted successfully!");
+          setErrorMessage("");
+          setFormSubmitted(true);
+        }
+      } catch (error) {
+        console.error(error.message);
+        setErrorMessage("Failed to submit form. Please try again.");
+        setSuccessMessage("");
+      }
     }
   }
 
@@ -114,16 +140,16 @@ export default function UserDetails() {
                     type="text"
                     id="FirstName"
                     className="fadeIn second"
-                    name="Name"
+                    name="name"
                     placeholder="First Name"
-                    value={details.Name}
+                    value={details.name}
                     onChange={getDetails}
                   />
                 </label>
               </div>
-              {validationMessages.Name && (
+              {validationMessages.name && (
                 <p className="userdetails-error-message">
-                  {validationMessages.Name}
+                  {validationMessages.name}
                 </p>
               )}
               <div className="userdetails-inner-box">
@@ -133,9 +159,9 @@ export default function UserDetails() {
                     type="text"
                     id="MiddleName"
                     className="fadeIn third"
-                    name="MiddleName"
+                    name="middleName"
                     placeholder="Middle Name"
-                    value={details.MiddleName}
+                    value={details.middleName}
                     onChange={getDetails}
                   />
                 </label>
@@ -147,30 +173,37 @@ export default function UserDetails() {
                     type="text"
                     id="LastName"
                     className="fadeIn third"
-                    name="LastName"
+                    name="lastName"
                     placeholder="Last Name"
-                    value={details.LastName}
+                    value={details.lastName}
                     onChange={getDetails}
                   />
                 </label>
               </div>
-              {validationMessages.LastName && (
+              {validationMessages.lastName && (
                 <p className="userdetails-error-message">
-                  {validationMessages.LastName}
+                  {validationMessages.lastName}
                 </p>
               )}
               <div className="my-inner-genderbox">
                 <p className="my-genderlabel-title">Gender:</p>
                 <label className="my-genderlabel">
-                  <input type="radio" id="male" name="Gender" value="male" />
+                  <input
+                    type="radio"
+                    id="male"
+                    name="gender"
+                    value="male"
+                    onChange={getDetails}
+                  />
                   Male
                 </label>
                 <label className="my-genderlabel">
                   <input
                     type="radio"
                     id="female"
-                    name="Gender"
+                    name="gender"
                     value="female"
+                    onChange={getDetails}
                   />
                   Female
                 </label>
@@ -182,9 +215,9 @@ export default function UserDetails() {
                   <select
                     id="NativeLanguage"
                     className="fadeIn third"
-                    name="NativeLanguage"
+                    name="nativeLanguage"
                     placeholder="Native Language"
-                    value={details.NativeLanguage}
+                    value={details.nativeLanguage}
                     onChange={getDetails}
                   >
                     <option value="greek">Greek</option>
@@ -198,9 +231,9 @@ export default function UserDetails() {
                   </select>
                 </label>
               </div>
-              {validationMessages.NativeLanguage && (
+              {validationMessages.nativeLanguage && (
                 <p className="userdetails-error-message">
-                  {validationMessages.NativeLanguage}
+                  {validationMessages.nativeLanguage}
                 </p>
               )}
               <div className="userdetails-inner-box">
@@ -210,16 +243,16 @@ export default function UserDetails() {
                     type="date"
                     id="DateOfBirth"
                     className="fadeIn third"
-                    name="DateOfBirth"
+                    name="dateOfBirth"
                     placeholder="dd/mm/yyyy"
-                    value={details.DateOfBirth}
+                    value={details.dateOfBirth}
                     onChange={getDetails}
                   />
                 </label>
               </div>
-              {validationMessages.DateOfBirth && (
+              {validationMessages.dateOfBirth && (
                 <p className="userdetails-error-message">
-                  {validationMessages.DateOfBirth}
+                  {validationMessages.dateOfBirth}
                 </p>
               )}
               <div className="userdetails-inner-box">
@@ -228,9 +261,9 @@ export default function UserDetails() {
                   <select
                     id="PhotoIdType"
                     className="fadeIn third"
-                    name="PhotoIdType"
+                    name="photoIdType"
                     placeholder="Photo Id Type:"
-                    value={details.PhotoIdType}
+                    value={details.photoIdType}
                     onChange={getDetails}
                   >
                     <option value="nationalcard">National Card</option>
@@ -238,9 +271,9 @@ export default function UserDetails() {
                   </select>
                 </label>
               </div>
-              {validationMessages.PhotoIdType && (
+              {validationMessages.photoIdType && (
                 <p className="userdetails-error-message">
-                  {validationMessages.PhotoIdType}
+                  {validationMessages.photoIdType}
                 </p>
               )}
               <div className="userdetails-inner-box">
@@ -250,16 +283,16 @@ export default function UserDetails() {
                     type="text"
                     id="PhotoIdNumber"
                     className="fadeIn second"
-                    name="PhotoIdNumber"
+                    name="photoIdNumber"
                     placeholder="Photo Id Number"
-                    value={details.PhotoIdNumber}
+                    value={details.photoIdNumber}
                     onChange={getDetails}
                   />
                 </label>
               </div>
-              {validationMessages.PhotoIdNumber && (
+              {validationMessages.photoIdNumber && (
                 <p className="userdetails-error-message">
-                  {validationMessages.PhotoIdNumber}
+                  {validationMessages.photoIdNumber}
                 </p>
               )}
             </div>
@@ -270,16 +303,16 @@ export default function UserDetails() {
                   type="date"
                   id="PhotoIdIssueDate"
                   className="fadeIn third"
-                  name="PhotoIdIssueDate"
+                  name="photoIdIssueDate"
                   placeholder="dd/mm/yyyy"
-                  value={details.PhotoIdIssueDate}
+                  value={details.photoIdIssueDate}
                   onChange={getDetails}
                 />
               </label>
             </div>
-            {validationMessages.PhotoIdIssueDate && (
+            {validationMessages.photoIdIssueDate && (
               <p className="userdetails-error-message">
-                {validationMessages.PhotoIdIssueDate}
+                {validationMessages.photoIdIssueDate}
               </p>
             )}
             <div className="userdetails-inner-box">
@@ -289,16 +322,16 @@ export default function UserDetails() {
                   type="text"
                   id="Address"
                   className="fadeIn second"
-                  name="Address"
+                  name="address"
                   placeholder="Address"
-                  value={details.Address}
+                  value={details.address}
                   onChange={getDetails}
                 />
               </label>
             </div>
-            {validationMessages.Address && (
+            {validationMessages.address && (
               <p className="userdetails-error-message">
-                {validationMessages.Address}
+                {validationMessages.address}
               </p>
             )}
             <div className="userdetails-inner-box">
@@ -308,9 +341,9 @@ export default function UserDetails() {
                   type="text"
                   id="AddressLine2"
                   className="fadeIn second"
-                  name="AddressLine2"
+                  name="addressLine2"
                   placeholder="Address Line 2"
-                  value={details.AddressLine2}
+                  value={details.addressLine2}
                   onChange={getDetails}
                 />
               </label>
@@ -322,16 +355,16 @@ export default function UserDetails() {
                   type="text"
                   id="StateProvince"
                   className="fadeIn second"
-                  name="StateProvince"
+                  name="stateProvince"
                   placeholder="State/Province"
-                  value={details.StateProvince}
+                  value={details.stateProvince}
                   onChange={getDetails}
                 />
               </label>
             </div>
-            {validationMessages.StateProvince && (
+            {validationMessages.stateProvince && (
               <p className="userdetails-error-message">
-                {validationMessages.StateProvince}
+                {validationMessages.stateProvince}
               </p>
             )}
             <div className="userdetails-inner-box">
@@ -341,16 +374,16 @@ export default function UserDetails() {
                   type="text"
                   id="City"
                   className="fadeIn second"
-                  name="City"
+                  name="city"
                   placeholder="City"
-                  value={details.City}
+                  value={details.city}
                   onChange={getDetails}
                 />
               </label>
             </div>
-            {validationMessages.City && (
+            {validationMessages.city && (
               <p className="userdetails-error-message">
-                {validationMessages.City}
+                {validationMessages.city}
               </p>
             )}
             <div className="userdetails-inner-box">
@@ -360,16 +393,16 @@ export default function UserDetails() {
                   type="text"
                   id="PostalCode"
                   className="fadeIn second"
-                  name="PostalCode"
+                  name="postalCode"
                   placeholder="Postal Code"
-                  value={details.PostalCode}
+                  value={details.postalCode}
                   onChange={getDetails}
                 />
               </label>
             </div>
-            {validationMessages.PostalCode && (
+            {validationMessages.postalCode && (
               <p className="userdetails-error-message">
-                {validationMessages.PostalCode}
+                {validationMessages.postalCode}
               </p>
             )}
             <div className="userdetails-inner-box">
@@ -379,16 +412,16 @@ export default function UserDetails() {
                   type="text"
                   id="CountryOfResidence"
                   className="fadeIn second"
-                  name="CountryOfResidence"
+                  name="countryOfResidence"
                   placeholder="Country Of Residence"
-                  value={details.CountryOfResidence}
+                  value={details.countryOfResidence}
                   onChange={getDetails}
                 />
               </label>
             </div>
-            {validationMessages.CountryOfResidence && (
+            {validationMessages.countryOfResidence && (
               <p className="userdetails-error-message">
-                {validationMessages.CountryOfResidence}
+                {validationMessages.countryOfResidence}
               </p>
             )}
             <div className="userdetails-inner-box">
@@ -398,16 +431,16 @@ export default function UserDetails() {
                   type="text"
                   id="MobileNumber"
                   className="fadeIn second"
-                  name="MobileNumber"
+                  name="mobileNumber"
                   placeholder="Mobile Number"
-                  value={details.MobileNumber}
+                  value={details.mobileNumber}
                   onChange={getDetails}
                 />
               </label>
             </div>
-            {validationMessages.MobileNumber && (
+            {validationMessages.mobileNumber && (
               <p className="userdetails-error-message">
-                {validationMessages.MobileNumber}
+                {validationMessages.mobileNumber}
               </p>
             )}
             <div className="userdetails-inner-box">
@@ -417,9 +450,9 @@ export default function UserDetails() {
                   type="text"
                   id="LandlinePhone"
                   className="fadeIn second"
-                  name="LandlinePhone"
+                  name="landlinePhone"
                   placeholder="Landline"
-                  value={details.LandlinePhone}
+                  value={details.landlinePhone}
                   onChange={getDetails}
                 />
               </label>
@@ -429,14 +462,15 @@ export default function UserDetails() {
               Submit
             </button>
             {formSubmitted && (
-              <p className="userdetails-success-message">
-                Form submitted successfully!
-              </p>
+              <p className="userdetails-success-message">{successMessage}</p>
+            )}
+            {errorMessage && (
+              <p className="submituserdetails-error-message">{errorMessage}</p>
             )}
           </div>
         </div>
       </form>
-      <Footer color={"var(--color4)"} />
+      <Footer color={"var(--color4"} />
     </div>
   );
 }
