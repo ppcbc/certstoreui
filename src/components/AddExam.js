@@ -89,7 +89,7 @@ function AddExam() {
     let tempErrors = {};
     if (!newExam.fullId) tempErrors.fullId = "Category is required";
     if (!newExam.categoryId) tempErrors.categoryId = "Exam is required";
-    if (!newExam.questionText)
+    if (!newExam.questionText && !imageUrl)
       tempErrors.questionText = "Question text is required";
     if (!newExam.option1) tempErrors.option1 = "First question is required";
     if (!newExam.option2) tempErrors.option2 = "Second question is required";
@@ -296,6 +296,11 @@ function AddExam() {
                 </select>
               </label>
             </div>
+            {validationMessages.option2 && (
+              <p className="AddExam error message">
+                {validationMessages.option1}
+              </p>
+            )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
                 Second question:
