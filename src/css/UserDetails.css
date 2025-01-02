@@ -3,14 +3,14 @@
   background-color: var(--color2);
 }
 .user-details {
-  background-color: var(--color2); /* Light background for the page */
-  color: var(--color9); /* Text color matching the header palette */
-  padding: 40px 20px; /* Padding for the container */
-  min-height: 100vh; /* Full height of the viewport */
-  display: flex; /* Center align items */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  position: relative; /* Enable precise positioning of child elements */
+  background-color: var(--color2);
+  color: var(--color9);
+  padding: 40px 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   margin-top: 40px;
 }
 
