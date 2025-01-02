@@ -29,7 +29,7 @@ function DeleteFullExamCategory() {
           Authorization: "Bearer " + myToken
         }
       });
-      console.log("Fetched full categories:", response.data);
+      //   console.log("Fetched full categories:", response.data);
       setFullCategories(response.data);
     } catch (error) {
       console.log("Error fetching full categories:", error.message);
@@ -43,35 +43,53 @@ function DeleteFullExamCategory() {
           Authorization: "Bearer " + myToken
         }
       });
-      const categories = responseCategories.data.filter(
-        item => item.fullCategoryId == fullCategoryId
+      const selectedCategories = responseCategories.data;
+      const categories = selectedCategories.filter(
+        item => item.fullId == fullCategoryId
       );
       console.log(fullCategoryId);
+      console.log(categories);
+
+      const responseExams = await axios.get(http + `api/Exams`, {
+        headers: {
+          Authorization: "Bearer " + myToken
+        }
+      });
+      let selectedExams = responseExams.data;
+
+      let exams = [];
+      let filteredExams = [];
 
       for (const category of categories) {
-        const responseExams = await axios.get(http + `api/Exams`, {
+        exams = selectedExams.filter(
+          item => item.categoryId == category.categoryId
+        );
+        // filteredExams.push(...exams);
+        for (const exam of exams) {
+          filteredExams.push(exam);
+        }
+
+        // console.log(exams);
+      }
+
+      console.log("filtered exams");
+      console.log(filteredExams);
+      for (const exam of filteredExams) {
+        await axios.delete(http + `api/Exams/${exam.examId}`, {
           headers: {
             Authorization: "Bearer " + myToken
           }
         });
-        const exams = responseExams.data.filter(
-          item => item.categoryId == category.categoryId
-        );
-
-        for (const exam of exams) {
-          await axios.delete(http + `api/Exams/${exam.examId}`, {
-            headers: {
-              Authorization: "Bearer " + myToken
-            }
-          });
-        }
-
+      }
+      for (const category of categories) {
         await axios.delete(http + `api/ExamCategories/${category.categoryId}`, {
           headers: {
             Authorization: "Bearer " + myToken
           }
         });
       }
+      console.log(filteredExams);
+
       console.log(
         `Deleted all exams and categories in full category ${fullCategoryId}`
       );
@@ -96,7 +114,7 @@ function DeleteFullExamCategory() {
           }
         }
       );
-
+      //   let response = "";
       if (response.status === 204 || response.status === 200) {
         setMessage(
           "Full category and associated categories and exams successfully deleted"
