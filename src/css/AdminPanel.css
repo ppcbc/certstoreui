@@ -73,19 +73,18 @@
   /*text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.2);*/
 }
 
-
 /* Style for the h2 title */
 .admin-panel li h2 {
   font-size: 1.3rem; /* Medium font size */
   color: white; /* White text for titles */
   margin: 0; /* Remove default margin */
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 10px;
   flex-grow: 1; /* Allow h2 to take up available space */
   text-align: center; /* Center text */
 }
 
-.admin-panel-item-paragraph{
+.admin-panel-item-paragraph {
   font-size: 1rem;
   color: white;
   width: 90%;
@@ -100,7 +99,6 @@
   width: 100%; /* Full width of the container */
   margin-bottom: 10px; /* Space between title and button */
 }
-
 
 /* Style for the button */
 .admin-panel li button {
@@ -122,5 +120,3 @@
   transform: translateY(-2px); /* Slight lift on hover */
   font-weight: 600; /* Make text bolder on hover */
 }
-
-
