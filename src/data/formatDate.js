@@ -9,7 +9,7 @@ function formatDate(isoDate) {
     second: "2-digit",
     hour12: true
   });
-  return formatDate;
+  return formattedDate;
 }
 
 export default formatDate;

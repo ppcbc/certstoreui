@@ -55,10 +55,17 @@
 }
 
 /* Style for the h2 title */
-.basket-panel li h2 {
+.basket-panel li h3 {
   font-size: 0.9rem; /* Medium font size */
   color: white; /* White text for titles */
   margin: 0; /* Remove default margin */
+  flex-grow: 1; /* Allow h2 to take up available space */
+  margin: 0 10px;
+}
+.basket-panel h2 {
+  font-size: 1.8rem; /* Medium font size */
+  color: white; /* White text for titles */
+  margin: 0;
   flex-grow: 1; /* Allow h2 to take up available space */
   margin: 0 10px;
 }
@@ -75,6 +82,7 @@
   align-items: center; /* Vertically align title and button */
   width: 100%; /* Full width of the container */
   margin: 20px 0;
+  justify-content: center;
 }
 
 /* Style for the button */
@@ -108,4 +116,17 @@
 .basket-delete-button {
   margin: 0 20px;
   background-color: rgb(238, 163, 163);
+}
+.basket-strings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+.basket-bot-strings {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
 }

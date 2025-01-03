@@ -1,34 +1,25 @@
-import axios from "axios";
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import http from "../data/http";
+import React from "react";
+import "../css/Basket.css";
 
 export const BasketItem = ({
   certExamTitle,
   certExamPrice,
+  selectDate,
   removeStaf,
   navigate,
-  selectDate,
   id
 }) => {
-  //   const [message, setMessage] = useState("");
-  //   const [check, setCheck] = useState(false);
-  //   setMessage("Item successfully removed");
-  //   handleMessage();
-  //   function handleMessage() {
-  //     setCheck(true);
-  //     setTimeout(() => {
-  //       setCheck(false);
-  //     }, 700);
-  //   }
-
   return (
     <div>
       <li>
         <div className="basket-header">
-          <h2>{certExamTitle}</h2>
-          <h2>Price {certExamPrice}</h2>
-          <p>Added at {selectDate}</p>
+          <div className="basket-strings">
+            <h2>{certExamTitle}</h2>
+            <div className="basket-bot-strings">
+              <h3>Price: €{certExamPrice}</h3>
+              <h3>Added at: {selectDate}</h3>
+            </div>
+          </div>
           <div className="basket-buttons">
             <button
               className="basket-delete-button"
@@ -45,7 +36,6 @@ export const BasketItem = ({
           </div>
         </div>
       </li>
-      {/* <div className="">{check && <p>{message}</p>}</div> */}
     </div>
   );
 };

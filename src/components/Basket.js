@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "../App.css";
 import "../css/Basket.css";
-import { setLogReg } from "../features/loginSlice";
-import http from "../data/http";
+import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import axios from "axios";
-import { useSelector } from "react-redux";
 import formatDate from "../data/formatDate";
 import { BasketItem } from "./BasketItem";
+import http from "../data/http";
 
 export default function Basket() {
   const myToken = useSelector(state => state.token.value.tok);
@@ -21,51 +20,54 @@ export default function Basket() {
 
   async function getStaf() {
     try {
-      var response = await axios.get(http + "api/UserStafs", {
+      const response = await axios.get(`${http}api/UserStafs`, {
         headers: {
-          Authorization: "Bearer " + myToken
+          Authorization: `Bearer ${myToken}`
         }
       });
 
-      let stafs = response.data;
+      const stafs = response.data;
+      const stafData = await Promise.all(
+        stafs.map(async staf => {
+          const res = await axios.get(
+            `${http}api/CertExams/${staf.certExamId}`,
+            {
+              headers: {
+                Authorization: `Bearer ${myToken}`
+              }
+            }
+          );
 
-      for (var staf of stafs) {
-        var res = await axios.get(http + `api/CertExams/${staf.certExamId}`, {
-          headers: {
-            Authorization: "Bearer " + myToken
-          }
-        });
-        let myCertExams = res.data;
-        let formattedDate = formatDate(staf.dateOfSelectCertExam);
+          const myCertExams = res.data;
+          const formattedDate = formatDate(staf.dateOfSelectCertExam);
 
-        let currentStaf = {
-          key: staf.userStafId,
-          certExamTitle: myCertExams.testTitle,
-          certExamPrice: myCertExams.price,
-          selectDate: formattedDate,
-          hasBought: staf.hasBought
-        };
-        setMyStaf(prev => {
-          return [...prev, currentStaf];
-        });
-        // console.log(currentStaf);
-      }
+          return {
+            key: staf.userStafId,
+            certExamTitle: myCertExams.testTitle,
+            certExamPrice: myCertExams.price,
+            selectDate: formattedDate,
+            hasBought: staf.hasBought
+          };
+        })
+      );
+
+      setMyStaf(stafData);
     } catch (error) {
-      console.log(error.message);
+      console.error("Failed to fetch staff:", error.message);
     }
   }
+
   async function removeStaf(id) {
     try {
-      var response = await axios.delete(http + `api/UserStafs/${id}`, {
+      await axios.delete(`${http}api/UserStafs/${id}`, {
         headers: {
-          Authorization: "Bearer " + myToken
+          Authorization: `Bearer ${myToken}`
         }
       });
-      console.log(response.data);
-      let currentStaf = response.data;
-      console.log(currentStaf);
+
+      setMyStaf(prev => prev.filter(staf => staf.key !== id));
     } catch (error) {
-      console.log(error.message);
+      console.error("Failed to remove staff:", error.message);
     }
   }
 
@@ -73,18 +75,18 @@ export default function Basket() {
     <div className="basket-panel-main">
       <div className="basket-panel">
         <h1>Certifications To Buy</h1>
-        <ul>
-          <div className="basket-items">
-            {myStaf.map(ff => (
-              <BasketItem
-                key={ff.key}
-                id={ff.key}
-                certExamPrice={ff.certExamPrice}
-                selectDate={ff.selectDate}
-                removeStaf={removeStaf}
-              />
-            ))}
-          </div>
+        <ul className="basket-items">
+          {myStaf.map(staf => (
+            <BasketItem
+              key={staf.key}
+              id={staf.key}
+              certExamTitle={staf.certExamTitle}
+              certExamPrice={staf.certExamPrice}
+              selectDate={staf.selectDate}
+              removeStaf={removeStaf}
+              navigate={navigate}
+            />
+          ))}
         </ul>
       </div>
       <Footer color={"lightgrey"} />
