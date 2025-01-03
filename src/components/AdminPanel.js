@@ -24,7 +24,7 @@ export default function AdminPanel() {
               <li>
                 <div className="item-header">
                   <h2>Update Question (need fix)</h2>
-                  <button onClick={() => navigate("/")}>Go</button>
+                  <button onClick={() => navigate("/update-exam")}>Go</button>
                 </div>
               </li>
 
@@ -73,7 +73,11 @@ export default function AdminPanel() {
               <li>
                 <div className="item-header">
                   <h2>Update Module (need fix)</h2>
-                  <button onClick={() => navigate("/")}>Go</button>
+                  <button
+                    onClick={() => navigate("/update-full-exam-category")}
+                  >
+                    Go
+                  </button>
                 </div>
               </li>
               <li>
