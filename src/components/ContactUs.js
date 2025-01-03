@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react"; // Import useState here
 import "../css/ContactUs.css";
-import { useState } from "react";
 import http from "../data/http";
 import emailjs from "emailjs-com";
 
 function ContactUs() {
+  const [validationMessages, setValidationMessages] = useState({});
   const [FormContact, setFormContact] = useState({
     name: "",
     email: "",
@@ -23,20 +23,41 @@ function ContactUs() {
       [name]: value
     });
   };
-  //Email validation Function
+
+  // Email validation function
   const validateEmail = email => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
+  // Validation function
+  const validate = () => {
+    let errors = {};
+    if (FormContact.name === "") {
+      errors.name = "Please enter your full name.";
+    }
+    if (FormContact.email === "") {
+      errors.email = "Please enter an email.";
+    }
+    if (!validateEmail(FormContact.email)) {
+      errors.email = "Please enter a valid email address.";
+    }
+    if (FormContact.subject === "") {
+      errors.subject = "Please enter a subject.";
+    }
+    if (FormContact.message === "") {
+      errors.message = "Please enter your message.";
+    }
+
+    setValidationMessages(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleSubmit = async e => {
     e.preventDefault();
 
-    // Email validation
-    if (!validateEmail(FormContact.email)) {
-      alert("Please enter a valid email address.");
-      return;
-    }
+    // Validate before sending the email
+    if (!validate()) return;
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, PUBLIC_KEY).then(
       result => {
@@ -48,6 +69,7 @@ function ContactUs() {
       }
     );
 
+    // Reset the form after submitting
     setFormContact({
       name: "",
       email: "",
@@ -71,12 +93,15 @@ function ContactUs() {
                 placeholder="Full Name"
                 value={FormContact.name}
                 onChange={handleChange}
-                required
               />
-            </div>
+              </div>
+              {validationMessages.name && (
+                <p className="error-message">{validationMessages.name}</p>
+              )}
+            
 
             <div className="my-inner-contactbox">
-              <input
+            <input
                 type="text"
                 id="email"
                 className="fadeIn second"
@@ -84,9 +109,12 @@ function ContactUs() {
                 placeholder="Your Email"
                 value={FormContact.email}
                 onChange={handleChange}
-                required
               />
-            </div>
+              </div>
+              {validationMessages.email && (
+                <p className="error-message">{validationMessages.email}</p>
+              )}
+            
 
             <div className="my-inner-contactbox">
               <input
@@ -98,7 +126,11 @@ function ContactUs() {
                 value={FormContact.subject}
                 onChange={handleChange}
               />
-            </div>
+              </div>
+              {validationMessages.subject && (
+                <p className="error-message">{validationMessages.subject}</p>
+              )}
+            
 
             <div className="my-inner-contactbox">
               <textarea
@@ -109,9 +141,12 @@ function ContactUs() {
                 value={FormContact.message}
                 onChange={handleChange}
                 rows="5"
-                required
               />
-            </div>
+              </div>
+              {validationMessages.message && (
+                <p className="error-message">{validationMessages.message}</p>
+              )}
+            
 
             <button type="submit" className="sendcontact-button">
               Send Message
