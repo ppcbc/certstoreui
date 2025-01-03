@@ -4,6 +4,7 @@
   align-items: center;
   padding: 0;
   height: 100vh;
+  background-color: var(--color2);
 }
 
 .my-certificates-container {
@@ -17,7 +18,7 @@
 /* Future Exams Section */
 .future-exams {
   width: 50%;
-  background-color: var(--color3);
+  background-color: var(--color2);
   padding: 30px;
   display: flex;
   flex-direction: column;
