@@ -5,6 +5,8 @@ import emailjs from "emailjs-com";
 
 function ContactUs() {
   const [validationMessages, setValidationMessages] = useState({});
+  const [check, setCheck] = useState(false);
+  const [added, setAdded] = useState("");
   const [FormContact, setFormContact] = useState({
     name: "",
     email: "",
@@ -15,6 +17,14 @@ function ContactUs() {
   const SERVICE_ID = "service_npme68t";
   const TEMPLATE_ID = "template_gfbfryk";
   const PUBLIC_KEY = "I5jkOGujZmwf2oE2s";
+
+  function handleMessage() {
+    setCheck(true);
+    setTimeout(() => {
+      setCheck(false);
+    }, 700);
+  }
+
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -61,11 +71,13 @@ function ContactUs() {
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, PUBLIC_KEY).then(
       result => {
-        alert("Message Sent Successfully");
+        setAdded("Message sent successfully");
+        handleMessage();
       },
       error => {
         console.log(error.text);
-        alert("Something went wrong!");
+      setAdded("Wrong credentials try again");
+      handleMessage();
       }
     );
 
@@ -151,6 +163,7 @@ function ContactUs() {
             <button type="submit" className="sendcontact-button">
               Send Message
             </button>
+            <p>{added && <div className="message-status">{added}</div>}</p>
           </div>
         </div>
       </div>
