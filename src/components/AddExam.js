@@ -92,10 +92,10 @@ function AddExam() {
     if (!newExam.questionText && !imageUrl)
       tempErrors.questionText =
         "Either question text or a valid image is required";
-    if (!newExam.option1) tempErrors.option1 = "First answer is required";
-    if (!newExam.option2) tempErrors.option2 = "Second answer is required";
-    if (!newExam.option3) tempErrors.option3 = "Third answer is required";
-    if (!newExam.option4) tempErrors.option4 = "Fourth answer is required";
+    if (!newExam.option1) tempErrors.option1 = "First question is required";
+    if (!newExam.option2) tempErrors.option2 = "Second question is required";
+    if (!newExam.option3) tempErrors.option3 = "Third question is required";
+    if (!newExam.option4) tempErrors.option4 = "Fourth question is required";
 
     setErrors(tempErrors);
     setValidationMessages(errors);
@@ -279,11 +279,11 @@ function AddExam() {
             )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
-                First answer:
+                First question:
                 <input
                   type="text"
                   name="option1"
-                  placeholder="first answer"
+                  placeholder="first question"
                   value={newExam.option1}
                   onChange={onChange}
                 />
@@ -304,12 +304,12 @@ function AddExam() {
             )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
-                Second answer:
+                Second question:
                 <input
                   type="text"
                   className="fadeIn third"
                   name="option2"
-                  placeholder="second answer"
+                  placeholder="second question"
                   value={newExam.option2}
                   onChange={onChange}
                 />
@@ -330,12 +330,12 @@ function AddExam() {
             )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
-                Third answer:
+                Third question:
                 <input
                   type="text"
                   className="fadeIn third"
                   name="option3"
-                  placeholder="third answer"
+                  placeholder="third question"
                   value={newExam.option3}
                   onChange={onChange}
                 />
@@ -356,12 +356,12 @@ function AddExam() {
             )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
-                Fourth answer:
+                Fourth question:
                 <input
                   type="text"
-                  class="fadeIn third"
+                  className="fadeIn third"
                   name="option4"
-                  placeholder="fourth answer"
+                  placeholder="fourth question"
                   value={newExam.option4}
                   onChange={onChange}
                 />
@@ -381,7 +381,7 @@ function AddExam() {
               </p>
             )}
             <div className="add-my-inner-box">
-              <button type="submit" class="fadeIn fourth" value="submit">
+              <button type="submit" className="fadeIn fourth" value="submit">
                 Add
               </button>
             </div>
