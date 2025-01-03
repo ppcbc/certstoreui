@@ -1,5 +1,7 @@
 /* About.css */
-
+.about-main-container {
+  background-color: var(--color5);
+}
 .about-container {
   background-color: var(--color5);
   background-image: -moz-linear-gradient("");

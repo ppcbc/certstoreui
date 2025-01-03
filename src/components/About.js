@@ -5,7 +5,7 @@ import Footer from "./Footer";
 
 function About() {
   return (
-    <div>
+    <div className="about-main-container">
       <div className="about-container">
         <div className="about-box">
           <h1 className="h1-about"> Who we are </h1>
@@ -74,7 +74,7 @@ function About() {
       </div>
 
       <div>
-        <Footer color={"var(--color4)"} />
+        <Footer color={"var(--color2)"} />
       </div>
     </div>
   );

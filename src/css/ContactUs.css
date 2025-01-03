@@ -1,4 +1,7 @@
 /* Style for the .add-exam-category container */
+.contactus-main-container {
+  background-color: var(--color2); /* Light background for the page */
+}
 .contactus-container {
   background-color: var(--color2); /* Light background for the page */
   color: var(--color9); /* Text color matching the header palette */
