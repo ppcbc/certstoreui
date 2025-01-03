@@ -22,7 +22,7 @@
 /* Style for the list container */
 .admin-panel ul {
   list-style: none; /* Remove default list styling */
-  padding: 0; /* Remove padding */
+  padding: 0px; /* Remove padding */
   display: flex; /* Use flexbox to align items */
   flex-wrap: wrap; /* Allow wrapping to the next line for responsiveness */
   justify-content: center; /* Center the items in the container */
@@ -37,29 +37,43 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
   padding: 20px; /* Internal padding */
   width: 250px; /* Fixed width for each box */
-  min-height: 75px; /* Ensure consistent height */
+  height: 220px;
+  min-height: 150px; /* Adjusted height to allow vertical stacking */
   display: flex; /* Use flexbox */
-  align-items: center; /* Vertically center content */
-  justify-content: space-between; /* Space between h2 and button */
-  text-align: left; /* Align text to the left */
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Center content vertically */
+  text-align: center; /* Align text to the center */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
 }
 
 /* Style for the h2 title */
 .admin-panel li h2 {
-  font-size: 1.2rem; /* Medium font size */
+  font-size: 1.3rem; /* Medium font size */
   color: white; /* White text for titles */
   margin: 0; /* Remove default margin */
+  margin-top: 10px;
+  margin-bottom: 10px;
   flex-grow: 1; /* Allow h2 to take up available space */
+  text-align: center; /* Center text */
+}
+
+.admin-panel-item-paragraph{
+  font-size: 1rem;
+  color: white;
+  width: 75%;
 }
 
 /* Flex container for h2 and button */
-.admin-panel li .item-header {
-  display: flex; /* Flexbox for title and button alignment */
-  justify-content: space-between; /* Align title to the left and button to the right */
-  align-items: center; /* Vertically align title and button */
+.admin-panel li .admin-panel-item-header {
+  display: flex; /* Flexbox for title alignment */
+  flex-direction: column; /* Stack title and button vertically */
+  justify-content: center; /* Center title and button vertically */
+  align-items: center; /* Center items horizontally */
   width: 100%; /* Full width of the container */
+  margin-bottom: 10px; /* Space between title and button */
 }
+
 
 /* Style for the button */
 .admin-panel li button {
@@ -68,11 +82,11 @@
   border: none; /* Remove border */
   border-radius: 5px; /* Rounded corners */
   padding: 14px 24px; /* Adjusted button size */
-  margin-right: 5px;
   cursor: pointer; /* Pointer cursor on hover */
   font-size: 1rem; /* Button text size */
   transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  margin-top: 10px; /* Space between the title and button */
 }
 
 /* Hover effect for the button */
@@ -81,3 +95,5 @@
   transform: translateY(-2px); /* Slight lift on hover */
   font-weight: 600; /* Make text bolder on hover */
 }
+
+
