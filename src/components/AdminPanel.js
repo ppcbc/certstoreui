@@ -13,85 +13,101 @@ export default function AdminPanel() {
       <div className="admin-panel">
         <h1>Admin Panel</h1>
         <ul>
-          <li>
-            <div className="item-header">
-              <h2>Create Question</h2>
-              <button onClick={() => navigate("/addexam")}>Go</button>
-            </div>
-          </li>
-          <li>
-            <div className="item-header">
-              <h2>Update Question (need fix)</h2>
-              <button onClick={() => navigate("/")}>Go</button>
-            </div>
-          </li>
+          <div className="admin-panel-inside-all">
+            <div className="admin-panel-inside">
+              <li>
+                <div className="item-header">
+                  <h2>Create Question</h2>
+                  <button onClick={() => navigate("/addexam")}>Go</button>
+                </div>
+              </li>
+              <li>
+                <div className="item-header">
+                  <h2>Update Question (need fix)</h2>
+                  <button onClick={() => navigate("/")}>Go</button>
+                </div>
+              </li>
 
-          <li>
-            <div className="item-header">
-              <h2>Delete Question</h2>
-              <button onClick={() => navigate("/delete-exam")}>Go</button>
+              <li>
+                <div className="item-header">
+                  <h2>Delete Question</h2>
+                  <button onClick={() => navigate("/delete-exam")}>Go</button>
+                </div>
+              </li>
             </div>
-          </li>
-          <li>
-            <div className="item-header">
-              <h2>Create Question Category</h2>
-              <button onClick={() => navigate("/addexam-category")}>Go</button>
+            <div className="admin-panel-inside">
+              <li>
+                <div className="item-header">
+                  <h2>Create Question Category</h2>
+                  <button onClick={() => navigate("/addexam-category")}>
+                    Go
+                  </button>
+                </div>
+              </li>
+              <li>
+                <div className="item-header">
+                  <h2>Update Question Category</h2>
+                  <button onClick={() => navigate("/updateexam-category")}>
+                    Go
+                  </button>
+                </div>
+              </li>
+              <li>
+                <div className="item-header">
+                  <h2>Delete Question Category</h2>
+                  <button onClick={() => navigate("/delete-exam-category")}>
+                    Go
+                  </button>
+                </div>
+              </li>
             </div>
-          </li>
-          <li>
-            <div className="item-header">
-              <h2>Update Question Category</h2>
-              <button onClick={() => navigate("/updateexam-category")}>
-                Go
-              </button>
+            <div className="admin-panel-inside">
+              <li>
+                <div className="item-header">
+                  <h2>Create Module</h2>
+                  <button onClick={() => navigate("/addfull-category")}>
+                    Go
+                  </button>
+                </div>
+              </li>
+              <li>
+                <div className="item-header">
+                  <h2>Update Module (need fix)</h2>
+                  <button onClick={() => navigate("/")}>Go</button>
+                </div>
+              </li>
+              <li>
+                <div className="item-header">
+                  <h2>Delete Module</h2>
+                  <button
+                    onClick={() => navigate("/delete-full-exam-category")}
+                  >
+                    Go
+                  </button>
+                </div>
+              </li>
             </div>
-          </li>
-          <li>
-            <div className="item-header">
-              <h2>Delete Question Category</h2>
-              <button onClick={() => navigate("/delete-exam-category")}>
-                Go
-              </button>
+            <div className="admin-panel-inside">
+              <li>
+                <div className="item-header">
+                  <h2>Create Exam</h2>
+                  <button onClick={() => navigate("/add-certexam")}>Go</button>
+                </div>
+              </li>
+              <li>
+                <div className="item-header">
+                  <h2>Delete Exam (need fix)</h2>
+                  <button onClick={() => navigate("/")}>Go</button>
+                </div>
+              </li>
             </div>
-          </li>
-          <li>
-            <div className="item-header">
-              <h2>Create Module</h2>
-              <button onClick={() => navigate("/addfull-category")}>Go</button>
-            </div>
-          </li>
-          <li>
-            <div className="item-header">
-              <h2>Update Module (need fix)</h2>
-              <button onClick={() => navigate("/")}>Go</button>
-            </div>
-          </li>
-          <li>
-            <div className="item-header">
-              <h2>Delete Module</h2>
-              <button onClick={() => navigate("/delete-full-exam-category")}>
-                Go
-              </button>
-            </div>
-          </li>
-          <li>
-            <div className="item-header">
-              <h2>Create Exam</h2>
-              <button onClick={() => navigate("/add-certexam")}>Go</button>
-            </div>
-          </li>
-          <li>
-            <div className="item-header">
-              <h2>Delete Exam (need fix)</h2>
-              <button onClick={() => navigate("/")}>Go</button>
-            </div>
-          </li>
-          <li>
-            <div className="item-header">
-              <h2>User Role</h2>
-              <button onClick={() => navigate("/assignrole")}>Go</button>
-            </div>
-          </li>
+            <li>
+              <div className="item-header">
+                <h2>Role Access</h2>
+                <button onClick={() => navigate("/assignrole")}>Go</button>
+              </div>
+            </li>
+          </div>
         </ul>
       </div>
       <Footer color={"lightgrey"} />
