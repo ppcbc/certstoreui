@@ -41,19 +41,19 @@
 }
 
 /* Style for the input */
-.delete-box input {
+.delete-box select {
   flex: 7;
   padding: 10px;
   border: 1px solid var(--color6);
   border-radius: 5px;
   font-size: 1rem;
-  width: auto;
+  width: calc(100% - 80px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Focus effect for input */
-.delete-box input:focus {
+.delete-box select:focus {
   border-color: var(--color7);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   outline: none;
