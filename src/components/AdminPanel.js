@@ -127,7 +127,7 @@ export default function AdminPanel() {
               <p className="admin-panel-item-paragraph">
                 Modify user details such as name, email, or other attributes.
               </p>
-              <button onClick={() => navigate("/assignrole")}>Go</button>
+              <button onClick={() => navigate("/update-user")}>Go</button>
             </div>
           </li>
           <li>

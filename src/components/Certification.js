@@ -50,6 +50,7 @@ function Certification({ certification }) {
         certExamId: certification.certExamId,
         hasBought: false,
         redeem: false
+        // dateOfSelectCertExam: Date.now()
       };
       addStaf(staf);
       // console.log(staf);
