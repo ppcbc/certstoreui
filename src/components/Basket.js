@@ -58,6 +58,11 @@ export default function Basket() {
   }
 
   async function removeStaf(id) {
+
+  const userConfirmed = window.confirm("Are you sure you want to delete this certification?");
+
+  if (userConfirmed === true) 
+    {
     try {
       await axios.delete(`${http}api/UserStafs/${id}`, {
         headers: {
@@ -69,6 +74,7 @@ export default function Basket() {
     } catch (error) {
       console.error("Failed to remove staff:", error.message);
     }
+  }
   }
 
   return (
