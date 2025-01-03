@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../App.css";
 import "../css/Basket.css";
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import axios from "axios";
 import formatDate from "../data/formatDate";
@@ -14,6 +14,7 @@ export default function Basket() {
   const myId = useSelector(state => state.token.value.id);
   const navigate = useNavigate();
   const [myStaf, setMyStaf] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getStaf();
@@ -21,63 +22,53 @@ export default function Basket() {
 
   async function getStaf() {
     try {
-      const response = await axios.get(`${http}api/UserStafs`, {
-        headers: {
-          Authorization: `Bearer ${myToken}`
-        }
+      setLoading(true);
+
+      // ✅ Step 1: Fetch userStafs and filter by myId
+      const userStafsResponse = await axios.get(`${http}api/UserStafs`, {
+        headers: { Authorization: `Bearer ${myToken}` }
       });
 
-      const stafs = response.data;
-      //   const stafData = await Promise.all(
-      //     stafs.map(async staf => {
-      //       const res = await axios.get(
-      //         `${http}api/CertExams/${staf.certExamId}`,
-      //         {
-      //           headers: {
-      //             Authorization: `Bearer ${myToken}`
-      //           }
-      //         }
-      //       );
-      let myStaf = [];
-      for (var theStaf of stafs) {
-        const res = await axios.get(
-          `${http}api/CertExams/${theStaf.certExamId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${myToken}`
+      const userStafs = userStafsResponse.data.filter(
+        staf => staf.userId === myId
+      );
+
+      // ✅ Step 2: Fetch certExam details for filtered userStafs
+      const finalStafs = await Promise.all(
+        userStafs.map(async staf => {
+          const certExamResponse = await axios.get(
+            `${http}api/CertExams/${staf.certExamId}`,
+            {
+              headers: { Authorization: `Bearer ${myToken}` }
             }
-          }
-        );
+          );
 
-        const myCertExams = res.data;
-        const formattedDate = formatDate(theStaf.dateOfSelectCertExam);
-      }
+          const certExam = certExamResponse.data;
+          return {
+            userStafId: staf.userStafId,
+            certExamTitle: certExam.testTitle,
+            certExamPrice: certExam.price,
+            selectDate: formatDate(staf.dateOfSelectCertExam),
+            hasBought: staf.hasBought
+          };
+        })
+      );
 
-      //       return {
-      //         key: staf.userStafId,
-      //         certExamTitle: myCertExams.testTitle,
-      //         certExamPrice: myCertExams.price,
-      //         selectDate: formattedDate,
-      //         hasBought: staf.hasBought
-      //       };
-      //     })
-      //   );
-
-      setMyStaf(stafData);
+      setMyStaf(finalStafs);
     } catch (error) {
       console.error("Failed to fetch staff:", error.message);
+    } finally {
+      setLoading(false);
     }
   }
 
   async function removeStaf(id) {
     try {
       await axios.delete(`${http}api/UserStafs/${id}`, {
-        headers: {
-          Authorization: `Bearer ${myToken}`
-        }
+        headers: { Authorization: `Bearer ${myToken}` }
       });
 
-      setMyStaf(prev => prev.filter(staf => staf.key !== id));
+      setMyStaf(prev => prev.filter(staf => staf.userStafId !== id));
     } catch (error) {
       console.error("Failed to remove staff:", error.message);
     }
@@ -87,19 +78,27 @@ export default function Basket() {
     <div className="basket-panel-main">
       <div className="basket-panel">
         <h1>Certifications To Buy</h1>
-        <ul className="basket-items">
-          {myStaf.map(staf => (
-            <BasketItem
-              key={staf.key}
-              id={staf.key}
-              certExamTitle={staf.certExamTitle}
-              certExamPrice={staf.certExamPrice}
-              selectDate={staf.selectDate}
-              removeStaf={removeStaf}
-              navigate={navigate}
-            />
-          ))}
-        </ul>
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <ul className="basket-items">
+            {myStaf.length > 0 ? (
+              myStaf.map(staf => (
+                <BasketItem
+                  key={staf.userStafId}
+                  id={staf.userStafId}
+                  certExamTitle={staf.certExamTitle}
+                  certExamPrice={staf.certExamPrice}
+                  selectDate={staf.selectDate}
+                  removeStaf={removeStaf}
+                  navigate={navigate}
+                />
+              ))
+            ) : (
+              <p>No certifications found.</p>
+            )}
+          </ul>
+        )}
       </div>
       <Footer color={"lightgrey"} />
     </div>
