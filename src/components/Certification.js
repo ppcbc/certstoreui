@@ -73,9 +73,9 @@ function Certification({ certification }) {
         <div className="certification-button">
           <button onClick={() => handleCart(certification)}>Add To Cart</button>
         </div>
-        <div className="certification-button">
+        {/* <div className="certification-button">
           <button onClick={() => handleBuy(certification)}>Buy Voucher</button>
-        </div>
+        </div> */}
       </div>
     </li>
   );
