@@ -11,6 +11,7 @@ import http from "../data/http";
 
 export default function Basket() {
   const myToken = useSelector(state => state.token.value.tok);
+  const myId = useSelector(state => state.token.value.id);
   const navigate = useNavigate();
   const [myStaf, setMyStaf] = useState([]);
 
@@ -27,29 +28,40 @@ export default function Basket() {
       });
 
       const stafs = response.data;
-      const stafData = await Promise.all(
-        stafs.map(async staf => {
-          const res = await axios.get(
-            `${http}api/CertExams/${staf.certExamId}`,
-            {
-              headers: {
-                Authorization: `Bearer ${myToken}`
-              }
+      //   const stafData = await Promise.all(
+      //     stafs.map(async staf => {
+      //       const res = await axios.get(
+      //         `${http}api/CertExams/${staf.certExamId}`,
+      //         {
+      //           headers: {
+      //             Authorization: `Bearer ${myToken}`
+      //           }
+      //         }
+      //       );
+      let myStaf = [];
+      for (var theStaf of stafs) {
+        const res = await axios.get(
+          `${http}api/CertExams/${theStaf.certExamId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${myToken}`
             }
-          );
+          }
+        );
 
-          const myCertExams = res.data;
-          const formattedDate = formatDate(staf.dateOfSelectCertExam);
+        const myCertExams = res.data;
+        const formattedDate = formatDate(theStaf.dateOfSelectCertExam);
+      }
 
-          return {
-            key: staf.userStafId,
-            certExamTitle: myCertExams.testTitle,
-            certExamPrice: myCertExams.price,
-            selectDate: formattedDate,
-            hasBought: staf.hasBought
-          };
-        })
-      );
+      //       return {
+      //         key: staf.userStafId,
+      //         certExamTitle: myCertExams.testTitle,
+      //         certExamPrice: myCertExams.price,
+      //         selectDate: formattedDate,
+      //         hasBought: staf.hasBought
+      //       };
+      //     })
+      //   );
 
       setMyStaf(stafData);
     } catch (error) {
