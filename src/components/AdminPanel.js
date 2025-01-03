@@ -21,6 +21,12 @@ export default function AdminPanel() {
           </li>
           <li>
             <div className="item-header">
+              <h2>UPDATE EXAM</h2>
+              <button onClick={() => navigate("/update-exam")}>Go</button>
+            </div>
+          </li>
+          <li>
+            <div className="item-header">
               <h2>DELETE EXAM</h2>
               <button onClick={() => navigate("/delete-exam")}>Go</button>
             </div>
@@ -51,6 +57,12 @@ export default function AdminPanel() {
             <div className="item-header">
               <h2>ADD FULL EXAM CATEGORY</h2>
               <button onClick={() => navigate("/addfull-category")}>Go</button>
+            </div>
+          </li>
+          <li>
+            <div className="item-header">
+              <h2>UPDATE FULL EXAM CATEGORY</h2>
+              <button onClick={() => navigate("/update-full-exam-category")}>Go</button>
             </div>
           </li>
           <li>

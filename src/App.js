@@ -32,6 +32,8 @@ import PaymentPage from "./components/PaymentPage";
 import DeleteExam from "./components/DeleteExam";
 import DeleteExamCategory from "./components/DeleteExamCategory";
 import DeleteFullExamCategory from "./components/DeleteFullExamCategory";
+import UpdateFullExamCategory from "./components/UpdateFullExamCategory";
+import UpdateExam from "./components/UpdateExam";
 
 function Layout() {
   const location = useLocation();
@@ -70,10 +72,9 @@ function Layout() {
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/delete-exam" element={<DeleteExam />} />
         <Route path="/delete-exam-category" element={<DeleteExamCategory />} />
-        <Route
-          path="/delete-full-exam-category"
-          element={<DeleteFullExamCategory />}
-        />
+        <Route path="/delete-full-exam-category" element={<DeleteFullExamCategory />} />
+        <Route path="/update-full-exam-category" element={<UpdateFullExamCategory />} />
+        <Route path="/update-exam" element={<UpdateExam />} />
       </Routes>
       {/* </div> */}
       {/* {shouldShowHeader && <Footer color={"red"} />} */}

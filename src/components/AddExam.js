@@ -359,7 +359,7 @@ function AddExam() {
                 Fourth question:
                 <input
                   type="text"
-                  class="fadeIn third"
+                  className="fadeIn third"
                   name="option4"
                   placeholder="fourth question"
                   value={newExam.option4}
@@ -381,7 +381,7 @@ function AddExam() {
               </p>
             )}
             <div className="add-my-inner-box">
-              <button type="submit" class="fadeIn fourth" value="submit">
+              <button type="submit" className="fadeIn fourth" value="submit">
                 Add
               </button>
             </div>
