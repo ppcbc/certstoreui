@@ -21,18 +21,18 @@ function UpdateExam() {
   let navigate = useNavigate();
   let { id } = useParams();
   const [exam, setExam] = useState({
-    fullId: 0,
-    categoryId: 0,
-    questionText: "",
-    questionPhotoLink: "",
-    option1: "",
-    isCorrect1: false,
-    option2: "",
-    isCorrect2: false,
-    option3: "",
-    isCorrect3: false,
-    option4: "",
-    isCorrect4: false
+    // fullId: 0,
+    // categoryId: 0,
+    // questionText: "",
+    // questionPhotoLink: "",
+    // option1: "",
+    // isCorrect1: false,
+    // option2: "",
+    // isCorrect2: false,
+    // option3: "",
+    // isCorrect3: false,
+    // option4: "",
+    // isCorrect4: false
   });
   const [examCategories, setExamCategories] = useState([]);
   const [fullCategories, setFullCategories] = useState([]);
@@ -41,6 +41,7 @@ function UpdateExam() {
   const [errors, setErrors] = useState({});
   const [imageUrl, setImageUrl] = useState("");
   const [validationMessages, setValidationMessages] = useState({});
+  const [selectedId, setSelectedId] = useState("ff");
 
   const myToken = useSelector(state => state.token.value.tok);
   const dispatch = useDispatch();
@@ -48,7 +49,7 @@ function UpdateExam() {
   useEffect(() => {
     getCategories();
     if (id) {
-      getExam(id); // Φέρνουμε τα δεδομένα του εξεταστικού ερωτήματος
+      getExam(id);
     }
   }, [id]);
 
@@ -68,8 +69,8 @@ function UpdateExam() {
 
       setExamCategories(response.data);
       setFullCategories(res.data);
-      console.log(response.data);
-      console.log(res.data);
+      //   console.log(response.data);
+      //   console.log(res.data);
     } catch (error) {
       console.log(error.message);
     }
@@ -82,9 +83,12 @@ function UpdateExam() {
           Authorization: "Bearer " + myToken
         }
       });
+      console.log("examid");
+      console.log(examId);
+      setSelectedId(examId);
 
       setExam(response.data);
-      setImageUrl(response.data.questionPhotoLink || "");
+      //   setImageUrl(response.data.questionPhotoLink || "");
       console.log("Exam data:", response.data);
     } catch (error) {
       console.log("Error fetching exam:", error.message);
@@ -131,17 +135,20 @@ function UpdateExam() {
       fullId: parseInt(value),
       categoryId: 0
     }));
-    dispatch(setFullCategoryId(value));
+    // dispatch(setFullCategoryId(value));
   }
 
   async function onSubmit(e) {
     e.preventDefault();
     if (!validate()) return;
 
+    console.log("exam");
     console.log(exam);
-    console.log(examCategories);
+    // console.log(examCategories);
+    console.log("id");
+    console.log(selectedId);
     try {
-      var response = await axios.put(http + `api/Exams/${id}`, exam, {
+      var response = await axios.put(http + `api/Exams/${selectedId}`, exam, {
         headers: {
           Authorization: "Bearer " + myToken
         }
@@ -204,6 +211,9 @@ function UpdateExam() {
           Authorization: "Bearer " + myToken
         }
       });
+      console.log("selectttttid");
+      console.log(examId);
+      setSelectedId(examId);
       setExam(prev => ({
         ...prev,
         questionText: response.data.questionText || "",
