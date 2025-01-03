@@ -217,14 +217,14 @@ function CertExam() {
       <form onSubmit={onSubmit} action="submit">
         <div className="certexam">
           <div className="certexam-box">
-            <h1>Add Certification Exam</h1>
+            <h1>Create Exam</h1>
             <div className="certexam-my-inner-box">
               <label className="certexam-my-label">
-                Certification Title:
+                Exam Title:
                 <input
                   type="text"
                   name="testTitle"
-                  placeholder="Certification Title"
+                  placeholder="Exam Title"
                   value={certExam.testTitle}
                   onChange={onChange}
                 />
@@ -237,11 +237,11 @@ function CertExam() {
             )}
             <div className="certexam-my-inner-box">
               <label className="certexam-my-label">
-                Certification Description:
+                Exam Description:
                 <input
                   type="text"
                   name="testDescription"
-                  placeholder="Certification Description"
+                  placeholder="Exam Description"
                   value={certExam.testDescription}
                   onChange={onChange}
                 />
@@ -254,7 +254,7 @@ function CertExam() {
             )}
             <div className="certexam-my-inner-box">
               <label className="certexam-my-label">
-                Certification Price:
+                Exam Price:
                 <input
                   type="number"
                   name="price"
@@ -311,7 +311,7 @@ function CertExam() {
             )}
             <div className="certexam-my-inner-box">
               <button type="submit" className="fadeIn fourth">
-                Add
+                Create
               </button>
             </div>
             <div className="certexam-my-label">{check && <p>{message}</p>}</div>

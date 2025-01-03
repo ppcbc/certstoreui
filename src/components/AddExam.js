@@ -191,7 +191,7 @@ function AddExam() {
       <form action="" onSubmit={onSubmit}>
         <div className="add-exam">
           <div className="add-box">
-            <h1>Add Exam</h1>
+            <h1>Create Question</h1>
             <div className="add-my-inner-box">
               <label className="add-my-label">
                 Select category:
@@ -382,7 +382,7 @@ function AddExam() {
             )}
             <div className="add-my-inner-box">
               <button type="submit" className="fadeIn fourth" value="submit">
-                Add
+                Create
               </button>
             </div>
             <div className="add-my-label">{check && <p>{message}</p>}</div>

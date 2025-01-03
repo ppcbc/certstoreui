@@ -14,9 +14,8 @@ export default function AdminPanel() {
         <h1>Admin Panel</h1>
         <ul>
           <li>
-            <p className="admin-panel-category-title"></p>
             <div className="admin-panel-item-header">
-              <h2>CREATE QUESTION</h2>
+              <h2>Create Question</h2>
               <p className="admin-panel-item-paragraph">
                 Create a new question by filling in the required fields and
                 options.
@@ -25,9 +24,8 @@ export default function AdminPanel() {
             </div>
           </li>
           <li>
-            <p className="admin-panel-category-title">Questions:</p>
             <div className="admin-panel-item-header">
-              <h2>UPDATE QUESTION</h2> {/*//NEW*/}
+              <h2>Update Question</h2>
               <p className="admin-panel-item-paragraph">
                 Edit an existing question to make changes or corrections.
               </p>
@@ -35,9 +33,8 @@ export default function AdminPanel() {
             </div>
           </li>
           <li>
-            <p className="admin-panel-category-title">Questions:</p>
             <div className="admin-panel-item-header">
-              <h2>DELETE QUESTION</h2>
+              <h2>Delete Question</h2>
               <p className="admin-panel-item-paragraph">
                 Remove an existing question from the system.
               </p>
@@ -45,9 +42,8 @@ export default function AdminPanel() {
             </div>
           </li>
           <li>
-            <p className="admin-panel-category-title">Question Categories:</p>
             <div className="admin-panel-item-header">
-              <h2>CREATE QUESTION CATEGORY</h2>
+              <h2>Create Category</h2>
               <p className="admin-panel-item-paragraph">
                 Create a new category to organize questions.
               </p>
@@ -55,9 +51,8 @@ export default function AdminPanel() {
             </div>
           </li>
           <li>
-            <p className="admin-panel-category-title">Question Categories:</p>
             <div className="admin-panel-item-header">
-              <h2>UPDATE QUESTION CATEGORY</h2>
+              <h2>Update Category</h2>
               <p className="admin-panel-item-paragraph">
                 Modify an existing category to update its details.
               </p>
@@ -67,9 +62,8 @@ export default function AdminPanel() {
             </div>
           </li>
           <li>
-            <p className="admin-panel-category-title">Question Categories:</p>
             <div className="admin-panel-item-header">
-              <h2>DELETE QUESTION CATEGORY</h2>
+              <h2>Delete Category</h2>
               <p className="admin-panel-item-paragraph">
                 Remove a category that is no longer needed.
               </p>
@@ -79,9 +73,8 @@ export default function AdminPanel() {
             </div>
           </li>
           <li>
-            <p className="admin-panel-category-title">Module:</p>
             <div className="admin-panel-item-header">
-              <h2>CREATE MODULE</h2>
+              <h2>Create Module</h2>
               <p className="admin-panel-item-paragraph">
                 Add a new module category to structure content effectively.
               </p>
@@ -89,9 +82,8 @@ export default function AdminPanel() {
             </div>
           </li>
           <li>
-            <p className="admin-panel-category-title">Module:</p>
             <div className="admin-panel-item-header">
-              <h2>UPDATE MODULE</h2> {/*//NEW*/}
+              <h2>Update Module</h2>
               <p className="admin-panel-item-paragraph">
                 Edit the details of an existing module category.
               </p>
@@ -101,9 +93,8 @@ export default function AdminPanel() {
             </div>
           </li>
           <li>
-            <p className="admin-panel-category-title">Module:</p>
             <div className="admin-panel-item-header">
-              <h2>DELETE MODULE</h2>
+              <h2>Delete Module</h2>
               <p className="admin-panel-item-paragraph">
                 Delete a module category from the system.
               </p>
@@ -113,9 +104,8 @@ export default function AdminPanel() {
             </div>
           </li>
           <li>
-            <p className="admin-panel-category-title">Exam:</p>
             <div className="admin-panel-item-header">
-              <h2>CREATE EXAM</h2>
+              <h2>Create Exam</h2>
               <p className="admin-panel-item-paragraph">
                 Design and add a new exam test to the system.
               </p>
@@ -123,9 +113,8 @@ export default function AdminPanel() {
             </div>
           </li>
           <li>
-            <p className="admin-panel-category-title">Exam:</p>
             <div className="admin-panel-item-header">
-              <h2>DELETE EXAM</h2> {/*//NEW*/}
+              <h2>Delete Exam</h2>
               <p className="admin-panel-item-paragraph">
                 Remove an existing exam test permanently.
               </p>
@@ -133,9 +122,8 @@ export default function AdminPanel() {
             </div>
           </li>
           <li>
-            <p className="admin-panel-category-title">User Control:</p>
             <div className="admin-panel-item-header">
-              <h2>UPDATE USER</h2> {/*//NEW*/}
+              <h2>Update User</h2>
               <p className="admin-panel-item-paragraph">
                 Modify user details such as name, email, or other attributes.
               </p>
@@ -143,9 +131,8 @@ export default function AdminPanel() {
             </div>
           </li>
           <li>
-            <p className="admin-panel-category-title">User Control:</p>
             <div className="admin-panel-item-header">
-              <h2>DELETE USER</h2> {/*//NEW*/}
+              <h2>Delete User</h2>
               <p className="admin-panel-item-paragraph">
                 Permanently remove a user from the system
               </p>
@@ -154,10 +141,10 @@ export default function AdminPanel() {
           </li>
           <li>
             <div className="admin-panel-item-header">
-              <h2>ROLE ACCESS</h2>
+              <h2>Role Access</h2>
               <p className="admin-panel-item-paragraph">
-                Select and assign a role (e.g., Marker, Administrator, etc.) to
-                a user, defining their level of access and responsibilities.
+                Select and assign a role to a user, defining their level of
+                access.
               </p>
               <button onClick={() => navigate("/assignrole")}>Go</button>
             </div>
@@ -168,4 +155,3 @@ export default function AdminPanel() {
     </div>
   );
 }
-// <button onClick={() => handleBuy(certification)}>Go</button>

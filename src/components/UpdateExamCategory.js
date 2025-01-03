@@ -164,7 +164,7 @@ function UpdateExamCategory() {
       <form onSubmit={onSubmit}>
         <div className="update-exam">
           <div className="update-box">
-            <h1>Update Exam Category</h1>
+            <h1>Update Question Category</h1>
             <div className="update-inner-box">
               <div className="update-inner-field">
                 <label className="update-label">
@@ -250,7 +250,7 @@ function UpdateExamCategory() {
               )}
             </div>
             <button type="submit" className="fadeIn fourth">
-              Update Exam Category
+              Update
             </button>
             {error && (
               <div className="update-label">

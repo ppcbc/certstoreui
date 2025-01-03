@@ -202,7 +202,7 @@ function UpdateFullExamCategory() {
               )}
             </div>
             <button type="submit" className="fadeIn fourth">
-              Update Full Exam Category
+              Update
             </button>
             <div className="update-label">{check && <p>{message}</p>}</div>
           </div>
