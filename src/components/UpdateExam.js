@@ -229,7 +229,7 @@ function UpdateExam() {
       <form onSubmit={onSubmit}>
         <div className="update-exam">
           <div className="update-box">
-            <h1>Update Exam</h1>
+            <h1>Update Question</h1>
             <div className="update-my-inner-box">
               <label className="update-my-label">
                 Select category:

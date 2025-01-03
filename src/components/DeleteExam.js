@@ -83,10 +83,10 @@ function DeleteExam() {
       <form action="" onSubmit={onSubmit}>
         <div className="delete-exam">
           <div className="delete-box">
-            <h1>Delete Exam</h1>
+            <h1>Delete Question</h1>
             <div className="delete-my-inner-box">
               <label className="delete-my-label">
-                Select Exam:
+                Select Question:
                 <select
                   className="fadeIn second"
                   name="exam"

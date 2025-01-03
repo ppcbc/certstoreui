@@ -104,7 +104,7 @@ function AssignRole() {
       <form action="" onSubmit={onSubmit}>
         <div className="assign-role">
           <div className="assign-box">
-            <h1>Assign Role</h1>
+            <h1>Role Access</h1>
             <div className="assign-inner-box">
               <div className="assign-inner-field">
                 <label className="assign-label">

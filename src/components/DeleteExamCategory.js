@@ -118,7 +118,7 @@ function DeleteExamCategory() {
       <form action="" onSubmit={onSubmit}>
         <div className="delete-exam-category">
           <div className="delete-box-ExCate">
-            <h1>Delete Exam Category</h1>
+            <h1>Delete Question Category</h1>
             <div className="delete-my-inner-box-ExCate">
               <label className="delete-my-label-ExCate">
                 Select Category:

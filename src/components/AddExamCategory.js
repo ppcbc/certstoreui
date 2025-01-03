@@ -148,7 +148,7 @@ function AddExamCategory() {
         <div className="add-exam-category-box">
           <div className="add-exam-category">
             <div className="add-exam-box">
-              <h1>Add Exam Category</h1>
+              <h1>Create Question Category</h1>
               <div>
                 <div className="add-exam-inner-box">
                   <label className="add-exam-label">
@@ -211,7 +211,7 @@ function AddExamCategory() {
               </div>
               <div className="add-exam-inner-box">
                 <button type="submit" className="fadeIn fourth" value="log in">
-                  Add
+                  Create
                 </button>
               </div>
               {/* {error && (

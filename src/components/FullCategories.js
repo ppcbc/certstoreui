@@ -85,16 +85,16 @@ function FullCategory() {
       <form action="" onSubmit={onSubmit}>
         <div className="fullcategory-category">
           <div className="fullcategory-box">
-            <h1>Add Full Exam Category</h1>
+            <h1>Create Module</h1>
             <div>
               <div className="fullcategory-inner-box">
                 <label className="fullcategory-label">
-                  Full exam category name:
+                  Module name:
                   <input
                     type="text"
                     className="fadeIn second"
                     name="name"
-                    placeholder="Full exam category name"
+                    placeholder="Module name"
                     value={newCategory.name}
                     onChange={onChange}
                   />
@@ -102,12 +102,12 @@ function FullCategory() {
               </div>
               <div className="fullcategory-inner-box">
                 <label className="fullcategory-label">
-                  Full exam category description:
+                  Module description:
                   <input
                     type="text"
                     className="fadeIn second"
                     name="description"
-                    placeholder="Full exam category description"
+                    placeholder="Module description"
                     value={newCategory.description}
                     onChange={onChange}
                   />
@@ -116,7 +116,7 @@ function FullCategory() {
             </div>
             <div className="fullcategory-inner-box">
               <button type="submit" className="fadeIn fourth">
-                Add
+                Create
               </button>
             </div>
             {error && (

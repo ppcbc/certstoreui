@@ -157,10 +157,10 @@ function DeleteFullExamCategory() {
       <form action="" onSubmit={onSubmit}>
         <div className="delete-full-exam-category">
           <div className="delete-box-FullExCate">
-            <h1>Delete Full Exam Category</h1>
+            <h1>Delete Module</h1>
             <div className="delete-my-inner-box-FullExCate">
               <label className="delete-my-label-FullExCate">
-                Select Full Category:
+                Select Module:
                 <select
                   className="fadeIn second"
                   name="fullCategory"
