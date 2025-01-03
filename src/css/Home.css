@@ -137,7 +137,7 @@
 /* Style for the price text (p) */
 .preview-certifications li p:nth-of-type(2) {
   font-size: 1.3rem; /* Slightly larger font for visibility */
-  margin-top: 2px;
+  margin-top: 25px;
   margin-bottom: 12px; /* Space below the price */
   color: white; /* White text for prices */
 }
@@ -149,7 +149,8 @@
   border: none; /* Remove border */
   border-radius: 5px; /* Rounded corners */
   padding: 10px 20px; /* Button padding */
-  margin-bottom: 22px;
+  margin-top: 20px;
+  margin-bottom: 0px;
   cursor: pointer; /* Pointer cursor on hover */
   font-size: 1rem; /* Font size for button text */
   transition: background-color 0.3s ease; /* Smooth hover effect */
