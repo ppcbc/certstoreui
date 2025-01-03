@@ -88,3 +88,10 @@
   background-color: #78909c; /* Darker blue on hover */
   font-weight: 600; /* Make text bolder on hover */
 }
+.certification-buttons {
+  display: flex;
+  flex-direction: column;
+}
+.certification-button {
+  margin-bottom: 20px;
+}

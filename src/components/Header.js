@@ -127,30 +127,44 @@ export default function Header() {
               </NavLink>
             </li>
           )}
-          {myToken === "" ? (
-            <li className="nav-item nav-right">
-              <NavLink
-                to="/login"
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-              >
-                {myLog}
-              </NavLink>
-            </li>
-          ) : (
-            <li className="nav-item nav-right">
-              <NavLink
-                to="/login"
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-                onClick={logOut}
-              >
-                LOGOUT
-              </NavLink>
-            </li>
-          )}
+          <div className="nav-item nav-right">
+            {myToken !== "" && (
+              <li className="nav-item nav-right">
+                <NavLink
+                  to="/basket"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
+                >
+                  BASKET
+                </NavLink>
+              </li>
+            )}
+            {myToken === "" ? (
+              <li className="nav-item nav-right">
+                <NavLink
+                  to="/login"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
+                >
+                  {myLog}
+                </NavLink>
+              </li>
+            ) : (
+              <li className="nav-item nav-right">
+                <NavLink
+                  to="/login"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
+                  onClick={logOut}
+                >
+                  LOGOUT
+                </NavLink>
+              </li>
+            )}
+          </div>
         </ul>
       </nav>
     </header>
