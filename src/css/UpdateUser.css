@@ -1,0 +1,184 @@
+/* Style for the .update-user container */
+.update-user-main {
+    background-color: #e0e0e0;
+    /* Updated background color */
+}
+
+.update-user {
+    background-color: #f7f7f7;
+    /* Light background for the page */
+    color: #2c3e50;
+    /* Text color matching the header palette */
+    padding: 40px 20px;
+    /* Padding for the container */
+    min-height: 100vh;
+    /* Full height of the viewport */
+    display: flex;
+    /* Center align items */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    position: relative;
+    /* Enable precise positioning of child elements */
+}
+
+/* Style for the box containing the form elements */
+.update-box {
+    background-color: #ffffff;
+    /* White background for contrast */
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+    padding: 40px;
+    /* Increased padding for a spacious layout */
+    text-align: left;
+    /* Align text to the left for a form layout */
+    width: 800px;
+    /* Increased width for the box */
+}
+
+/* Style for the h2 (main heading) */
+.update-box h2 {
+    font-size: 2rem;
+    /* Larger heading for the wider box */
+    margin: 3px 10px;
+    /* Space below the heading */
+    margin-bottom: 30px;
+    /* Space below the heading */
+    color: #4b5052;
+    /* Match the palette */
+    text-align: center;
+    /* Keep the heading centered */
+}
+
+/* Style for the label */
+.update-label {
+    font-size: 1rem;
+    /* Font size for the label */
+    color: #4b5052;
+    /* Match the palette */
+    margin: 3px 10px;
+    /* Margin for spacing */
+    text-align: left;
+    /* Align text to the left */
+    display: flex;
+    /* Align the label and input in a row */
+    flex-direction: column;
+    /* Stack label and input vertically */
+}
+
+/* Style for input fields */
+.update-box input {
+    padding: 10px;
+    /* Add padding for comfort */
+    border: 1px solid #ccc;
+    /* Subtle border */
+    border-radius: 5px;
+    /* Rounded corners */
+    font-size: 1rem;
+    /* Font size for readability */
+    width: 100%;
+    /* Full width */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth interaction */
+    margin-top: 5px;
+    /* Margin for spacing */
+    margin-bottom: 20px;
+    /* Margin for spacing */
+}
+
+/* Style for input focus */
+.update-box input:focus {
+    border-color: #597785;
+    /* Highlight border on focus */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    /* Enhanced shadow */
+    outline: none;
+    /* Remove default outline */
+}
+
+/* Style for the button */
+.update-box button {
+    background-color: #597785;
+    /* Blue button background */
+    color: white;
+    /* White text color */
+    border: none;
+    /* Remove border */
+    border-radius: 5px;
+    /* Rounded corners */
+    padding: 12px 20px;
+    /* Button padding */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    font-size: 1rem;
+    /* Font size for button text */
+    width: 100%;
+    /* Full width for uniformity */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    /* Smooth hover effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+}
+
+/* Hover effect for the button */
+.update-box button:hover {
+    background-color: #78909c;
+    /* Darker blue on hover */
+    transform: translateY(-2px);
+    /* Slight lift on hover */
+    font-weight: 600;
+    /* Make text bolder on hover */
+}
+
+.update-inner-box {
+    display: flex;
+    flex-direction: column;
+    /* Align items in a column */
+    align-items: flex-start;
+    /* Align items to the left */
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+
+.update-inner-field {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 100%;
+    align-items: flex-start;
+}
+
+/* Style for hiding spin buttons in number inputs */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    /* Remove default margins */
+}
+
+/* Firefox style for number inputs */
+input[type="number"] {
+    -moz-appearance: textfield;
+    /* Firefox */
+}
+
+/* Alignment class */
+.align-left {
+    text-align: left;
+}
+
+/* Error message style */
+.update-user-error-message {
+    color: red;
+    font-size: 12px;
+    text-align: right;
+    margin-top: -5px;
+    margin-bottom: 15px;
+    margin-left: 5px;
+    padding-right: 3px;
+}

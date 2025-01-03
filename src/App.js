@@ -35,6 +35,7 @@ import DeleteFullExamCategory from "./components/DeleteFullExamCategory";
 import Basket from "./components/Basket";
 import UpdateFullExamCategory from "./components/UpdateFullExamCategorty";
 import UpdateExam from "./components/UpdateExam";
+import UpdateUser from "./components/UpdateUser";
 
 function Layout() {
   const location = useLocation();
@@ -74,6 +75,7 @@ function Layout() {
         <Route path="/delete-exam" element={<DeleteExam />} />
         <Route path="/delete-exam-category" element={<DeleteExamCategory />} />
         <Route path="/basket" element={<Basket />} />
+        <Route path="/update-user" element={<UpdateUser />} />
         <Route
           path="/delete-full-exam-category"
           element={<DeleteFullExamCategory />}
