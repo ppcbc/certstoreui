@@ -167,7 +167,7 @@ function DeleteFullExamCategory() {
                   value={selectedFullCategory}
                   onChange={onChange}
                 >
-                  <option value="">Select a full category</option>
+                  <option value="">Select a module</option>
                   {fullCategories.map(category => (
                     <option key={category.fullId} value={category.fullId}>
                       {category.name}

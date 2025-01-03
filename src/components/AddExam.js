@@ -194,13 +194,13 @@ function AddExam() {
             <h1>Create Question</h1>
             <div className="add-my-inner-box">
               <label className="add-my-label">
-                Select category:
+                Select module:
                 <select
                   name="fullId"
                   value={newExam.fullId}
                   onChange={onChange}
                 >
-                  <option value={0}>Category</option>
+                  <option value={0}>Module</option>
                   {fullCategories.map(a => (
                     <option key={a.fullId} value={a.fullId}>
                       {a.name}
@@ -216,13 +216,13 @@ function AddExam() {
             )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
-                Select exam:
+                Select category:
                 <select
                   name="categoryId"
                   value={examCategories.categoryId}
                   onChange={onChange}
                 >
-                  <option value={0}>Exam</option>
+                  <option value={0}>Category</option>
                   {examCategories
                     .filter(
                       a => parseInt(a.fullId) === parseInt(newExam.fullId)
@@ -279,11 +279,11 @@ function AddExam() {
             )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
-                First question:
+                First answer:
                 <input
                   type="text"
                   name="option1"
-                  placeholder="first question"
+                  placeholder="first answer"
                   value={newExam.option1}
                   onChange={onChange}
                 />
@@ -304,7 +304,7 @@ function AddExam() {
             )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
-                Second question:
+                Second answer:
                 <input
                   type="text"
                   className="fadeIn third"
@@ -330,12 +330,12 @@ function AddExam() {
             )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
-                Third question:
+                Third answer:
                 <input
                   type="text"
                   className="fadeIn third"
                   name="option3"
-                  placeholder="third question"
+                  placeholder="third answer"
                   value={newExam.option3}
                   onChange={onChange}
                 />
@@ -356,12 +356,12 @@ function AddExam() {
             )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
-                Fourth question:
+                Fourth answer:
                 <input
                   type="text"
                   className="fadeIn third"
                   name="option4"
-                  placeholder="fourth question"
+                  placeholder="fourth answer"
                   value={newExam.option4}
                   onChange={onChange}
                 />
