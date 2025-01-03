@@ -2,6 +2,7 @@ import React, { useState } from "react"; // Import useState here
 import "../css/ContactUs.css";
 import http from "../data/http";
 import emailjs from "emailjs-com";
+import Footer from "./Footer";
 
 function ContactUs() {
   const [validationMessages, setValidationMessages] = useState({});
@@ -91,6 +92,7 @@ function ContactUs() {
   };
 
   return (
+    <div className="contactus-main-container">
     <form onSubmit={handleSubmit}>
       <div className="contactus-container">
         <div className="contactus-box">
@@ -168,6 +170,8 @@ function ContactUs() {
         </div>
       </div>
     </form>
+    <Footer color={"var(--color4"} />
+    </div>
   );
 }
 
