@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import http from "../data/http";
 
 function Certification({ certification }) {
+  const [successMessage, setSuccessMessage] = useState("");
+  const [check, setCheck] = useState(false);
   const [myStaf, setMyStaf] = useState({
     userId: "",
     certExamId: "",
@@ -22,6 +24,13 @@ function Certification({ certification }) {
     return text;
   };
 
+  function handleMessage() {
+    setCheck(true);
+    setTimeout(() => {
+      setCheck(false);
+    }, 1400);
+  }
+
   async function addStaf(staf) {
     try {
       var response = await axios.post(http + "api/UserStafs", staf, {
@@ -36,7 +45,6 @@ function Certification({ certification }) {
   }
 
   const handleBuy = certification => {
-    // alert(`Bought voucher for ${certification.categoryName}`);
     if (myToken) {
       navigate("/payment");
     } else {
@@ -49,8 +57,8 @@ function Certification({ certification }) {
       new Date().toLocaleString("en-US", { timeZone: "Europe/Athens" })
     );
 
-    const offset = today.getTimezoneOffset(); // Get offset in minutes
-    const adjustedTime = new Date(today.getTime() - offset * 60000); // Adjust offset
+    const offset = today.getTimezoneOffset();
+    const adjustedTime = new Date(today.getTime() - offset * 60000);
 
     if (myToken) {
       let staf = {
@@ -61,32 +69,28 @@ function Certification({ certification }) {
         dateOfSelectCertExam: adjustedTime.toISOString().replace("Z", "+02:00")
       };
       addStaf(staf);
+      setSuccessMessage("Added to cart");
       console.log(today.toISOString());
+      handleMessage();
     } else {
       navigate("/register");
     }
   };
+
   return (
     <li key={certification.certExamId} className="certification-box">
-      <Link
-        to={`/detailed-certification/${certification.certExamId}`}
-        className="certification-link"
-      >
+      <Link to={`/detailed-certification/${certification.certExamId}`} className="certification-link">
         <div>
           <h2>{certification.testTitle}</h2>
-          {/* <div className="admin-panel-paragraph-container"> */}
           <p>{truncateDescription(certification.testDescription, 100)}</p>
-          {/* </div> */}
           <p>Price: €{certification.price || "N/A"}</p>
         </div>
       </Link>
       <div className="certification-buttons">
         <div className="certification-button">
           <button onClick={() => handleCart(certification)}>Add To Cart</button>
+          {check && <p>{successMessage}</p>}
         </div>
-        {/* <div className="certification-button">
-          <button onClick={() => handleBuy(certification)}>Buy Voucher</button>
-        </div> */}
       </div>
     </li>
   );
