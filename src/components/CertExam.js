@@ -238,12 +238,12 @@ function CertExam() {
             <div className="certexam-my-inner-box">
               <label className="certexam-my-label">
                 Exam Description:
-                <input
-                  type="text"
+                <textarea
                   name="testDescription"
                   placeholder="Exam Description"
                   value={certExam.testDescription}
                   onChange={onChange}
+                  rows="3"
                 />
               </label>
             </div>
