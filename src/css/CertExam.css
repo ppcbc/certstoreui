@@ -31,7 +31,7 @@
   width: 800px;
   transform: translateY(20px);
 }
-
+.certexam-box textarea:focus,
 .certexam-box input:focus,
 .certexam-box select:focus {
   border-color: var(--color7);
@@ -66,6 +66,18 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* style for textarea */
+.certexam-box textarea {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid var(--color6);
+  border-radius: 5px;
+  font-size: 1rem;
+  width: calc(100% - 80px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
 /* Style for select elements */
 .certexam-box select {
   flex: 1;
@@ -79,6 +91,7 @@
 }
 
 /* Focus effect for input and select */
+.certexam-box textarea :focus,
 .certexam-box input:focus,
 .certexam-box select:focus {
   border-color: var(--color7);

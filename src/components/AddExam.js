@@ -309,7 +309,7 @@ function AddExam() {
                   type="text"
                   className="fadeIn third"
                   name="option2"
-                  placeholder="second question"
+                  placeholder="second answer"
                   value={newExam.option2}
                   onChange={onChange}
                 />

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
 import http from "../data/http";
-import "../css/ScheduleExam.css";
+import "../css/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setId, setLogReg, setRole, setToken } from "../features/loginSlice";
@@ -74,13 +74,13 @@ function Login() {
   }
 
   return (
-    <div className="schedule-exam-main">
+    <div className="login-container-main">
       <form action="" onSubmit={onSubmit}>
-        <div className="schedule-exam">
-          <div className="schedule-box">
-            <div className="my-box">
-              <div className="my-inner-box">
-                <label className="my-label">
+        <div className="login-container">
+          <div className="login-box">
+            <div className="my-loginbox">
+              <div className="my-inner-login">
+                <label className="my-label-login">
                   Email:
                   <input
                     type="text"
@@ -93,8 +93,8 @@ function Login() {
                   />
                 </label>
               </div>
-              <div className="my-inner-box">
-                <label className="my-label">
+              <div className="my-inner-login">
+                <label className="my-label-login">
                   Password:
                   <input
                     type="password"
@@ -112,12 +112,12 @@ function Login() {
               Login
             </button>
             {message !== "" && (
-              <div className="my-label">
+              <div className="my-label-wrong">
                 <p>{message}</p>
               </div>
             )}
             <div className="my-label">
-              <p>If you dont have an account yet click here</p>
+              <p>If you don't have an account yet click here</p>
               <Link to="/register">Register</Link>
             </div>
           </div>
