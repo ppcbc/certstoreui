@@ -47,10 +47,10 @@ const DeleteUser = () => {
     <div className="delete-user-main">
       <form onSubmit={handleSubmit}>
         <div className="delete-user">
-          <div className="delete-box">
+          <div className="delete-user-box">
             <h1>Delete User</h1>
-            <div className="delete-my-inner-box">
-              <label className="delete-my-label">
+            <div className="delete-user-my-inner-box">
+              <label className="delete-user-my-label">
                 Enter User Email:
                 <input
                   type="email"
@@ -58,18 +58,24 @@ const DeleteUser = () => {
                   value={email}
                   onChange={handleEmailChange}
                   className="delete-input"
+                  placeholder="example@email.com"
                 />
               </label>
-              {errors.email && (
-                <div className="delete-user-error-message">{errors.email}</div>
-              )}
             </div>
+            {errors.email && (
+              <div className="delete-user-error-message">{errors.email}</div>
+            )}
+
             <div className="delete-my-inner-box">
               <button type="submit" className="fadeIn fourth" value="submit">
                 Delete User
               </button>
             </div>
-            {message && <div className="delete-error-message">{message}</div>}
+            <div>
+              {message && (
+                <p className="delete-user-error-message">{message}</p>
+              )}
+            </div>
           </div>
         </div>
       </form>

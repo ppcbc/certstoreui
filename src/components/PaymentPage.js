@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import http from "../data/http";
 import axios from "axios";
+import fixDateToStringGmtPlusTwo from "../data/fixDateToGmtPlusTwo";
 
 function PaymentPage() {
   const [cardDetails, setCardDetails] = useState({
@@ -19,14 +20,12 @@ function PaymentPage() {
 
   useEffect(() => {
     getCurrentStaf();
-    // console.log(userStafId);
   }, []);
 
   const getCurrentStaf = async () => {
     try {
       const response = await axios.get(http + `api/UserStafs/${userStafId}`, {
         headers: {
-          // "Content-Type": "application/json",
           Authorization: "Bearer " + myToken
         }
       });
@@ -39,7 +38,22 @@ function PaymentPage() {
 
   const updateStaf = async () => {
     try {
-      const response = await axios.put(http + "api/");
+      const today = fixDateToStringGmtPlusTwo();
+      let staf = {
+        ...currentStaf,
+        dateOfBuyCertExam: today,
+        hasBought: true
+      };
+      const response = await axios.put(
+        http + `api/UserStafs/${userStafId}`,
+        staf,
+        {
+          headers: {
+            Authorization: "Bearer " + myToken
+          }
+        }
+      );
+      console.log(response.data);
     } catch (error) {
       console.log(error.message);
     }
@@ -55,8 +69,7 @@ function PaymentPage() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(cardDetails);
-    console.log(userStafId);
+    updateStaf();
   };
 
   return (

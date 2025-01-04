@@ -1,9 +1,9 @@
-/* Style for the .delete-exam-main container */
-.delete-exam-main {
+/* Style for the .delete-full-exam-category-main container */
+.delete-question-main {
   background-color: var(--color2);
 }
 
-.delete-exam {
+.delete-question {
   background-color: var(--color2);
   color: var(--color9);
   padding: 40px 20px;
@@ -15,7 +15,7 @@
 }
 
 /* Style for the box containing the form elements */
-.delete-box {
+.delete-question-box {
   background-color: var(--color1);
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -24,14 +24,14 @@
   transform: translateY(20px);
 }
 
-.delete-box select:focus {
+.delete-question-box select:focus {
   border-color: var(--color7);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   outline: none;
 }
 
 /* Style for the h1 (main heading) */
-.delete-box h1 {
+.delete-question-box h1 {
   font-size: 2rem;
   margin: 3px 10px;
   margin-bottom: 30px;
@@ -40,7 +40,7 @@
 }
 
 /* Style for the input */
-.delete-box select {
+.delete-question-box select {
   flex: 1;
   padding: 10px;
   border: 1px solid #ccc;
@@ -53,14 +53,14 @@
 }
 
 /* Focus effect for input */
-.delete-box select:focus {
+.elete-question-box select:focus {
   border-color: var(--color7);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   outline: none;
 }
 
 /* Style for the button */
-.delete-box button {
+.delete-question-box button {
   background-color: var(--color7);
   color: var(--color1);
   border: none;
@@ -74,14 +74,14 @@
 }
 
 /* Hover effect for the button */
-.delete-box button:hover {
+.elete-question-box button:hover {
   background-color: var(--color3);
   transform: translateY(-2px);
   font-weight: 600;
 }
 
 /* Inner box styles */
-.delete-my-inner-box {
+.delete-question-my-inner-box {
   display: flex;
   width: 100%;
   flex-direction: row;
@@ -91,7 +91,7 @@
 }
 
 /* Label styles */
-.delete-my-label {
+.delete-question-my-label {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -102,7 +102,7 @@
 }
 
 /* Error message styles */
-.DeleteExam-error-message {
+.delete-question-error-message {
   color: red;
   font-size: 12px;
   text-align: right;
@@ -110,4 +110,12 @@
   margin-bottom: 15px;
   margin-left: 5px;
   padding-right: 3px;
+}
+.delete-question-my-message {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: red;
 }

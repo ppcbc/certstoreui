@@ -79,13 +79,13 @@ function DeleteExam() {
   }
 
   return (
-    <div className="delete-exam-main">
+    <div className="delete-question-main">
       <form action="" onSubmit={onSubmit}>
-        <div className="delete-exam">
-          <div className="delete-box">
+        <div className="delete-question">
+          <div className="delete-question-box">
             <h1>Delete Question</h1>
-            <div className="delete-my-inner-box">
-              <label className="delete-my-label">
+            <div className="delete-question-my-inner-box">
+              <label className="delete-question-my-label">
                 Select Question:
                 <select
                   className="fadeIn second"
@@ -93,7 +93,7 @@ function DeleteExam() {
                   value={selectedExam}
                   onChange={onChange}
                 >
-                  <option value="">Select question</option>
+                  <option value="">Select Question</option>
                   {exams.map(exam => (
                     <option key={exam.examId} value={exam.examId}>
                       question: {exam.questionText} - Id: {exam.examId}
@@ -103,14 +103,18 @@ function DeleteExam() {
               </label>
             </div>
             {errors.selectedExam && (
-              <p className="DeleteExam-error-message">{errors.selectedExam}</p>
+              <p className="delete-question-error-message">
+                {errors.selectedExam}
+              </p>
             )}
-            <div className="delete-my-inner-box">
+            <div className="delete-question-my-inner-box">
               <button type="submit" className="fadeIn fourth" value="submit">
                 Delete
               </button>
             </div>
-            <div className="delete-my-label">{check && <p>{message}</p>}</div>
+            <div className="delete-question-my-message">
+              {check && <p>{message}</p>}
+            </div>
           </div>
         </div>
       </form>
