@@ -66,7 +66,9 @@ function Certification({ certification }) {
       >
         <div>
           <h2>{certification.testTitle}</h2>
+          {/* <div className="admin-panel-paragraph-container"> */}
           <p>{truncateDescription(certification.testDescription, 100)}</p>
+          {/* </div> */}
           <p>Price: €{certification.price || "N/A"}</p>
         </div>
       </Link>

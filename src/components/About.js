@@ -38,7 +38,7 @@ function About() {
           <div className="box-cards">
             <ProfileCard
               avatar="https://i.imgur.com/yXOvdOSs.jpg"
-              name="Mantzinos Efthimios"
+              name="Mantzinos Efthymios"
               occupation="Leader  Software Engineer"
               interest="Developing,Gaming"
             />

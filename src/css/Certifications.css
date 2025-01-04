@@ -11,6 +11,10 @@
   text-align: center; /* Center the heading and general text */
   min-height: 100vh; /* Full height of the viewport */
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Style for the h1 (main heading) */
@@ -95,3 +99,11 @@
 .certification-button {
   margin-bottom: 20px;
 }
+/* .certification-paragraph-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 90px;
+  text-align: center;
+} */

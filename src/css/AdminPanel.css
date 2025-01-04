@@ -123,7 +123,11 @@
 .admin-panel-paragraph-container {
   display: flex;
   justify-content: center;
-  align-items: ;
+  align-items: center;
   width: 220px;
   height: 100px;
+}
+.admin-panel li:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
 }
