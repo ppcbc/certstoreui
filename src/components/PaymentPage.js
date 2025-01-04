@@ -45,8 +45,8 @@ function PaymentPage() {
             <div className="payment-inner-box">
               <label className="payment-add-my-label">
                 Expiry Date:
-                <input
-                  type="text"
+                <input 
+                    type="date"
                   className="fadeIn second"
                   name="expiryDate"
                   placeholder="Expiry Date"
