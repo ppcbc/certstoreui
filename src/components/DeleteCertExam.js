@@ -3,6 +3,7 @@ import axios from "axios";
 import "../css/DeleteCertExam.css";
 import { useSelector } from "react-redux";
 import http from "../data/http";
+import Footer from "./Footer";
 
 const DeleteCertExam = () => {
   const myToken = useSelector(state => state.token.value.tok);
@@ -43,10 +44,10 @@ const DeleteCertExam = () => {
     <div className="delete-cert-exam-main">
       <form onSubmit={handleSubmit}>
         <div className="delete-cert-exam">
-          <div className="delete-box">
+          <div className="delete-cert-exam-box">
             <h1>Delete Exam</h1>
-            <div className="delete-my-inner-box">
-              <label className="delete-my-label">
+            <div className="delete-cert-exam-my-inner-box">
+              <label className="delete-cert-exam-my-label">
                 Enter Exam ID:
                 <input
                   type="text"
@@ -58,19 +59,22 @@ const DeleteCertExam = () => {
               </label>
             </div>
             {errors.certExamId && (
-              <div className="delete-exam-error-message">
+              <p className="delete-cert-exam-error-message">
                 {errors.certExamId}
-              </div>
+              </p>
             )}
-            <div className="delete-my-inner-box">
+            <div className="delete-cert-exam-my-inner-box">
               <button type="submit" className="fadeIn fourth" value="submit">
                 Delete Exam
               </button>
             </div>
-            {message && <div className="delete-message">{message}</div>}
+            <div className="delete-message">
+            {message && <p>{message}</p>}
+            </div>
           </div>
         </div>
       </form>
+      <Footer color={"var(--color4)"}/>
     </div>
   );
 };
