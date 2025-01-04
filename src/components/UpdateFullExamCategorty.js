@@ -83,7 +83,7 @@ function UpdateFullExamCategory() {
       fullId: parseInt(value),
       categoryId: 0 // Reset categoryId when changing full category
     }));
-    dispatch(setFullCategoryId(value));
+    // dispatch(setFullCategoryId(value));
     console.log("Selected full category:", value);
   };
 

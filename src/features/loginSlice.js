@@ -8,7 +8,7 @@ export const logSlice = createSlice({
       log: localStorage.getItem("log") ?? "",
       id: localStorage.getItem("id") ?? "",
       role: localStorage.getItem("role") ?? "",
-      fullCategoryId: 1
+      stafId: 1
     }
   },
   reducers: {
@@ -28,15 +28,14 @@ export const logSlice = createSlice({
       state.value.role = action.payload;
       localStorage.setItem("role", action.payload);
     },
-    setFullCategoryId: (state, action) => {
-      state.value.fullCategoryId = action.payload;
-      localStorage.setItem("fullCategoryId", action.payload);
+    setStafId: (state, action) => {
+      state.value.stafId = action.payload;
+      localStorage.setItem("stafId", action.payload);
     }
   }
 });
 
 // Action creators are generated for each case reducer function
-export const { setToken, setLogReg, setId, setRole, setFullCategoryId } =
-  logSlice.actions;
+export const { setToken, setLogReg, setId, setRole, stafId } = logSlice.actions;
 
 export default logSlice.reducer;

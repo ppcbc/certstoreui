@@ -53,7 +53,7 @@ function AddExam() {
   const api_secret = "WiNm8fism4GXfgYe0k8nME36EeY";
 
   const myToken = useSelector(state => state.token.value.tok);
-  const fullCategoryId = useSelector(state => state.token.value.fullCategoryId);
+  // const fullCategoryId = useSelector(state => state.token.value.fullCategoryId);
   // const myToken = localStorage.getItem("tok");
   // const fullCategoryId = localStorage.getItem("fullCategoryId");
   const dispatch = useDispatch();

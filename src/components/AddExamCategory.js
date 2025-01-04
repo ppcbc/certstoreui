@@ -76,7 +76,7 @@ function AddExamCategory() {
       ...prev,
       fullId: value
     }));
-    dispatch(setFullCategoryId(value));
+    // dispatch(setFullCategoryId(value));
   };
 
   const onSubmit = async e => {

@@ -23,7 +23,6 @@ function UpdateExamCategory() {
   const [check, setCheck] = useState(false);
 
   const myToken = useSelector(state => state.token.value.tok);
-  const dispatch = useDispatch();
 
   function handleMessage() {
     setCheck(true);
@@ -98,7 +97,7 @@ function UpdateExamCategory() {
       categoryDescription: ""
       //price: ""
     }));
-    dispatch(setFullCategoryId(value));
+    // dispatch(setFullCategoryId(value));
     console.log("Selected full category:", value);
   };
 
