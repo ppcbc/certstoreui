@@ -36,6 +36,8 @@ import Basket from "./components/Basket";
 import UpdateFullExamCategory from "./components/UpdateFullExamCategorty";
 import UpdateExam from "./components/UpdateExam";
 import UpdateUser from "./components/UpdateUser";
+import DeleteUser from "./components/DeleteUser";
+import DeleteCertExam from "./components/DeleteCertExam";
 
 function Layout() {
   const location = useLocation();
@@ -85,6 +87,8 @@ function Layout() {
         />
         <Route path="/update-exam" element={<UpdateExam />} />
         <Route path="/update-user" element={<UpdateUser />} />
+        <Route path="/delete-user" element={<DeleteUser />} />
+        <Route path="/delete-certexam" element={<DeleteCertExam />} />
       </Routes>
       {/* </div> */}
       {/* {shouldShowHeader && <Footer color={"red"} />} */}

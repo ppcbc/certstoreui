@@ -49,7 +49,7 @@ function UpdateExam() {
 
   useEffect(() => {
     getCategories();
-  }, []);
+  }, [onSubmit]);
 
   async function getCategories() {
     try {

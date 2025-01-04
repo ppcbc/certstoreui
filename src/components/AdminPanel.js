@@ -83,7 +83,7 @@ export default function AdminPanel() {
           <AdminPanelLi
             title={"Delete Exam"}
             description={"Remove an existing exam test permanently."}
-            link={"/add-certexam"}
+            link={"/delete-certexam"}
           />
 
           <AdminPanelLi
@@ -97,7 +97,7 @@ export default function AdminPanel() {
           <AdminPanelLi
             title={"Delete User"}
             description={"Permanently remove a user from the system"}
-            link={"/assignrole"}
+            link={"/delete-user"}
           />
 
           <AdminPanelLi
