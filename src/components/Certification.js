@@ -45,17 +45,23 @@ function Certification({ certification }) {
   };
 
   const handleCart = certification => {
-    const today = new Date();
+    const today = new Date(
+      new Date().toLocaleString("en-US", { timeZone: "Europe/Athens" })
+    );
+
+    const offset = today.getTimezoneOffset(); // Get offset in minutes
+    const adjustedTime = new Date(today.getTime() - offset * 60000); // Adjust offset
+
     if (myToken) {
       let staf = {
         userId: myId,
         certExamId: certification.certExamId,
         hasBought: false,
         redeem: false,
-        dateOfSelectCertExam: today
+        dateOfSelectCertExam: adjustedTime.toISOString().replace("Z", "+02:00")
       };
       addStaf(staf);
-      // console.log(staf);
+      console.log(today.toISOString());
     } else {
       navigate("/register");
     }
