@@ -1,59 +1,48 @@
-
-
 .finish-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-    background-color: #f9f9f9;
-    border-radius: 15px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
+    width: 500px;
+    max-width: 1000px;
     margin: 0 auto;
-    transition: all 0.3s ease-in-out;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-    .finish-container:hover {
-        transform: scale(1.02);
-    }
+.finish-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
 
-    .finish-container h1 {
-        font-size: 3rem;
-        color: #333;
-        margin-bottom: 30px;
-    }
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
 
-    .finish-container h2 {
-        font-size: 1.75rem;
-        color: #555;
-        margin-bottom: 15px;
-    }
+.result-label {
+    font-weight: bold;
+    color: #555;
+}
 
-        .finish-container h2:last-child {
-            margin-bottom: 0;
-        }
-
-    .finish-container .status-pass {
-        color: #4caf50;
-    }
-
-    .finish-container .status-fail {
-        color: #f44336; 
-    }
+.result-value {
+    color: #333;
+}
 
 .download-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
     margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: #fff;
     background-color: #007bff;
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    text-align: center;
 }
 
-    .download-button:hover {
-        background-color: #0056b3;
-    }
+.download-button:hover {
+    background-color: #0056b3;
+}

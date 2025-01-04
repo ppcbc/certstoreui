@@ -65,7 +65,7 @@ export default function Home() {
               your journey to excellence.
             </p>
           </p> */}
-            <p className="question-certify">{myId}</p>
+            {/* <p className="question-certify">{myId}</p> */}
           </p>
         </div>
 

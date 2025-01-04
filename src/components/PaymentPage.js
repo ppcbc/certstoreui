@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../css/PaymentPage.css";
+import { useNavigate } from "react-router-dom";
 
 function PaymentPage() {
   const [cardDetails, setCardDetails] = useState({
@@ -8,6 +9,8 @@ function PaymentPage() {
     cvv: "",
     cardHolderName: ""
   });
+
+  const navigate = useNavigate();
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -20,7 +23,8 @@ function PaymentPage() {
   const handleSubmit = e => {
     e.preventDefault();
     // Handle payment processing here
-    alert("Payment processed successfully!");
+    // alert("Payment processed successfully!");
+    navigate("/user-details");
   };
 
   return (

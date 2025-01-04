@@ -1,66 +1,135 @@
 .my-certificates-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  height: 100vh;
   background-color: var(--color2);
 }
-.my-certificates {
-  background-color: #b4b5b0; /* Light background for the page */
-  color: #2c3e50; /* Text color matching the header palette */
-  padding: 40px 20px; /* Padding for the container */
-  min-height: 100vh;
-  margin-top: 40px;
-}
 
-/* Style for the certificates list */
-.my-certificates ul {
-  list-style: none; /* Remove default list styling */
-  padding: 0; /* Remove padding */
-  margin: 0 auto;
-  max-width: 600px;
-}
-
-/* Style for the main heading */
-.my-certificates h1 {
-  font-size: 2.5rem; /* Larger heading for visibility */
-  margin-bottom: 30px; /* Space below the heading */
-  color: #4b5052; /* Match the palette */
-  text-align: center; /* Center the heading */
-}
-
-/* Style for each certificate item */
-.my-certificates li {
-  background-color: #9a9c94; /* Slightly lighter background for each item */
-  border: 1.5px solid #2c3e50; /* Subtle border */
-  border-radius: 8px; /* Rounded corners */
-  padding: 20px; /* Padding for each certificate */
-  margin-bottom: 20px; /* Space between items */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.my-certificates-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   margin-top: 60px;
+  flex-grow: 1;
 }
 
-/* Hover effect for each certificate item */
-.my-certificates li:hover {
-  transform: translateY(-5px); /* Slight lift on hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+/* Future Exams Section */
+.future-exams {
+  width: 50%;
+  background-color: var(--color2);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  box-sizing: border-box;
+  flex-grow: 1;
 }
 
-/* Style for certificate title */
-.my-certificates li h2 img {
-  font-size: 1.5rem; /* Medium font size for the certificate name */
-  color: #2c3e50; /* Text color */
-  margin-bottom: 10px; /* Space below the title */
+.future-exams h1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  color: var(--color10);
 }
 
-/* Style for certificate mark */
-.my-certificates li p img {
-  font-size: 1rem; /* Standard font size */
-  color: #4b5052; /* Subtle text color for details */
-  margin: 0; /* Remove default margins */
+.future-exams ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.image {
-  width: 640px;
-  height: 360px;
-  background-color: var(--color1);
-  /* border: 2px solid #bcccdc; */
-  border-radius: 5px;
+.future-exams li {
+  background-color: var(--color12);
+  border: 1.5px solid var(--color10);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  color: var(--color1);
+}
+
+.future-exams li h2 {
+  font-size: 1.7rem;
+  font-weight: 750;
+  margin-bottom: 20px;
+  color: var(--color5);
+}
+
+.myfutureexams-description {
+  font-size: 0.9rem;
+  margin: 0 0 20px;
+  color: var(--color1);
+}
+
+.myfutureexams-date {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  color: var(--color5);
+  font-weight: 500;
+}
+
+.future-exams li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Acquired Certificates Section */
+.acquired-certificates {
+  width: 50%;
+  background-color: var(--color2);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  box-sizing: border-box;
+  flex-grow: 1;
+}
+
+.acquired-certificates h1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  color: var(--color8);
+}
+
+.acquired-certificates ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.acquired-certificates li {
+  background-color: var(--color11);
+  border: 1.5px solid var(--color9);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.acquired-certificates li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.acquired-certificates li h2 {
+  font-size: 1.7rem;
+  font-weight: 750;
+  margin-bottom: 20px;
+  color: var(--color10);
+}
+
+.myacquiredcertificates-description {
+  font-size: 0.9rem;
+  margin: 0 0 20px;
+  color: var(--color1);
+}
+
+.myacquiredcertificates-mark {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  color: var(--color10);
+  font-weight: 500;
 }
