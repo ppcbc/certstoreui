@@ -122,6 +122,7 @@ export default function MyCertificates() {
                       {truncateDescription(certification.testDescription, 150)}
                     </p>
                     <p className="myacquiredcertificates-mark">Mark: 65</p>
+                    <button>ff</button>
                   </div>
                 </li>
               ))
