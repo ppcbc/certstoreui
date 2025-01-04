@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import http from "../data/http";
+import fixDateToStringGmtPlusTwo from "../data/fixDateToGmtPlusTwo";
 
 function Certification({ certification }) {
   const [myStaf, setMyStaf] = useState({
@@ -45,12 +46,7 @@ function Certification({ certification }) {
   };
 
   const handleCart = certification => {
-    const today = new Date(
-      new Date().toLocaleString("en-US", { timeZone: "Europe/Athens" })
-    );
-
-    const offset = today.getTimezoneOffset(); // Get offset in minutes
-    const adjustedTime = new Date(today.getTime() - offset * 60000); // Adjust offset
+    const today = fixDateToStringGmtPlusTwo();
 
     if (myToken) {
       let staf = {
@@ -58,10 +54,9 @@ function Certification({ certification }) {
         certExamId: certification.certExamId,
         hasBought: false,
         redeem: false,
-        dateOfSelectCertExam: adjustedTime.toISOString().replace("Z", "+02:00")
+        dateOfSelectCertExam: today
       };
       addStaf(staf);
-      console.log(today.toISOString());
     } else {
       navigate("/register");
     }

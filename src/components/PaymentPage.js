@@ -20,7 +20,7 @@ function PaymentPage() {
   const handleSubmit = e => {
     e.preventDefault();
     // Handle payment processing here
-    alert("Payment processed successfully!");
+    // alert("Payment processed successfully!");
   };
 
   return (

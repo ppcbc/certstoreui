@@ -22,21 +22,29 @@ function Finish({ score, totalQuestions, paymentDate }) {
   const downloadPDF = async () => {
     const input = pdfRef.current;
 
-    // Capture the rendered content using html2canvas
-    const canvas = await html2canvas(input, {
-      scale: 2,
-      useCORS: true
-    });
+    // Add print mode class to hide the button
+    input.classList.add("print-mode");
 
-    const imgData = canvas.toDataURL("image/png");
-    const pdf = new jsPDF("p", "mm", "a4");
+    try {
+      const canvas = await html2canvas(input, {
+        scale: 2,
+        useCORS: true
+      });
 
-    // Calculate dimensions to fit the content
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "mm", "a4");
 
-    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-    pdf.save("statement-of-result.pdf");
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+      pdf.save("statement-of-result.pdf");
+    } catch (error) {
+      console.error("Failed to generate PDF:", error);
+    } finally {
+      // Remove print mode class after PDF generation
+      input.classList.remove("print-mode");
+    }
   };
 
   return (
