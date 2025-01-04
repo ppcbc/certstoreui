@@ -6,6 +6,7 @@ import axios from "axios";
 import http from "../data/http";
 import formatDate from "../data/formatDate";
 import { useNavigate } from "react-router-dom";
+import MyCertificateButton from "./MyCertificateButton";
 
 export default function MyCertificates() {
   const myToken = useSelector(state => state.token.value.tok);
@@ -98,7 +99,9 @@ export default function MyCertificates() {
                 <p className="myfutureexams-date">
                   Date: {staf.dateOfSendCertExam}
                 </p>
-                <button>ff</button>
+                <MyCertificateButton clas={"acquired-certificates"}>
+                  Dose
+                </MyCertificateButton>
               </li>
             ))}
           </ul>
