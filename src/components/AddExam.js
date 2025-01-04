@@ -43,7 +43,7 @@ function AddExam() {
     setCheck(true);
     setTimeout(() => {
       setCheck(false);
-    }, 700);
+    }, 1400);
   }
 
   // const [imageUrl, setImageUrl] = useState("");

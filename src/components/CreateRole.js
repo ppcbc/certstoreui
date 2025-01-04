@@ -88,7 +88,7 @@ function CreateRole() {
     setCheck(true);
     setTimeout(() => {
       setCheck(false);
-    }, 700);
+    }, 1400);
   }
 
   return (

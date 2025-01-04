@@ -88,7 +88,7 @@ function CertExam() {
     setCheck(true);
     setTimeout(() => {
       setCheck(false);
-    }, 700);
+    }, 1400);
   }
   const myToken = useSelector(state => state.token.value.tok);
   useEffect(() => {

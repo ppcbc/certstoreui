@@ -10,10 +10,19 @@ const DeleteUser = () => {
   const [email, setEmail] = useState("");
   const [errors, setErrors] = useState({});
   const [message, setMessage] = useState("");
+  const [check, setCheck] = useState(false);
 
   const handleEmailChange = e => {
     setEmail(e.target.value);
   };
+
+  function handleMessage() {
+    setCheck(true);
+    setTimeout(() => {
+      setCheck(false);
+    }, 1400);
+  }
+
 
   const validate = () => {
     let tempErrors = {};
@@ -36,12 +45,15 @@ const DeleteUser = () => {
         );
         setMessage(`User with email ${email} deleted successfully!`);
         setEmail(""); // Clear the email input after successful deletion
+        handleMessage();
       } catch (error) {
         console.error("There was an error deleting the user!", error);
         setMessage("There was an error deleting the user.");
+        handleMessage();
       }
     }
   };
+
 
   return (
     <div className="delete-user-main">

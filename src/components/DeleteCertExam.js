@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../css/DeleteCertExam.css";
 import { useSelector } from "react-redux";
@@ -39,6 +39,15 @@ const DeleteCertExam = () => {
       }
     }
   };
+
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => {
+        setMessage("");
+      }, 1400);
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
 
   return (
     <div className="delete-cert-exam-main">

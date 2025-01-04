@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/ScheduleExam.css";
 import Footer from "./Footer";
 import axios from "axios";
@@ -7,6 +7,15 @@ export default function ScheduleExam() {
   const [selectedDate, setSelectedDate] = useState("");
   const [message, setMessage] = useState({ type: "", text: "" });
   const [dateError, setDateError] = useState("");
+
+  useEffect(() => {
+    if (message.type) {
+      const timer = setTimeout(() => {
+        setMessage({ type: "", text: "" });
+      }, 1400);
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
 
   const handleSchedule = async () => {
     if (!selectedDate) {
@@ -55,10 +64,8 @@ export default function ScheduleExam() {
           {message.type === "success" && (
             <p className="schedule-success-message">{message.text}</p>
           )}
-          <div className="shedule-buttons">
-            <button onClick={handleSchedule}>Pick Your Date</button>
-            <button onClick={handleSchedule}>Cancel</button>
-          </div>
+
+          <button onClick={handleSchedule}>Schedule Exam</button>
 
           {message.type === "error" && !dateError && (
             <p className="submitschedule-error-message">{message.text}</p>
