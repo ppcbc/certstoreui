@@ -9,7 +9,8 @@ function Certification({ certification }) {
     userId: "",
     certExamId: "",
     hasBought: false,
-    redeem: false
+    redeem: false,
+    dateofSelecCertExam: Date.now()
   });
   const navigate = useNavigate();
   const myToken = useSelector(state => state.token.value.tok);
@@ -44,13 +45,14 @@ function Certification({ certification }) {
   };
 
   const handleCart = certification => {
+    const today = new Date();
     if (myToken) {
       let staf = {
         userId: myId,
         certExamId: certification.certExamId,
         hasBought: false,
-        redeem: false
-        // dateOfSelectCertExam: Date.now()
+        redeem: false,
+        dateOfSelectCertExam: today
       };
       addStaf(staf);
       // console.log(staf);

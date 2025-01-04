@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../css/PaymentPage.css";
-import { useNavigate } from "react-router-dom";
 
 function PaymentPage() {
   const [cardDetails, setCardDetails] = useState({
@@ -9,8 +8,6 @@ function PaymentPage() {
     cvv: "",
     cardHolderName: ""
   });
-
-  const navigate = useNavigate();
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -23,8 +20,7 @@ function PaymentPage() {
   const handleSubmit = e => {
     e.preventDefault();
     // Handle payment processing here
-    // alert("Payment processed successfully!");
-    navigate("/user-details");
+    alert("Payment processed successfully!");
   };
 
   return (
@@ -50,7 +46,7 @@ function PaymentPage() {
               <label className="payment-add-my-label">
                 Expiry Date:
                 <input
-                  type="text"
+                  type="date"
                   className="fadeIn second"
                   name="expiryDate"
                   placeholder="Expiry Date"
