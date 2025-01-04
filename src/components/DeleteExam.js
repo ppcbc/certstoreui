@@ -95,8 +95,8 @@ function DeleteExam() {
                 >
                   <option value="">Select an exam</option>
                   {exams.map(exam => (
-                    <option key={exam.id} value={exam.id}>
-                      question:{exam.questionText} - Id:{exam.examId}
+                    <option key={exam.examId} value={exam.examId}>
+                      question: {exam.questionText} - Id: {exam.examId}
                     </option>
                   ))}
                 </select>

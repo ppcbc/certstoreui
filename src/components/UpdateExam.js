@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
 import http from "../data/http";
-import "../css/UpdateExam.css";
-import { useNavigate, useParams } from "react-router-dom";
+// import "../css/ScheduleExam.css";
+import "../css/AddExam.css";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setFullCategoryId,
@@ -14,25 +15,21 @@ import {
 } from "../features/loginSlice";
 import Footer from "./Footer";
 
-// Προσθέτουμε το preset_key εδώ
-const preset_key = "112898813666492";
-
 function UpdateExam() {
   let navigate = useNavigate();
-  let { id } = useParams();
-  const [exam, setExam] = useState({
-    fullId: 0,
-    categoryId: 0,
-    questionText: "",
-    questionPhotoLink: "",
-    option1: "",
-    isCorrect1: false,
-    option2: "",
-    isCorrect2: false,
-    option3: "",
-    isCorrect3: false,
-    option4: "",
-    isCorrect4: false
+  const [newExam, setNewExam] = useState({
+    // fullId: 0,
+    // categoryId: 0,
+    // questionText: "",
+    // questionPhotoLink: "",
+    // option1: "",
+    // isCorrect1: false,
+    // option2: "",
+    // isCorrect2: false,
+    // option3: "",
+    // isCorrect3: false,
+    // option4: "",
+    // isCorrect4: false
   });
   const [examCategories, setExamCategories] = useState([]);
   const [fullCategories, setFullCategories] = useState([]);
@@ -41,16 +38,28 @@ function UpdateExam() {
   const [errors, setErrors] = useState({});
   const [imageUrl, setImageUrl] = useState("");
   const [validationMessages, setValidationMessages] = useState({});
+  const [startedExams, setStartedExams] = useState([]);
+  const [fullid, setFullid] = useState("");
+  const [examid, setExamid] = useState("");
+
+  function handleMessage() {
+    setCheck(true);
+    setTimeout(() => {
+      setCheck(false);
+    }, 700);
+  }
+
+  // const [imageUrl, setImageUrl] = useState("");
+
+  const preset_key = "112898813666492";
+  const precet = "certphoto";
+  const api_secret = "WiNm8fism4GXfgYe0k8nME36EeY";
 
   const myToken = useSelector(state => state.token.value.tok);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     getCategories();
-    if (id) {
-      getExam(id); // Φέρνουμε τα δεδομένα του εξεταστικού ερωτήματος
-    }
-  }, [id]);
+  }, []);
 
   async function getCategories() {
     try {
@@ -66,94 +75,132 @@ function UpdateExam() {
         }
       });
 
+      var resq = await axios.get(http + "api/exams", {
+        headers: {
+          Authorization: "Bearer " + myToken
+        }
+      });
+      setStartedExams(resq.data);
+
       setExamCategories(response.data);
       setFullCategories(res.data);
-      console.log(response.data);
-      console.log(res.data);
     } catch (error) {
       console.log(error.message);
     }
   }
 
-  async function getExam(examId) {
-    try {
-      const response = await axios.get(http + `api/Exams/${examId}`, {
-        headers: {
-          Authorization: "Bearer " + myToken
-        }
-      });
-
-      setExam(response.data);
-      setImageUrl(response.data.questionPhotoLink || "");
-      console.log("Exam data:", response.data);
-    } catch (error) {
-      console.log("Error fetching exam:", error.message);
-    }
-  }
-
   function validate() {
     let tempErrors = {};
-    if (!exam.fullId) tempErrors.fullId = "Category is required";
-    if (!exam.categoryId) tempErrors.categoryId = "Exam is required";
-    if (!exam.questionText && !imageUrl)
+    if (!newExam.fullId) tempErrors.fullId = "Category is required";
+    if (!newExam.categoryId) tempErrors.categoryId = "Exam is required";
+    if (!newExam.questionText && !imageUrl)
       tempErrors.questionText =
         "Either question text or a valid image is required";
-    if (!exam.option1) tempErrors.option1 = "First question is required";
-    if (!exam.option2) tempErrors.option2 = "Second question is required";
-    if (!exam.option3) tempErrors.option3 = "Third question is required";
-    if (!exam.option4) tempErrors.option4 = "Fourth question is required";
+    if (!newExam.option1) tempErrors.option1 = "First question is required";
+    if (!newExam.option2) tempErrors.option2 = "Second question is required";
+    if (!newExam.option3) tempErrors.option3 = "Third question is required";
+    if (!newExam.option4) tempErrors.option4 = "Fourth question is required";
 
     setErrors(tempErrors);
-    setValidationMessages(tempErrors);
+    setValidationMessages(errors);
     return Object.keys(tempErrors).length === 0;
   }
 
   function onChange(e) {
     let { name, value } = e.target;
-    if (!isNaN(parseInt(value))) {
-      value = parseInt(value);
+    if (parseInt(value) !== NaN) {
+      parseInt(value);
     }
-    if (value === "true" || value === "false") {
+    if (value === "true" || value == "false") {
       value = value === "true";
     }
 
-    setExam(prev => ({
-      ...prev,
-      [name]: value,
-      questionPhotoLink: imageUrl
-    }));
+    setNewExam(prev => {
+      return {
+        ...prev,
+        [name]: value,
+        questionPhotoLink: imageUrl
+      };
+    });
   }
+  function onGetStartedExam(e) {
+    let { name, value } = e.target;
+    console.log(value);
+    let ffExam = startedExams.filter(a => a.examId == value);
+    console.log("ffffffffffffffffffffffffff");
+    console.log(ffExam);
+    console.log("ffffffffffffffffffffffffff");
+    setNewExam(prev => {
+      return {
+        ...prev,
+        ...ffExam[0]
+      };
+    });
 
-  function onChangeFullCategory(e) {
-    const { value } = e.target;
-    setExam(prev => ({
-      ...prev,
-      fullId: parseInt(value),
-      categoryId: 0
-    }));
-    dispatch(setFullCategoryId(value));
+    if (parseInt(value) !== NaN) {
+      parseInt(value);
+    }
+    console.log(value);
+    let settedExam = startedExams.filter(a => a.examId == value);
+    let testExam = settedExam[0];
+    console.log(testExam);
+    console.log(settedExam);
+  }
+  function handleFullId(e) {
+    console.log(e.target.value);
+    setFullCategoryId(e.target.value);
   }
 
   async function onSubmit(e) {
     e.preventDefault();
     if (!validate()) return;
 
-    console.log(exam);
-    console.log(examCategories);
+    let test = {
+      categoryId: newExam.categoryId,
+      examId: newExam.examId,
+      //   fullId: "1",
+      isCorrect1: newExam.isCorrect1,
+      isCorrect2: newExam.isCorrect2,
+      isCorrect3: newExam.isCorrect3,
+      isCorrect4: newExam.isCorrect4,
+      option1: newExam.option1,
+      option2: newExam.option2,
+      option3: newExam.option3,
+      option4: newExam.option4,
+      //   questionPhotoLink: newExam.questionPhotoLink,
+      questionText: newExam.questionText
+    };
+    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    console.log(test);
+    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     try {
-      var response = await axios.put(http + `api/Exams/${id}`, exam, {
+      var response = await axios.put(http + "api/Exams/" + test.examId, test, {
         headers: {
           Authorization: "Bearer " + myToken
         }
       });
       console.log(response.status);
-      if (response.status === 200) {
-        setMessage("Exam successfully updated");
-        handleMessage();
+      if (response.status === 201 || response.status === 200) {
+        setNewExam({
+          fullId: 0,
+          categoryId: 0,
+          questionText: "",
+          //   questionPhotoLink: "",
+          option1: "",
+          isCorrect1: false,
+          option2: "",
+          isCorrect2: false,
+          option3: "",
+          isCorrect3: false,
+          option4: "",
+          isCorrect4: false
+        });
       }
+      setMessage("Exam successfully added");
+      handleMessage();
       console.log(response.data);
     } catch (error) {
-      setMessage("Error updating exam");
+      setMessage("Wrong credentials try again");
       handleMessage();
       console.log(error.message);
     }
@@ -163,7 +210,7 @@ function UpdateExam() {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", preset_key);
+    formData.append("upload_preset", precet);
 
     try {
       const response = await axios.post(
@@ -171,10 +218,6 @@ function UpdateExam() {
         formData
       );
       setImageUrl(response.data.secure_url);
-      setExam(prev => ({
-        ...prev,
-        questionPhotoLink: response.data.secure_url
-      }));
       console.log(response.data.secure_url);
     } catch (error) {
       console.error("Upload failed:", error.response?.data || error.message);
@@ -188,57 +231,21 @@ function UpdateExam() {
     }, 700);
   }
 
-  async function handleExamSelection(e) {
-    const { value } = e.target;
-    setExam(prev => ({
-      ...prev,
-      categoryId: parseInt(value)
-    }));
-    await fetchExamData(value);
-  }
-
-  async function fetchExamData(examId) {
-    try {
-      const response = await axios.get(http + `api/Exams/${examId}`, {
-        headers: {
-          Authorization: "Bearer " + myToken
-        }
-      });
-      setExam(prev => ({
-        ...prev,
-        questionText: response.data.questionText || "",
-        option1: response.data.option1 || "",
-        isCorrect1: response.data.isCorrect1,
-        option2: response.data.option2 || "",
-        isCorrect2: response.data.isCorrect2,
-        option3: response.data.option3 || "",
-        isCorrect3: response.data.isCorrect3,
-        option4: response.data.option4 || "",
-        isCorrect4: response.data.isCorrect4
-      }));
-      console.log("Selected exam data:", response.data);
-    } catch (error) {
-      console.log("Error fetching exam data:", error.message);
-    }
-  }
-  {
-    /* -> */
-  }
   return (
-    <div className="update-exam-main">
-      <form onSubmit={onSubmit}>
-        <div className="update-exam">
-          <div className="update-box">
+    <div className="add-exam-main">
+      <form action="" onSubmit={onSubmit}>
+        <div className="add-exam">
+          <div className="add-box">
             <h1>Update Question</h1>
-            <div className="update-my-inner-box">
-              <label className="update-my-label">
-                Select category:
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
+                Select module:
                 <select
                   name="fullId"
-                  value={exam.fullId}
-                  onChange={onChangeFullCategory}
+                  value={newExam.fullId}
+                  onChange={onChange}
                 >
-                  <option value={0}>Category</option>
+                  <option value={0}>Module</option>
                   {fullCategories.map(a => (
                     <option key={a.fullId} value={a.fullId}>
                       {a.name}
@@ -248,21 +255,23 @@ function UpdateExam() {
               </label>
             </div>
             {validationMessages.fullId && (
-              <p className="UpdateExam-error-message">
+              <p className="AddExam-error-message">
                 {validationMessages.fullId}
               </p>
             )}
-            <div className="update-my-inner-box">
-              <label className="update-my-label">
-                Select exam:
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
+                Select category:
                 <select
                   name="categoryId"
-                  value={exam.categoryId}
-                  onChange={handleExamSelection}
+                  value={examCategories.categoryId}
+                  onChange={onChange}
                 >
-                  <option value={0}>Exam</option>
+                  <option value={0}>Category</option>
                   {examCategories
-                    .filter(a => parseInt(a.fullId) === parseInt(exam.fullId))
+                    .filter(
+                      a => parseInt(a.fullId) === parseInt(newExam.fullId)
+                    )
                     .map(a => (
                       <option key={a.categoryId} value={a.categoryId}>
                         {a.categoryName}
@@ -271,33 +280,55 @@ function UpdateExam() {
                 </select>
               </label>
             </div>
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
+                Select question:
+                <select
+                  name="examId"
+                  value={newExam.examId}
+                  onChange={onGetStartedExam}
+                >
+                  <option value={0}>Question</option>
+                  {startedExams
+                    .filter(
+                      a =>
+                        parseInt(a.categoryId) === parseInt(newExam.categoryId)
+                    )
+                    .map(a => (
+                      <option key={a.examId} value={a.examId}>
+                        Question: {a.questionText} - Id: {a.examId}
+                      </option>
+                    ))}
+                </select>
+              </label>
+            </div>
             {validationMessages.categoryId && (
-              <p className="UpdateExam-error-message">
+              <p className="AddExam-error-message">
                 {validationMessages.categoryId}
               </p>
             )}
-            <div className="update-my-inner-box">
-              <label className="update-my-label">
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
                 Question text:
                 <input
                   type="text"
                   className="fadeIn second"
                   name="questionText"
                   placeholder="question text"
-                  value={exam.questionText}
+                  value={newExam.questionText}
                   onChange={onChange}
                 />
               </label>
             </div>
             {validationMessages.questionText && (
-              <p className="UpdateExam-error-message">
+              <p className="AddExam-error-message">
                 {validationMessages.questionText}
               </p>
             )}
-            <div className="update-my-inner-box">
-              <label className="update-my-label">
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
                 Upload foto for code snipped (Less than 10mb):
-                <label htmlFor="file-upload" className="custom-file-upload">
+                <label for="file-upload" className="custom-file-upload">
                   Upload Photo
                   <input
                     id="file-upload"
@@ -309,49 +340,23 @@ function UpdateExam() {
               </label>
             </div>
             {validationMessages.imageUrl && (
-              <p className="UpdateExam-error-message">
+              <p className="AddExam-error-message">
                 {validationMessages.imageUrl}
               </p>
             )}
-            <div className="update-my-inner-box">
-              <label className="update-my-label">
-                First question:
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
+                First answer:
                 <input
                   type="text"
                   name="option1"
-                  placeholder="first question"
-                  value={exam.option1}
+                  placeholder="first answer"
+                  value={newExam.option1}
                   onChange={onChange}
                 />
                 <select
                   name="isCorrect1"
-                  value={exam.isCorrect1}
-                  onChange={onChange}
-                >
-                  <option value={false}>Wrong</option>
-                  <option value={true}>Correct</option>
-                </select>
-              </label>
-            </div>
-            {validationMessages.option1 && (
-              <p className="UpdateExam-error-message">
-                {validationMessages.option1}
-              </p>
-            )}
-            <div className="update-my-inner-box">
-              <label className="update-my-label">
-                Second question:
-                <input
-                  type="text"
-                  className="fadeIn third"
-                  name="option2"
-                  placeholder="second question"
-                  value={exam.option2}
-                  onChange={onChange}
-                />
-                <select
-                  name="isCorrect2"
-                  value={exam.isCorrect2}
+                  value={newExam.isCorrect1}
                   onChange={onChange}
                 >
                   <option value={false}>Wrong</option>
@@ -360,24 +365,50 @@ function UpdateExam() {
               </label>
             </div>
             {validationMessages.option2 && (
-              <p className="UpdateExam-error-message">
+              <p className="AddExam error message">
+                {validationMessages.option1}
+              </p>
+            )}
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
+                Second answer:
+                <input
+                  type="text"
+                  className="fadeIn third"
+                  name="option2"
+                  placeholder="second question"
+                  value={newExam.option2}
+                  onChange={onChange}
+                />
+                <select
+                  name="isCorrect2"
+                  value={newExam.isCorrect2}
+                  onChange={onChange}
+                >
+                  <option value={false}>Wrong</option>
+                  <option value={true}>Correct</option>
+                </select>
+              </label>
+            </div>
+            {validationMessages.option2 && (
+              <p className="AddExam-error-message">
                 {validationMessages.option2}
               </p>
             )}
-            <div className="update-my-inner-box">
-              <label className="update-my-label">
-                Third question:
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
+                Third answer:
                 <input
                   type="text"
                   className="fadeIn third"
                   name="option3"
-                  placeholder="third question"
-                  value={exam.option3}
+                  placeholder="third answer"
+                  value={newExam.option3}
                   onChange={onChange}
                 />
                 <select
                   name="isCorrect3"
-                  value={exam.isCorrect3}
+                  value={newExam.isCorrect3}
                   onChange={onChange}
                 >
                   <option value={false}>Wrong</option>
@@ -386,24 +417,24 @@ function UpdateExam() {
               </label>
             </div>
             {validationMessages.option3 && (
-              <p className="UpdateExam-error-message">
+              <p className="AddExam-error-message">
                 {validationMessages.option3}
               </p>
             )}
-            <div className="update-my-inner-box">
-              <label className="update-my-label">
-                Fourth question:
+            <div className="add-my-inner-box">
+              <label className="add-my-label">
+                Fourth answer:
                 <input
                   type="text"
                   className="fadeIn third"
                   name="option4"
-                  placeholder="fourth question"
-                  value={exam.option4}
+                  placeholder="fourth answer"
+                  value={newExam.option4}
                   onChange={onChange}
                 />
                 <select
                   name="isCorrect4"
-                  value={exam.isCorrect4}
+                  value={newExam.isCorrect4}
                   onChange={onChange}
                 >
                   <option value={false}>Wrong</option>
@@ -412,16 +443,16 @@ function UpdateExam() {
               </label>
             </div>
             {validationMessages.option4 && (
-              <p className="UpdateExam-error-message">
+              <p className="AddExam-error-message">
                 {validationMessages.option4}
               </p>
             )}
-            <div className="update-my-inner-box">
+            <div className="add-my-inner-box">
               <button type="submit" className="fadeIn fourth" value="submit">
-                Update
+                Create
               </button>
             </div>
-            <div className="update-my-label">{check && <p>{message}</p>}</div>
+            <div className="add-my-label">{check && <p>{message}</p>}</div>
           </div>
         </div>
       </form>
