@@ -162,12 +162,12 @@ function UpdateExamCategory() {
     <div className="update-exam-main">
       <form onSubmit={onSubmit}>
         <div className="update-exam">
-          <div className="update-box">
+          <div className="update-exam-box">
             <h1>Update Question Category</h1>
-            <div className="update-inner-box">
-              <div className="update-inner-field">
-                <label className="update-label">
-                  Select module:
+            <div className="update-exam-inner-box">
+              <div className="update-exam-inner-field">
+                <label className="update-exam-label">
+                  Select Module:
                   <select
                     name="fullId"
                     value={categoryToUpdate.fullId}
@@ -183,15 +183,15 @@ function UpdateExamCategory() {
                 </label>
               </div>
               {examCategories.length > 0 && categoryToUpdate.fullId !== 0 && (
-                <div className="update-inner-field">
-                  <label className="update-label">
-                    Select question category:
+                <div className="update-exam-inner-field">
+                  <label className="update-exam-label">
+                    Select Question Category:
                     <select
                       name="categoryId"
                       value={categoryToUpdate.categoryId}
                       onChange={onChangeExamCategory}
                     >
-                      <option value={0}>Select an question category</option>
+                      <option value={0}>Select question category</option>
                       {examCategories
                         .filter(ec => ec.fullId === categoryToUpdate.fullId)
                         .map(a => (
@@ -205,9 +205,9 @@ function UpdateExamCategory() {
               )}
               {categoryToUpdate.categoryId !== 0 && (
                 <>
-                  <div className="update-inner-field">
-                    <label className="update-label">
-                      Question category name:
+                  <div className="update-exam-inner-field">
+                    <label className="update-exam-label">
+                      Question Category Name:
                       <input
                         type="text"
                         className="fadeIn second"
@@ -218,33 +218,19 @@ function UpdateExamCategory() {
                       />
                     </label>
                   </div>
-                  <div className="update-inner-field">
-                    <label className="update-label">
-                      Question category description:
-                      <input
-                        type="text"
+                  <div className="update-exam-inner-field">
+                    <label className="update-exam-label">
+                      Question Category Description:
+                      <textarea
                         className="fadeIn second"
                         name="categoryDescription"
                         placeholder="Exam category description"
                         value={categoryToUpdate.categoryDescription}
                         onChange={onChange}
+                        rows="5"
                       />
                     </label>
                   </div>
-                  {/* <div className="update-inner-field">
-                                    <label className="update-label">
-                                        Price:
-                                        <input
-                                            type="number"
-                                            inputMode="numeric"
-                                            className="fadeIn third number"
-                                            name="price"
-                                            placeholder="Price"
-                                            value={categoryToUpdate.price}
-                                            onChange={onChange}
-                                        />
-                                    </label>
-                                </div> */}
                 </>
               )}
             </div>
@@ -252,11 +238,13 @@ function UpdateExamCategory() {
               Update
             </button>
             {error && (
-              <div className="update-label">
+              <div className="update-exam-error">
                 <p style={{ color: "red" }}>{error}</p>
               </div>
             )}
-            <div className="update-label">{check && <p>{message}</p>}</div>
+            <div className="update-exam-message">
+              {check && <p>{message}</p>}
+            </div>
           </div>
         </div>
       </form>
