@@ -140,3 +140,10 @@ align-left {
   margin-left: 5px;
   padding-right: 3px;
 }
+.shedule-buttons {
+  display: flex;
+  flex-direction: column;
+}
+.shedule-buttons button {
+  margin: 10px 0;
+}

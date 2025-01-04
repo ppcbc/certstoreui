@@ -55,8 +55,10 @@ export default function ScheduleExam() {
           {message.type === "success" && (
             <p className="schedule-success-message">{message.text}</p>
           )}
-
-          <button onClick={handleSchedule}>Schedule Exam</button>
+          <div className="shedule-buttons">
+            <button onClick={handleSchedule}>Pick Your Date</button>
+            <button onClick={handleSchedule}>Cancel</button>
+          </div>
 
           {message.type === "error" && !dateError && (
             <p className="submitschedule-error-message">{message.text}</p>

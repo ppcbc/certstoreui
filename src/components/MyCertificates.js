@@ -9,9 +9,11 @@ import { useNavigate } from "react-router-dom";
 
 export default function MyCertificates() {
   const myToken = useSelector(state => state.token.value.tok);
+  const myId = useSelector(state => state.token.value.id);
   const navigate = useNavigate();
 
   const [myStaf, setMyStaf] = useState([]);
+  const [allCertExams, setAllCertExams] = useState([]);
   const [acquiredCertificates, setAcquiredCertificates] = useState([]);
 
   const truncateDescription = (text, maxLength) => {
@@ -23,50 +25,47 @@ export default function MyCertificates() {
 
   // Fetch future exams
   useEffect(() => {
+    getAcquiredCertificates();
     getStaf();
   }, []);
 
   // Fetch acquired certificates
-  useEffect(() => {
-    getAcquiredCertificates();
-  }, []);
 
   async function getStaf() {
     try {
+      const res = await axios.get(`${http}api/CertExams`, {
+        headers: {
+          Authorization: `Bearer ${myToken}`
+        }
+      });
+      let selectedExams = [];
+      let myCertExams = res.data;
       const response = await axios.get(`${http}api/UserStafs`, {
         headers: {
           Authorization: `Bearer ${myToken}`
         }
       });
-
-      const stafs = response.data;
-      const stafData = await Promise.all(
-        stafs.map(async staf => {
-          const res = await axios.get(
-            `${http}api/CertExams/${staf.certExamId}`,
-            {
-              headers: {
-                Authorization: `Bearer ${myToken}`
-              }
-            }
-          );
-
-          const myCertExams = res.data;
-          const formattedDate = formatDate(staf.dateOfSelectCertExam);
-
-          return {
-            key: staf.userStafId,
-            certExamTitle: myCertExams.testTitle,
-            testDescription: myCertExams.testDescription,
-            selectDate: formattedDate,
-            hasBought: staf.hasBought
-          };
-        })
+      let myStaf = response.data.filter(
+        a => a.userId == myId && a.hasBought === true
       );
-
-      setMyStaf(stafData);
+      console.log(myStaf);
+      for (let y = 0; y < myStaf.length; y++)
+        for (let i = 0; i < myCertExams.length; i++) {
+          if (myStaf[y].certExamId === myCertExams[i].certExamId) {
+            selectedExams.push({
+              ...myStaf[y],
+              ...myCertExams[i],
+              dateOfSendCertExam:
+                myStaf[y].dateOfSelectCertExam != "0001-01-01T00:00:00"
+                  ? "Pick your date"
+                  : myStaf[y].dateOfSendCertExam
+            });
+          }
+        }
+      console.log(selectedExams);
+      setMyStaf(selectedExams);
     } catch (error) {
-      console.error("Failed to fetch staff:", error.message);
+      console.log(error.message);
     }
   }
 
@@ -91,12 +90,15 @@ export default function MyCertificates() {
           <h1>My Future Exams</h1>
           <ul>
             {myStaf.map(staf => (
-              <li key={staf.key}>
-                <h2>{staf.certExamTitle}</h2>
+              <li key={staf.userStafId}>
+                <h2>{staf.testTitle}</h2>
                 <p className="myfutureexams-description">
                   {truncateDescription(staf.testDescription, 150)}
                 </p>
-                <p className="myfutureexams-date">Date: {staf.selectDate}</p>
+                <p className="myfutureexams-date">
+                  Date: {staf.dateOfSendCertExam}
+                </p>
+                <button>ff</button>
               </li>
             ))}
           </ul>

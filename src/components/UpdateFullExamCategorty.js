@@ -136,13 +136,13 @@ function UpdateFullExamCategory() {
   return (
     <div className="update-full-exam-main">
       <form onSubmit={onSubmit}>
-        <div className="update-full-exam">
-          <div className="update-box">
+        <div className="update-full-exam-category">
+          <div className="update-full-exam-box">
             <h1>Update Module</h1>
-            <div className="update-inner-box">
-              <div className="update-inner-field">
-                <label className="update-label">
-                  Select module:
+            <div className="update-full-exam-inner-box">
+              <div className="update-full-exam-inner-field">
+                <label className="update-full-exam-label">
+                  Select Module:
                   <select
                     name="fullId"
                     value={categoryToUpdate.fullId}
@@ -158,53 +158,51 @@ function UpdateFullExamCategory() {
                 </label>
               </div>
               {error && !categoryToUpdate.fullId && (
-                <p className="UpdateFullExamCategory-error-message">{error}</p>
+                <p className="update-full-exam-error-message">{error}</p>
               )}
               {categoryToUpdate.fullId !== 0 && (
                 <>
-                  <div className="update-inner-field">
-                    <label className="update-label">
-                      Module name:
+                  <div className="update-full-exam-inner-field">
+                    <label className="update-full-exam-label">
+                      Module Name:
                       <input
                         type="text"
                         className="fadeIn second"
                         name="categoryName"
-                        placeholder="Full Category Name"
+                        placeholder="Full category name"
                         value={categoryToUpdate.categoryName || ""}
                         onChange={onChange}
                       />
-                      {error && !categoryToUpdate.categoryName && (
-                        <p className="UpdateFullExamCategory-error-message">
-                          {error}
-                        </p>
-                      )}
                     </label>
                   </div>
-                  <div className="update-inner-field">
-                    <label className="update-label">
-                      Module description:
-                      <input
-                        type="text"
+                  {error && !categoryToUpdate.categoryName && (
+                    <p className="update-full-exam-error-message">{error}</p>
+                  )}
+                  <div className="update-full-exam-inner-field">
+                    <label className="update-full-exam-label">
+                      Module Description:
+                      <textarea
                         className="fadeIn second"
                         name="categoryDescription"
-                        placeholder="Full Category Description"
+                        placeholder="Full category description"
                         value={categoryToUpdate.categoryDescription || ""}
                         onChange={onChange}
+                        rows="5"
                       />
-                      {error && !categoryToUpdate.categoryDescription && (
-                        <p className="UpdateFullExamCategory-error-message">
-                          {error}
-                        </p>
-                      )}
                     </label>
                   </div>
+                  {error && !categoryToUpdate.categoryDescription && (
+                    <p className="update-full-exam-error-message">{error}</p>
+                  )}
                 </>
               )}
             </div>
             <button type="submit" className="fadeIn fourth">
               Update
             </button>
-            <div className="update-label">{check && <p>{message}</p>}</div>
+            <div className="update-full-exam-message">
+              {check && <p>{message}</p>}
+            </div>
           </div>
         </div>
       </form>

@@ -29,42 +29,6 @@ function Exam() {
 
   let navigate = useNavigate();
 
-  // async function getExam() {
-  //   try {
-  //     let response = await axios.get(http + "api/exams");
-  //     let myData = response.data;
-  //     const filteredExams = myData
-  //       .filter(item => item.categoryId === 1)
-  //       .map((item, index) => ({
-  //         examId: item.examId,
-  //         categoryId: item.categoryId,
-  //         question: item.questionText,
-  //         photoLink: item.questionPhotoLink,
-  //         answer1: item.option1,
-  //         correct1: item.isCorrect1,
-  //         answer2: item.option2,
-  //         correct2: item.isCorrect2,
-  //         answer3: item.option3,
-  //         correct3: item.isCorrect3,
-  //         answer4: item.option4,
-  //         correct4: item.isCorrect4,
-  //         isAnswered: false,
-  //         selected: index === 0
-  //       }));
-
-  //     setExams(filteredExams);
-
-  //     if (filteredExams.length > 0) {
-  //       setTimeLeft(filteredExams.length * 150);
-  //       setIsTimerRunning(true);
-  //     }
-
-  //     setLoading(false);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // }
-
   async function getExam() {
     try {
       var response = await axios.get(http + `api/CertExams/${32}`, {

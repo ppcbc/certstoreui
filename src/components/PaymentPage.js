@@ -53,6 +53,7 @@ function PaymentPage() {
           }
         }
       );
+      navigate("/my-certificates");
       console.log(response.data);
     } catch (error) {
       console.log(error.message);
