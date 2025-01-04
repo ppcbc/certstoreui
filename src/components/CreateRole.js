@@ -1,6 +1,7 @@
 import { useState } from "react";
 import React from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import http from "../data/http";
 import "../css/AssignRole.css";
 import Footer from "./Footer";
@@ -12,6 +13,7 @@ function CreateRole() {
   });
 
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
   const [check, setCheck] = useState(false);
   const [validationMessages, setValidationMessages] = useState({});
   const myToken = useSelector(state => state.token.value.tok);
@@ -125,6 +127,15 @@ function CreateRole() {
                 onClick={onSubmit}
               >
                 Create
+              </button>
+            </div>
+            <div className="button">
+              <button
+                type="cancel"
+                className="fadeIn fourth"
+                onClick={() => navigate("/adminpanel")}
+              >
+                Cancel
               </button>
             </div>
             <div className="assign-message">{check && <p>{message}</p>}</div>

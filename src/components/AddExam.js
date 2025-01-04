@@ -377,6 +377,15 @@ function AddExam() {
                 Create
               </button>
             </div>
+            <div className="add-my-inner-box">
+              <button
+                type="cancel"
+                className="fadeIn fourth"
+                onClick={() => navigate("/adminpanel")}
+              >
+                Cancel
+              </button>
+            </div>
             <div className="add-my-label">{check && <p>{message}</p>}</div>
           </div>
         </div>

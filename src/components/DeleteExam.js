@@ -112,6 +112,15 @@ function DeleteExam() {
                 Delete
               </button>
             </div>
+            <div className="delete-question-my-inner-box">
+              <button
+                type="cancel"
+                className="fadeIn fourth"
+                onClick={() => navigate("/adminpanel")}
+              >
+                Cancel
+              </button>
+            </div>
             <div className="delete-question-my-message">
               {check && <p>{message}</p>}
             </div>
