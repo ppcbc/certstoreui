@@ -94,7 +94,7 @@
 .admin-panel li .admin-panel-item-header {
   display: flex; /* Flexbox for title alignment */
   flex-direction: column; /* Stack title and button vertically */
-  justify-content: center; /* Center title and button vertically */
+  justify-content: space-between; /* Center title and button vertically */
   align-items: center; /* Center items horizontally */
   width: 100%; /* Full width of the container */
   margin-bottom: 10px; /* Space between title and button */
@@ -119,4 +119,11 @@
   background-color: var(--color10); /* Darker button background on hover */
   transform: translateY(-2px); /* Slight lift on hover */
   font-weight: 600; /* Make text bolder on hover */
+}
+.admin-panel-paragraph-container {
+  display: flex;
+  justify-content: center;
+  align-items: ;
+  width: 220px;
+  height: 100px;
 }
