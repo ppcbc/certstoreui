@@ -22,10 +22,6 @@ function Login() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // localStorage.setItem("tok", "");
-    // localStorage.setItem("id", "");
-    // localStorage.setItem("role", "");
-    // localStorage.setItem("fullCategoryId", "");
     dispatch(setLogReg("LOGIN"));
   }, []);
 

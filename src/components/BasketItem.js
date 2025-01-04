@@ -1,5 +1,7 @@
 import React from "react";
 import "../css/Basket.css";
+import { useDispatch } from "react-redux";
+import { setStafId } from "../features/loginSlice";
 
 export const BasketItem = ({
   certExamTitle,
@@ -9,6 +11,12 @@ export const BasketItem = ({
   navigate,
   id
 }) => {
+  const dispatch = useDispatch();
+  const proceedToBuy = () => {
+    dispatch(setStafId(id));
+    navigate("/payment");
+  };
+
   return (
     <li className="basket-item">
       <div className="basket-header">
@@ -27,10 +35,7 @@ export const BasketItem = ({
           </div>
         </div>
         <div className="basket-buttons">
-          <button
-            className="basket-buy-button"
-            onClick={() => navigate("/payment")}
-          >
+          <button className="basket-buy-button" onClick={proceedToBuy}>
             Buy
           </button>
           <button

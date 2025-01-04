@@ -1,5 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/PaymentPage.css";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import http from "../data/http";
+import axios from "axios";
 
 function PaymentPage() {
   const [cardDetails, setCardDetails] = useState({
@@ -8,6 +12,38 @@ function PaymentPage() {
     cvv: "",
     cardHolderName: ""
   });
+  const [currentStaf, setCurrentStaf] = useState({});
+  const navigate = useNavigate();
+  const userStafId = useSelector(state => state.token.value.stafId);
+  const myToken = useSelector(state => state.token.value.tok);
+
+  useEffect(() => {
+    getCurrentStaf();
+    // console.log(userStafId);
+  }, []);
+
+  const getCurrentStaf = async () => {
+    try {
+      const response = await axios.get(http + `api/UserStafs/${userStafId}`, {
+        headers: {
+          // "Content-Type": "application/json",
+          Authorization: "Bearer " + myToken
+        }
+      });
+      setCurrentStaf(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const updateStaf = async () => {
+    try {
+      const response = await axios.put(http + "api/");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -19,8 +55,8 @@ function PaymentPage() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // Handle payment processing here
-    // alert("Payment processed successfully!");
+    console.log(cardDetails);
+    console.log(userStafId);
   };
 
   return (
@@ -85,6 +121,15 @@ function PaymentPage() {
           <div className="payment-inner-box">
             <button type="submit" className="fadeIn fourth">
               Submit Payment
+            </button>
+          </div>
+          <div className="payment-inner-box">
+            <button
+              type="cancel"
+              className="fadeIn fourth"
+              onClick={() => navigate("/basket")}
+            >
+              Cancel
             </button>
           </div>
         </div>

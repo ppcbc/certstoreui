@@ -8,7 +8,7 @@ export const logSlice = createSlice({
       log: localStorage.getItem("log") ?? "",
       id: localStorage.getItem("id") ?? "",
       role: localStorage.getItem("role") ?? "",
-      stafId: 1
+      stafId: localStorage.getItem("stafId") ?? ""
     }
   },
   reducers: {
@@ -36,6 +36,7 @@ export const logSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setToken, setLogReg, setId, setRole, stafId } = logSlice.actions;
+export const { setToken, setLogReg, setId, setRole, setStafId } =
+  logSlice.actions;
 
 export default logSlice.reducer;
