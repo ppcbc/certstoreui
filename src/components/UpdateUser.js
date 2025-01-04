@@ -80,6 +80,8 @@ const UpdateUser = () => {
       tempErrors.nativeLanguage = "Native Language is required.";
     if (!userDetail.dateOfBirth)
       tempErrors.dateOfBirth = "Date of Birth is required.";
+    if (!userDetail.photoIdType)
+      tempErrors.photoIdType = "Photo ID Type is required";
     if (!userDetail.photoIdNumber)
       tempErrors.photoIdNumber = "Photo ID Number is required.";
     if (!userDetail.address) tempErrors.address = "Address is required.";
@@ -115,17 +117,17 @@ const UpdateUser = () => {
     <div className="update-user-main">
       <form onSubmit={handleSubmit}>
         <div className="update-user">
-          <div className="update-box">
+          <div className="update-user-box">
             <h1>Update User</h1>
-            <div className="update-my-inner-box">
-              <label className="update-my-label">
+            <div className="update-user-my-inner-box">
+              <label className="update-user-label">
                 Select User:
                 <select
                   name="selectedUserId"
                   value={selectedUserId}
                   onChange={handleUserChange}
                 >
-                  <option value="">Select User</option>
+                  <option value="">Select user</option>
                   {users.map(user => (
                     <option key={user.detailId} value={user.detailId}>
                       {user.name} {user.lastName}
@@ -134,50 +136,55 @@ const UpdateUser = () => {
                 </select>
               </label>
             </div>
-            <div className="update-inner-box">
-              <div className="update-inner-field">
-                <label className="update-label">
-                  Name:
+            <div className="update-user-inner-box">
+              <div className="update-user-inner-field">
+                <label className="update-user-label">
+                  First Name:
                   <input
                     type="text"
-                    name="name"
+                    name="First name"
                     value={userDetail.name}
+                    placeholder="First name"
                     onChange={handleChange}
                   />
                 </label>
+                </div>
                 {errors.name && (
                   <div className="update-user-error-message">{errors.name}</div>
                 )}
-              </div>
-              <div className="update-inner-field">
-                <label className="update-label">
+              
+              <div className="update-user-inner-field">
+                <label className="update-user-label">
                   Middle Name:
                   <input
                     type="text"
                     name="middleName"
+                    placeholder="Middle name"
                     value={userDetail.middleName}
                     onChange={handleChange}
                   />
                 </label>
               </div>
-              <div className="update-inner-field">
-                <label className="update-label">
+              <div className="update-user-inner-field">
+                <label className="update-user-label">
                   Last Name:
                   <input
                     type="text"
                     name="lastName"
+                    placeholder="Last name"
                     value={userDetail.lastName}
                     onChange={handleChange}
                   />
                 </label>
+                </div>
                 {errors.lastName && (
                   <div className="update-user-error-message">
                     {errors.lastName}
                   </div>
                 )}
-              </div>
-              <div className="update-inner-field">
-                <label className="update-label">
+              
+              {/* <div className="update-user-inner-field">
+                <label className="update-user-label">
                   Gender:
                   <input
                     type="text"
@@ -186,30 +193,69 @@ const UpdateUser = () => {
                     onChange={handleChange}
                   />
                 </label>
+                </div>
                 {errors.gender && (
                   <div className="update-user-error-message">
                     {errors.gender}
                   </div>
-                )}
+                )} */}
+             
+
+
+             <div className="my-inner-updateuser-genderbox">
+                <p className="my-genderlabel-updateuser-title">Gender:</p>
+                <label className="my-genderlabel">
+                  <input
+                    type="radio"
+                    id="male"
+                    name="gender"
+                    value="male"
+                    onChange={handleChange}
+                  />
+                  Male
+                </label>
+                <label className="my-update-user-genderlabel">
+                  <input
+                    type="radio"
+                    id="female"
+                    name="gender"
+                    value="female"
+                    onChange={handleChange}
+                  />
+                  Female
+                </label>
               </div>
-              <div className="update-inner-field">
-                <label className="update-label">
+              {errors.gender && (
+                  <div className="update-user-error-message">
+                    {errors.gender}
+                  </div>
+                )}
+
+
+
+
+
+
+              <div className="update-user-inner-field">
+                <label className="update-user-label">
                   Native Language:
                   <input
                     type="text"
+                    placeholder="Greek"
                     name="nativeLanguage"
                     value={userDetail.nativeLanguage}
                     onChange={handleChange}
                   />
                 </label>
+                </div>
                 {errors.nativeLanguage && (
                   <div className="update-user-error-message">
                     {errors.nativeLanguage}
                   </div>
                 )}
-              </div>
-              <div className="update-inner-field">
-                <label className="update-label">
+           
+              <div className="update-user-inner-field">
+                <label className="update-user-label">
                   Date of Birth:
                   <input
                     type="date"
@@ -218,41 +264,58 @@ const UpdateUser = () => {
                     onChange={handleChange}
                   />
                 </label>
+                </div>
                 {errors.dateOfBirth && (
                   <div className="update-user-error-message">
                     {errors.dateOfBirth}
                   </div>
                 )}
-              </div>
-              <div className="update-inner-field">
-                <label className="update-label">
-                  Photo ID Type:
-                  <input
-                    type="text"
+
+
+
+              <div className="update-user-inner-field">
+                <label className="update-user-label">
+                  Photo Id Type:
+                  <select
+                    id="PhotoIdType"
+                    className="fadeIn third"
                     name="photoIdType"
+                    placeholder="Photo Id Type:"
                     value={userDetail.photoIdType}
                     onChange={handleChange}
-                  />
+                  >
+                    <option value="nationalcard">National Card</option>
+                    <option value="passport">Passport</option>
+                  </select>
                 </label>
               </div>
-              <div className="update-inner-field">
-                <label className="update-label">
+              {errors.photoIdType && (
+                <p className="update-user-error-message">
+                  {errors.photoIdType}
+                </p>
+              )}
+
+
+              <div className="update-user-inner-field">
+                <label className="update-user-label">
                   Photo ID Number:
                   <input
                     type="text"
                     name="photoIdNumber"
                     value={userDetail.photoIdNumber}
+                    placeholder="Photo ID number"
                     onChange={handleChange}
                   />
                 </label>
+                </div>
                 {errors.photoIdNumber && (
                   <div className="update-user-error-message">
                     {errors.photoIdNumber}
                   </div>
                 )}
-              </div>
-              <div className="update-inner-field">
-                <label className="update-label">
+              
+              <div className="update-user-inner-field">
+                <label className="update-user-label">
                   Photo ID Issue Date:
                   <input
                     type="date"
@@ -262,124 +325,138 @@ const UpdateUser = () => {
                   />
                 </label>
               </div>
-              <div className="update-inner-field">
-                <label className="update-label">
+              <div className="update-user-inner-field">
+                <label className="update-user-label">
                   Address:
                   <input
                     type="text"
                     name="address"
+                    placeholder="Adress"
                     value={userDetail.address}
                     onChange={handleChange}
                   />
                 </label>
+                </div>
                 {errors.address && (
                   <div className="update-user-error-message">
                     {errors.address}
                   </div>
                 )}
-              </div>
-              <div className="update-inner-field">
-                <label className="update-label">
+              
+              <div className="update-user-inner-field">
+                <label className="update-user-label">
                   Address Line 2:
                   <input
                     type="text"
                     name="addressLine2"
+                        placeholder="Adress line 2"
                     value={userDetail.addressLine2}
                     onChange={handleChange}
                   />
                 </label>
               </div>
-              <div className="update-inner-field">
-                <label className="update-label">
+              <div className="update-user-inner-field">
+                <label className="update-user-label">
                   Country of Residence:
                   <input
                     type="text"
                     name="countryOfResidence"
+                     placeholder="Country of residence"
+                       
                     value={userDetail.countryOfResidence}
                     onChange={handleChange}
                   />
                 </label>
+                </div>
                 {errors.countryOfResidence && (
                   <div className="update-user-error-message">
                     {errors.countryOfResidence}
                   </div>
                 )}
-              </div>
-              <div className="update-inner-field">
-                <label className="update-label">
+             
+              <div className="update-user-inner-field">
+                <label className="update-user-label">
                   State/Province:
                   <input
                     type="text"
+                     placeholder="State/province"
                     name="stateProvince"
                     value={userDetail.stateProvince}
                     onChange={handleChange}
                   />
                 </label>
               </div>
-              <div className="update-inner-field">
-                <label className="update-label">
+              <div className="update-user-inner-field">
+                <label className="update-user-label">
                   City:
                   <input
                     type="text"
+                     placeholder="City"
                     name="city"
                     value={userDetail.city}
                     onChange={handleChange}
                   />
                 </label>
+                </div>
                 {errors.city && (
                   <div className="update-user-error-message">{errors.city}</div>
                 )}
-              </div>
-              <div className="update-inner-field">
-                <label className="update-label">
+             
+              <div className="update-user-inner-field">
+                <label className="update-user-label">
                   Postal Code:
                   <input
                     type="text"
+                     placeholder="Postal code"
                     name="postalCode"
                     value={userDetail.postalCode}
                     onChange={handleChange}
                   />
                 </label>
+                </div>
                 {errors.postalCode && (
                   <div className="update-user-error-message">
                     {errors.postalCode}
                   </div>
                 )}
-              </div>
-              <div className="update-inner-field">
-                <label className="update-label">
+              
+              <div className="update-user-inner-field">
+                <label className="update-user-label">
                   Landline Phone:
                   <input
                     type="text"
                     name="landlinePhone"
+                     placeholder="Landline phone"
                     value={userDetail.landlinePhone}
                     onChange={handleChange}
                   />
                 </label>
               </div>
-              <div className="update-inner-field">
-                <label className="update-label">
+              <div className="update-user-inner-field">
+                <label className="update-user-label">
                   Mobile Number:
                   <input
                     type="text"
                     name="mobileNumber"
+                     placeholder="Mobile number"
                     value={userDetail.mobileNumber}
                     onChange={handleChange}
                   />
                 </label>
+                </div>
                 {errors.mobileNumber && (
                   <div className="update-user-error-message">
                     {errors.mobileNumber}
                   </div>
                 )}
-              </div>
+              
             </div>
-            <div className="update-my-inner-box">
+            <div className="update-user-my-inner-box">
               <button type="submit" className="fadeIn fourth" value="submit">
                 Update User
               </button>
             </div>
-            <div className="update-label">
+            <div className="update-user-label">
               {successMessage && (
                 <div className="update-user-success-message">
                   {successMessage}

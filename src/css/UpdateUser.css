@@ -4,13 +4,13 @@
 }
 
 .update-user {
-  background-color: var(--color2);
-
-  color: var(--color9);
+  background-color: #b4b5b0;
+  /* Light background for the page */
+  color: #2c3e50;
   /* Text color matching the header palette */
-  padding: 40px 20px;
+  padding: 80px 20px;
   /* Padding for the container */
-  min-height: 100%;
+  min-height: 100vh;
   /* Full height of the viewport */
   display: flex;
   /* Center align items */
@@ -19,133 +19,113 @@
   align-items: center;
   /* Center vertically */
   position: relative;
-  margin-top: 100px;
   /* Enable precise positioning of child elements */
 }
 
 /* Style for the box containing the form elements */
-.update-box {
-  background-color: #ffffff;
-  /* White background for contrast */
-  border-radius: 10px;
-  /* Rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* Subtle shadow for depth */
-  padding: 40px;
-  /* Increased padding for a spacious layout */
-  text-align: left;
-  /* Align text to the left for a form layout */
-  width: 800px;
-  /* Increased width for the box */
+.update-user-box {
+  background-color: var(--color1); 
+  border-radius: 10px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  padding: 40px; 
+  width: 800px; 
+  transform: translateY(20px); 
 }
 
-/* Style for the h2 (main heading) */
-.update-box h2 {
-  font-size: 2rem;
-  /* Larger heading for the wider box */
-  margin: 3px 10px;
-  /* Space below the heading */
-  margin-bottom: 30px;
-  /* Space below the heading */
-  color: #4b5052;
-  /* Match the palette */
+.update-user-box h1 {
+  font-size: 2rem; 
+  margin: 3px 10px; 
+  margin-bottom: 30px; 
+  color: var(--color8); 
   text-align: center;
-  /* Keep the heading centered */
 }
+
+
+
 
 /* Style for the label */
-.update-label {
+.update-user-label {
   font-size: 1rem;
-  /* Font size for the label */
-  color: #4b5052;
+  color: #153745;
   /* Match the palette */
   margin: 3px 10px;
   /* Margin for spacing */
   text-align: left;
   /* Align text to the left */
   display: flex;
-  /* Align the label and input in a row */
-  flex-direction: column;
-  /* Stack label and input vertically */
+  /* Align the label and select in a row */
+  align-items: center;
+  /* Align items vertically */
+  justify-content: space-between;
+  /* Space out the label and select */
+  width: 100%;
 }
 
-/* Style for input fields */
-.update-box input {
-  padding: 10px;
-  /* Add padding for comfort */
-  border: 1px solid #ccc;
-  /* Subtle border */
-  border-radius: 5px;
-  /* Rounded corners */
+
+.update-user-box select {
+  flex: 1; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
   font-size: 1rem;
-  /* Font size for readability */
-  width: 100%;
-  /* Full width */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  /* Subtle shadow */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  /* Smooth interaction */
-  margin-top: 5px;
-  /* Margin for spacing */
-  margin-bottom: 20px;
-  /* Margin for spacing */
+  width: auto; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; 
 }
+/* Style for input fields */
+.update-user-box input{
+  flex: 1; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  font-size: 1rem; 
+  width: auto; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+
 
 /* Style for input focus */
-.update-box input:focus {
-  border-color: #597785;
-  /* Highlight border on focus */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  /* Enhanced shadow */
-  outline: none;
-  /* Remove default outline */
+.update-user-box input:focus,
+.update-user-box select:focus {
+  border-color: var(--color7); /* Highlight border on focus */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  outline: none; /* Remove default outline */
 }
 
 /* Style for the button */
-.update-box button {
-  background-color: #597785;
-  /* Blue button background */
-  color: white;
-  /* White text color */
-  border: none;
-  /* Remove border */
-  border-radius: 5px;
-  /* Rounded corners */
-  padding: 12px 20px;
-  /* Button padding */
-  cursor: pointer;
-  /* Pointer cursor on hover */
-  font-size: 1rem;
-  /* Font size for button text */
-  width: 100%;
-  /* Full width for uniformity */
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  /* Smooth hover effect */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* Subtle shadow */
+.update-user-box button {
+  background-color: var(--color7); /* Blue button background */
+  margin-top: 15px;
+  color: white; /* White text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 12px 20px; /* Button padding */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1rem; /* Font size for button text */
+  width: 100%; /* Full width for uniformity */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 /* Hover effect for the button */
-.update-box button:hover {
-  background-color: #78909c;
-  /* Darker blue on hover */
-  transform: translateY(-2px);
-  /* Slight lift on hover */
+.update-user-box button:hover {
+  background-color: var(--color3);
+  transform: translateY(-2px); 
   font-weight: 600;
-  /* Make text bolder on hover */
 }
 
-.update-inner-box {
+.update-user-inner-box {
   display: flex;
-  flex-direction: column;
-  /* Align items in a column */
-  align-items: flex-start;
-  /* Align items to the left */
+  width: 98.5%;
+  flex-direction:column; /* Keep elements on the same line */
+  align-items: center; /* Align elements vertically */
   justify-content: space-between;
-  padding-bottom: 20px;
+  padding: 10px;
 }
 
-.update-inner-field {
+.update-user-inner-field {
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -176,9 +156,30 @@ input[type="number"] {
 .update-user-error-message {
   color: red;
   font-size: 12px;
-  text-align: right;
-  margin-top: -5px;
-  margin-bottom: 15px;
-  margin-left: 5px;
-  padding-right: 3px;
+  text-align: center;
+  margin-right: -3px;
+  margin-left: auto;
+  margin-top: -10px;
+ 
+}
+
+.update-user-success-message {
+  color: red;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 0px;
+  margin-left: 35%;
+}
+
+.my-inner-updateuser-genderbox {
+  display: flex;
+  align-items: center;
+  padding: 0.5px 10px 1px;
+}
+.my-genderlabel-updateuser-title {
+  margin-right: 5px;
+}
+.my-update-user-genderlabel {
+  margin-right: 10px;
 }
