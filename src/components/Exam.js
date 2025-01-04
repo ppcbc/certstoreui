@@ -67,7 +67,7 @@ function Exam() {
 
   async function getExam() {
     try {
-      var response = await axios.get(http + `api/CertExams/${31}`, {
+      var response = await axios.get(http + `api/CertExams/${32}`, {
         headers: {
           Authorization: "Bearer " + myToken
         }
