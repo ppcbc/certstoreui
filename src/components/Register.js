@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-// import "../App.css";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setLogReg } from "../features/loginSlice";
 import http from "../data/http";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "./Footer";
+import "../css/Register.css";
 
 function Register() {
   let navigate = useNavigate();
@@ -54,13 +54,13 @@ function Register() {
     }
   }
   return (
-    <div className="schedule-exam-main">
+    <div className="register-exam-main">
       <form action="" onSubmit={onSubmit}>
-        <div className="schedule-exam">
-          <div className="schedule-box">
-            <div className="my-box">
-              <div className="my-inner-box">
-                <label className="my-label">
+        <div className="register-container">
+          <div className="register-box">
+            <div className="my-registerbox">
+              <div className="my-inner-register">
+                <label className="my-label-register">
                   Email:
                   <input
                     type="text"
@@ -73,8 +73,8 @@ function Register() {
                   />
                 </label>
               </div>
-              <div className="my-inner-box">
-                <label className="my-label">
+              <div className="my-inner-register">
+                <label className="my-label-register">
                   Password:
                   <input
                     type="password"
@@ -92,7 +92,7 @@ function Register() {
               Register
             </button>
             {message !== "" && (
-              <div className="my-label">
+              <div className="my-label-wrong">
                 <p>{message}</p>
               </div>
             )}
