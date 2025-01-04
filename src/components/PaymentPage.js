@@ -74,7 +74,7 @@ function PaymentPage() {
   };
 
   return (
-    <form action="" onSubmit={handleSubmit}>
+    <form action="">
       <div className="payment-category">
         <div className="payment-add-box">
           <h1>Payment Information</h1>
@@ -133,7 +133,11 @@ function PaymentPage() {
             </div>
           </div>
           <div className="payment-inner-box">
-            <button type="submit" className="fadeIn fourth">
+            <button
+              type="submit"
+              className="fadeIn fourth"
+              onClick={handleSubmit}
+            >
               Submit Payment
             </button>
           </div>
