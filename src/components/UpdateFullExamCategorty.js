@@ -142,7 +142,7 @@ function UpdateFullExamCategory() {
             <div className="update-inner-box">
               <div className="update-inner-field">
                 <label className="update-label">
-                  Select module:
+                  Select Module:
                   <select
                     name="fullId"
                     value={categoryToUpdate.fullId}
@@ -164,7 +164,7 @@ function UpdateFullExamCategory() {
                 <>
                   <div className="update-inner-field">
                     <label className="update-label">
-                      Module name:
+                      Module Name:
                       <input
                         type="text"
                         className="fadeIn second"
@@ -182,7 +182,7 @@ function UpdateFullExamCategory() {
                   </div>
                   <div className="update-inner-field">
                     <label className="update-label">
-                      Module description:
+                      Module Description:
                       <input
                         type="text"
                         className="fadeIn second"

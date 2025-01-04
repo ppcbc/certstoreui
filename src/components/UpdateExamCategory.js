@@ -167,7 +167,7 @@ function UpdateExamCategory() {
             <div className="update-inner-box">
               <div className="update-inner-field">
                 <label className="update-label">
-                  Select module:
+                  Select Module:
                   <select
                     name="fullId"
                     value={categoryToUpdate.fullId}

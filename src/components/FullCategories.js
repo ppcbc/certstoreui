@@ -89,7 +89,7 @@ function FullCategory() {
             <div>
               <div className="fullcategory-inner-box">
                 <label className="fullcategory-label">
-                  Module name:
+                  Module Name:
                   <input
                     type="text"
                     className="fadeIn second"
@@ -102,7 +102,7 @@ function FullCategory() {
               </div>
               <div className="fullcategory-inner-box">
                 <label className="fullcategory-label">
-                  Module description:
+                  Module Description:
                   <input
                     type="text"
                     className="fadeIn second"

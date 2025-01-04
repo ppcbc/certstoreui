@@ -194,7 +194,7 @@ function AddExam() {
             <h1>Create Question</h1>
             <div className="add-my-inner-box">
               <label className="add-my-label">
-                Select module:
+                Select Module:
                 <select
                   name="fullId"
                   value={newExam.fullId}
@@ -216,7 +216,7 @@ function AddExam() {
             )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
-                Select category:
+                Select Category:
                 <select
                   name="categoryId"
                   value={examCategories.categoryId}
@@ -242,12 +242,12 @@ function AddExam() {
             )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
-                Question text:
+                Question Text:
                 <input
                   type="text"
                   className="fadeIn second"
                   name="questionText"
-                  placeholder="question text"
+                  placeholder="Question text"
                   value={newExam.questionText}
                   onChange={onChange}
                 />
@@ -279,11 +279,11 @@ function AddExam() {
             )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
-                First answer:
+                First Answer:
                 <input
                   type="text"
                   name="option1"
-                  placeholder="first answer"
+                  placeholder="First answer"
                   value={newExam.option1}
                   onChange={onChange}
                 />
@@ -297,19 +297,19 @@ function AddExam() {
                 </select>
               </label>
             </div>
-            {validationMessages.option2 && (
-              <p className="AddExam error message">
+            {validationMessages.option1 && (
+              <p className="AddExam-error-message">
                 {validationMessages.option1}
               </p>
             )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
-                Second answer:
+                Second Answer:
                 <input
                   type="text"
                   className="fadeIn third"
                   name="option2"
-                  placeholder="second answer"
+                  placeholder="Second answer"
                   value={newExam.option2}
                   onChange={onChange}
                 />
@@ -330,12 +330,12 @@ function AddExam() {
             )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
-                Third answer:
+                Third Answer:
                 <input
                   type="text"
                   className="fadeIn third"
                   name="option3"
-                  placeholder="third answer"
+                  placeholder="Third answer"
                   value={newExam.option3}
                   onChange={onChange}
                 />
@@ -356,12 +356,12 @@ function AddExam() {
             )}
             <div className="add-my-inner-box">
               <label className="add-my-label">
-                Fourth answer:
+                Fourth Answer:
                 <input
                   type="text"
                   className="fadeIn third"
                   name="option4"
-                  placeholder="fourth answer"
+                  placeholder="Fourth answer"
                   value={newExam.option4}
                   onChange={onChange}
                 />
