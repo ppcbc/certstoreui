@@ -27,7 +27,7 @@ function AddExamCategory() {
     setCheck(true);
     setTimeout(() => {
       setCheck(false);
-    }, 700);
+    }, 1400);
   }
 
   useEffect(() => {
@@ -139,7 +139,7 @@ function AddExamCategory() {
     setCheck(true);
     setTimeout(() => {
       setCheck(false);
-    }, 700);
+    }, 1400);
   }
 
   return (

@@ -95,6 +95,7 @@ function DeleteFullExamCategory() {
       );
     } catch (error) {
       console.log("Error deleting exams or categories:", error.message);
+
     }
   }
 
@@ -149,7 +150,7 @@ function DeleteFullExamCategory() {
     setCheck(true);
     setTimeout(() => {
       setCheck(false);
-    }, 700);
+    }, 1400);
   }
 
   return (

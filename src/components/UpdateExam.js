@@ -38,7 +38,7 @@ function UpdateExam() {
     setCheck(true);
     setTimeout(() => {
       setCheck(false);
-    }, 700);
+    }, 1400);
   }
 
   const preset_key = "112898813666492";
@@ -211,7 +211,7 @@ function UpdateExam() {
     setCheck(true);
     setTimeout(() => {
       setCheck(false);
-    }, 700);
+    }, 1400);
   }
 
   return (
