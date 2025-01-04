@@ -271,7 +271,7 @@ function CertExam() {
             )}
             <div className="certexam-my-inner-box">
               <label className="certexam-my-label">
-                Select Category:
+                Select Module:
                 <select
                   name="fullId"
                   value={certExam.fullId}

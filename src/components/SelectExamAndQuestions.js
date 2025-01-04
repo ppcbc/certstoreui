@@ -34,7 +34,9 @@ function SelectExamAndQuestions({
             onChange={e => handleSelectedExams(e, catId)}
             //   onChange={(e) => onCheckNumber}
           >
-            <option value="disabled"> select a number</option>
+            <option value="disabled">
+              Select the number of questions you'd like
+            </option>
             {allExams
               .filter(a => parseInt(a.categoryId) === parseInt(exam.categoryId))
               .map((number, index) => (

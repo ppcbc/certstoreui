@@ -138,17 +138,17 @@ function UpdateFullExamCategory() {
       <form onSubmit={onSubmit}>
         <div className="update-full-exam">
           <div className="update-box">
-            <h1>Update Full Exam Category</h1>
+            <h1>Update Module</h1>
             <div className="update-inner-box">
               <div className="update-inner-field">
                 <label className="update-label">
-                  Select Full Category:
+                  Select module:
                   <select
                     name="fullId"
                     value={categoryToUpdate.fullId}
                     onChange={onChangeFullCategory}
                   >
-                    <option value={0}>Categories</option>
+                    <option value={0}>Modules</option>
                     {fullCategories.map(a => (
                       <option key={a.fullId} value={a.fullId}>
                         {a.name}
@@ -164,7 +164,7 @@ function UpdateFullExamCategory() {
                 <>
                   <div className="update-inner-field">
                     <label className="update-label">
-                      Full Category Name:
+                      Module name:
                       <input
                         type="text"
                         className="fadeIn second"
@@ -182,7 +182,7 @@ function UpdateFullExamCategory() {
                   </div>
                   <div className="update-inner-field">
                     <label className="update-label">
-                      Full Category Description:
+                      Module description:
                       <input
                         type="text"
                         className="fadeIn second"

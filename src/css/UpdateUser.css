@@ -1,17 +1,16 @@
 /* Style for the .update-user container */
 .update-user-main {
-  background-color: #e0e0e0;
-  /* Updated background color */
+  background-color: var(--color2);
 }
 
 .update-user {
-  background-color: #f7f7f7;
-  /* Light background for the page */
-  color: #2c3e50;
+  background-color: var(--color2);
+
+  color: var(--color9);
   /* Text color matching the header palette */
   padding: 40px 20px;
   /* Padding for the container */
-  min-height: 100vh;
+  min-height: 100%;
   /* Full height of the viewport */
   display: flex;
   /* Center align items */
@@ -20,6 +19,7 @@
   align-items: center;
   /* Center vertically */
   position: relative;
+  margin-top: 100px;
   /* Enable precise positioning of child elements */
 }
 

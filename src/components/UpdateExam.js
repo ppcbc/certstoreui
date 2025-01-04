@@ -6,30 +6,24 @@ import http from "../data/http";
 import "../css/AddExam.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setFullCategoryId,
-  setId,
-  setLogReg,
-  setRole,
-  setToken
-} from "../features/loginSlice";
+
 import Footer from "./Footer";
 
 function UpdateExam() {
   let navigate = useNavigate();
   const [newExam, setNewExam] = useState({
-    // fullId: 0,
-    // categoryId: 0,
-    // questionText: "",
-    // questionPhotoLink: "",
-    // option1: "",
-    // isCorrect1: false,
-    // option2: "",
-    // isCorrect2: false,
-    // option3: "",
-    // isCorrect3: false,
-    // option4: "",
-    // isCorrect4: false
+    fullId: 0,
+    categoryId: 0,
+    questionText: "",
+    questionPhotoLink: "",
+    option1: "",
+    isCorrect1: false,
+    option2: "",
+    isCorrect2: false,
+    option3: "",
+    isCorrect3: false,
+    option4: "",
+    isCorrect4: false
   });
   const [examCategories, setExamCategories] = useState([]);
   const [fullCategories, setFullCategories] = useState([]);
@@ -39,8 +33,6 @@ function UpdateExam() {
   const [imageUrl, setImageUrl] = useState("");
   const [validationMessages, setValidationMessages] = useState({});
   const [startedExams, setStartedExams] = useState([]);
-  const [fullid, setFullid] = useState("");
-  const [examid, setExamid] = useState("");
 
   function handleMessage() {
     setCheck(true);
@@ -48,8 +40,6 @@ function UpdateExam() {
       setCheck(false);
     }, 700);
   }
-
-  // const [imageUrl, setImageUrl] = useState("");
 
   const preset_key = "112898813666492";
   const precet = "certphoto";
@@ -125,11 +115,11 @@ function UpdateExam() {
   }
   function onGetStartedExam(e) {
     let { name, value } = e.target;
-    console.log(value);
+
     let ffExam = startedExams.filter(a => a.examId == value);
-    console.log("ffffffffffffffffffffffffff");
-    console.log(ffExam);
-    console.log("ffffffffffffffffffffffffff");
+
+    console.log(ffExam[0]);
+
     setNewExam(prev => {
       return {
         ...prev,
@@ -140,15 +130,8 @@ function UpdateExam() {
     if (parseInt(value) !== NaN) {
       parseInt(value);
     }
-    console.log(value);
     let settedExam = startedExams.filter(a => a.examId == value);
     let testExam = settedExam[0];
-    console.log(testExam);
-    console.log(settedExam);
-  }
-  function handleFullId(e) {
-    console.log(e.target.value);
-    setFullCategoryId(e.target.value);
   }
 
   async function onSubmit(e) {
@@ -167,12 +150,10 @@ function UpdateExam() {
       option2: newExam.option2,
       option3: newExam.option3,
       option4: newExam.option4,
-      //   questionPhotoLink: newExam.questionPhotoLink,
+      questionPhotoLink: imageUrl !== "" ? imageUrl : newExam.questionPhotoLink,
       questionText: newExam.questionText
     };
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     console.log(test);
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     try {
       var response = await axios.put(http + "api/Exams/" + test.examId, test, {
         headers: {
@@ -180,12 +161,14 @@ function UpdateExam() {
         }
       });
       console.log(response.status);
-      if (response.status === 201 || response.status === 200) {
+
+      if (response.status === 204 || response.status === 200) {
         setNewExam({
+          examId: 0,
           fullId: 0,
           categoryId: 0,
           questionText: "",
-          //   questionPhotoLink: "",
+          questionPhotoLink: "",
           option1: "",
           isCorrect1: false,
           option2: "",
@@ -449,7 +432,7 @@ function UpdateExam() {
             )}
             <div className="add-my-inner-box">
               <button type="submit" className="fadeIn fourth" value="submit">
-                Create
+                Update
               </button>
             </div>
             <div className="add-my-label">{check && <p>{message}</p>}</div>

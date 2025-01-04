@@ -158,7 +158,7 @@ function AddExamCategory() {
                       value={newCategory.fullId}
                       onChange={onChangeFullCategory}
                     >
-                      <option value={0}>Category</option>
+                      <option value={0}>Question category</option>
                       {fullCategories.map(a => (
                         <option key={a.fullId} value={a.fullId}>
                           {a.name}
@@ -174,12 +174,12 @@ function AddExamCategory() {
                 )}
                 <div className="add-exam-inner-box">
                   <label className="add-exam-label">
-                    Exam category name:
+                    Category name:
                     <input
                       type="text"
                       className="fadeIn second"
                       name="categoryName"
-                      placeholder="Exam category name"
+                      placeholder="Question category name"
                       value={newCategory.categoryName}
                       onChange={onChange}
                     />
@@ -192,12 +192,12 @@ function AddExamCategory() {
                 )}
                 <div className="add-exam-inner-box">
                   <label className="add-exam-label">
-                    Exam category description:
+                    Category description:
                     <input
                       type="text"
                       className="fadeIn second"
                       name="categoryDescription"
-                      placeholder="Exam category description"
+                      placeholder="Question category description"
                       value={newCategory.categoryDescription}
                       onChange={onChange}
                     />

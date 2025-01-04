@@ -93,7 +93,7 @@ function DeleteExam() {
                   value={selectedExam}
                   onChange={onChange}
                 >
-                  <option value="">Select an exam</option>
+                  <option value="">Select an question</option>
                   {exams.map(exam => (
                     <option key={exam.examId} value={exam.examId}>
                       question: {exam.questionText} - Id: {exam.examId}

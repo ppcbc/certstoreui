@@ -168,13 +168,13 @@ function UpdateExamCategory() {
             <div className="update-inner-box">
               <div className="update-inner-field">
                 <label className="update-label">
-                  Select Full Category:
+                  Select module:
                   <select
                     name="fullId"
                     value={categoryToUpdate.fullId}
                     onChange={onChangeFullCategory}
                   >
-                    <option value={0}>Categories</option>
+                    <option value={0}>Modules</option>
                     {fullCategories.map(a => (
                       <option key={a.fullId} value={a.fullId}>
                         {a.name}
@@ -186,13 +186,13 @@ function UpdateExamCategory() {
               {examCategories.length > 0 && categoryToUpdate.fullId !== 0 && (
                 <div className="update-inner-field">
                   <label className="update-label">
-                    Select Exam Category:
+                    Select question category:
                     <select
                       name="categoryId"
                       value={categoryToUpdate.categoryId}
                       onChange={onChangeExamCategory}
                     >
-                      <option value={0}>Select an exam category</option>
+                      <option value={0}>Select an question category</option>
                       {examCategories
                         .filter(ec => ec.fullId === categoryToUpdate.fullId)
                         .map(a => (
@@ -208,12 +208,12 @@ function UpdateExamCategory() {
                 <>
                   <div className="update-inner-field">
                     <label className="update-label">
-                      Exam Category Name:
+                      Question category name:
                       <input
                         type="text"
                         className="fadeIn second"
                         name="categoryName"
-                        placeholder="Exam Category Name"
+                        placeholder="Question category Name"
                         value={categoryToUpdate.categoryName}
                         onChange={onChange}
                       />
@@ -221,12 +221,12 @@ function UpdateExamCategory() {
                   </div>
                   <div className="update-inner-field">
                     <label className="update-label">
-                      Exam Category Description:
+                      Question category description:
                       <input
                         type="text"
                         className="fadeIn second"
                         name="categoryDescription"
-                        placeholder="Exam Category Description"
+                        placeholder="Exam category description"
                         value={categoryToUpdate.categoryDescription}
                         onChange={onChange}
                       />
