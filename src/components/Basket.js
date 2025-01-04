@@ -30,7 +30,7 @@ export default function Basket() {
       });
 
       const userStafs = userStafsResponse.data.filter(
-        staf => staf.userId === myId
+        staf => staf.userId === myId && staf.hasBought !== true
       );
 
       // ✅ Step 2: Fetch certExam details for filtered userStafs

@@ -152,7 +152,7 @@ function AddExamCategory() {
               <div>
                 <div className="add-exam-inner-box">
                   <label className="add-exam-label">
-                    Select category:
+                    Select Category:
                     <select
                       name="fullId"
                       value={newCategory.fullId}
@@ -174,7 +174,7 @@ function AddExamCategory() {
                 )}
                 <div className="add-exam-inner-box">
                   <label className="add-exam-label">
-                    Category name:
+                    Category Name:
                     <input
                       type="text"
                       className="fadeIn second"
@@ -192,7 +192,7 @@ function AddExamCategory() {
                 )}
                 <div className="add-exam-inner-box">
                   <label className="add-exam-label">
-                    Category description:
+                    Category Description:
                     <input
                       type="text"
                       className="fadeIn second"

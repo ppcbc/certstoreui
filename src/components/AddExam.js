@@ -56,7 +56,6 @@ function AddExam() {
   // const fullCategoryId = useSelector(state => state.token.value.fullCategoryId);
   // const myToken = localStorage.getItem("tok");
   // const fullCategoryId = localStorage.getItem("fullCategoryId");
-  const dispatch = useDispatch();
 
   useEffect(() => {
     getCategories();
@@ -177,13 +176,6 @@ function AddExam() {
     } catch (error) {
       console.error("Upload failed:", error.response?.data || error.message);
     }
-  }
-
-  function handleMessage() {
-    setCheck(true);
-    setTimeout(() => {
-      setCheck(false);
-    }, 700);
   }
 
   return (

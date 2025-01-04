@@ -38,6 +38,7 @@ import UpdateExam from "./components/UpdateExam";
 import UpdateUser from "./components/UpdateUser";
 import DeleteUser from "./components/DeleteUser";
 import DeleteCertExam from "./components/DeleteCertExam";
+import CreateRole from "./components/CreateRole";
 
 function Layout() {
   const location = useLocation();
@@ -89,6 +90,7 @@ function Layout() {
         <Route path="/update-user" element={<UpdateUser />} />
         <Route path="/delete-user" element={<DeleteUser />} />
         <Route path="/delete-certexam" element={<DeleteCertExam />} />
+        <Route path="/create-role" element={<CreateRole />} />
       </Routes>
       {/* </div> */}
       {/* {shouldShowHeader && <Footer color={"red"} />} */}

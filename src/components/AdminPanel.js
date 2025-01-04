@@ -99,7 +99,13 @@ export default function AdminPanel() {
             description={"Permanently remove a user from the system"}
             link={"/delete-user"}
           />
-
+          <AdminPanelLi
+            title={"Create Role"}
+            description={
+              "Select and assign a role to a user, defining their level of access."
+            }
+            link={"/create-role"}
+          />
           <AdminPanelLi
             title={"Role Access"}
             description={
