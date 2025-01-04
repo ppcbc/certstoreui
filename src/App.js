@@ -36,6 +36,8 @@ import Basket from "./components/Basket";
 import UpdateFullExamCategory from "./components/UpdateFullExamCategorty";
 import UpdateExam from "./components/UpdateExam";
 import UpdateUser from "./components/UpdateUser";
+import DeleteUser from "./components/DeleteUser";
+import DeleteCertExam from "./components/DeleteCertExam";
 
 function Layout() {
   const location = useLocation();
@@ -75,17 +77,14 @@ function Layout() {
         <Route path="/delete-exam" element={<DeleteExam />} />
         <Route path="/delete-exam-category" element={<DeleteExamCategory />} />
         <Route path="/basket" element={<Basket />} />
-        <Route
-          path="/delete-full-exam-category"
-          element={<DeleteFullExamCategory />}
-        />
-        <Route
-          path="/update-full-exam-category"
-          element={<UpdateFullExamCategory />}
-        />
+        <Route path="/delete-full-exam-category" element={<DeleteFullExamCategory />} />
+        <Route path="/update-full-exam-category" element={<UpdateFullExamCategory />} />
         <Route path="/update-exam" element={<UpdateExam />} />
         <Route path="/update-user" element={<UpdateUser />} />
+        <Route path="/delete-user" element={<DeleteUser />} />
+        <Route path="/delete-certexam" element={<DeleteCertExam />} />
       </Routes>
+
       {/* </div> */}
       {/* {shouldShowHeader && <Footer color={"red"} />} */}
     </>

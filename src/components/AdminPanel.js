@@ -118,7 +118,7 @@ export default function AdminPanel() {
               <p className="admin-panel-item-paragraph">
                 Remove an existing exam test permanently.
               </p>
-              <button onClick={() => navigate("/add-certexam")}>Go</button>
+              <button onClick={() => navigate("/delete-certexam")}>Go</button>
             </div>
           </li>
           <li>
@@ -136,7 +136,7 @@ export default function AdminPanel() {
               <p className="admin-panel-item-paragraph">
                 Permanently remove a user from the system
               </p>
-              <button onClick={() => navigate("/assignrole")}>Go</button>
+              <button onClick={() => navigate("/delete-user")}>Go</button>
             </div>
           </li>
           <li>
