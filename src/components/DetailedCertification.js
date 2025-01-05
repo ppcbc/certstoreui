@@ -1,50 +1,53 @@
-// import React, { useState } from 'react';
-// import '../css/DetailedCertification.css'
-//
+// import React, { useState, useEffect } from "react";
+// import { useParams } from "react-router-dom";
+// import "../css/DetailedCertification.css";
+// import axios from "axios";
+// import http from "../data/http";
+// import Footer from "./Footer";
+
 // export default function DetailedCertification() {
-//     const [certifications] = useState([
-//         {
-//             id: 1,
-//             name: 'SQL Certification',
-//             price: 50,
-//             skillLevel: 'Beginner',
-//             duration: '2 hours',
-//             description: 'The SQL Certification course is designed to equip learners with the essential skills to manage and query relational databases. You\'ll master SQL syntax, learn to create and manipulate tables, work with complex queries, and understand database normalization and optimization techniques. Ideal for anyone interested in data management, the course covers both fundamental and advanced topics, ensuring you can effectively interact with databases in real-world scenarios. Whether you\'re pursuing a career in data analysis, software development, or database administration, this certification provides the practical knowledge needed to excel in managing data and performing efficient queries.'
-//         }
-//     ]);
-//
-//     const handleBuy = (certification) => {
-//         alert(`Bought voucher for ${certification.name}`);
+//   const { certExamId } = useParams();
+//   const [certification, setCertification] = useState(null);
+
+//   useEffect(() => {
+//     const fetchCertification = async () => {
+//       try {
+//         const response = await axios.get(`${http}api/CertExams/${certExamId}`);
+//         setCertification(response.data);
+//       } catch (error) {
+//         console.error("Error fetching certification details:", error.message);
+//       }
 //     };
-//
-//     return (
-//         <div className="detailed_certification">
-//             <ul>
-//                 {certifications.map((certification) => (
-//                     <li key={certification.id}>
-//                         <h2>{certification.name}</h2>
-//                         <p>{certification.description}</p>
-//                         <p>Price: ${certification.price}</p>
-//                         <p className="skill-level">Skill level: {certification.skillLevel}</p>
-//                         <p className="duration">Duration: {certification.duration}</p>
-//                         <button onClick={() => handleBuy(certification)}>Buy Voucher</button>
-//                     </li>
-//                 ))}
-//             </ul>
-//         </div>
+
+//     fetchCertification();
+//   }, [certExamId]);
+
+//   const handleBuy = () => {
+//     alert(
+//       `Bought voucher for ${certification?.testTitle || "this certification"}`
 //     );
-// }
+//   };
 
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import "../css/DetailedCertification.css";
+//   if (!certification) {
+//     return (
+//       <div className="detailed_certification">
+//         <h2>Loading certification details...</h2>
+//       </div>
+//     );
+//   }
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import http from "../data/http";
+import fixDateToGmtPlusTwo from "../data/fixDateToGmtPlusTwo";
+import { setBasketNewItem } from "../features/loginSlice";
 import Footer from "./Footer";
+import "../css/DetailedCertification.css";
 
-export default function DetailedCertification() {
+function DetailedCertification() {
   const { certExamId } = useParams();
-  const [certification, setCertification] = useState(null);
+  const [certification, setCertification] = useState(1);
 
   useEffect(() => {
     const fetchCertification = async () => {
@@ -58,20 +61,80 @@ export default function DetailedCertification() {
 
     fetchCertification();
   }, [certExamId]);
+  const dispatch = useDispatch();
 
-  const handleBuy = () => {
-    alert(
-      `Bought voucher for ${certification?.testTitle || "this certification"}`
-    );
+  const [successMessage, setSuccessMessage] = useState("");
+  const [check, setCheck] = useState(false);
+  const [myStaf, setMyStaf] = useState({
+    userId: "",
+    certExamId: "",
+    hasBought: false,
+    redeem: false,
+    dateofSelecCertExam: Date.now()
+  });
+  const navigate = useNavigate();
+  const myToken = useSelector(state => state.token.value.tok);
+  const myId = useSelector(state => state.token.value.id);
+
+  // const truncateDescription = (text, maxLength) => {
+  //   if (text.length > maxLength) {
+  //     return text.slice(0, maxLength) + "...";
+  //   }
+  //   return text;
+  // };
+
+  function handleMessage() {
+    setCheck(true);
+    setTimeout(() => {
+      setCheck(false);
+    }, 1400);
+  }
+
+  async function addStaf(staf) {
+    try {
+      var response = await axios.post(http + "api/UserStafs", staf, {
+        headers: {
+          Authorization: "Bearer " + myToken
+        }
+      });
+      // console.log(staf);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  const handleBuy = certification => {
+    if (myToken) {
+      navigate("/payment");
+    } else {
+      navigate("/register");
+    }
   };
 
-  if (!certification) {
-    return (
-      <div className="detailed_certification">
-        <h2>Loading certification details...</h2>
-      </div>
-    );
-  }
+  const handleCart = certification => {
+    const today = fixDateToGmtPlusTwo();
+
+    if (myToken) {
+      let staf = {
+        userId: myId,
+        certExamId: certification.certExamId,
+        hasBought: false,
+        redeem: false,
+        dateOfSelectCertExam: today
+      };
+      addStaf(staf);
+      setSuccessMessage("Added to cart");
+      handleMessage();
+      setTimeout(() => {
+        dispatch(setBasketNewItem());
+        setTimeout(() => {
+          dispatch(setBasketNewItem());
+        }, 700);
+      });
+    } else {
+      navigate("/register");
+    }
+  };
 
   return (
     <div className="detailed_certification-main">
@@ -87,7 +150,9 @@ export default function DetailedCertification() {
             <p className="duration">
               Duration: {certification.duration || "N/A"}
             </p> */}
-            <button onClick={handleBuy}>Buy Voucher</button>
+            <button onClick={() => handleCart(certification)}>
+              Buy Voucher
+            </button>
           </li>
         </ul>
       </div>
@@ -95,3 +160,5 @@ export default function DetailedCertification() {
     </div>
   );
 }
+
+export default DetailedCertification;

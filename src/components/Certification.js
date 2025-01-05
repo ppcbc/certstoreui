@@ -21,7 +21,6 @@ function Certification({ certification }) {
   const navigate = useNavigate();
   const myToken = useSelector(state => state.token.value.tok);
   const myId = useSelector(state => state.token.value.id);
-  const basketIn = useSelector(state => state.token.value.basketNewItem);
   const truncateDescription = (text, maxLength) => {
     if (text.length > maxLength) {
       return text.slice(0, maxLength) + "...";

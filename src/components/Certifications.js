@@ -20,9 +20,9 @@ export default function Certifications() {
   const fetchCertifications = async () => {
     try {
       const res = await axios.get(http + "api/CertExams", {
-        // headers: {
-        //     Authorization: "Bearer " + myToken
-        // }
+        headers: {
+          Authorization: "Bearer " + myToken
+        }
       });
       console.log(res.data);
       setCertifications(res.data);
