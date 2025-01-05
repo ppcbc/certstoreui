@@ -126,6 +126,19 @@ export default function UserDetails() {
     }
   }
 
+  const formatDateToDisplay = (date) => {
+    const [year, month, day] = date.split("-");
+    return `${day}/${month}/${year}`;
+  };
+  
+  const getTodayDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0"); 
+    const day = String(today.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`; 
+  };
+
   return (
     <div className="user-details-main">
       <form onSubmit={onSubmit}>
@@ -137,32 +150,32 @@ export default function UserDetails() {
                 <label className="userdetails-label">
                   First Name:
                   <input
-                    type="text"
-                    id="FirstName"
-                    className="fadeIn second"
-                    name="name"
-                    placeholder="First Name"
-                    value={details.name}
-                    onChange={getDetails}
+                      type="text"
+                      id="FirstName"
+                      className="fadeIn second"
+                      name="name"
+                      placeholder="First Name"
+                      value={details.name}
+                      onChange={getDetails}
                   />
                 </label>
               </div>
               {validationMessages.name && (
-                <p className="userdetails-error-message">
-                  {validationMessages.name}
-                </p>
+                  <p className="userdetails-error-message">
+                    {validationMessages.name}
+                  </p>
               )}
               <div className="userdetails-inner-box">
                 <label className="userdetails-label">
                   Middle Name:
                   <input
-                    type="text"
-                    id="MiddleName"
-                    className="fadeIn third"
-                    name="middleName"
-                    placeholder="Middle Name"
-                    value={details.middleName}
-                    onChange={getDetails}
+                      type="text"
+                      id="MiddleName"
+                      className="fadeIn third"
+                      name="middleName"
+                      placeholder="Middle Name"
+                      value={details.middleName}
+                      onChange={getDetails}
                   />
                 </label>
               </div>
@@ -170,40 +183,40 @@ export default function UserDetails() {
                 <label className="userdetails-label">
                   Last Name:
                   <input
-                    type="text"
-                    id="LastName"
-                    className="fadeIn third"
-                    name="lastName"
-                    placeholder="Last Name"
-                    value={details.lastName}
-                    onChange={getDetails}
+                      type="text"
+                      id="LastName"
+                      className="fadeIn third"
+                      name="lastName"
+                      placeholder="Last Name"
+                      value={details.lastName}
+                      onChange={getDetails}
                   />
                 </label>
               </div>
               {validationMessages.lastName && (
-                <p className="userdetails-error-message">
-                  {validationMessages.lastName}
-                </p>
+                  <p className="userdetails-error-message">
+                    {validationMessages.lastName}
+                  </p>
               )}
               <div className="my-inner-genderbox">
                 <p className="my-genderlabel-title">Gender:</p>
                 <label className="my-genderlabel">
                   <input
-                    type="radio"
-                    id="male"
-                    name="gender"
-                    value="male"
-                    onChange={getDetails}
+                      type="radio"
+                      id="male"
+                      name="gender"
+                      value="male"
+                      onChange={getDetails}
                   />
                   Male
                 </label>
                 <label className="my-genderlabel">
                   <input
-                    type="radio"
-                    id="female"
-                    name="gender"
-                    value="female"
-                    onChange={getDetails}
+                      type="radio"
+                      id="female"
+                      name="gender"
+                      value="female"
+                      onChange={getDetails}
                   />
                   Female
                 </label>
@@ -213,12 +226,12 @@ export default function UserDetails() {
                 <label className="userdetails-label">
                   Native Language:
                   <select
-                    id="NativeLanguage"
-                    className="fadeIn third"
-                    name="nativeLanguage"
-                    placeholder="Native Language"
-                    value={details.nativeLanguage}
-                    onChange={getDetails}
+                      id="NativeLanguage"
+                      className="fadeIn third"
+                      name="nativeLanguage"
+                      placeholder="Native Language"
+                      value={details.nativeLanguage}
+                      onChange={getDetails}
                   >
                     <option value="greek">Greek</option>
                     <option value="english">English</option>
@@ -232,39 +245,40 @@ export default function UserDetails() {
                 </label>
               </div>
               {validationMessages.nativeLanguage && (
-                <p className="userdetails-error-message">
-                  {validationMessages.nativeLanguage}
-                </p>
+                  <p className="userdetails-error-message">
+                    {validationMessages.nativeLanguage}
+                  </p>
               )}
               <div className="userdetails-inner-box">
                 <label className="userdetails-label">
                   Date Of Birth:
                   <input
-                    type="date"
-                    id="DateOfBirth"
-                    className="fadeIn third"
-                    name="dateOfBirth"
-                    placeholder="dd/mm/yyyy"
-                    value={details.dateOfBirth}
-                    onChange={getDetails}
+                      type="date"
+                      id="DateOfBirth"
+                      className="fadeIn third"
+                      name="dateOfBirth"
+                      placeholder="dd/mm/yyyy"
+                      value={details.dateOfBirth ? details.dateOfBirth.split('/').reverse().join('-') : ''}
+                      onChange={getDetails}
+                      max={getTodayDate()} 
                   />
                 </label>
               </div>
               {validationMessages.dateOfBirth && (
-                <p className="userdetails-error-message">
-                  {validationMessages.dateOfBirth}
-                </p>
+                  <p className="userdetails-error-message">
+                    {validationMessages.dateOfBirth}
+                  </p>
               )}
               <div className="userdetails-inner-box">
                 <label className="userdetails-label">
                   Photo Id Type:
                   <select
-                    id="PhotoIdType"
-                    className="fadeIn third"
-                    name="photoIdType"
-                    placeholder="Photo Id Type:"
-                    value={details.photoIdType}
-                    onChange={getDetails}
+                      id="PhotoIdType"
+                      className="fadeIn third"
+                      name="photoIdType"
+                      placeholder="Photo Id Type:"
+                      value={details.photoIdType}
+                      onChange={getDetails}
                   >
                     <option value="nationalcard">National Card</option>
                     <option value="passport">Passport</option>
@@ -272,41 +286,42 @@ export default function UserDetails() {
                 </label>
               </div>
               {validationMessages.photoIdType && (
-                <p className="userdetails-error-message">
-                  {validationMessages.photoIdType}
-                </p>
+                  <p className="userdetails-error-message">
+                    {validationMessages.photoIdType}
+                  </p>
               )}
               <div className="userdetails-inner-box">
                 <label className="userdetails-label">
                   Photo Id Number:
                   <input
-                    type="text"
-                    id="PhotoIdNumber"
-                    className="fadeIn second"
-                    name="photoIdNumber"
-                    placeholder="Photo Id Number"
-                    value={details.photoIdNumber}
-                    onChange={getDetails}
+                      type="text"
+                      id="PhotoIdNumber"
+                      className="fadeIn second"
+                      name="photoIdNumber"
+                      placeholder="Photo Id Number"
+                      value={details.photoIdNumber}
+                      onChange={getDetails}
                   />
                 </label>
               </div>
               {validationMessages.photoIdNumber && (
-                <p className="userdetails-error-message">
-                  {validationMessages.photoIdNumber}
-                </p>
+                  <p className="userdetails-error-message">
+                    {validationMessages.photoIdNumber}
+                  </p>
               )}
             </div>
             <div className="userdetails-inner-box">
               <label className="userdetails-label">
                 Photo Id Issue Date:
                 <input
-                  type="date"
-                  id="PhotoIdIssueDate"
-                  className="fadeIn third"
-                  name="photoIdIssueDate"
-                  placeholder="dd/mm/yyyy"
-                  value={details.photoIdIssueDate}
-                  onChange={getDetails}
+                    type="date"
+                    id="PhotoIdIssueDate"
+                    className="fadeIn third"
+                    name="photoIdIssueDate"
+                    placeholder="dd/mm/yyyy"
+                    value={details.photoIdIssueDate}
+                    onChange={getDetails}
+                    max={getTodayDate()}
                 />
               </label>
             </div>

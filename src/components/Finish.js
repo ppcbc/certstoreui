@@ -5,7 +5,7 @@ import "../css/Finish.css";
 
 function Finish() {
   const candidateDetails = {
-    CandidateName: "Efthimios Mantzinos",
+    CandidateName: "Jonathan Doe",
     CandidateNumber: "9980021300646498",
     AssessmentTestCode: "101114977802_en",
     ExaminationDate: "Dec 14 2024 17:05:01",
@@ -75,11 +75,14 @@ function Finish() {
   const pdfRef = useRef();
 
   const downloadPDF = async () => {
-    const input = pdfRef.current;
+    const input = pdfRef.current.querySelector(".finish-box");
+    const button = input.querySelector(".download-button");
+    button.style.display = "none";
     const canvas = await html2canvas(input, {
       scale: 2,
       useCORS: true
     });
+    button.style.display = "block";
     const imgData = canvas.toDataURL("image/png");
     const pdf = new jsPDF("p", "mm", "a4");
 
@@ -134,8 +137,8 @@ function Finish() {
             {topicBreakdown.map((topic, index) => (
               <tr key={index}>
                 <td className="topic-description">{topic.topic}</td>
-                <td>{topic.awardedMarks}</td>
-                <td>{topic.possibleMarks}</td>
+                <td className="awarded-marks">{topic.awardedMarks}</td>
+                <td className="possible-marks">{topic.possibleMarks}</td>
                 <td>
                   <div className="progress-container">
                     <div className="progress-bar">
