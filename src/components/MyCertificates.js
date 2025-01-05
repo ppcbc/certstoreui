@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import axios from "axios";
 import http from "../data/http";
 import formatDate from "../data/formatDate";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import MyCertificateButton from "./MyCertificateButton";
 import fixDateToStringGmtPlusTwo from "../data/fixDateToGmtPlusTwo";
 
@@ -13,15 +13,13 @@ export default function MyCertificates() {
   const myToken = useSelector(state => state.token.value.tok);
   const myId = useSelector(state => state.token.value.id);
   const navigate = useNavigate();
+  const { userStafId } = useParams();
 
   const [myStaf, setMyStaf] = useState([]);
   // const [allCertExams, setAllCertExams] = useState([]);
   const [acquiredCertificates, setAcquiredCertificates] = useState([]);
   // const [userDetails, setUserDetails] = useState([]);
   const [haveUserDetails, setHaveUserDetails] = useState(false);
-  const [currentDate, setCurrentDate] = useState(false);
-  const [sendDate, setSendDate] = useState(false);
-  const [noDate, setNoDate] = useState(false);
 
   const truncateDescription = (text, maxLength) => {
     if (text.length > maxLength) {
@@ -58,26 +56,11 @@ export default function MyCertificates() {
         a => a.userId == myId && a.hasBought === true
       );
 
-      // const today = new Date(fixDateToStringGmtPlusTwo()).toLocaleDateString(
-      //   "en-CA"
-      // );
-      const today = new Date();
-      const todayDateOnly = today.toISOString().split("T")[0];
+      const today = fixDateToStringGmtPlusTwo();
 
       for (let y = 0; y < myStaf.length; y++)
         for (let i = 0; i < myCertExams.length; i++) {
           if (myStaf[y].certExamId === myCertExams[i].certExamId) {
-            const stafDate = new Date(myStaf[y].dateOfSendCertExam)
-              .toISOString()
-              .split("T")[0]; // Extract YYYY-MM-DD
-
-            // Compare only the date parts
-            if (todayDateOnly === stafDate) {
-              console.log("✅ The day matches with today's date!");
-              console.log("✅ The day matches with today's date!");
-              console.log("✅ The day matches with today's date!");
-            }
-
             selectedExams.push({
               ...myStaf[y],
               ...myCertExams[i],
@@ -131,13 +114,23 @@ export default function MyCertificates() {
       setHaveUserDetails(true);
     }
   }
-  function goToDetailsOrSchedule(userStafId) {
-    if (haveUserDetails) {
+  function goToDetailsOrSchedule(userStafId, dateOfSendCertExam) {
+    const today = fixDateToStringGmtPlusTwo();
+    const scheduledDate = new Date(dateOfSendCertExam);
+    const currentDate = new Date(today);
+
+    if (
+      scheduledDate.toDateString() === currentDate.toDateString() &&
+      haveUserDetails
+    ) {
+      navigate(`/exam/${userStafId}`);
+    } else if (haveUserDetails) {
       navigate(`/schedule-exam/${userStafId}`);
     } else {
       navigate(`/user-details/${userStafId}`);
     }
   }
+
   return (
     <div className="my-certificates-main">
       <div
@@ -148,7 +141,9 @@ export default function MyCertificates() {
         {/* Future Exams Section */}
         {myStaf.length > 0 && (
           <div className="future-exams">
-            <h1>My Future Exams</h1>
+            <h1 className={myStaf.length === 0 ? "hidden" : ""}>
+              My Future Exams
+            </h1>
             <ul>
               {myStaf.map(staf => (
                 <li key={staf.userStafId}>
@@ -156,22 +151,24 @@ export default function MyCertificates() {
                   <p className="myfutureexams-description">
                     {truncateDescription(staf.testDescription, 150)}
                   </p>
-                  <div className="acquired-certificates-buttons-container">
+                  <div className="future-certificates-buttons-container">
                     <p className="myfutureexams-date">
                       Date: {staf.dateOfSendCertExam}
                     </p>
                     <MyCertificateButton
                       clas={"future-certificates-button"}
                       bkgrColor={"color21"}
-                      onClick={goToDetailsOrSchedule}
-                      haveUserDetails
+                      onClick={userStafId =>
+                        goToDetailsOrSchedule(
+                          userStafId,
+                          staf.dateOfSendCertExam
+                        )
+                      }
+                      haveUserDetails={haveUserDetails}
                       userStafId={staf.userStafId}
                       dateOfSendCertExam={staf.dateOfSendCertExam}
-                      sendDate={sendDate}
-                      currentDate={currentDate}
-                    >
-                      Select
-                    </MyCertificateButton>
+                      today={fixDateToStringGmtPlusTwo()}
+                    />
                   </div>
                 </li>
               ))}

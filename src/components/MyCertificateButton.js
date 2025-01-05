@@ -9,18 +9,27 @@ function MyCertificateButton({
   clas,
   dateOfSendCertExam,
   userStafId,
-  date
+  today
 }) {
-  const [text, setText] = useState("Select");
-  const today = fixDateToStringGmtPlusTwo();
-  let formatedDate = formatDate(today);
   const [isMouseOver, setIsMouseOver] = useState(false);
+
   function checkMouseOver() {
     setIsMouseOver(!isMouseOver);
   }
-  // if (dateOfSendCertExam == formatedDate) {
-  //   setText("Start");
-  // }
+
+  // Convert dates to Date objects for accurate comparison
+  const scheduledDate = new Date(dateOfSendCertExam);
+  const currentDate = new Date(today);
+
+  // Button text logic
+  let buttonText;
+  if (scheduledDate.toDateString() === currentDate.toDateString()) {
+    buttonText = "Begin Exam";
+  } else if (dateOfSendCertExam === "Select a date") {
+    buttonText = "Select";
+  } else {
+    buttonText = "Change";
+  }
 
   return (
     <div
@@ -30,11 +39,7 @@ function MyCertificateButton({
       style={{ backgroundColor: isMouseOver && `var(--${bkgrColor})` }}
       onClick={() => onClick(userStafId)}
     >
-      {dateOfSendCertExam != formatDate
-        ? "change"
-        : dateOfSendCertExam == "Select a date"
-        ? "Select"
-        : "start"}
+      {buttonText}
     </div>
   );
 }

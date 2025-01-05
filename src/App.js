@@ -3,7 +3,8 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useLocation
+  useLocation,
+  matchPath
 } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
@@ -39,13 +40,15 @@ import UpdateUser from "./components/UpdateUser";
 import DeleteUser from "./components/DeleteUser";
 import DeleteCertExam from "./components/DeleteCertExam";
 import CreateRole from "./components/CreateRole";
+import Diploma from "./components/Diploma";
 
 function Layout() {
   const location = useLocation();
-  const hideHeaderRoutes = ["/exam"];
+  const hideHeaderRoutes = ["/exam/:userStafId"];
 
-  const shouldShowHeader = !hideHeaderRoutes.includes(location.pathname);
-
+  const shouldShowHeader = !hideHeaderRoutes.some(route =>
+    matchPath(route, location.pathname)
+  );
   return (
     <>
       {shouldShowHeader && <Header />}
@@ -64,12 +67,13 @@ function Layout() {
         <Route path="/register" element={<Register />} />
         <Route path="/assignrole" element={<AssignRole />} />
         <Route path="/addexam" element={<AddExam />} />
-        <Route path="/exam" element={<Exam />} />
+        <Route path="/exam/:userStafId" element={<Exam />} />
         <Route path="/addexam-category" element={<AddExamCategory />} />
         <Route path="/updateexam-category" element={<UpdateExamCategory />} />
         <Route path="/user-details/:userStafId" element={<UserDetails />} />
         <Route path="/addfull-category" element={<FullCategories />} />
         <Route path="/finish" element={<Finish />} />
+        <Route path="/diploma" element={<Diploma />} />
         <Route path="/add-certexam" element={<CertExam />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/about-us" element={<About />} />
