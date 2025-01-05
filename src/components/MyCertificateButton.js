@@ -1,8 +1,22 @@
-import React from "react";
-import "../css/MyCertificates.css";
+import React, { useState } from "react";
+import "../css/ExamButton.css";
 
-function MyCertificateButton({ chidlren, clas }) {
-  return <button className={clas}>{chidlren}</button>;
+function MyCertificateButton({ children, onClick, bkgrColor, clas }) {
+  const [isMouseOver, setIsMouseOver] = useState(false);
+  function checkMouseOver() {
+    setIsMouseOver(!isMouseOver);
+  }
+  return (
+    <div
+      className={clas}
+      onMouseOut={checkMouseOver}
+      onMouseOver={checkMouseOver}
+      style={{ backgroundColor: isMouseOver && `var(--${bkgrColor})` }}
+      onClick={onClick}
+    >
+      {children}
+    </div>
+  );
 }
 
 export default MyCertificateButton;

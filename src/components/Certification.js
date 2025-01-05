@@ -8,6 +8,7 @@ import { setBasketNewItem } from "../features/loginSlice";
 
 function Certification({ certification }) {
   const dispatch = useDispatch();
+
   const [successMessage, setSuccessMessage] = useState("");
   const [check, setCheck] = useState(false);
   const [myStaf, setMyStaf] = useState({
@@ -20,6 +21,7 @@ function Certification({ certification }) {
   const navigate = useNavigate();
   const myToken = useSelector(state => state.token.value.tok);
   const myId = useSelector(state => state.token.value.id);
+  const basketIn = useSelector(state => state.token.value.basketNewItem);
   const truncateDescription = (text, maxLength) => {
     if (text.length > maxLength) {
       return text.slice(0, maxLength) + "...";
@@ -69,7 +71,12 @@ function Certification({ certification }) {
       addStaf(staf);
       setSuccessMessage("Added to cart");
       handleMessage();
-      dispatch(setBasketNewItem());
+      setTimeout(() => {
+        dispatch(setBasketNewItem());
+        setTimeout(() => {
+          dispatch(setBasketNewItem());
+        }, 700);
+      });
     } else {
       navigate("/register");
     }

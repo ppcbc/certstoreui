@@ -96,12 +96,17 @@ export default function MyCertificates() {
                 <p className="myfutureexams-description">
                   {truncateDescription(staf.testDescription, 150)}
                 </p>
-                <p className="myfutureexams-date">
-                  Date: {staf.dateOfSendCertExam}
-                </p>
-                <MyCertificateButton clas={"acquired-certificates"}>
-                  Dose
-                </MyCertificateButton>
+                <div className="acquired-certificates-buttons-container">
+                  <p className="myfutureexams-date">
+                    Date: {staf.dateOfSendCertExam}
+                  </p>
+                  <MyCertificateButton
+                    clas={"future-certificates-button"}
+                    bkgrColor={"color21"}
+                  >
+                    Select
+                  </MyCertificateButton>
+                </div>
               </li>
             ))}
           </ul>
@@ -124,8 +129,15 @@ export default function MyCertificates() {
                     <p className="myacquiredcertificates-description">
                       {truncateDescription(certification.testDescription, 150)}
                     </p>
-                    <p className="myacquiredcertificates-mark">Mark: 65</p>
-                    <button>ff</button>
+                    <div className="acquired-certificates-buttons-container">
+                      <p className="myacquiredcertificates-mark">Mark: 65</p>
+                      <MyCertificateButton
+                        bkgrColor={"color10"}
+                        clas={"acquired-certificates-button"}
+                      >
+                        Show
+                      </MyCertificateButton>
+                    </div>
                   </div>
                 </li>
               ))

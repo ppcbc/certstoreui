@@ -9,7 +9,7 @@ export const logSlice = createSlice({
       id: localStorage.getItem("id") ?? "",
       role: localStorage.getItem("role") ?? "",
       stafId: localStorage.getItem("stafId") ?? "",
-      basketNewItem: "white"
+      basketNewItem: false
     }
   },
   reducers: {
@@ -34,10 +34,7 @@ export const logSlice = createSlice({
       localStorage.setItem("stafId", action.payload);
     },
     setBasketNewItem: (state, action) => {
-      state.value.basketNewItem = "green";
-      setTimeout(() => {
-        state.value.basketNewItem = "white";
-      });
+      state.value.basketNewItem = !state.value.basketNewItem;
     }
   }
 });

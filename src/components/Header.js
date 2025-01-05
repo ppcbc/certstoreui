@@ -2,7 +2,13 @@ import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "../css/Header.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setId, setLogReg, setRole, setToken } from "../features/loginSlice";
+import {
+  setBasketNewItem,
+  setId,
+  setLogReg,
+  setRole,
+  setToken
+} from "../features/loginSlice";
 
 export default function Header() {
   const myLog = useSelector(state => state.token.value.log);
@@ -13,7 +19,7 @@ export default function Header() {
 
   useEffect(() => {
     dispatch(setLogReg("LOGIN"));
-  }, [dispatch]);
+  }, []);
 
   function logOut() {
     dispatch(setToken(""));
@@ -126,7 +132,7 @@ export default function Header() {
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
-                    fill={basketIn}
+                    fill={basketIn ? "#2e4854" : "white"}
                     width="34px"
                     height="34px"
                   >
