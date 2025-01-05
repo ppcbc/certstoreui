@@ -22,6 +22,11 @@ export default function AdminPanel() {
                 description={"Design and add a new exam test to the system."}
                 link={"/add-certexam"}
               />
+              <AdminPanelLi
+                title={"Update Exam"}
+                description={"Update the title or details of the exam"}
+                link={"/update-certexam"}
+              />
 
               <AdminPanelLi
                 title={"Delete Exam"}
