@@ -54,7 +54,7 @@ function Register() {
     }
   }
   return (
-    <div className="register-exam-main">
+    <div className="register-container-main">
       <form action="" onSubmit={onSubmit}>
         <div className="register-container">
           <div className="register-box">
