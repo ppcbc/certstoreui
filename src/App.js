@@ -39,6 +39,8 @@ import UpdateUser from "./components/UpdateUser";
 import DeleteUser from "./components/DeleteUser";
 import DeleteCertExam from "./components/DeleteCertExam";
 import CreateRole from "./components/CreateRole";
+import Diploma from "./components/Diploma";
+
 
 function Layout() {
   const location = useLocation();
@@ -70,6 +72,7 @@ function Layout() {
         <Route path="/user-details" element={<UserDetails />} />
         <Route path="/addfull-category" element={<FullCategories />} />
         <Route path="/finish" element={<Finish />} />
+        <Route path="/diploma" element={<Diploma />} />
         <Route path="/add-certexam" element={<CertExam />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/about-us" element={<About />} />

@@ -99,12 +99,12 @@
 
 /* Narrower Columns */
 .topic-table .topic-description {
-  width: 180px;  /* Reduced width of Topic Description column */
+  width: 300px;  /* Reduced width of Topic Description column */
 }
 
 .topic-table .awarded-marks,
 .topic-table .possible-marks {
-  width: 40px;  /* Further reduced width of the Awarded Marks and Possible Marks columns */
+  width: 120px;  /* Further reduced width of the Awarded Marks and Possible Marks columns */
 }
 
 /* Progress Bar Styling */
@@ -115,7 +115,7 @@
 }
 
 .progress-bar {
-  width: 80%; /* Reduced the width of the progress bar to 80% of the column */
+  width: 70%; /* Reduced the width of the progress bar to 80% of the column */
   height: 18px; /* Slightly smaller height for the progress bar */
   background-color: #f0f0f0;
   border-radius: 5px;
