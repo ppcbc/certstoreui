@@ -4,10 +4,11 @@ import http from "../data/http";
 import axios from "axios";
 import Question from "./Question";
 import AllQuestions from "./AllQuestions";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Finish from "./Finish";
 import shuffle from "../data/shuffle";
 import { useSelector } from "react-redux";
+import fixDateToGmtPlusTwo from "../data/fixDateToGmtPlusTwo";
 
 function Exam() {
   const [exams, setExams] = useState([]);
@@ -24,10 +25,33 @@ function Exam() {
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [loading, setLoading] = useState(true);
   const [answeredQuestions, setAnsweredQuestions] = useState({});
+  const { userStafId } = useParams();
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
 
   const myToken = useSelector(state => state.token.value.tok);
 
   let navigate = useNavigate();
+
+  useEffect(() => {
+    const IsNowTime = fixDateToGmtPlusTwo();
+    setStartTime(IsNowTime);
+    console.log(userStafId);
+    getStaf();
+  }, []);
+
+  async function getStaf() {
+    try {
+      var response = await axios.get(http + `api/UserStafs/${userStafId}`, {
+        headers: {
+          Authorization: "Bearer " + myToken
+        }
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
   async function getExam() {
     try {
@@ -91,6 +115,9 @@ function Exam() {
     if (loading || !isTimerRunning || timeLeft <= 0) {
       if (timeLeft <= 0 && !loading) {
         setFinish(true);
+        const isEndTime = fixDateToGmtPlusTwo();
+        setEndTime(isEndTime);
+        setEndTime();
       }
       return;
     }
