@@ -46,6 +46,20 @@ import Footer from "./Footer";
 import "../css/DetailedCertification.css";
 
 function DetailedCertification() {
+  const dispatch = useDispatch();
+
+  const [successMessage, setSuccessMessage] = useState("");
+  const [check, setCheck] = useState(false);
+  const [myStaf, setMyStaf] = useState({
+    userId: "",
+    certExamId: "",
+    hasBought: false,
+    redeem: false,
+    dateofSelecCertExam: Date.now()
+  });
+  const navigate = useNavigate();
+  const myToken = useSelector(state => state.token.value.tok);
+  const myId = useSelector(state => state.token.value.id);
   const { certExamId } = useParams();
   const [certification, setCertification] = useState(1);
 
@@ -61,20 +75,6 @@ function DetailedCertification() {
 
     fetchCertification();
   }, [certExamId]);
-  const dispatch = useDispatch();
-
-  const [successMessage, setSuccessMessage] = useState("");
-  const [check, setCheck] = useState(false);
-  const [myStaf, setMyStaf] = useState({
-    userId: "",
-    certExamId: "",
-    hasBought: false,
-    redeem: false,
-    dateofSelecCertExam: Date.now()
-  });
-  const navigate = useNavigate();
-  const myToken = useSelector(state => state.token.value.tok);
-  const myId = useSelector(state => state.token.value.id);
 
   // const truncateDescription = (text, maxLength) => {
   //   if (text.length > maxLength) {
@@ -144,15 +144,18 @@ function DetailedCertification() {
             <h2>{certification.testTitle}</h2>
             <p>{certification.testDescription}</p>
             <p>Price: €{certification.price || "N/A"}</p>
-            {/* <p className="skill-level">
-              Skill level: {certification.skillLevel || "N/A"}
-            </p>
-            <p className="duration">
-              Duration: {certification.duration || "N/A"}
-            </p> */}
-            <button onClick={() => handleCart(certification)}>
-              Buy Voucher
-            </button>
+            <div className="detailed_certification-buttons">
+              <div className="detailed_certification-first-button">
+                <button onClick={() => handleCart(certification)}>
+                  Add To Cart
+                </button>
+              </div>
+              <div className="detailed_certification-second-button">
+                <button onClick={() => navigate("certificaiotns")}>
+                  Cancel
+                </button>
+              </div>
+            </div>
           </li>
         </ul>
       </div>

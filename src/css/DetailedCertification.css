@@ -95,3 +95,12 @@
   font-weight: 500;
   margin-bottom: 35px;
 }
+.detailed_certification-buttons {
+  display: flex;
+  flex-direction: column;
+}
+.detailed_certification-first-button {
+  margin-bottom: 30px;
+}
+.detailed_certification-second-button {
+}
