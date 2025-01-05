@@ -84,68 +84,80 @@ export default function MyCertificates() {
   }
 
   return (
-    <div className="my-certificates-main">
-      <div className="my-certificates-container">
-        {/* Future Exams Section */}
-        <div className="future-exams">
-          <h1>My Future Exams</h1>
-          <ul>
-            {myStaf.map(staf => (
-              <li key={staf.userStafId}>
-                <h2>{staf.testTitle}</h2>
-                <p className="myfutureexams-description">
-                  {truncateDescription(staf.testDescription, 150)}
-                </p>
-                <div className="acquired-certificates-buttons-container">
-                  <p className="myfutureexams-date">
-                    Date: {staf.dateOfSendCertExam}
-                  </p>
-                  <MyCertificateButton
-                    clas={"future-certificates-button"}
-                    bkgrColor={"color21"}
-                  >
-                    Select
-                  </MyCertificateButton>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className="my-certificates-main">
+        <div
+            className={`my-certificates-container ${
+                myStaf.length === 0 ? "single" : ""
+            }`}
+        >
+          {/* Future Exams Section */}
+          {myStaf.length > 0 && (
+              <div className="future-exams">
+                <h1>My Future Exams</h1>
+                <ul>
+                  {myStaf.map(staf => (
+                      <li key={staf.userStafId}>
+                        <h2>{staf.testTitle}</h2>
+                        <p className="myfutureexams-description">
+                          {truncateDescription(staf.testDescription, 150)}
+                        </p>
+                        <div className="acquired-certificates-buttons-container">
+                          <p className="myfutureexams-date">
+                            Date: {staf.dateOfSendCertExam}
+                          </p>
+                          <MyCertificateButton
+                              clas={"future-certificates-button"}
+                              bkgrColor={"color21"}
+                          >
+                            Select
+                          </MyCertificateButton>
+                        </div>
+                      </li>
+                  ))}
+                </ul>
+              </div>
+          )}
 
-        {/* Acquired Certificates Section */}
-        <div className="acquired-certificates">
-          <h1>My Acquired Certificates</h1>
-          <ul>
-            {acquiredCertificates.length === 0 ? (
-              <p>No certificates acquired yet.</p>
-            ) : (
-              acquiredCertificates.map(certification => (
-                <li
-                  key={certification.certExamId}
-                  className="certification-box"
-                >
-                  <div>
-                    <h2>{certification.testTitle}</h2>
-                    <p className="myacquiredcertificates-description">
-                      {truncateDescription(certification.testDescription, 150)}
-                    </p>
-                    <div className="acquired-certificates-buttons-container">
-                      <p className="myacquiredcertificates-mark">Mark: 65</p>
-                      <MyCertificateButton
-                        bkgrColor={"color10"}
-                        clas={"acquired-certificates-button"}
+          {/* Acquired Certificates Section */}
+          <div
+              className={`acquired-certificates ${
+                  myStaf.length === 0 ? "centered" : ""
+              }`}
+          >
+            <h1>My Acquired Certificates</h1>
+            <ul>
+              {acquiredCertificates.length === 0 ? (
+                  <p>No certificates acquired yet.</p>
+              ) : (
+                  acquiredCertificates.map(certification => (
+                      <li
+                          key={certification.certExamId}
+                          className="certification-box"
                       >
-                        Show
-                      </MyCertificateButton>
-                    </div>
-                  </div>
-                </li>
-              ))
-            )}
-          </ul>
+                        <div>
+                          <h2>{certification.testTitle}</h2>
+                          <p className="myacquiredcertificates-description">
+                            {truncateDescription(certification.testDescription, 150)}
+                          </p>
+                          <div className="acquired-certificates-buttons-container">
+                            <p className="myacquiredcertificates-mark">Mark: 65</p>
+                            <MyCertificateButton
+                                bkgrColor={"color10"}
+                                clas={"acquired-certificates-button"}
+                            >
+                              Show
+                            </MyCertificateButton>
+                          </div>
+                        </div>
+                      </li>
+                  ))
+              )}
+            </ul>
+          </div>
         </div>
+        <Footer className="mycertificates-footer" color={"var(--color4)"} />
       </div>
-      <Footer className="mycertificates-footer" color={"var(--color4)"} />
-    </div>
   );
+
+
 }
