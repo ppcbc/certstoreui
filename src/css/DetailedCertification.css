@@ -98,9 +98,15 @@
 .detailed_certification-buttons {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .detailed_certification-first-button {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  width: 100%;
 }
 .detailed_certification-second-button {
+  width: 100%;
+}
+.detailed_certification-msg {
+  /* margin-top: 10px; */
 }

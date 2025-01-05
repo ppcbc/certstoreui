@@ -48,14 +48,6 @@ function Certification({ certification }) {
     }
   }
 
-  const handleBuy = certification => {
-    if (myToken) {
-      navigate("/payment");
-    } else {
-      navigate("/register");
-    }
-  };
-
   const handleCart = certification => {
     const today = fixDateToGmtPlusTwo();
 

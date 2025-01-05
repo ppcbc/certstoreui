@@ -1,40 +1,3 @@
-// import React, { useState, useEffect } from "react";
-// import { useParams } from "react-router-dom";
-// import "../css/DetailedCertification.css";
-// import axios from "axios";
-// import http from "../data/http";
-// import Footer from "./Footer";
-
-// export default function DetailedCertification() {
-//   const { certExamId } = useParams();
-//   const [certification, setCertification] = useState(null);
-
-//   useEffect(() => {
-//     const fetchCertification = async () => {
-//       try {
-//         const response = await axios.get(`${http}api/CertExams/${certExamId}`);
-//         setCertification(response.data);
-//       } catch (error) {
-//         console.error("Error fetching certification details:", error.message);
-//       }
-//     };
-
-//     fetchCertification();
-//   }, [certExamId]);
-
-//   const handleBuy = () => {
-//     alert(
-//       `Bought voucher for ${certification?.testTitle || "this certification"}`
-//     );
-//   };
-
-//   if (!certification) {
-//     return (
-//       <div className="detailed_certification">
-//         <h2>Loading certification details...</h2>
-//       </div>
-//     );
-//   }
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -76,17 +39,11 @@ function DetailedCertification() {
     fetchCertification();
   }, [certExamId]);
 
-  // const truncateDescription = (text, maxLength) => {
-  //   if (text.length > maxLength) {
-  //     return text.slice(0, maxLength) + "...";
-  //   }
-  //   return text;
-  // };
-
   function handleMessage() {
     setCheck(true);
     setTimeout(() => {
       setCheck(false);
+      navigate("/certifications");
     }, 1400);
   }
 
@@ -102,14 +59,6 @@ function DetailedCertification() {
       console.log(error.message);
     }
   }
-
-  const handleBuy = certification => {
-    if (myToken) {
-      navigate("/payment");
-    } else {
-      navigate("/register");
-    }
-  };
 
   const handleCart = certification => {
     const today = fixDateToGmtPlusTwo();
@@ -151,9 +100,12 @@ function DetailedCertification() {
                 </button>
               </div>
               <div className="detailed_certification-second-button">
-                <button onClick={() => navigate("certificaiotns")}>
+                <button onClick={() => navigate("/certifications")}>
                   Cancel
                 </button>
+              </div>
+              <div className="detailed_certification-msg">
+                {check && <p>{successMessage}</p>}
               </div>
             </div>
           </li>
