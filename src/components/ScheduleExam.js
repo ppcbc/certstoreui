@@ -113,7 +113,7 @@ export default function ScheduleExam() {
             <button
               type="cancel"
               className="fadeIn fourth"
-              onClick={() => navigate("/certifications")}
+              onClick={() => navigate("/my-certificates")}
             >
               Cancel
             </button>

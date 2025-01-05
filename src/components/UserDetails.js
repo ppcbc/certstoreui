@@ -137,12 +137,7 @@ export default function UserDetails() {
           ...myStaf,
           userDetailsId: response.data.detailId
         };
-        console.log("FINAL STAF");
-        console.log("FINAL STAF");
-        console.log("FINAL STAF");
-        console.log("FINAL STAF");
-        console.log("FINAL STAF");
-        console.log(finalStaf);
+
         const res = await axios.put(
           http + `api/UserStafs/${userStafId}`,
           finalStaf,
@@ -504,7 +499,7 @@ export default function UserDetails() {
             <button
               type="cancel"
               className="fadeIn fourth"
-              onClick={() => navigate("/certifications")}
+              onClick={() => navigate("/my-certificates")}
             >
               Cancel
             </button>

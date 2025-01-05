@@ -44,6 +44,7 @@ export default function MyCertificates() {
       });
       let selectedExams = [];
       let myCertExams = res.data;
+
       const response = await axios.get(`${http}api/UserStafs`, {
         headers: {
           Authorization: `Bearer ${myToken}`
@@ -52,7 +53,7 @@ export default function MyCertificates() {
       let myStaf = response.data.filter(
         a => a.userId == myId && a.hasBought === true
       );
-      console.log(myStaf);
+
       for (let y = 0; y < myStaf.length; y++)
         for (let i = 0; i < myCertExams.length; i++) {
           if (myStaf[y].certExamId === myCertExams[i].certExamId) {

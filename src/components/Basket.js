@@ -15,36 +15,10 @@ export default function Basket() {
   const navigate = useNavigate();
   const [myStaf, setMyStaf] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [haveUserDetails, setHaveUserDetails] = useState(false);
-  const [allUserDetails, setAllUserDetails] = useState([]);
 
   useEffect(() => {
     getStaf();
-    getAllUserDetails();
   }, []);
-  async function getAllUserDetails() {
-    try {
-      const response = await axios.get(`${http}api/UserDetails/`, {
-        headers: {
-          Authorization: `Bearer ${myToken}`
-        }
-      });
-      // setUserDetails(response.data);
-      let userDetails = response.data;
-      setAllUserDetails(userDetails);
-      checkIfHaveUserDetails(userDetails);
-      console.log(response.data);
-    } catch (error) {
-      console.error("Failed to fetch certifications:", error.message);
-    }
-  }
-  function checkIfHaveUserDetails(userDetails) {
-    let myDetails = userDetails.filter(a => a.id == myId);
-    console.log(myDetails);
-    if (myDetails.length > 0) {
-      setHaveUserDetails(true);
-    }
-  }
 
   async function getStaf() {
     try {
