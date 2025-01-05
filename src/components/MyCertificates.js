@@ -7,6 +7,7 @@ import http from "../data/http";
 import formatDate from "../data/formatDate";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import MyCertificateButton from "./MyCertificateButton";
+import MyAcquiredCertificateButton from "./MyAcquiredCertificateButton";
 import fixDateToStringGmtPlusTwo from "../data/fixDateToGmtPlusTwo";
 
 export default function MyCertificates() {
@@ -66,7 +67,7 @@ export default function MyCertificates() {
               ...myCertExams[i],
               dateOfSendCertExam:
                 formatDate(myStaf[y].dateOfSendCertExam) == "January 1, 1"
-                  ? "Select a date"
+                  ? "Select an exam date"
                   : formatDate(myStaf[y].dateOfSendCertExam)
             });
           }
@@ -132,13 +133,7 @@ export default function MyCertificates() {
   
   return (
     <div className="my-certificates-main">
-      <div
-        className={`my-certificates-container ${
-          myStaf.length === 0 ? "single" : ""
-        }`}
-      >
-        {/* Future Exams Section */}
-        {myStaf.length > 0 && (
+      <div className="my-certificates-container">
           <div className="future-exams">
             <h1 className={myStaf.length === 0 ? "hidden" : ""}>My Future Exams</h1>
             <ul>
@@ -161,20 +156,14 @@ export default function MyCertificates() {
                         dateOfSendCertExam={staf.dateOfSendCertExam}
                         today={fixDateToStringGmtPlusTwo()}
                     />
-
                   </div>
                 </li>
               ))}
             </ul>
           </div>
-        )}
-
+        
         {/* Acquired Certificates Section */}
-        <div
-          className={`acquired-certificates ${
-            myStaf.length === 0 ? "centered" : ""
-          }`}
-        >
+        <div className="acquired-certificates" >
           <h1>My Acquired Certificates</h1>
           <ul>
             {acquiredCertificates.length === 0 ? (
@@ -192,14 +181,14 @@ export default function MyCertificates() {
                     </p>
                     <div className="acquired-certificates-buttons-container">
                       <p className="myacquiredcertificates-mark">Mark: 65</p>
-                      <MyCertificateButton
+                      <MyAcquiredCertificateButton
                         bkgrColor={"color10"}
                         clas={"acquired-certificates-button"}
                         redeem={certification.redeem}
-                        dateOfSendCertExam={"Select a date"}
+                        dateOfSendCertExam={"Select an exam date"}
                       >
                         Show
-                      </MyCertificateButton>
+                      </MyAcquiredCertificateButton>
                     </div>
                   </div>
                 </li>
