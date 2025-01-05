@@ -8,7 +8,8 @@ export const logSlice = createSlice({
       log: localStorage.getItem("log") ?? "",
       id: localStorage.getItem("id") ?? "",
       role: localStorage.getItem("role") ?? "",
-      stafId: localStorage.getItem("stafId") ?? ""
+      stafId: localStorage.getItem("stafId") ?? "",
+      basketNewItem: "white"
     }
   },
   reducers: {
@@ -31,12 +32,24 @@ export const logSlice = createSlice({
     setStafId: (state, action) => {
       state.value.stafId = action.payload;
       localStorage.setItem("stafId", action.payload);
+    },
+    setBasketNewItem: (state, action) => {
+      state.value.basketNewItem = "green";
+      setTimeout(() => {
+        state.value.basketNewItem = "white";
+      });
     }
   }
 });
 
 // Action creators are generated for each case reducer function
-export const { setToken, setLogReg, setId, setRole, setStafId } =
-  logSlice.actions;
+export const {
+  setToken,
+  setLogReg,
+  setId,
+  setRole,
+  setStafId,
+  setBasketNewItem
+} = logSlice.actions;
 
 export default logSlice.reducer;

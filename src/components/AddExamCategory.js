@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setFullCategoryId } from "../features/loginSlice";
 import "../css/AddExamCategory.css";
@@ -15,6 +16,7 @@ function AddExamCategory() {
     // price: ""
   });
   const [fullCategories, setFullCategories] = useState([]);
+  const navigate = useNavigate();
   const [added, setAdded] = useState("");
   //const [error, setError] = useState("");
   const [validationMessages, setValidationMessages] = useState({});
@@ -212,6 +214,15 @@ function AddExamCategory() {
               <div className="add-exam-inner-box">
                 <button type="submit" className="fadeIn fourth" value="log in">
                   Create
+                </button>
+              </div>
+              <div className="add-exam-inner-box">
+                <button
+                  type="cancel"
+                  className="fadeIn fourth"
+                  onClick={() => navigate("/adminpanel")}
+                >
+                  Cancel
                 </button>
               </div>
               {/* {error && (

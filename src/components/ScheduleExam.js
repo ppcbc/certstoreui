@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import "../css/ScheduleExam.css";
 import Footer from "./Footer";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function ScheduleExam() {
   const [selectedDate, setSelectedDate] = useState("");
+  const navigate = useNavigate();
   const [message, setMessage] = useState({ type: "", text: "" });
   const [dateError, setDateError] = useState("");
 
@@ -66,6 +68,15 @@ export default function ScheduleExam() {
           )}
 
           <button onClick={handleSchedule}>Schedule Exam</button>
+          <div className="shedule-buttons">
+            <button
+              type="cancel"
+              className="fadeIn fourth"
+              onClick={() => navigate("/certifications")}
+            >
+              Cancel
+            </button>
+          </div>
 
           {message.type === "error" && !dateError && (
             <p className="submitschedule-error-message">{message.text}</p>

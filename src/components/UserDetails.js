@@ -461,6 +461,13 @@ export default function UserDetails() {
             <button type="submit" class="fadeIn fourth" value="Submit">
               Submit
             </button>
+            <button
+              type="cancel"
+              className="fadeIn fourth"
+              onClick={() => navigate("/certifications")}
+            >
+              Cancel
+            </button>
             {formSubmitted && (
               <p className="userdetails-success-message">{successMessage}</p>
             )}

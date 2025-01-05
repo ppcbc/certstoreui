@@ -2,6 +2,7 @@ import { useState } from "react";
 import React from "react";
 import axios from "axios";
 import http from "../data/http";
+import { useNavigate } from "react-router-dom";
 import "../css/AssignRole.css";
 import Footer from "./Footer";
 
@@ -14,6 +15,7 @@ function AssignRole() {
   const [examCategories, setExamCategories] = useState([]);
   const [fullCategories, setFullCategories] = useState([]);
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
   const [check, setCheck] = useState(false);
   const [errors, setErrors] = useState({});
   const [imageUrl, setImageUrl] = useState("");
@@ -151,6 +153,15 @@ function AssignRole() {
                 onClick={onSubmit}
               >
                 Assign
+              </button>
+            </div>
+            <div className="button">
+              <button
+                type="cancel"
+                className="fadeIn fourth"
+                onClick={() => navigate("/adminpanel")}
+              >
+                Cancel
               </button>
             </div>
             <div className="assign-message">{check && <p>{message}</p>}</div>

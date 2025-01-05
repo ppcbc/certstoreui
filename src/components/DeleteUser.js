@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../css/DeleteUser.css";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import http from "../data/http";
 import Footer from "./Footer";
 
 const DeleteUser = () => {
   const myToken = useSelector(state => state.token.value.tok);
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [message, setMessage] = useState("");
   const [check, setCheck] = useState(false);
@@ -78,9 +80,18 @@ const DeleteUser = () => {
               <div className="delete-user-error-message">{errors.email}</div>
             )}
 
-            <div className="delete-my-inner-box">
+            <div className="delete-user-my-inner-box">
               <button type="submit" className="fadeIn fourth" value="submit">
                 Delete User
+              </button>
+            </div>
+            <div className="delete-user-my-inner-box">
+              <button
+                type="cancel"
+                className="fadeIn fourth"
+                onClick={() => navigate("/adminpanel")}
+              >
+                Cancel
               </button>
             </div>
             <div>

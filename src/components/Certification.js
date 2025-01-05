@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import http from "../data/http";
 import fixDateToGmtPlusTwo from "../data/fixDateToGmtPlusTwo";
+import { setBasketNewItem } from "../features/loginSlice";
 
 function Certification({ certification }) {
+  const dispatch = useDispatch();
   const [successMessage, setSuccessMessage] = useState("");
   const [check, setCheck] = useState(false);
   const [myStaf, setMyStaf] = useState({
@@ -67,6 +69,7 @@ function Certification({ certification }) {
       addStaf(staf);
       setSuccessMessage("Added to cart");
       handleMessage();
+      dispatch(setBasketNewItem());
     } else {
       navigate("/register");
     }

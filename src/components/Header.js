@@ -8,6 +8,7 @@ export default function Header() {
   const myLog = useSelector(state => state.token.value.log);
   const myToken = useSelector(state => state.token.value.tok);
   const myRole = useSelector(state => state.token.value.role);
+  const basketIn = useSelector(state => state.token.value.basketNewItem);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -125,7 +126,7 @@ export default function Header() {
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
-                    fill="white"
+                    fill={basketIn}
                     width="34px"
                     height="34px"
                   >

@@ -150,6 +150,15 @@ function DeleteExamCategory() {
                 Delete
               </button>
             </div>
+            <div className="delete-my-inner-box-ExCate">
+              <button
+                type="cancel"
+                className="fadeIn fourth"
+                onClick={() => navigate("/adminpanel")}
+              >
+                Cancel
+              </button>
+            </div>
             <div className="delete-my-label-ExCate">
               {check && <p>{message}</p>}
             </div>

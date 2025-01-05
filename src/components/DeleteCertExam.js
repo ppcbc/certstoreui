@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../css/DeleteCertExam.css";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import http from "../data/http";
 import Footer from "./Footer";
 
@@ -9,6 +10,7 @@ const DeleteCertExam = () => {
   const myToken = useSelector(state => state.token.value.tok);
   const [certExamId, setCertExamId] = useState("");
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
   const [message, setMessage] = useState("");
 
   const handleIdChange = e => {
@@ -75,6 +77,15 @@ const DeleteCertExam = () => {
             <div className="delete-cert-exam-my-inner-box">
               <button type="submit" className="fadeIn fourth" value="submit">
                 Delete Exam
+              </button>
+            </div>
+            <div className="delete-cert-exam-my-inner-box">
+              <button
+                type="cancel"
+                className="fadeIn fourth"
+                onClick={() => navigate("/adminpanel")}
+              >
+                Cancel
               </button>
             </div>
             <div className="delete-message">{message && <p>{message}</p>}</div>

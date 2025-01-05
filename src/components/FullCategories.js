@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setFullCategoryId } from "../features/loginSlice";
 import "../css/FullCategories.css";
@@ -12,6 +13,7 @@ function FullCategory() {
     name: "",
     description: ""
   });
+  const navigate = useNavigate();
   const [added, setAdded] = useState("");
   const [error, setError] = useState("");
   const [check, setCheck] = useState(false);
@@ -117,6 +119,15 @@ function FullCategory() {
             <div className="fullcategory-inner-box">
               <button type="submit" className="fadeIn fourth">
                 Create
+              </button>
+            </div>
+            <div className="fullcategory-inner-box">
+              <button
+                type="cancel"
+                className="fadeIn fourth"
+                onClick={() => navigate("/adminpanel")}
+              >
+                Cancel
               </button>
             </div>
             {error && (
