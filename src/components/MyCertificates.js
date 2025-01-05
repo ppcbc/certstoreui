@@ -19,6 +19,9 @@ export default function MyCertificates() {
   const [acquiredCertificates, setAcquiredCertificates] = useState([]);
   // const [userDetails, setUserDetails] = useState([]);
   const [haveUserDetails, setHaveUserDetails] = useState(false);
+  const [currentDate, setCurrentDate] = useState(false);
+  const [sendDate, setSendDate] = useState(false);
+  const [noDate, setNoDate] = useState(false);
 
   const truncateDescription = (text, maxLength) => {
     if (text.length > maxLength) {
@@ -55,11 +58,26 @@ export default function MyCertificates() {
         a => a.userId == myId && a.hasBought === true
       );
 
-      const today = fixDateToStringGmtPlusTwo();
+      // const today = new Date(fixDateToStringGmtPlusTwo()).toLocaleDateString(
+      //   "en-CA"
+      // );
+      const today = new Date();
+      const todayDateOnly = today.toISOString().split("T")[0];
 
       for (let y = 0; y < myStaf.length; y++)
         for (let i = 0; i < myCertExams.length; i++) {
           if (myStaf[y].certExamId === myCertExams[i].certExamId) {
+            const stafDate = new Date(myStaf[y].dateOfSendCertExam)
+              .toISOString()
+              .split("T")[0]; // Extract YYYY-MM-DD
+
+            // Compare only the date parts
+            if (todayDateOnly === stafDate) {
+              console.log("✅ The day matches with today's date!");
+              console.log("✅ The day matches with today's date!");
+              console.log("✅ The day matches with today's date!");
+            }
+
             selectedExams.push({
               ...myStaf[y],
               ...myCertExams[i],
@@ -149,6 +167,8 @@ export default function MyCertificates() {
                       haveUserDetails
                       userStafId={staf.userStafId}
                       dateOfSendCertExam={staf.dateOfSendCertExam}
+                      sendDate={sendDate}
+                      currentDate={currentDate}
                     >
                       Select
                     </MyCertificateButton>

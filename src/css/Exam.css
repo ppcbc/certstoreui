@@ -110,3 +110,11 @@
     height: 85vh;
   }
 } */
+@media (max-height: 1024px) {
+  .box2 {
+    height: 100%;
+  }
+  .grid-container {
+    height: 100%;
+  }
+}

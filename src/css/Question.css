@@ -52,3 +52,9 @@
   font-weight: 500;
   margin-right: 5px;
 }
+
+@media (max-height: 1024px) {
+  .question-container {
+    height: 100%;
+  }
+}
