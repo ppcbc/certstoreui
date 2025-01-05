@@ -15,7 +15,6 @@ function UpdateExamCategory() {
     categoryId: 0,
     categoryName: "",
     categoryDescription: ""
-    //price: ""
   });
   const [fullCategories, setFullCategories] = useState([]);
   const [examCategories, setExamCategories] = useState([]);
