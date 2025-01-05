@@ -3,153 +3,121 @@
   background-color: #b4b5b0;
 }
 .update-exam {
-  background-color: #b4b5b0;
-  /* Light background for the page */
-  color: #2c3e50;
-  /* Text color matching the header palette */
+  background-color: var(--color2);
+  color: var(--color9);
   padding: 40px 20px;
-  /* Padding for the container */
   min-height: 100vh;
-  /* Full height of the viewport */
   display: flex;
-  /* Center align items */
   justify-content: center;
-  /* Center horizontally */
   align-items: center;
-  /* Center vertically */
   position: relative;
-  /* Enable precise positioning of child elements */
+  margin-top: 40px;
 }
 
 /* Style for the box containing the form elements */
 .update-exam-box {
-  background-color: #ffffff;
-  /* White background for contrast */
-  border-radius: 10px;
-  /* Rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* Subtle shadow for depth */
-  padding: 40px;
-  /* Increased padding for a spacious layout */
-  text-align: left;
-  /* Align text to the left for a form layout */
+  background-color: var(--color1); /* White background for contrast */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 40px; /* Increased padding for a spacious layout */
+  /*text-align: left; !* Align text to the left for a form layout *!*/
   width: 800px;
-  /* Increased width for the box */
   transform: translateY(-130px);
   /* Slightly higher positioning */
 }
 
 /* Style for the h1 (main heading) */
 .update-exam-box h1 {
-  font-size: 2rem;
-  /* Larger heading for the wider box */
-  margin: 3px 10px;
-  /* Space below the heading */
-  margin-bottom: 30px;
-  /* Space below the heading */
-  color: var(--color8);
-  /* Match the palette */
-  text-align: center;
-  /* Keep the heading centered */
+  font-size: 2rem; /* Larger heading for the wider box */
+  margin: 3px 10px; /* Space below the heading */
+  margin-bottom: 30px; /* Space below the heading */
+  color: var(--color8); /* Match the palette */
+  text-align: center; /* Keep the heading centered */
 }
 
 /* Style for the label */
 .update-label {
   font-size: 1rem;
-  /* Font size for the label */
   color: #4b5052;
-  /* Match the palette */
   margin: 3px 10px;
-  /* Margin for spacing */
   text-align: left;
-  /* Align text to the left */
   display: flex;
-  /* Align the label and select in a row */
   align-items: center;
-  /* Align items vertically */
   justify-content: space-between;
-  /* Space out the label and select */
   width: 100%;
 }
 
-/* Adjusting the select element within the label */
-.update-label select {
+.update-exam-box input {
   flex: 1;
-  /* Allow the select to take available space */
-  margin-left: 10px;
-  /* Add margin to the left of the dropdown */
-  width: calc(100% - 80px);
-  /* Make the dropdown capture the size of the box */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth interaction */
+}
+/* Style for input and select fields */
+.update-exam-box select {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: calc(100% - 20px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth interaction */
 }
 
-/* Style for input and select fields */
-.update-exam-box input,
-.update-exam-box select,
 .update-exam-box textarea {
   flex: 1;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
-  width: calc(100% - 80px);
+  width: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  color: var(--color8);
 }
 
 /* Style for input focus */
-update-exam-box input:focus,
+.update-exam-box input:focus,
+.update-exam-box textarea:focus,
 .update-exam-box select:focus {
-  border-color: #597785;
-  /* Highlight border on focus */
+  border-color: var(--color7);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  /* Enhanced shadow */
   outline: none;
-  /* Remove default outline */
 }
 
 /* Style for the button */
 .update-exam-box button {
-  background-color: #597785;
-  /* Blue button background */
+  background-color: var(--color7);
+  margin-top: 15px;
   color: white;
-  /* White text color */
   border: none;
-  /* Remove border */
   border-radius: 5px;
-  /* Rounded corners */
   padding: 12px 20px;
-  /* Button padding */
   cursor: pointer;
-  /* Pointer cursor on hover */
   font-size: 1rem;
-  /* Font size for button text */
   width: 100%;
-  /* Full width for uniformity */
   transition: background-color 0.3s ease, transform 0.2s ease;
-  /* Smooth hover effect */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* Subtle shadow */
 }
 
 /* Hover effect for the button */
 .update-exam-box button:hover {
-  background-color: #78909c;
-  /* Darker blue on hover */
+  background-color: var(--color3);
   transform: translateY(-2px);
-  /* Slight lift on hover */
   font-weight: 600;
-  /* Make text bolder on hover */
 }
 
 .update-exam-inner-box {
   display: flex;
+  width: 98.5%;
   flex-direction: column;
-  /* Align items in a column */
-  align-items: flex-start;
-  /* Align items to the left */
+  align-items: center;
   justify-content: space-between;
-  padding-bottom: 20px;
+  padding: 10px;
 }
 
 .update-exam-inner-field {
@@ -164,13 +132,9 @@ update-exam-box input:focus,
 .update-exam-label {
   display: flex;
   flex-direction: row;
-  /* Align label and dropdown in a row */
   justify-content: space-between;
-  /* Align items to fill the container */
   align-items: center;
   width: 100%;
-
-  /* Align items vertically */
 }
 
 .update-exam-box button {
