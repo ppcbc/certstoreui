@@ -7,6 +7,7 @@ import http from "../data/http";
 import formatDate from "../data/formatDate";
 import { Link, useNavigate } from "react-router-dom";
 import MyCertificateButton from "./MyCertificateButton";
+import fixDateToStringGmtPlusTwo from "../data/fixDateToGmtPlusTwo";
 
 export default function MyCertificates() {
   const myToken = useSelector(state => state.token.value.tok);
@@ -54,16 +55,18 @@ export default function MyCertificates() {
         a => a.userId == myId && a.hasBought === true
       );
 
+      const today = fixDateToStringGmtPlusTwo();
+
       for (let y = 0; y < myStaf.length; y++)
         for (let i = 0; i < myCertExams.length; i++) {
           if (myStaf[y].certExamId === myCertExams[i].certExamId) {
             selectedExams.push({
               ...myStaf[y],
               ...myCertExams[i],
-              dateOfSendCertExam:
-                myStaf[y].dateOfSelectCertExam != "0001-01-01T00:00:00"
-                  ? "Pick your date"
-                  : myStaf[y].dateOfSendCertExam
+              dateOfSendCertExam: formatDate(myStaf[y].dateOfSendCertExam)
+              // == "January 1, 1"
+              //   ? "Pick a date"
+              //   : formatDate(myStaf[y].dateOfSendCertExam)
             });
           }
         }
@@ -145,6 +148,7 @@ export default function MyCertificates() {
                       onClick={goToDetailsOrSchedule}
                       haveUserDetails
                       userStafId={staf.userStafId}
+                      dateOfSendCertExam={staf.dateOfSendCertExam}
                     >
                       Select
                     </MyCertificateButton>
@@ -181,6 +185,7 @@ export default function MyCertificates() {
                       <MyCertificateButton
                         bkgrColor={"color10"}
                         clas={"acquired-certificates-button"}
+                        redeem={certification.redeem}
                       >
                         Show
                       </MyCertificateButton>

@@ -47,6 +47,7 @@ export default function ScheduleExam() {
   }, [message]);
 
   const handleSchedule = async () => {
+    navigate("/my-certificates");
     if (!selectedDate) {
       setDateError("Please select a date.");
       setMessage({ type: "", text: "" });
