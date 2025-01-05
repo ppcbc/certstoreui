@@ -131,3 +131,18 @@
   transform: translateY(-5px); /* Slight lift on hover */
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
 }
+.admin-panel-container {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  justify-content: center;
+  align-items: center;
+}
+.admin-panel-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.admin-panel-item {
+  margin: 20px 60px;
+}
