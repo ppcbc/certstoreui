@@ -30,11 +30,11 @@ function MyCertificateButton({
       style={{ backgroundColor: isMouseOver && `var(--${bkgrColor})` }}
       onClick={() => onClick(userStafId)}
     >
-      {dateOfSendCertExam == "January 1, 1"
+      {dateOfSendCertExam != formatDate
+        ? "change"
+        : dateOfSendCertExam == "Select a date"
         ? "Select"
-        : dateOfSendCertExam != formatDate
-        ? dateOfSendCertExam
-        : "Start"}
+        : "start"}
     </div>
   );
 }

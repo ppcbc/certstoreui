@@ -63,10 +63,10 @@ export default function MyCertificates() {
             selectedExams.push({
               ...myStaf[y],
               ...myCertExams[i],
-              dateOfSendCertExam: formatDate(myStaf[y].dateOfSendCertExam)
-              // == "January 1, 1"
-              //   ? "Pick a date"
-              //   : formatDate(myStaf[y].dateOfSendCertExam)
+              dateOfSendCertExam:
+                formatDate(myStaf[y].dateOfSendCertExam) == "January 1, 1"
+                  ? "Select a date"
+                  : formatDate(myStaf[y].dateOfSendCertExam)
             });
           }
         }
@@ -186,6 +186,7 @@ export default function MyCertificates() {
                         bkgrColor={"color10"}
                         clas={"acquired-certificates-button"}
                         redeem={certification.redeem}
+                        dateOfSendCertExam={"Select a date"}
                       >
                         Show
                       </MyCertificateButton>
