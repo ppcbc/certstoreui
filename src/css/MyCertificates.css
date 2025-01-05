@@ -9,7 +9,8 @@
 
 .my-certificates-container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   margin-top: 60px;
   flex-grow: 1;
@@ -21,7 +22,7 @@
 
 /* Future Exams Section */
 .future-exams {
-  width: 50%;
+  width: 70%;
   background-color: var(--color2);
   padding: 30px;
   display: flex;
@@ -32,7 +33,7 @@
   flex-grow: 1;
 }
 
-.future-exams.hidden {
+.future-exams h1.hidden {
   display: none;
 }
 
@@ -85,7 +86,7 @@
 
 /* Acquired Certificates Section */
 .acquired-certificates {
-  width: 50%;
+  width: 70%;
   background-color: var(--color2);
   padding: 30px;
   display: flex;
@@ -98,7 +99,6 @@
 
 .acquired-certificates.centered {
   margin: 0 auto;
-  width: 60%;
 }
 
 .acquired-certificates h1 {
@@ -175,6 +175,12 @@
 }
 
 .acquired-certificates-buttons-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.future-certificates-buttons-container {
   display: flex;
   flex-direction: row;
   align-items: center;

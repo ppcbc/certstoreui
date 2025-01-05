@@ -4,7 +4,7 @@ import http from "../data/http";
 import axios from "axios";
 import Question from "./Question";
 import AllQuestions from "./AllQuestions";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Finish from "./Finish";
 import shuffle from "../data/shuffle";
 import { useSelector } from "react-redux";
@@ -24,6 +24,7 @@ function Exam() {
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [loading, setLoading] = useState(true);
   const [answeredQuestions, setAnsweredQuestions] = useState({});
+  const { userStafId } = useParams();
 
   const myToken = useSelector(state => state.token.value.tok);
 
@@ -31,7 +32,7 @@ function Exam() {
 
   async function getExam() {
     try {
-      var response = await axios.get(http + `api/CertExams/${32}`, {
+      var response = await axios.get(http + `api/CertExams/${34}`, {
         headers: {
           Authorization: "Bearer " + myToken
         }
