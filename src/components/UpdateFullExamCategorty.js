@@ -199,11 +199,13 @@ function UpdateFullExamCategory() {
                 </>
               )}
             </div>
-            <div className="update-full-exam-main">
+            
               <button type="submit" className="fadeIn fourth">
                 Update
               </button>
-            </div>
+            
+            
+          
             <button
               type="cancel"
               className="fadeIn fourth"
@@ -211,6 +213,7 @@ function UpdateFullExamCategory() {
             >
               Cancel
             </button>
+          
             <div className="update-full-exam-message">
               {check && <p>{message}</p>}
             </div>
