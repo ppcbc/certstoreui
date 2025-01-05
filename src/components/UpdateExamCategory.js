@@ -7,6 +7,7 @@ import { setFullCategoryId } from "../features/loginSlice";
 import "../css/UpdateExamCategory.css";
 import http from "../data/http";
 import Footer from "./Footer";
+import { useNavigate } from "react-router-dom";
 
 function UpdateExamCategory() {
   const [categoryToUpdate, setCategoryToUpdate] = useState({
@@ -18,6 +19,7 @@ function UpdateExamCategory() {
   });
   const [fullCategories, setFullCategories] = useState([]);
   const [examCategories, setExamCategories] = useState([]);
+  const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [check, setCheck] = useState(false);
@@ -202,6 +204,7 @@ function UpdateExamCategory() {
                     </select>
                   </label>
                 </div>
+                
               )}
               {categoryToUpdate.categoryId !== 0 && (
                 <>
@@ -236,6 +239,13 @@ function UpdateExamCategory() {
             </div>
             <button type="submit" className="fadeIn fourth">
               Update
+            </button>
+            <button
+              type="cancel"
+              className="fadeIn fourth"
+              onClick={() => navigate("/adminpanel")}
+            >
+              Cancel
             </button>
             {error && (
               <div className="update-exam-error">
