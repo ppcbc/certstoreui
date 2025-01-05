@@ -15,6 +15,22 @@ export default function AdminPanel() {
         <h1>Admin Panel</h1>
         <ul>
           <div className="admin-panel-container">
+            <h2>Exam</h2>
+            <div className="admin-panel-group">
+              <AdminPanelLi
+                title={"Create Exam"}
+                description={"Design and add a new exam test to the system."}
+                link={"/add-certexam"}
+              />
+
+              <AdminPanelLi
+                title={"Delete Exam"}
+                description={"Remove an existing exam test permanently."}
+                link={"/delete-certexam"}
+              />
+            </div>
+          </div>
+          <div className="admin-panel-container">
             <h2>Question</h2>
             <div className="admin-panel-group">
               <AdminPanelLi
@@ -90,25 +106,17 @@ export default function AdminPanel() {
                 />
               </div>
             </div>
-            <div className="admin-panel-container">
-              <h2>Exam</h2>
-              <div className="admin-panel-group">
-                <AdminPanelLi
-                  title={"Create Exam"}
-                  description={"Design and add a new exam test to the system."}
-                  link={"/add-certexam"}
-                />
 
-                <AdminPanelLi
-                  title={"Delete Exam"}
-                  description={"Remove an existing exam test permanently."}
-                  link={"/delete-certexam"}
-                />
-              </div>
-            </div>
             <div className="admin-panel-container">
               <h2>User</h2>
               <div className="admin-panel-group">
+                <AdminPanelLi
+                  title={"Role Access"}
+                  description={
+                    "Select and assign a role to a user, defining their level of access."
+                  }
+                  link={"/assignrole"}
+                />
                 <AdminPanelLi
                   title={"Update User"}
                   description={
@@ -121,25 +129,6 @@ export default function AdminPanel() {
                   title={"Delete User"}
                   description={"Permanently remove a user from the system"}
                   link={"/delete-user"}
-                />
-              </div>
-            </div>
-            <div className="admin-panel-container">
-              <h2>Role</h2>
-              <div className="admin-panel-group">
-                <AdminPanelLi
-                  title={"Create Role"}
-                  description={
-                    "Select and assign a role to a user, defining their level of access."
-                  }
-                  link={"/create-role"}
-                />
-                <AdminPanelLi
-                  title={"Role Access"}
-                  description={
-                    "Select and assign a role to a user, defining their level of access."
-                  }
-                  link={"/assignrole"}
                 />
               </div>
             </div>
