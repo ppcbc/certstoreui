@@ -147,7 +147,7 @@
   margin: 20px 60px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .admin-panel-group {
     flex-direction: column;
   }

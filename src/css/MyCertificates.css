@@ -15,6 +15,10 @@
   flex-grow: 1;
 }
 
+.my-certificates-container.single {
+  justify-content: center;
+}
+
 /* Future Exams Section */
 .future-exams {
   width: 50%;
@@ -26,6 +30,10 @@
   height: 100%;
   box-sizing: border-box;
   flex-grow: 1;
+}
+
+.future-exams.hidden {
+  display: none;
 }
 
 .future-exams h1 {
@@ -88,6 +96,11 @@
   flex-grow: 1;
 }
 
+.acquired-certificates.centered {
+  margin: 0 auto;
+  width: 60%;
+}
+
 .acquired-certificates h1 {
   font-size: 2rem;
   margin-bottom: 30px;
@@ -133,11 +146,12 @@
   color: var(--color10);
   font-weight: 500;
 }
+
 .future-certificates-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--color2); /* Blue button background */
+  background-color: var(--color2);
   color: var(--color5);
   border: none;
   border-radius: 5px;
@@ -155,7 +169,6 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
-  font-weight: 600;
   font-weight: 600;
   padding: 10px 30px;
   margin-left: 40px;
