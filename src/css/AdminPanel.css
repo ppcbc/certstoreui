@@ -146,3 +146,9 @@
 .admin-panel-item {
   margin: 20px 60px;
 }
+
+@media (max-width: 768px) {
+  .admin-panel-group {
+    flex-direction: column;
+  }
+}
