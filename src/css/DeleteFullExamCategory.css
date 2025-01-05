@@ -1,9 +1,9 @@
-/* Style for the .update-full-exam container */
-.update-full-exam-main {
-  background-color: #b4b5b0;
+/* Style for the .delete-full-exam-category-main container */
+.delete-full-exam-category-main {
+  background-color: var(--color2);
 }
 
-.update-full-exam-category {
+.delete-full-exam-category {
   background-color: var(--color2);
   color: var(--color9);
   padding: 40px 20px;
@@ -15,7 +15,7 @@
 }
 
 /* Style for the box containing the form elements */
-.update-full-exam-box {
+.delete-box-FullExCate {
   background-color: var(--color1);
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -24,8 +24,14 @@
   transform: translateY(20px);
 }
 
+.delete-box-FullExCate select:focus {
+  border-color: var(--color7);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
 /* Style for the h1 (main heading) */
-.update-full-exam-box h1 {
+.delete-box-FullExCate h1 {
   font-size: 2rem;
   margin: 3px 10px;
   margin-bottom: 30px;
@@ -33,30 +39,8 @@
   text-align: center;
 }
 
-/* Style for the label */
-.update-full-exam-label {
-  font-size: 1rem;
-  /* Font size for the label */
-  color: #4b5052;
-  /* Match the palette */
-  margin: 3px 10px;
-  /* Margin for spacing */
-  text-align: left;
-  /* Align text to the left */
-  display: flex;
-  /* Align the label and select in a row */
-  align-items: center;
-  /* Align items vertically */
-  justify-content: space-between;
-  /* Space out the label and select */
-  width: 100%;
-}
-
-
-/* Style for input and select fields */
-.update-full-exam-box input,
-.update-full-exam-box select, 
-.update-full-exam-box textarea {
+/* Style for the input */
+.delete-box-FullExCate select {
   flex: 1;
   padding: 10px;
   border: 1px solid #ccc;
@@ -68,17 +52,15 @@
   color: var(--color8);
 }
 
-/* Style for input focus */
-.update-full-exam-box input:focus,
-.update-full-exam-box textarea:focus,
-.update-box select:focus {
+/* Focus effect for input */
+.delete-box-FullExCate input:focus {
   border-color: var(--color7);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   outline: none;
 }
 
 /* Style for the button */
-.update-full-exam-box button {
+.delete-box-FullExCate button {
   background-color: var(--color7);
   color: var(--color1);
   border: none;
@@ -92,33 +74,24 @@
 }
 
 /* Hover effect for the button */
-.update-full-exam-box button:hover {
-  background-color: #78909c;
-  /* Darker blue on hover */
+.delete-box-FullExCate button:hover {
+  background-color: var(--color3);
   transform: translateY(-2px);
-  /* Slight lift on hover */
   font-weight: 600;
-  /* Make text bolder on hover */
 }
 
-.update-full-exam-inner-box {
+/* Inner box styles */
+.delete-my-inner-box-FullExCate {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding-bottom: 20px;
-}
-
-.update-full-exam-inner-field {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  padding: 10px;
   width: 100%;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  padding: 10px;
 }
 
-.update-full-exam-label {
+/* Label styles */
+.delete-my-label-FullExCate {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -128,43 +101,12 @@
   color: var(--color9);
 }
 
-.update-full-exam button {
-  padding: 10px;
-}
-
-/* Hide spin buttons in number inputs */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-  /* Remove default margins */
-}
-
-/* Firefox style for number inputs */
-input[type="number"] {
-  -moz-appearance: textfield;
-  /* Firefox */
-}
-
-
-
-.update-full-exam-error-message {
+/* Error message styles */
+.DeleteFullExamCategory-error-message {
   color: red;
   font-size: 12px;
-  text-align: center;
-  margin-right: 3px;
-  margin-left: auto;
+  text-align: right;
   margin-top: -5px;
-  
- 
-}
-
-.update-full-exam-message
-{
-  color: red;
-  font-size: 14px;
-  text-align: center;
-  margin-top: 5px;
   margin-bottom: 15px;
   margin-left: 5px;
   padding-right: 3px;
