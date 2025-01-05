@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import "../css/ExamButton.css";
 
-function MyCertificateButton({ children, onClick, bkgrColor, clas }) {
+function MyCertificateButton({
+  children,
+  onClick,
+  bkgrColor,
+  clas,
+  userStafId
+}) {
   const [isMouseOver, setIsMouseOver] = useState(false);
   function checkMouseOver() {
     setIsMouseOver(!isMouseOver);
@@ -12,7 +18,7 @@ function MyCertificateButton({ children, onClick, bkgrColor, clas }) {
       onMouseOut={checkMouseOver}
       onMouseOver={checkMouseOver}
       style={{ backgroundColor: isMouseOver && `var(--${bkgrColor})` }}
-      onClick={onClick}
+      onClick={() => onClick(userStafId)}
     >
       {children}
     </div>

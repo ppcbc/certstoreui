@@ -2,13 +2,40 @@ import React, { useState, useEffect } from "react";
 import "../css/ScheduleExam.css";
 import Footer from "./Footer";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import http from "../data/http";
+import formatDate from "../data/formatDate";
 
 export default function ScheduleExam() {
   const [selectedDate, setSelectedDate] = useState("");
   const navigate = useNavigate();
   const [message, setMessage] = useState({ type: "", text: "" });
   const [dateError, setDateError] = useState("");
+  const { userStafId } = useParams();
+  const myToken = useSelector(state => state.token.value.tok);
+  const myId = useSelector(state => state.token.value.id);
+  const [myStaf, setMyStaf] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    console.log(userStafId);
+    getStaf();
+  }, []);
+
+  async function getStaf() {
+    try {
+      const response = await axios.get(`${http}api/UserStafs/${userStafId}`, {
+        headers: { Authorization: `Bearer ${myToken}` }
+      });
+      console.log(response.data);
+      setMyStaf(response.data);
+    } catch (error) {
+      console.error("Failed to fetch staff:", error.message);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   useEffect(() => {
     if (message.type) {
@@ -28,10 +55,24 @@ export default function ScheduleExam() {
 
     setDateError("");
 
+    console.log(myStaf);
+    let finalStaf = {
+      ...myStaf,
+      redeem: true,
+      dateOfSendCertExam: selectedDate
+    };
+    console.log(finalStaf);
+
     try {
-      const response = await axios.post("/api/scheduleExam", {
-        date: selectedDate
-      });
+      const response = await axios.put(
+        http + `api/UserStafs/${userStafId}`,
+        finalStaf,
+        {
+          headers: {
+            Authorization: "Bearer " + myToken
+          }
+        }
+      );
       if (response.status === 201 || response.status === 200) {
         setMessage({
           type: "success",

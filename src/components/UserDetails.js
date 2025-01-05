@@ -5,7 +5,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setLogReg } from "../features/loginSlice";
 import http from "../data/http";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Footer from "./Footer";
 
 export default function UserDetails() {
@@ -35,10 +35,29 @@ export default function UserDetails() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [myStaf, setMyStaf] = useState([]);
+  const { userStafId } = useParams();
 
   const myToken = useSelector(state => state.token.value.tok);
   const myId = useSelector(state => state.token.value.id);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log(userStafId);
+    getStaf();
+  }, []);
+
+  async function getStaf() {
+    try {
+      const response = await axios.get(`${http}api/UserStafs/${userStafId}`, {
+        headers: { Authorization: `Bearer ${myToken}` }
+      });
+      console.log(response.data);
+      setMyStaf(response.data);
+    } catch (error) {
+      console.error("Failed to fetch staff:", error.message);
+    }
+  }
 
   function getDetails(e) {
     let { name, value } = e.target;
@@ -113,11 +132,32 @@ export default function UserDetails() {
             Authorization: "Bearer " + myToken
           }
         });
+        console.log(myStaf);
+        let finalStaf = {
+          ...myStaf,
+          userDetailsId: response.data.detailId
+        };
+        console.log("FINAL STAF");
+        console.log("FINAL STAF");
+        console.log("FINAL STAF");
+        console.log("FINAL STAF");
+        console.log("FINAL STAF");
+        console.log(finalStaf);
+        const res = await axios.put(
+          http + `api/UserStafs/${userStafId}`,
+          finalStaf,
+          {
+            headers: {
+              Authorization: "Bearer " + myToken
+            }
+          }
+        );
         if (response.status === 201 || response.status === 200) {
           setSuccessMessage("Form submitted successfully!");
           setErrorMessage("");
           setFormSubmitted(true);
         }
+        navigate(`/schedule-exam/${userStafId}`);
       } catch (error) {
         console.error(error.message);
         setErrorMessage("Failed to submit form. Please try again.");

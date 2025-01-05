@@ -57,7 +57,7 @@ function Layout() {
           path="/detailed-certification/:certExamId"
           element={<DetailedCertification />}
         />
-        <Route path="/schedule-exam" element={<ScheduleExam />} />
+        <Route path="/schedule-exam/:userStafId" element={<ScheduleExam />} />
         <Route path="/my-certificates" element={<MyCertificates />} />
         <Route path="/adminpanel" element={<AdminPanel />} />
         <Route path="/login" element={<Login />} />
@@ -67,7 +67,7 @@ function Layout() {
         <Route path="/exam" element={<Exam />} />
         <Route path="/addexam-category" element={<AddExamCategory />} />
         <Route path="/updateexam-category" element={<UpdateExamCategory />} />
-        <Route path="/user-details" element={<UserDetails />} />
+        <Route path="/user-details/:userStafId" element={<UserDetails />} />
         <Route path="/addfull-category" element={<FullCategories />} />
         <Route path="/finish" element={<Finish />} />
         <Route path="/add-certexam" element={<CertExam />} />
