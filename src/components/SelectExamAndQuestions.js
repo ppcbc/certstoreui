@@ -26,7 +26,9 @@ function SelectExamAndQuestions({
   return (
     <div className="certexam-my-inner-box">
       <label className="certexam-my-label">
-        <div className="certexam-first-label">{exam.categoryName}</div>
+        <div className="certexam-first-label">
+          {exam.categoryName.slice(0, 10)}
+        </div>
         <div className="num-of-questions">
           <span className="num-title">Number of Questions:</span>
           <select

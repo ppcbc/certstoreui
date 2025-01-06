@@ -73,17 +73,21 @@
 }
 
 .basket-panel li {
-  margin: 20px 0;
   display: flex;
-  width: 100%;
-}
-.basket-header {
-  display: flex; /* Flexbox for title and button alignment */
-  justify-content: space-between; /* Align title to the left and button to the right */
-  align-items: center; /* Vertically align title and button */
-  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 15px;
   margin: 20px 0;
-  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.basket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 5px;
 }
 
 /* button */
@@ -106,11 +110,16 @@
   transform: translateY(-2px); /* Slight lift on hover */
   font-weight: 600;
 }
+
 .basket-buttons {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 10px;
+  align-self: center;
+  margin-right: -5px;
 }
+
+
 .basket-buy-button {
   margin: 0 20px;
   background-color: var(--color4);
