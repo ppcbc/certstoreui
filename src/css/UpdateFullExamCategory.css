@@ -52,19 +52,39 @@
   width: 100%;
 }
 
+
 /* Style for input and select fields */
-.update-full-exam-box input,
-.update-full-exam-box select,
+.update-full-exam-box input{
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+/* Style for input fields */
+.update-full-exam-box select {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
 .update-full-exam-box textarea {
   flex: 1;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
-  width: calc(100% - 80px);
+  width: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  color: var(--color8);
+  transition: border-c
 }
 
 /* Style for input focus */
@@ -79,7 +99,8 @@
 /* Style for the button */
 .update-full-exam-box button {
   background-color: var(--color7);
-  color: var(--color1);
+  margin-top: 15px;
+  color: white;
   border: none;
   border-radius: 5px;
   padding: 12px 20px;
@@ -102,11 +123,13 @@
 
 .update-full-exam-inner-box {
   display: flex;
+  width: 98.5%;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  padding-bottom: 20px;
+  padding: 10px;
 }
+
 
 .update-full-exam-inner-field {
   display: flex;
@@ -122,9 +145,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 8px;
   width: 100%;
-  color: var(--color9);
 }
 
 .update-full-exam button {
@@ -145,6 +166,8 @@ input[type="number"] {
   /* Firefox */
 }
 
+
+
 .update-full-exam-error-message {
   color: red;
   font-size: 12px;
@@ -152,9 +175,12 @@ input[type="number"] {
   margin-right: 3px;
   margin-left: auto;
   margin-top: -5px;
+  
+ 
 }
 
-.update-full-exam-message {
+.update-full-exam-message
+{
   color: red;
   font-size: 14px;
   text-align: center;

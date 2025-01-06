@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import React from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { setFullCategoryId } from "../features/loginSlice";
 import "../css/UpdateFullExamCategory.css";
 import http from "../data/http";
@@ -15,6 +16,7 @@ function UpdateFullExamCategory() {
     categoryDescription: ""
   });
   const [fullCategories, setFullCategories] = useState([]);
+  const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [check, setCheck] = useState(false);
@@ -197,9 +199,21 @@ function UpdateFullExamCategory() {
                 </>
               )}
             </div>
-            <button type="submit" className="fadeIn fourth">
-              Update
+            
+              <button type="submit" className="fadeIn fourth">
+                Update
+              </button>
+            
+            
+          
+            <button
+              type="cancel"
+              className="fadeIn fourth"
+              onClick={() => navigate("/adminpanel")}
+            >
+              Cancel
             </button>
+          
             <div className="update-full-exam-message">
               {check && <p>{message}</p>}
             </div>

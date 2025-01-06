@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import axios from "axios";
 import http from "../data/http";
 import formatDate from "../data/formatDate";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import MyCertificateButton from "./MyCertificateButton";
 import MyAcquiredCertificateButton from "./MyAcquiredCertificateButton";
 import fixDateToStringGmtPlusTwo from "../data/fixDateToGmtPlusTwo";
@@ -120,10 +120,7 @@ export default function MyCertificates() {
     const scheduledDate = new Date(dateOfSendCertExam);
     const currentDate = new Date(today);
 
-    if (
-      scheduledDate.toDateString() === currentDate.toDateString() &&
-      haveUserDetails
-    ) {
+    if (scheduledDate.toDateString() === currentDate.toDateString() && haveUserDetails) {
       navigate(`/exam/${userStafId}`);
     } else if (haveUserDetails) {
       navigate(`/schedule-exam/${userStafId}`);
@@ -132,43 +129,41 @@ export default function MyCertificates() {
     }
   }
 
+
+  
   return (
     <div className="my-certificates-main">
       <div className="my-certificates-container">
-        <div className="future-exams">
-          <h1 className={myStaf.length === 0 ? "hidden" : ""}>
-            My Future Exams
-          </h1>
-          <ul>
-            {myStaf.map(staf => (
-              <li key={staf.userStafId}>
-                <h2>{staf.testTitle}</h2>
-                <p className="myfutureexams-description">
-                  {truncateDescription(staf.testDescription, 150)}
-                </p>
-                <div className="future-certificates-buttons-container">
-                  <p className="myfutureexams-date">
-                    Date: {staf.dateOfSendCertExam}
+          <div className="future-exams">
+            <h1 className={myStaf.length === 0 ? "hidden" : ""}>My Future Exams</h1>
+            <ul>
+              {myStaf.map(staf => (
+                  <li key={staf.userStafId}>
+                  <h2>{staf.testTitle}</h2>
+                  <p className="myfutureexams-description">
+                    {truncateDescription(staf.testDescription, 150)}
                   </p>
-                  <MyCertificateButton
-                    clas={"future-certificates-button"}
-                    bkgrColor={"color21"}
-                    onClick={userStafId =>
-                      goToDetailsOrSchedule(userStafId, staf.dateOfSendCertExam)
-                    }
-                    haveUserDetails={haveUserDetails}
-                    userStafId={staf.userStafId}
-                    dateOfSendCertExam={staf.dateOfSendCertExam}
-                    today={fixDateToStringGmtPlusTwo()}
-                  />
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-
+                  <div className="future-certificates-buttons-container">
+                    <p className="myfutureexams-date">
+                      Date: {staf.dateOfSendCertExam}
+                    </p>
+                    <MyCertificateButton
+                        clas={"future-certificates-button"}
+                        bkgrColor={"color16"}
+                        onClick={(userStafId) => goToDetailsOrSchedule(userStafId, staf.dateOfSendCertExam)}
+                        haveUserDetails={haveUserDetails}
+                        userStafId={staf.userStafId}
+                        dateOfSendCertExam={staf.dateOfSendCertExam}
+                        today={fixDateToStringGmtPlusTwo()}
+                    />
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        
         {/* Acquired Certificates Section */}
-        <div className="acquired-certificates">
+        <div className="acquired-certificates" >
           <h1>My Acquired Certificates</h1>
           <ul>
             {acquiredCertificates.length === 0 ? (

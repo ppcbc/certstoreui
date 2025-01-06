@@ -4,13 +4,13 @@ import fixDateToStringGmtPlusTwo from "../data/fixDateToGmtPlusTwo";
 import formatDate from "../data/formatDate";
 
 function MyCertificateButton({
-  onClick,
-  bkgrColor,
-  clas,
-  dateOfSendCertExam,
-  userStafId,
-  today
-}) {
+                               onClick,
+                               bkgrColor,
+                               clas,
+                               dateOfSendCertExam,
+                               userStafId,
+                               today
+                             }) {
   const [isMouseOver, setIsMouseOver] = useState(false);
 
   function checkMouseOver() {
@@ -25,22 +25,22 @@ function MyCertificateButton({
   let buttonText;
   if (scheduledDate.toDateString() === currentDate.toDateString()) {
     buttonText = "Begin Exam";
-  } else if (dateOfSendCertExam === "Select a date") {
+  } else if (dateOfSendCertExam === "Select an exam date") {
     buttonText = "Select";
   } else {
     buttonText = "Change";
   }
 
   return (
-    <div
-      className={clas}
-      onMouseOut={checkMouseOver}
-      onMouseOver={checkMouseOver}
-      style={{ backgroundColor: isMouseOver && `var(--${bkgrColor})` }}
-      onClick={() => onClick(userStafId)}
-    >
-      {buttonText}
-    </div>
+      <div
+          className={clas}
+          onMouseOut={checkMouseOver}
+          onMouseOver={checkMouseOver}
+          style={{ backgroundColor: isMouseOver && `var(--${bkgrColor})` }}
+          onClick={() => onClick(userStafId)}
+      >
+        {buttonText}
+      </div>
   );
 }
 
