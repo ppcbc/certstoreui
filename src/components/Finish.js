@@ -66,6 +66,7 @@ function Finish({
           }
         }
       }
+      console.log(originalExams);
       var response = await axios.get(http + `api/UserStafs/${userStafId}`, {
         headers: {
           Authorization: "Bearer " + myToken
@@ -87,7 +88,8 @@ function Finish({
         selectedExams[y] = {
           ...selectedExams[y],
           testTitle: myCertExam.testTitle,
-          testCode: myStaf.userStafId
+          testCode: myStaf.userStafId,
+          testDescription: myCertExam.testDescription
         };
       }
 
@@ -129,6 +131,8 @@ function Finish({
       setMyDetails1(test1);
       console.log(test1);
       test(test1);
+      createMyCertificate();
+      deleteStaf();
     } catch (error) {
       console.log(error.message);
     }
@@ -218,123 +222,39 @@ function Finish({
       testCode: myDetails[0].testCode,
       startTime: formatDateWithHours(startTime),
       reportDate: formatDateWithHours(endTime),
-      finishTitle: myDetails[0].testTitle
+      finishTitle: myDetails[0].testTitle,
+      userId: myId,
+      passed: score / totalQuestions > 0.5,
+      marked: false,
+      testDescription: myDetails[0].testDescription
     };
   }
-  //
-  //   return (
-  //     <div ref={pdfRef} className="finish-container">
-  //       <div className="finish-box">
-  //         <h1 className="finish-title">{myDetails[0].testTitle}</h1>
-  //         <div className="result-info">
-  //           <p className="finish-total-score">
-  //             Total score: {totalScores.score} out of {totalScores.totalQuestions}
-  //           </p>
-  //           <p className="percentage-total-score">
-  //             Percentage Score: {totalScores.score / totalScores.totalQuestions}
-  //           </p>
-  //           <p className="congratulations">
-  //             {totalScores.score / totalScores.totalQuestions > 0.5
-  //               ? "Congratulations!! You passed the exam."
-  //               : "You Failed."}
-  //           </p>
-  //         </div>
-  //
-  //         <div className="candidate-details">
-  //           {Object.entries(candidateDetails).map(([label, value]) => (
-  //             <div key={label} className="candidate-item">
-  //               <span className="candidate-label">
-  //                 {label.replace(/([A-Z])/g, " $1")}:{" "}
-  //               </span>
-  //               <span className="candidate-value">{value}</span>
-  //             </div>
-  //           ))}
-  //         </div>
-  //
-  //         <table className="topic-table">
-  //           <thead>
-  //             <tr>
-  //               <th>Topic Description</th>
-  //               <th>
-  //                 Number of <br />
-  //                 Awarded Marks
-  //               </th>
-  //               <th>
-  //                 Number of <br />
-  //                 Possible Marks
-  //               </th>
-  //               <th>Success Rate</th>
-  //             </tr>
-  //           </thead>
-  //           <tbody>
-  //             {totalScores.map((topic, index) => (
-  //               <tr key={index}>
-  //                 <td className="topic-description">{topic.description}</td>
-  //                 <td className="awarded-marks">{topic.score}</td>
-  //                 <td className="possible-marks">{topic.totalQuestions}</td>
-  //                 <td>
-  //                   <div className="progress-container">
-  //                     <div className="progress-bar">
-  //                       <div
-  //                         className="progress-bar-fill"
-  //                         style={{ width: `${topic.successRate}%` }}
-  //                       ></div>
-  //                     </div>
-  //                     <span className="percentage">{topic.successRate}%</span>
-  //                   </div>
-  //                 </td>
-  //               </tr>
-  //             ))}
-  //           </tbody>
-  //           <tfoot>
-  //             <tr>
-  //               <td className="topic-description">Total score</td>
-  //               <td>84.00</td>
-  //               <td>100.00</td>
-  //               <td colSpan="1"></td>
-  //             </tr>
-  //           </tfoot>
-  //         </table>
-  //         <button className="download-button" onClick={test}>
-  //           Test
-  //         </button>
-  //
-  //         <button onClick={downloadPDF} className="download-button">
-  //           Download Results as PDF
-  //         </button>
-  //       </div>
-  //     </div>
-  //   );
-  // }
-  //
-  // export default Finish;
 
-  // import React, { useRef } from "react";
-  // import { jsPDF } from "jspdf";
-  // import html2canvas from "html2canvas";
-  // import "../css/Finish.css";
+  async function createMyCertificate() {
+    try {
+      var response = await axios.get(http + `api/Certificates`, totalScores, {
+        headers: {
+          Authorization: "Bearer " + myToken
+        }
+      });
+      console.log("response");
+      console.log(response.status);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-  // function Finish() {
-  //     const pdfRef = useRef();
-
-  //     const downloadPDF = async () => {
-  //         const input = pdfRef.current.querySelector(".finish-box");
-  //         const button = input.querySelector(".download-button");
-  //         button.style.display = "none";
-  //         const canvas = await html2canvas(input, {
-  //             scale: 2,
-  //             useCORS: true
-  //         });
-  //         button.style.display = "block";
-  //         const imgData = canvas.toDataURL("image/png");
-  //         const pdf = new jsPDF("p", "mm", "a4");
-
-  //         const pdfWidth = pdf.internal.pageSize.getWidth();
-  //         const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-
-  //         pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-  //         pdf.save("Software-Development-Skills-Foundation-C#.pdf");
-  //     };
+  async function deleteStaf() {
+    try {
+      var response = await axios.delete(http + `api/UserStafs/${userStafId}`, {
+        headers: {
+          Authorization: "Bearer " + myToken
+        }
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
   return (
     <div ref={pdfRef} className="finish-container">

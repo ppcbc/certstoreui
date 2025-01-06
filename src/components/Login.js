@@ -53,9 +53,6 @@ function Login() {
       });
       dispatch(setId(res.data.userId));
       dispatch(setRole(resForRole.data.userRole));
-      console.log(resForRole.data.userRole);
-      console.log(res.data.userId);
-      console.log(myToken);
       if (response.status === 200) {
         navigate("/");
       }

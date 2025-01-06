@@ -23,7 +23,7 @@
 
 /* Future Exams Section */
 .future-exams {
-  width: 65%;
+  width: 60%;
   background-color: var(--color2);
   padding: 30px;
   display: flex;
@@ -87,7 +87,7 @@
 
 /* Acquired Certificates Section */
 .acquired-certificates {
-  width: 65%;
+  width: 60%;
   background-color: var(--color2);
   padding: 30px;
   display: flex;
