@@ -24,7 +24,7 @@ function FullCategory() {
     setCheck(true);
     setTimeout(() => {
       setCheck(false);
-    }, 700);
+    }, 1400);
   }
 
   const onChange = e => {
@@ -88,7 +88,7 @@ function FullCategory() {
         <div className="fullcategory-category">
           <div className="fullcategory-box">
             <h1>Create Module</h1>
-            <div>
+           
               <div className="fullcategory-inner-box">
                 <label className="fullcategory-label">
                   Module name:
@@ -102,11 +102,15 @@ function FullCategory() {
                   />
                 </label>
               </div>
+              {error && (
+              <div className="fullcategory-label-error">
+                <p style={{ color: "red" }}>{error}</p>
+              </div>
+            )}
               <div className="fullcategory-inner-box">
                 <label className="fullcategory-label">
                   Module description:
-                  <input
-                    type="text"
+                  <textarea
                     className="fadeIn second"
                     name="description"
                     placeholder="Module description"
@@ -115,7 +119,12 @@ function FullCategory() {
                   />
                 </label>
               </div>
-            </div>
+              {error && (
+              <div className="fullcategory-label-error">
+                <p style={{ color: "red" }}>{error}</p>
+              </div>
+            )}
+            
             <div className="fullcategory-inner-box">
               <button type="submit" className="fadeIn fourth">
                 Create
@@ -130,11 +139,7 @@ function FullCategory() {
                 Cancel
               </button>
             </div>
-            {error && (
-              <div className="fullcategory-label">
-                <p style={{ color: "red" }}>{error}</p>
-              </div>
-            )}
+          
             <div className="fullcategory-label">{check && <p>{added}</p>}</div>
           </div>
         </div>

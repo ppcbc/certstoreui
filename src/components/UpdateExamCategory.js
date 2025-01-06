@@ -250,7 +250,7 @@ function UpdateExamCategory() {
                 <p style={{ color: "red" }}>{error}</p>
               </div>
             )}
-            <div className="update-exam-message">
+            <div className="update-exam-label">
               {check && <p>{message}</p>}
             </div>
           </div>

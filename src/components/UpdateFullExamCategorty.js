@@ -28,7 +28,7 @@ function UpdateFullExamCategory() {
     setCheck(true);
     setTimeout(() => {
       setCheck(false);
-    }, 700);
+    }, 1400);
   }
 
   const getFullCategories = useCallback(async () => {
@@ -214,7 +214,7 @@ function UpdateFullExamCategory() {
               Cancel
             </button>
           
-            <div className="update-full-exam-message">
+            <div className="update-full-exam-laybel">
               {check && <p>{message}</p>}
             </div>
           </div>

@@ -1,22 +1,17 @@
 /* Style for the .schedule-exam container */
 .add-exam-main {
-  background-color: var(--color2);
+  background-color: var(--color4);
 }
 
 .add-exam {
   /* background-color: red; */
   background-color: var(--color2);
   color: var(--color9);
-  /* Text color matching the header palette */
   padding: 40px 20px;
   min-height: 100vh;
-  /* Full height of the viewport */
   display: flex;
-  /* Center align items */
   justify-content: center;
-  /* Center horizontally */
   align-items: center;
-  /* Center vertically */
   position: relative;
 }
 
@@ -58,24 +53,26 @@
 .add-box input {
   flex: 7;
   padding: 10px;
-  border: 1px solid var(--color6);
+  border: 1px solid  #ccc;;
   border-radius: 5px;
   font-size: 1rem;
   width: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--color8);
 }
 
 /* Style for select elements */
 .add-box select {
   flex: 1;
   padding: 10px;
-  border: 1px solid var(--color6);
+  border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
   width: calc(100% - 80px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--color8);
 }
 
 /* Focus effect for input and select */
@@ -170,3 +167,4 @@ input[type="file"] {
   margin-left: 5px;
   padding-right: 3px;
 }
+

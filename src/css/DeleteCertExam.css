@@ -97,8 +97,9 @@
 .delete-message {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   align-items: center;
   width: 100%;
-  color: red;
+  color: var(--color9);
 }

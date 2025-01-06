@@ -121,7 +121,7 @@ function DeleteExam() {
                 Cancel
               </button>
             </div>
-            <div className="delete-question-my-message">
+            <div className="delete-question-my-label">
               {check && <p>{message}</p>}
             </div>
           </div>

@@ -195,8 +195,7 @@ function AddExamCategory() {
                 <div className="add-exam-inner-box">
                   <label className="add-exam-label">
                     Category Description:
-                    <input
-                      type="text"
+                    <textarea
                       className="fadeIn second"
                       name="categoryDescription"
                       placeholder="Question category description"

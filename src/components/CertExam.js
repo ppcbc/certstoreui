@@ -323,7 +323,7 @@ function CertExam() {
                 Cancel
               </button>
             </div>
-            <div className="certexam-my-label">{check && <p>{message}</p>}</div>
+            <div className="certexam-my-message">{check && <p>{message}</p>}</div>
           </div>
         </div>
       </form>

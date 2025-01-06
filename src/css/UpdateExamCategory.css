@@ -53,10 +53,10 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
-  width: auto;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth interaction */
-}
+  width: calc(100% - 80px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--color8);}
 /* Style for input and select fields */
 .update-exam-box select {
   flex: 1;
@@ -64,10 +64,10 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
-  width: calc(100% - 20px);
+  width: calc(100% - 80px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth interaction */
-}
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--color8);}
 
 .update-exam-box textarea {
   flex: 1;
@@ -75,9 +75,10 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
-  width: auto;
+  width: calc(100% - 80px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--color8);
 }
 
 /* Style for input focus */
@@ -164,15 +165,6 @@ Firefox style for number inputs input[type="number"] {
   font-size: 12px;
   text-align: right;
   margin-top: -5px;
-  margin-bottom: 15px;
-  margin-left: 5px;
-  padding-right: 3px;
-}
-.update-exam-message {
-  color: red;
-  font-size: 14px;
-  text-align: center;
-  margin-top: 5px;
   margin-bottom: 15px;
   margin-left: 5px;
   padding-right: 3px;

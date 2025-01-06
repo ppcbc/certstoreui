@@ -3,8 +3,8 @@
   background-color: #b4b5b0;
 }
 .fullcategory-category {
-  background-color: #b4b5b0;
-  color: #2c3e50;
+  background-color: var(--color2);
+  color: var(--color9);
   padding: 40px 20px;
   min-height: 100vh;
   display: flex;
@@ -14,9 +14,9 @@
 }
 
 .fullcategory-box {
-  background-color: var(--color1); /* White background for contrast */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-color: var(--color1);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 40px;
   width: 800px;
   transform: translateY(20px);
@@ -47,14 +47,26 @@
   color: var(--color9);
 }
 .fullcategory-box input {
-  flex: 7;
+  flex: 1;
   padding: 10px;
-  border: 1px solid var(--color6);
+  border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
   width: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--color8);
+}
+.fullcategory-box textarea{
+flex: 1;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+font-size: 1rem;
+width: auto;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+transition: border-color 0.3s ease, box-shadow 0.3s ease;
+color: var(--color8);
 }
 .fullcategory-box select {
   flex: 1;
@@ -111,8 +123,12 @@ fullcategory-box select:focus {
 .fullcategory-label {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
+  gap: 8px;
+  width: 100%;
+  color: var(--color9);
+
 }
 
 .submit-btn {
@@ -131,4 +147,14 @@ input[type="number"] {
 
 .align-left {
   text-align: left;
+}
+
+.fullcategory-label-error {
+  color: red;
+  font-size: 12px;
+  text-align: right;
+  margin-top: -5px;
+  margin-bottom: 15px;
+  margin-left: 5px;
+  padding-right: 3px;
 }

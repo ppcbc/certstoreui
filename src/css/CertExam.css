@@ -6,27 +6,19 @@
 .certexam {
   background-color: var(--color2);
   color: var(--color9);
-  /* Text color matching the header palette */
   padding: 40px 20px;
   min-height: 100vh;
-  /* Full height of the viewport */
   display: flex;
-  /* Center align items */
   justify-content: center;
-  /* Center horizontally */
   align-items: center;
-  /* Center vertically */
   position: relative;
 }
 
 /* Style for the box containing the form elements */
 .certexam-box {
   background-color: var(--color1);
-  /* White background for contrast */
   border-radius: 10px;
-  /* Rounded corners */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* Subtle shadow */
   padding: 40px;
   width: 800px;
   transform: translateY(20px);
@@ -43,51 +35,49 @@
 /* Style for the h1 (main heading) */
 .certexam-box h1 {
   font-size: 2rem;
-  /* Larger heading for the wider box */
   margin: 3px 10px;
-  /* Space below the heading */
   margin-bottom: 30px;
-  /* Space below the heading */
   color: var(--color8);
-  /* Match the palette */
   text-align: center;
-  /* Keep the heading centered */
 }
 
 /* Style for the input (date picker) */
 .certexam-box input {
-  flex: 7;
+  flex: 1;
   padding: 10px;
-  border: 1px solid var(--color6);
+  border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
-  width: auto;
+  width: calc(100% - 80px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--color8);
 }
 
 /* style for textarea */
 .certexam-box textarea {
   flex: 1;
   padding: 10px;
-  border: 1px solid var(--color6);
+  border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
   width: calc(100% - 80px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--color8);
 }
 
 /* Style for select elements */
 .certexam-box select {
   flex: 1;
   padding: 10px;
-  border: 1px solid var(--color6);
+  border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
   width: calc(100% - 80px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--color8);
 }
 
 /* Focus effect for input and select */
@@ -225,4 +215,13 @@ input[type="file"] {
   margin-bottom: 15px;
   margin-left: 5px;
   padding-right: 3px;
+}
+.certexam-my-message{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  color: var(--color9);
 }

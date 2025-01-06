@@ -95,7 +95,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: left;
   gap: 8px;
   width: 100%;
   color: var(--color9);
@@ -111,11 +111,4 @@
   margin-left: 5px;
   padding-right: 3px;
 }
-.delete-question-my-message {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  color: red;
-}
+

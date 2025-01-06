@@ -35,21 +35,12 @@
 
 /* Style for the label */
 .update-full-exam-label {
-  font-size: 1rem;
-  /* Font size for the label */
-  color: #4b5052;
-  /* Match the palette */
-  margin: 3px 10px;
-  /* Margin for spacing */
-  text-align: left;
-  /* Align text to the left */
-  display: flex;
-  /* Align the label and select in a row */
-  align-items: center;
-  /* Align items vertically */
+ display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  /* Space out the label and select */
-  width: 100%;
+  align-items: center;
+  gap: 8px;
+  width: 100%; /* Make the label take full width */
 }
 
 
@@ -63,6 +54,7 @@
   width: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--color8);
 }
 /* Style for input fields */
 .update-full-exam-box select {
@@ -74,6 +66,7 @@
   width: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--color8);
 }
 
 .update-full-exam-box textarea {
@@ -84,7 +77,8 @@
   font-size: 1rem;
   width: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: border-c
+  /* transition: border-c; */
+  color: var(--color8);
 }
 
 /* Style for input focus */
