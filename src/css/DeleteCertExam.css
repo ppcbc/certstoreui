@@ -21,6 +21,7 @@
   width: 800px;
   transform: translateY(20px);
 }
+
 .delete-cert-exam-box input:focus {
   border-color: var(--color7);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -84,6 +85,7 @@
   width: 100%;
   color: var(--color9);
 }
+
 .delete-cert-exam-error-message {
   color: red;
   font-size: 12px;
@@ -102,4 +104,15 @@
   align-items: center;
   width: 100%;
   color: var(--color9);
+}
+
+.delete-select {
+  width: 700px;
+  padding: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1rem;
 }
