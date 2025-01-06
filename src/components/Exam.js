@@ -28,6 +28,8 @@ function Exam() {
   const { userStafId } = useParams();
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
+  const [allAnsNum, setAllAnsNum] = useState([]);
+  const [originalExams, setOriginalExams] = useState([]);
 
   const myToken = useSelector(state => state.token.value.tok);
 
@@ -37,6 +39,7 @@ function Exam() {
     const IsNowTime = fixDateToGmtPlusTwo();
     setStartTime(IsNowTime);
     console.log(userStafId);
+
     // getStaf();
   }, []);
 
@@ -60,8 +63,10 @@ function Exam() {
           Authorization: "Bearer " + myToken
         }
       });
-      console.log("AAAAAAAAAAAAAAAAAAAAA");
-      console.log(resStaf.data);
+      if (resStaf.length < 0) {
+        navigate("/home");
+      }
+
       let certId = resStaf.data.certExamId;
       console.log(certId);
       var response = await axios.get(http + `api/CertExams/${certId}`, {
@@ -88,6 +93,7 @@ function Exam() {
           finalExams.push(selectedExams[i][y]);
         }
       }
+      setOriginalExams(finalExams);
 
       let filteredExams = finalExams.map((item, index) => ({
         examId: item.examId,
@@ -103,6 +109,7 @@ function Exam() {
         answer4: item.option4,
         correct4: item.isCorrect4,
         isAnswered: false,
+        myAnsweredQuestion: "",
         selected: index === 0
       }));
       setExams(filteredExams);
@@ -152,6 +159,8 @@ function Exam() {
         selected: false
       };
     });
+    console.log("FULL EXAMS");
+    console.log(fullExams);
     setExams(prev => fullExams);
     fullExams[currentQuestion].selected = true;
     setExams(prev => fullExams);
@@ -206,9 +215,18 @@ function Exam() {
       setQuestionNumber(index + 1);
     }
   }
+
+  // console.log("EXAM EXAM EXAM");
+  // console.log(exams);
   function handleFinishExam() {
     setFinish(true);
     setIsTimerRunning(false);
+  }
+
+  function getAnsNum(ansNum) {
+    console.log(allAnsNum);
+    let allFinished = allAnsNum.filter(a => a.id != ansNum.id);
+    setAllAnsNum([...allFinished, ansNum]);
   }
 
   if (loading) {
@@ -244,6 +262,7 @@ function Exam() {
                   timeLeft={timeLeft}
                   finish={handleFinishExam}
                   selectedAnswer={answeredQuestions[questionNumber] || null}
+                  getAnsNum={getAnsNum}
                 />
               )}
             </div>
@@ -251,7 +270,12 @@ function Exam() {
           </div>
         </>
       ) : (
-        <Finish score={`${counter} / ${exams.length}`} />
+        <Finish
+          score={`${counter} / ${exams.length}`}
+          myAnswers={allAnsNum}
+          userStafId={userStafId}
+          originalExams={originalExams}
+        />
       )}
     </div>
   );

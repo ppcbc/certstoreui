@@ -1,9 +1,13 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import "../css/Finish.css";
+import axios from "axios";
+import http from "../data/http";
+import { useSelector } from "react-redux";
 
-function Finish() {
+function Finish({ score, myAnswers, userStafId, originalExams }) {
+  const myToken = useSelector(state => state.token.value.tok);
   const candidateDetails = {
     CandidateName: "Jonathan Doe",
     CandidateNumber: "9980021300646498",
@@ -93,10 +97,86 @@ function Finish() {
     pdf.save("Software-Development-Skills-Foundation-C#.pdf");
   };
 
+  useEffect(() => {
+    getExams();
+    // console.log(originalExams);
+  });
+
+  async function getExams() {
+    let selectedExams = [];
+    for (let i = 0; i < originalExams.length; i++) {
+      for (let y = 0; y < myAnswers.length; y++) {
+        if (originalExams[i].examId == myAnswers[y].id) {
+          selectedExams.push({
+            ...originalExams[i],
+            ...myAnswers[y]
+          });
+        }
+      }
+    }
+    console.log(selectedExams);
+    try {
+      var response = await axios.get(http + `api/UserStafs/${userStafId}`, {
+        headers: {
+          Authorization: "Bearer " + myToken
+        }
+      });
+      console.log(response.data);
+      let myStaf = response.data;
+
+      var resCert = await axios.get(
+        http + `api/CertExams/${myStaf.certExamId}`,
+        {
+          headers: {
+            Authorization: "Bearer " + myToken
+          }
+        }
+      );
+      let myCertExam = resCert.data;
+      console.log(myCertExam);
+
+      for (let y = 0; y < selectedExams.length; y++) {
+        selectedExams[y] = {
+          ...selectedExams[y],
+          testTitle: myCertExam.testTitle,
+          testCode: myStaf.userStafId
+        };
+      }
+
+      var resExamCategories = await axios.get(http + `api/ExamCategories`, {
+        headers: {
+          Authorization: "Bearer " + myToken
+        }
+      });
+      console.log(resExamCategories.data);
+      var resCategories = resExamCategories.data;
+      for (let i = 0; i < selectedExams.length; i++) {
+        for (let y = 0; y < resCategories.length; y++) {
+          if (selectedExams[i].categoryId == resCategories[y].categoryId) {
+            selectedExams[i] = {
+              ...selectedExams[i],
+              categoryName: resCategories[y].categoryName
+            };
+          }
+        }
+      }
+      console.log(selectedExams);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
   return (
     <div ref={pdfRef} className="finish-container">
       <div className="finish-box">
         <h1 className="finish-title">
+          {userStafId}
+          <ul>
+            {myAnswers.map(a => (
+              <li key={a.id}>
+                {a.id}: {a.myAnsweredQuestion}
+              </li>
+            ))}
+          </ul>
           Software Development Skills Foundation (C#)
         </h1>
         <div className="result-info">

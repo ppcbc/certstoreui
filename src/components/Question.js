@@ -12,7 +12,8 @@ function Question({
   nextOrPrevious,
   timeLeft,
   finish,
-  selectedAnswer
+  selectedAnswer,
+  getAnsNum
 }) {
   // const [idIsCorrect, setIdIsCorrect] = useState({
   //   id: 0,
@@ -62,6 +63,7 @@ function Question({
         Id={Exam.examId}
         getAnswer={getAnswer}
         selectedAnswer={selectedAnswer}
+        getAnsNum={getAnsNum}
       />
       <Answer
         answer={Exam.answer2}
@@ -71,6 +73,7 @@ function Question({
         Id={Exam.examId}
         getAnswer={getAnswer}
         selectedAnswer={selectedAnswer}
+        getAnsNum={getAnsNum}
       />
       <Answer
         answer={Exam.answer3}
@@ -80,6 +83,7 @@ function Question({
         Id={Exam.examId}
         getAnswer={getAnswer}
         selectedAnswer={selectedAnswer}
+        getAnsNum={getAnsNum}
       />
       <Answer
         answer={Exam.answer4}
@@ -89,6 +93,7 @@ function Question({
         Id={Exam.examId}
         getAnswer={getAnswer}
         selectedAnswer={selectedAnswer}
+        getAnsNum={getAnsNum}
       />
       {Exam.photoLink === "" && <div className="image"></div>}
       {Exam.question === "" && <div className="question"></div>}

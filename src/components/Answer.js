@@ -8,7 +8,8 @@ function Answer({
   getAnswer,
   questionNumber,
   Id,
-  selectedAnswer
+  selectedAnswer,
+  getAnsNum
 }) {
   const [isMouseOver, setIsMouseOver] = useState(false);
   const [select, setSelect] = useState({});
@@ -24,15 +25,21 @@ function Answer({
       className="answer"
       onMouseOver={checkMouseOver}
       onMouseOut={checkMouseOver}
-      onClick={() =>
+      onClick={() => {
         getAnswer({
           isCorrect: correct,
           questionNumber: questionNumber,
           Id: Id,
           answered: true,
-          selectedAnswer: number
-        })
-      }
+          selectedAnswer: number,
+          myAnsweredQuestion: answer
+        });
+        getAnsNum({
+          id: Id,
+          answered: true,
+          myAnsweredQuestion: answer
+        });
+      }}
       style={{
         // backgroundColor:
         //   (isMouseOver && "var(--color7)") || (isSelected && "var(--color7)"),
