@@ -1,14 +1,14 @@
-function formatDate(isoDate) {
+function formatDateWithHours(isoDate) {
   const date = new Date(isoDate);
 
   const options = {
     timeZone: "Europe/Athens", // GMT+2 timezone
     year: "numeric",
     month: "long",
-    day: "numeric"
-    // hour: "2-digit",
-    // minute: "2-digit",
-    // second: "2-digit"
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit"
     // hour12: true
   };
 
@@ -16,4 +16,4 @@ function formatDate(isoDate) {
   return formattedDate;
 }
 
-export default formatDate;
+export default formatDateWithHours;
