@@ -32,6 +32,7 @@ function Finish({
   };
   const [myDetails, setMyDetails] = useState([]);
   const [scores, setScores] = useState([]);
+  const [totalScores, setTotalScores] = useState([]);
 
   const topicBreakdown = [
     {
@@ -207,6 +208,9 @@ function Finish({
     let x = calculateScoresForAllGroups(myCategory);
     console.log(x);
     setScores(x);
+    let y = calculateFullScores(x);
+    console.log(y);
+    setTotalScores(y);
   }
 
   function calculateScoreForGroup(questions) {
@@ -252,15 +256,34 @@ function Finish({
     });
   }
 
+  function calculateFullScores(questionsAll) {
+    let score = 0;
+    let totalQuestions = 0;
+    for (let quest of questionsAll) {
+      score += quest.score;
+      totalQuestions += quest.totalQuestions;
+    }
+    return {
+      score,
+      totalQuestions
+    };
+  }
+
   return (
     <div ref={pdfRef} className="finish-container">
       <div className="finish-box">
         <h1 className="finish-title">{myDetails[0].testTitle}</h1>
         <div className="result-info">
-          <p className="finish-total-score">Total score: 84.00 out of 100.00</p>
-          <p className="percentage-total-score">Percentage Score: 84%</p>
+          <p className="finish-total-score">
+            Total score: {totalScores.score} out of {totalScores.totalQuestions}
+          </p>
+          <p className="percentage-total-score">
+            Percentage Score: {totalScores.score / totalScores.totalQuestions}
+          </p>
           <p className="congratulations">
-            Congratulations!! You passed the exam.
+            {totalScores.score / totalScores.totalQuestions > 0.5
+              ? "Congratulations!! You passed the exam."
+              : "You Fail."}
           </p>
         </div>
 
