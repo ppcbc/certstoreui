@@ -15,7 +15,7 @@ function Finish({
   startTime,
   endTime
 }) {
-  const [myDetails, setMyDetails] = useState([]);
+  const [myDetails1, setMyDetails1] = useState([]);
   const [scores, setScores] = useState([]);
   const [totalScores, setTotalScores] = useState([]);
 
@@ -120,14 +120,15 @@ function Finish({
       });
       // console.log(selectedExams);
       // console.log(test1);
-      setMyDetails(test1);
+      setMyDetails1(test1);
       console.log(test1);
+      test(test1);
     } catch (error) {
       console.log(error.message);
     }
   }
 
-  function test() {
+  function test(myDetails) {
     console.log(myDetails);
     const myCategory = Object.values(
       myDetails.reduce((acc, item) => {
@@ -144,7 +145,7 @@ function Finish({
     let x = calculateScoresForAllGroups(myCategory);
     console.log(x);
     setScores(x);
-    let y = calculateFullScores(x);
+    let y = calculateFullScores(x, myDetails);
     console.log(y);
     setTotalScores(y);
   }
@@ -192,16 +193,9 @@ function Finish({
     });
   }
 
-  function calculateFullScores(questionsAll) {
+  function calculateFullScores(questionsAll, myDetails) {
     let score = 0;
     let totalQuestions = 0;
-    let startDate = new Date(myDetails[0].testTime);
-    const formattedDate = `${startDate.toLocaleDateString(
-      "en-GB"
-    )} ${startDate.getHours()}:${startDate
-      .getMinutes()
-      .toString()
-      .padStart(2, "0")}`;
     for (let quest of questionsAll) {
       score += quest.score;
       totalQuestions += quest.totalQuestions;
@@ -216,7 +210,9 @@ function Finish({
       totalScore: `${score}/${totalQuestions}`,
       candidateNumber: myDetails[0].candidateNumber,
       testCode: myDetails[0].testCode,
-      startTime: formattedDate
+      startTime: formatDateWithHours(startTime),
+      reportDate: formatDateWithHours(endTime),
+      finishTitle: myDetails[0].testTitle
     };
   }
   //
@@ -338,13 +334,20 @@ function Finish({
     <div ref={pdfRef} className="finish-container">
       <div className="finish-box">
         <h1 className="finish-title">
-          Software Development Skills Foundation (C#)
+          {/* Software Development Skills Foundation (C#) */}
+          {totalScores.finishTitle}
         </h1>
         <div className="result-info">
-          <p className="finish-total-score">Total score: 84.00 out of 100.00</p>
-          <p className="percentage-total-score">Percentage Score: 84%</p>
+          <p className="finish-total-score">
+            Total score: {totalScores.score} out of {totalScores.totalQuestions}
+          </p>
+          <p className="percentage-total-score">
+            Percentage Score: {totalScores.successRate}
+          </p>
           <p className="congratulations">
-            Congratulations!! You passed the exam.
+            {totalScores.score / totalScores.totalQuestions > 0.5
+              ? "Congratulations!! You passed the exam."
+              : "You Failed."}
           </p>
         </div>
 
@@ -357,32 +360,37 @@ function Finish({
           </div>
           <div className="candidate-item">
             <span className="candidate-label">Candidate Number: </span>
-            <span className="candidate-value">9980021300646498</span>
+            <span className="candidate-value">
+              {totalScores.candidateNumber}
+            </span>
           </div>
           <div className="candidate-item">
             <span className="candidate-label">Assessment Test Code: </span>
-            <span className="candidate-value">101114977802_en</span>
+            <span className="candidate-value">{totalScores.testCode}</span>
           </div>
           <div className="candidate-item">
             <span className="candidate-label">Examination Date: </span>
-            {/* <span className="candidate-value">Dec 14 2024 17:05:01</span> */}
             <span className="candidate-value">{totalScores.startTime}</span>
           </div>
           <div className="candidate-item">
             <span className="candidate-label">Test Report Date: </span>
-            <span className="candidate-value">Dec 14 2024 19:00:07</span>
+            <span className="candidate-value">{totalScores.reportDate}</span>
           </div>
           <div className="candidate-item">
             <span className="candidate-label">Total Score: </span>
-            <span className="candidate-value">84 / 100</span>
+            <span className="candidate-value">{totalScores.totalScore}</span>
           </div>
           <div className="candidate-item">
             <span className="candidate-label">Percentage Score: </span>
-            <span className="candidate-value">84%</span>
+            <span className="candidate-value">{totalScores.successRate}</span>
           </div>
           <div className="candidate-item">
             <span className="candidate-label">Assessment Result Label: </span>
-            <span className="candidate-value">Passed</span>
+            <span className="candidate-value">
+              {totalScores.score / totalScores.totalQuestions > 0.5
+                ? "Passed"
+                : "Not Pass"}
+            </span>
           </div>
         </div>
 
@@ -403,160 +411,18 @@ function Finish({
           </thead>
           <tbody>
             <tr>
-              <td className="topic-description">
-                1. Software Design and Development
-              </td>
-              <td className="awarded-marks">5.0</td>
-              <td className="possible-marks">6.0</td>
+              <td className="topic-description">{totalScores.description}</td>
+              <td className="awarded-marks">{totalScores.score}</td>
+              <td className="possible-marks">{totalScores.totalQuestions}</td>
               <td>
                 <div className="progress-container">
                   <div className="progress-bar">
                     <div
                       className="progress-bar-fill"
-                      style={{ width: "83.33%" }}
+                      style={{ width: `${totalScores.successRate}` }}
                     ></div>
                   </div>
-                  <span className="percentage">83.33%</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="topic-description">
-                2. Introduction to Programming
-              </td>
-              <td className="awarded-marks">6.0</td>
-              <td className="possible-marks">7.0</td>
-              <td>
-                <div className="progress-container">
-                  <div className="progress-bar">
-                    <div
-                      className="progress-bar-fill"
-                      style={{ width: "85.71%" }}
-                    ></div>
-                  </div>
-                  <span className="percentage">85.71%</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="topic-description">
-                3. Object Oriented Programming
-              </td>
-              <td className="awarded-marks">33.0</td>
-              <td className="possible-marks">41.0</td>
-              <td>
-                <div className="progress-container">
-                  <div className="progress-bar">
-                    <div
-                      className="progress-bar-fill"
-                      style={{ width: "80.49%" }}
-                    ></div>
-                  </div>
-                  <span className="percentage">80.49%</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="topic-description">
-                4. Web Design and Development Fundamentals (Front-End)
-              </td>
-              <td className="awarded-marks">11.0</td>
-              <td className="possible-marks">13.0</td>
-              <td>
-                <div className="progress-container">
-                  <div className="progress-bar">
-                    <div
-                      className="progress-bar-fill"
-                      style={{ width: "84.62%" }}
-                    ></div>
-                  </div>
-                  <span className="percentage">84.62%</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="topic-description">5. (Relational) Databases</td>
-              <td className="awarded-marks">24.0</td>
-              <td className="possible-marks">26.0</td>
-              <td>
-                <div className="progress-container">
-                  <div className="progress-bar">
-                    <div
-                      className="progress-bar-fill"
-                      style={{ width: "92.31%" }}
-                    ></div>
-                  </div>
-                  <span className="percentage">92.31%</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="topic-description">
-                6. Web Application Development, MVC and Other Frameworks
-              </td>
-              <td className="awarded-marks">3.0</td>
-              <td className="possible-marks">4.0</td>
-              <td>
-                <div className="progress-container">
-                  <div className="progress-bar">
-                    <div
-                      className="progress-bar-fill"
-                      style={{ width: "75.0%" }}
-                    ></div>
-                  </div>
-                  <span className="percentage">75.0%</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="topic-description">
-                7. Software Testing & Debugging
-              </td>
-              <td className="awarded-marks">0.0</td>
-              <td className="possible-marks">1.0</td>
-              <td>
-                <div className="progress-container">
-                  <div className="progress-bar">
-                    <div
-                      className="progress-bar-fill"
-                      style={{ width: "0.0%" }}
-                    ></div>
-                  </div>
-                  <span className="percentage">0.0%</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="topic-description">8. UI/UX - Usability</td>
-              <td className="awarded-marks">1.0</td>
-              <td className="possible-marks">1.0</td>
-              <td>
-                <div className="progress-container">
-                  <div className="progress-bar">
-                    <div
-                      className="progress-bar-fill"
-                      style={{ width: "100.0%" }}
-                    ></div>
-                  </div>
-                  <span className="percentage">100.0%</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="topic-description">
-                9. Developer Soft Skills and Teamwork
-              </td>
-              <td className="awarded-marks">1.0</td>
-              <td className="possible-marks">1.0</td>
-              <td>
-                <div className="progress-container">
-                  <div className="progress-bar">
-                    <div
-                      className="progress-bar-fill"
-                      style={{ width: "100.0%" }}
-                    ></div>
-                  </div>
-                  <span className="percentage">100.0%</span>
+                  <span className="percentage">{totalScores.successRate}</span>
                 </div>
               </td>
             </tr>
@@ -564,13 +430,13 @@ function Finish({
           <tfoot>
             <tr>
               <td className="topic-description">Total score</td>
-              <td>84.00</td>
-              <td>100.00</td>
+              <td>{totalScores.score}</td>
+              <td>{totalScores.totalQuestions}</td>
               <td colSpan="1"></td>
             </tr>
           </tfoot>
         </table>
-        <button onClick={test} className="download-button">
+        <button onClick={() => test(myDetails1)} className="download-button">
           Test
         </button>
 

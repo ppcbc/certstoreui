@@ -219,10 +219,10 @@ function Exam() {
   // console.log("EXAM EXAM EXAM");
   // console.log(exams);
   function handleFinishExam() {
-    setFinish(true);
     setIsTimerRunning(false);
     const IsNowTime2 = fixDateToGmtPlusTwo();
     setEndTime(IsNowTime2);
+    setFinish(true);
   }
 
   function getAnsNum(ansNum) {
