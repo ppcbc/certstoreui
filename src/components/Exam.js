@@ -221,6 +221,8 @@ function Exam() {
   function handleFinishExam() {
     setFinish(true);
     setIsTimerRunning(false);
+    const IsNowTime2 = fixDateToGmtPlusTwo();
+    setEndTime(IsNowTime2);
   }
 
   function getAnsNum(ansNum) {
@@ -275,6 +277,8 @@ function Exam() {
           myAnswers={allAnsNum}
           userStafId={userStafId}
           originalExams={originalExams}
+          startTime={startTime}
+          endTime={endTime}
         />
       )}
     </div>

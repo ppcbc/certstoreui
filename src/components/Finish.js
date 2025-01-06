@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import "../css/Finish.css";
@@ -6,8 +6,20 @@ import axios from "axios";
 import http from "../data/http";
 import { useSelector } from "react-redux";
 
-function Finish({ score, myAnswers, userStafId, originalExams }) {
+function Finish({
+  score,
+  myAnswers,
+  userStafId,
+  originalExams,
+  startTime,
+  endTime
+}) {
+  useEffect(() => {
+    getExams();
+  }, []);
+
   const myToken = useSelector(state => state.token.value.tok);
+  const myId = useSelector(state => state.token.value.id);
   const candidateDetails = {
     CandidateName: "Jonathan Doe",
     CandidateNumber: "9980021300646498",
@@ -18,6 +30,8 @@ function Finish({ score, myAnswers, userStafId, originalExams }) {
     PercentageScore: "84%",
     AssessmentResultLabel: "Passed"
   };
+  const [myDetails, setMyDetails] = useState([]);
+  const [scores, setScores] = useState([]);
 
   const topicBreakdown = [
     {
@@ -97,31 +111,24 @@ function Finish({ score, myAnswers, userStafId, originalExams }) {
     pdf.save("Software-Development-Skills-Foundation-C#.pdf");
   };
 
-  useEffect(() => {
-    getExams();
-    // console.log(originalExams);
-  });
-
   async function getExams() {
-    let selectedExams = [];
-    for (let i = 0; i < originalExams.length; i++) {
-      for (let y = 0; y < myAnswers.length; y++) {
-        if (originalExams[i].examId == myAnswers[y].id) {
-          selectedExams.push({
-            ...originalExams[i],
-            ...myAnswers[y]
-          });
+    try {
+      let selectedExams = [];
+      for (let i = 0; i < originalExams.length; i++) {
+        for (let y = 0; y < myAnswers.length; y++) {
+          if (originalExams[i].examId == myAnswers[y].id) {
+            selectedExams[i] = {
+              ...originalExams[i],
+              ...myAnswers[y]
+            };
+          }
         }
       }
-    }
-    console.log(selectedExams);
-    try {
       var response = await axios.get(http + `api/UserStafs/${userStafId}`, {
         headers: {
           Authorization: "Bearer " + myToken
         }
       });
-      console.log(response.data);
       let myStaf = response.data;
 
       var resCert = await axios.get(
@@ -133,7 +140,6 @@ function Finish({ score, myAnswers, userStafId, originalExams }) {
         }
       );
       let myCertExam = resCert.data;
-      console.log(myCertExam);
 
       for (let y = 0; y < selectedExams.length; y++) {
         selectedExams[y] = {
@@ -148,7 +154,6 @@ function Finish({ score, myAnswers, userStafId, originalExams }) {
           Authorization: "Bearer " + myToken
         }
       });
-      console.log(resExamCategories.data);
       var resCategories = resExamCategories.data;
       for (let i = 0; i < selectedExams.length; i++) {
         for (let y = 0; y < resCategories.length; y++) {
@@ -160,25 +165,97 @@ function Finish({ score, myAnswers, userStafId, originalExams }) {
           }
         }
       }
-      console.log(selectedExams);
+      let resUserDetails = await axios.get(http + `api/UserDetails`, {
+        headers: {
+          Authorization: "Bearer " + myToken
+        }
+      });
+      let myDetails = resUserDetails.data.filter(a => a.id == myId);
+
+      let test1 = selectedExams.map(prev => {
+        return {
+          ...prev,
+          name: myDetails[0].name,
+          lastName: myDetails[0].lastName,
+          candidateNumber: myDetails[0].detailId,
+          examDate: startTime,
+          testReportDate: endTime
+        };
+      });
+      // console.log(selectedExams);
+      // console.log(test1);
+      setMyDetails(test1);
     } catch (error) {
       console.log(error.message);
     }
   }
+
+  function test() {
+    console.log(myDetails);
+    const myCategory = Object.values(
+      myDetails.reduce((acc, item) => {
+        if (!acc[item.categoryName]) {
+          acc[item.categoryName] = [];
+        }
+        acc[item.categoryName].push(item);
+        return acc;
+      }, {})
+    );
+
+    console.log(myCategory);
+
+    let x = calculateScoresForAllGroups(myCategory);
+    console.log(x);
+    setScores(x);
+  }
+
+  function calculateScoreForGroup(questions) {
+    let score = 0;
+
+    for (const question of questions) {
+      if (
+        question.isCorrect1 == true &&
+        question.option1 == question.myAnsweredQuestion
+      ) {
+        score += 1;
+      }
+      if (
+        question.isCorrect2 == true &&
+        question.option2 == question.myAnsweredQuestion
+      ) {
+        score += 1;
+      }
+      if (
+        question.isCorrect3 == true &&
+        question.option3 == question.myAnsweredQuestion
+      ) {
+        score += 1;
+      }
+      if (
+        question.isCorrect4 == true &&
+        question.option4 == question.myAnsweredQuestion
+      ) {
+        score += 1;
+      }
+    }
+
+    return score;
+  }
+
+  function calculateScoresForAllGroups(groupedQuestions) {
+    return groupedQuestions.map((group, index) => {
+      return {
+        categoryName: group[0]?.categoryName || null,
+        score: calculateScoreForGroup(group),
+        totalQuestions: group.length
+      };
+    });
+  }
+
   return (
     <div ref={pdfRef} className="finish-container">
       <div className="finish-box">
-        <h1 className="finish-title">
-          {userStafId}
-          <ul>
-            {myAnswers.map(a => (
-              <li key={a.id}>
-                {a.id}: {a.myAnsweredQuestion}
-              </li>
-            ))}
-          </ul>
-          Software Development Skills Foundation (C#)
-        </h1>
+        <h1 className="finish-title">{myDetails[0].testTitle}</h1>
         <div className="result-info">
           <p className="finish-total-score">Total score: 84.00 out of 100.00</p>
           <p className="percentage-total-score">Percentage Score: 84%</p>
@@ -242,6 +319,9 @@ function Finish({ score, myAnswers, userStafId, originalExams }) {
             </tr>
           </tfoot>
         </table>
+        <button className="download-button" onClick={test}>
+          Test
+        </button>
 
         <button onClick={downloadPDF} className="download-button">
           Download Results as PDF
