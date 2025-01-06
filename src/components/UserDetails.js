@@ -160,6 +160,20 @@ export default function UserDetails() {
       }
     }
   }
+  
+  // Metatrepei se dd/mm/yyyy apla gia skopous display.
+  const formatDateToDisplay = (date) => {
+    const [year, month, day] = date.split("-");
+    return `${day}/${month}/${year}`;
+  };
+  
+  const getTodayDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`; 
+  };
 
   return (
     <div className="user-details-main">
@@ -280,8 +294,13 @@ export default function UserDetails() {
                     className="fadeIn third"
                     name="dateOfBirth"
                     placeholder="dd/mm/yyyy"
-                    value={details.dateOfBirth}
+                    value={
+                      details.dateOfBirth
+                          ? details.dateOfBirth.split("/").reverse().join("-")
+                          : ""
+                    } // Afto metatrepei to input value apo dd/mm/yyyy se yyyy-mm-dd
                     onChange={getDetails}
+                    max={getTodayDate()} // Afto vazei san max date na einai today's date in yyyy-mm-dd format
                   />
                 </label>
               </div>
@@ -342,6 +361,7 @@ export default function UserDetails() {
                   placeholder="dd/mm/yyyy"
                   value={details.photoIdIssueDate}
                   onChange={getDetails}
+                  max={getTodayDate()}
                 />
               </label>
             </div>
