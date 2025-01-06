@@ -95,12 +95,12 @@ function Finish({
       var resCategories = resExamCategories.data;
       for (let y = 0; y < resCategories.length; y++) {
         for (let i = 0; i < selectedExams.length; i++) {
-          //   if (selectedExams[i].categoryId == resCategories[y].categoryId) {
-          selectedExams[i] = {
-            ...selectedExams[i],
-            categoryName: resCategories[y].categoryName
-          };
-          //   }
+          if (selectedExams[i].categoryId == resCategories[y].categoryId) {
+            selectedExams[i] = {
+              ...selectedExams[i],
+              categoryName: resCategories[y].categoryName
+            };
+          }
         }
       }
       let resUserDetails = await axios.get(http + `api/UserDetails`, {
