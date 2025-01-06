@@ -37,25 +37,34 @@ function Exam() {
     const IsNowTime = fixDateToGmtPlusTwo();
     setStartTime(IsNowTime);
     console.log(userStafId);
-    getStaf();
+    // getStaf();
   }, []);
 
-  async function getStaf() {
+  // async function getStaf() {
+  //   try {
+  //     var response = await axios.get(http + `api/UserStafs/${userStafId}`, {
+  //       headers: {
+  //         Authorization: "Bearer " + myToken
+  //       }
+  //     });
+  //     console.log(response.data);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // }
+
+  async function getExam() {
     try {
-      var response = await axios.get(http + `api/UserStafs/${userStafId}`, {
+      var resStaf = await axios.get(http + `api/UserStafs/${userStafId}`, {
         headers: {
           Authorization: "Bearer " + myToken
         }
       });
-      console.log(response.data);
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
-
-  async function getExam() {
-    try {
-      var response = await axios.get(http + `api/CertExams/${34}`, {
+      console.log("AAAAAAAAAAAAAAAAAAAAA");
+      console.log(resStaf.data);
+      let certId = resStaf.data.certExamId;
+      console.log(certId);
+      var response = await axios.get(http + `api/CertExams/${certId}`, {
         headers: {
           Authorization: "Bearer " + myToken
         }
@@ -117,7 +126,6 @@ function Exam() {
         setFinish(true);
         const isEndTime = fixDateToGmtPlusTwo();
         setEndTime(isEndTime);
-        setEndTime();
       }
       return;
     }

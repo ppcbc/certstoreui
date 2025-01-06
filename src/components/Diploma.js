@@ -1,12 +1,45 @@
-import React from "react";
+import React, { useRef } from "react";
 import "../css/Diploma.css";
+import { jsPDF } from "jspdf";
 import logoDiploma from "../images/logo_diploma.svg";
 import signature from "../images/signature.png";
+import html2canvas from "html2canvas";
 
 function Diploma() {
+  const pdfRef = useRef();
+
+  const downloadPDF = async () => {
+    const input = pdfRef.current;
+    if (!input) {
+      console.error("Element with class 'diploma-box' not found.");
+      return; // Exit early if the element doesn't exist
+    }
+    const button = input.querySelector(".download-button");
+    if (button) {
+      button.style.display = "none";
+    }
+    try {
+      const canvas = await html2canvas(input, {
+        scale: 2,
+        useCORS: true
+      });
+      if (button) {
+        button.style.display = "block";
+      }
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("l", "mm", "a4"); // 'l' for landscape, 'mm' for millimeters
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+      pdf.save("Software-Development-Skills-Foundation-C#.pdf");
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+    }
+  };
+
   return (
     <div className="diploma-container">
-      <div className="diploma-box">
+      <div className="diploma-box" ref={pdfRef}>
         <img src={logoDiploma} alt="Logo-diploma" className="logo-diploma" />
 
         <p className="diploma-certify-text">This is to certify</p>
@@ -39,6 +72,12 @@ function Diploma() {
             authorized
           </span>
         </div>
+      </div>
+
+      <div className="diploma-button-wrapper">
+        <button onClick={downloadPDF} className="download-button">
+          Download Results as PDF
+        </button>
       </div>
     </div>
   );
