@@ -98,7 +98,7 @@ function Finish({
           //   if (selectedExams[i].categoryId == resCategories[y].categoryId) {
           selectedExams[i] = {
             ...selectedExams[i],
-            categoryName: resCategories[i].categoryName
+            categoryName: resCategories[y].categoryName
           };
           //   }
         }
