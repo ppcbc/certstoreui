@@ -59,6 +59,10 @@ function Finish({
               ...originalExams[i],
               ...myAnswers[y]
             };
+          } else {
+            selectedExams[i] = {
+              ...originalExams[i]
+            };
           }
         }
       }
