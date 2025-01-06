@@ -6,6 +6,7 @@ import axios from "axios";
 import http from "../data/http";
 import { useSelector } from "react-redux";
 import formatDateWithHours from "../data/formatDateWithHours";
+import { useNavigate } from "react-router-dom";
 
 function Finish({
   score,
@@ -18,6 +19,7 @@ function Finish({
   const [myDetails1, setMyDetails1] = useState([]);
   const [scores, setScores] = useState([]);
   const [totalScores, setTotalScores] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getExams();
@@ -91,14 +93,14 @@ function Finish({
         }
       });
       var resCategories = resExamCategories.data;
-      for (let i = 0; i < selectedExams.length; i++) {
-        for (let y = 0; y < resCategories.length; y++) {
-          if (selectedExams[i].categoryId == resCategories[y].categoryId) {
-            selectedExams[i] = {
-              ...selectedExams[i],
-              categoryName: resCategories[y].categoryName
-            };
-          }
+      for (let y = 0; y < resCategories.length; y++) {
+        for (let i = 0; i < selectedExams.length; i++) {
+          //   if (selectedExams[i].categoryId == resCategories[y].categoryId) {
+          selectedExams[i] = {
+            ...selectedExams[i],
+            categoryName: resCategories[i].categoryName
+          };
+          //   }
         }
       }
       let resUserDetails = await axios.get(http + `api/UserDetails`, {
@@ -203,7 +205,7 @@ function Finish({
     return {
       score,
       totalQuestions,
-      successRate: `${(score / totalQuestions) * 100}%`,
+      successRate: `${((score / totalQuestions) * 100).toFixed(2)}%`,
       description: questionsAll[0].categoryName,
       name: myDetails[0].name,
       lastName: myDetails[0].lastName,
@@ -410,22 +412,31 @@ function Finish({
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="topic-description">{totalScores.description}</td>
-              <td className="awarded-marks">{totalScores.score}</td>
-              <td className="possible-marks">{totalScores.totalQuestions}</td>
-              <td>
-                <div className="progress-container">
-                  <div className="progress-bar">
-                    <div
-                      className="progress-bar-fill"
-                      style={{ width: `${totalScores.successRate}` }}
-                    ></div>
+            {scores.map((totalScore, index) => (
+              <tr key={index}>
+                <td className="topic-description">{totalScore.categoryName}</td>
+                <td className="awarded-marks">{totalScore.score}</td>
+                <td className="possible-marks">{totalScore.totalQuestions}</td>
+                <td>
+                  <div className="progress-container">
+                    <div className="progress-bar">
+                      <div
+                        className="progress-bar-fill"
+                        style={{
+                          width: `${
+                            (totalScore.score / totalScore.totalQuestions) * 100
+                          }`
+                        }}
+                      ></div>
+                    </div>
+                    <span className="percentage">{`${(
+                      (totalScore.score / totalScore.totalQuestions) *
+                      100
+                    ).toFixed(2)}`}</span>
                   </div>
-                  <span className="percentage">{totalScores.successRate}</span>
-                </div>
-              </td>
-            </tr>
+                </td>
+              </tr>
+            ))}
           </tbody>
           <tfoot>
             <tr>
@@ -436,13 +447,16 @@ function Finish({
             </tr>
           </tfoot>
         </table>
-        <button onClick={() => test(myDetails1)} className="download-button">
+        {/* <button onClick={() => test(myDetails1)} className="download-button">
           Test
-        </button>
+        </button> */}
 
         <button onClick={downloadPDF} className="download-button">
           Download Results as PDF
         </button>
+        {/* <button className="download-button" onClick={() => navigate("home")}>
+          Return
+        </button> */}
       </div>
     </div>
   );
