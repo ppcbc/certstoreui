@@ -77,12 +77,13 @@ function AssignRole() {
         role: myCurrentRole
       });
       var response = await axios.post(http + "api/AddRole/assign-role", user);
-      if (response.status === 200) {
+      if (response.status === 200 || response.status === 201) {
         setMessage("Role assigned successfully");
         setUser({
           email: "",
           role: ""
         });
+        handleMessage();
       }
     } catch (error) {
       setMessage("Wrong credentials, try again");
