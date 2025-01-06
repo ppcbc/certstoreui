@@ -14,6 +14,10 @@ function Finish({
   startTime,
   endTime
 }) {
+  const [myDetails, setMyDetails] = useState([]);
+  const [scores, setScores] = useState([]);
+  const [totalScores, setTotalScores] = useState([]);
+
   useEffect(() => {
     getExams();
   }, []);
@@ -21,18 +25,19 @@ function Finish({
   const myToken = useSelector(state => state.token.value.tok);
   const myId = useSelector(state => state.token.value.id);
   const candidateDetails = {
-    CandidateName: "Jonathan Doe",
-    CandidateNumber: "9980021300646498",
-    AssessmentTestCode: "101114977802_en",
-    ExaminationDate: "Dec 14 2024 17:05:01",
-    TestReportDate: "Dec 14 2024 19:00:07",
-    TotalScore: "84 / 100",
-    PercentageScore: "84%",
-    AssessmentResultLabel: "Passed"
+    CandidateName: `${myDetails[0].lastName} ${myDetails[0].name}`,
+    CandidateNumber: `${myDetails[0].candidateNumber}`,
+    AssessmentTestCode: `${myDetails[0].testCode}`,
+    ExaminationDate: `${myDetails[0].examDate}`,
+    TestReportDate: `${myDetails[0].testReportDate}`,
+    TotalScore: `${totalScores.score} ${totalScores.totalQuestions}`,
+    PercentageScore: `${totalScores.score / totalScores.totalQuestions}`,
+    AssessmentResultLabel: `${
+      totalScores.score / totalScores.totalQuestions > 0.5
+        ? "Congratulations!! you passed the exam."
+        : "You failed!!!"
+    }`
   };
-  const [myDetails, setMyDetails] = useState([]);
-  const [scores, setScores] = useState([]);
-  const [totalScores, setTotalScores] = useState([]);
 
   const topicBreakdown = [
     {
@@ -186,6 +191,7 @@ function Finish({
       // console.log(selectedExams);
       // console.log(test1);
       setMyDetails(test1);
+      console.log(test1);
     } catch (error) {
       console.log(error.message);
     }
@@ -259,13 +265,16 @@ function Finish({
   function calculateFullScores(questionsAll) {
     let score = 0;
     let totalQuestions = 0;
+    let totalScore;
     for (let quest of questionsAll) {
       score += quest.score;
       totalQuestions += quest.totalQuestions;
     }
     return {
       score,
-      totalQuestions
+      totalQuestions,
+      successRate: (score / totalQuestions) * 100,
+      description: questionsAll[0].categoryName
     };
   }
 
@@ -283,7 +292,7 @@ function Finish({
           <p className="congratulations">
             {totalScores.score / totalScores.totalQuestions > 0.5
               ? "Congratulations!! You passed the exam."
-              : "You Fail."}
+              : "You Failed."}
           </p>
         </div>
 
@@ -314,11 +323,11 @@ function Finish({
             </tr>
           </thead>
           <tbody>
-            {topicBreakdown.map((topic, index) => (
+            {totalScores.map((topic, index) => (
               <tr key={index}>
-                <td className="topic-description">{topic.topic}</td>
-                <td className="awarded-marks">{topic.awardedMarks}</td>
-                <td className="possible-marks">{topic.possibleMarks}</td>
+                <td className="topic-description">{topic.description}</td>
+                <td className="awarded-marks">{topic.score}</td>
+                <td className="possible-marks">{topic.totalQuestions}</td>
                 <td>
                   <div className="progress-container">
                     <div className="progress-bar">
