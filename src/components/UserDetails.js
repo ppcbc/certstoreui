@@ -8,6 +8,14 @@ import http from "../data/http";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Footer from "./Footer";
 
+const getTodayDateForAgeLimit = (ageLimit) => {
+  const today = new Date();
+  const year = today.getFullYear() - ageLimit;
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+
 export default function UserDetails() {
   let navigate = useNavigate();
   const [details, setDetails] = useState({
@@ -184,7 +192,7 @@ export default function UserDetails() {
             <div className>
               <div className="userdetails-inner-box">
                 <label className="userdetails-label">
-                  First Name:
+                  First Name*:
                   <input
                     type="text"
                     id="FirstName"
@@ -217,7 +225,7 @@ export default function UserDetails() {
               </div>
               <div className="userdetails-inner-box">
                 <label className="userdetails-label">
-                  Last Name:
+                  Last Name*:
                   <input
                     type="text"
                     id="LastName"
@@ -260,7 +268,7 @@ export default function UserDetails() {
               </div>
               <div className="userdetails-inner-box">
                 <label className="userdetails-label">
-                  Native Language:
+                  Native Language*:
                   <select
                     id="NativeLanguage"
                     className="fadeIn third"
@@ -287,7 +295,7 @@ export default function UserDetails() {
               )}
               <div className="userdetails-inner-box">
                 <label className="userdetails-label">
-                  Date Of Birth:
+                  Date Of Birth*:
                   <input
                     type="date"
                     id="DateOfBirth"
@@ -300,7 +308,7 @@ export default function UserDetails() {
                           : ""
                     } // Afto metatrepei to input value apo dd/mm/yyyy se yyyy-mm-dd
                     onChange={getDetails}
-                    max={getTodayDate()} // Afto vazei san max date na einai today's date in yyyy-mm-dd format
+                    max={getTodayDateForAgeLimit(12)} // Afto vazei san max date na einai today's date in yyyy-mm-dd format
                   />
                 </label>
               </div>
@@ -311,7 +319,7 @@ export default function UserDetails() {
               )}
               <div className="userdetails-inner-box">
                 <label className="userdetails-label">
-                  Photo Id Type:
+                  Photo Id Type*:
                   <select
                     id="PhotoIdType"
                     className="fadeIn third"
@@ -332,7 +340,7 @@ export default function UserDetails() {
               )}
               <div className="userdetails-inner-box">
                 <label className="userdetails-label">
-                  Photo Id Number:
+                  Photo Id Number*:
                   <input
                     type="text"
                     id="PhotoIdNumber"
@@ -352,7 +360,7 @@ export default function UserDetails() {
             </div>
             <div className="userdetails-inner-box">
               <label className="userdetails-label">
-                Photo Id Issue Date:
+                Photo Id Issue Date*:
                 <input
                   type="date"
                   id="PhotoIdIssueDate"
@@ -372,7 +380,7 @@ export default function UserDetails() {
             )}
             <div className="userdetails-inner-box">
               <label className="userdetails-label">
-                Address:
+                Address*:
                 <input
                   type="text"
                   id="Address"
@@ -405,7 +413,7 @@ export default function UserDetails() {
             </div>
             <div className="userdetails-inner-box">
               <label className="userdetails-label">
-                State/Province:
+                State/Province*:
                 <input
                   type="text"
                   id="StateProvince"
@@ -424,7 +432,7 @@ export default function UserDetails() {
             )}
             <div className="userdetails-inner-box">
               <label className="userdetails-label">
-                City:
+                City*:
                 <input
                   type="text"
                   id="City"
@@ -443,7 +451,7 @@ export default function UserDetails() {
             )}
             <div className="userdetails-inner-box">
               <label className="userdetails-label">
-                Postal Code:
+                Postal Code*:
                 <input
                   type="text"
                   id="PostalCode"
@@ -462,7 +470,7 @@ export default function UserDetails() {
             )}
             <div className="userdetails-inner-box">
               <label className="userdetails-label">
-                Country Of Residence:
+                Country Of Residence*:
                 <input
                   type="text"
                   id="CountryOfResidence"
@@ -481,7 +489,7 @@ export default function UserDetails() {
             )}
             <div className="userdetails-inner-box">
               <label className="userdetails-label">
-                Mobile Number:
+                Mobile Number*:
                 <input
                   type="text"
                   id="MobileNumber"
