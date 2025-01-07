@@ -2,7 +2,7 @@ import React from "react";
 import "../css/ExamButton.css";
 import { useNavigate } from "react-router-dom";
 
-function MyAcquiredCertificateButton({ userStafId }) {
+function MyAcquiredCertificateButton({ userStafId, redeem }) {
   const navigate = useNavigate();
   return (
     <div className="acquired-certificates-buttons-container">
@@ -12,12 +12,14 @@ function MyAcquiredCertificateButton({ userStafId }) {
       >
         View Results
       </button>
-      <button
-        className="acquired-certificates-button"
-        onClick={() => navigate("/diploma")}
-      >
-        View Diploma
-      </button>
+      {redeem && (
+        <button
+          className="acquired-certificates-button"
+          onClick={() => navigate("/diploma")}
+        >
+          View Diploma
+        </button>
+      )}
     </div>
   );
 }
