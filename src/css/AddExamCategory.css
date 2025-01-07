@@ -17,11 +17,8 @@
 
 .add-exam-box {
   background-color: var(--color1);
-  /* White background for contrast */
   border-radius: 10px;
-  /* Rounded corners */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* Subtle shadow */
   padding: 40px;
   width: 800px;
   transform: translateY(20px);
@@ -50,8 +47,9 @@
 .add-exam-label {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  align-items: left;
   gap: 8px;
   width: 100%;
   color: var(--color9);
@@ -60,23 +58,37 @@
 .add-exam-box input {
   flex: 7;
   padding: 10px;
-  border: 1px solid var(--color6);
+  border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
   width: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--color8);
+}
+
+.add-exam-box textarea {
+  flex: 7;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--color8); 
 }
 
 .add-exam-box select {
-  flex: 1;
+  flex: 7;
   padding: 10px;
-  border: 1px solid var(--color6);
+  border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
-  width: calc(100% - 80px);
+  width: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--color8);
 }
 
 .add-exam-box input:focus,
@@ -107,10 +119,11 @@
 
 .add-exam-inner-box {
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 20px;
+  padding: 10px;
 }
 
 .add-exam-field {
@@ -124,7 +137,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: left;
+  text-align: left;
 }
 
 .submit-btn {

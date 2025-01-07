@@ -119,7 +119,7 @@ const UpdateUser = () => {
         <div className="update-user">
           <div className="update-user-box">
             <h1>Update User</h1>
-            <div className="update-user-inner-box">
+            <div className="update-user-inner-field">
               <label className="update-user-label">
                 Select User:
                 <select

@@ -89,12 +89,6 @@ export default function MyCertificates() {
       // let myCertificates = response.data.filter(cert => cert.userId == myId);
       let myCertificates = response.data;
       setAcquiredCertificates(myCertificates);
-      console.log("CERTIFICATES");
-      console.log("CERTIFICATES");
-      console.log("CERTIFICATES");
-      console.log("CERTIFICATES");
-      console.log("CERTIFICATES");
-      console.log(myCertificates);
     } catch (error) {
       console.error("Failed to fetch certifications:", error.message);
     }
@@ -190,10 +184,12 @@ export default function MyCertificates() {
                   <div>
                     <h2>{certification.description}</h2>
                     <p className="myacquiredcertificates-description">
-                      {truncateDescription(certification.description, 150)}
+                      {truncateDescription(certification.testDescription, 150)}
                     </p>
                     <div className="acquired-certificates-buttons-container">
-                      <p className="myacquiredcertificates-mark">Mark: 65</p>
+                      <p className="myacquiredcertificates-mark">
+                        Mark: {certification.successRate}
+                      </p>
                       <MyAcquiredCertificateButton
                         bkgrColor={"color10"}
                         clas={"acquired-certificates-button"}

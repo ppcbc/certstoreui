@@ -11,6 +11,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  margin-top: 40px;
 }
 
 .login-box {
@@ -33,11 +34,12 @@
   padding: 10px;
   margin: 10px;
   width: 100%;
-  border: 1px solid var(--color6);
+  border: 1px solid  #ccc;;
   border-radius: 5px;
   font-size: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--color8);
 }
 
 .my-inner-login {
@@ -46,6 +48,7 @@
   flex-direction: row; /* Keep elements on the same line */
   align-items: center; /* Align elements vertically */
   justify-content: space-between;
+
 }
 
 .my-label-login {
@@ -55,6 +58,7 @@
   align-items: center;
   gap: 1px;
   width: calc(100% - 1px);
+  color: var(--color8);
 }
 
 .login-box button {
@@ -84,4 +88,25 @@
   margin-top: 15px;
   margin-bottom: 0px;
   font-weight: 300;
+}
+
+.my-label-register {
+margin-top: -38px;
+  justify-content: flex-end;
+  text-align: right;
+  align-items: left;
+}
+
+.my-label {
+  margin-top: 30px;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  text-align: right;
+  margin-top: -5px;
+  margin-bottom: 15px;
+  margin-left: 5px;
+  padding-right: 3px;
 }

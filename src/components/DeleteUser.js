@@ -96,7 +96,7 @@ const DeleteUser = () => {
             </div>
             <div>
               {message && (
-                <p className="delete-user-error-message">{message}</p>
+                <p className="delete-user-my-laybel">{message}</p>
               )}
             </div>
           </div>

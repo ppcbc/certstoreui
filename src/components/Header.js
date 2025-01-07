@@ -51,7 +51,7 @@ export default function Header() {
               CERTIFICATIONS
             </NavLink>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <NavLink
               to="/diploma"
               className={({ isActive }) =>
@@ -60,8 +60,8 @@ export default function Header() {
             >
               DIPLOMA
             </NavLink>
-          </li>
-          <li className="nav-item">
+          </li> */}
+          {/* <li className="nav-item">
             <NavLink
               to="/schedule-exam"
               className={({ isActive }) =>
@@ -70,7 +70,7 @@ export default function Header() {
             >
               SCHEDULE EXAM
             </NavLink>
-          </li>
+          </li> */}
           <li className="nav-item">
             <NavLink
               to="/my-certificates"
@@ -95,7 +95,7 @@ export default function Header() {
             </li>
           )}
 
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <NavLink
               to="/user-details"
               className={({ isActive }) =>
@@ -104,8 +104,8 @@ export default function Header() {
             >
               USER DETAILS
             </NavLink>
-          </li>
-          {myToken !== "" && (
+          </li> */}
+          {/* {myToken !== "" && (
             <li className="nav-item">
               <NavLink
                 to="/payment"
@@ -116,9 +116,9 @@ export default function Header() {
                 PAYMENT
               </NavLink>
             </li>
-          )}
+          )} */}
 
-          {myToken !== "" && (
+          {/* {myToken !== "" && (
             <li className="nav-item">
               <NavLink
                 to="/exam"
@@ -129,7 +129,7 @@ export default function Header() {
                 EXAM
               </NavLink>
             </li>
-          )}
+          )} */}
           <div className="nav-item nav-right">
             {myToken !== "" && (
               <li className="nav-item nav-right">

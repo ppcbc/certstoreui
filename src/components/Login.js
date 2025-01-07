@@ -9,6 +9,18 @@ import { setId, setLogReg, setRole, setToken } from "../features/loginSlice";
 import Footer from "./Footer";
 
 function Login() {
+
+  const [validationMessages, setValidationMessages] = useState({});
+  const [check, setCheck] = useState(false);
+  const [added, setAdded] = useState("");
+
+  function handleMessage() {
+    setCheck(true);
+    setTimeout(() => {
+      setCheck(false);
+    }, 1400);
+  }
+
   let navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
@@ -34,8 +46,32 @@ function Login() {
     });
   }
 
+  // Email validation function
+  const validateEmail = email => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  // Validation function
+  const validate = () => {
+    let errors = {};
+    if (user.email === "") {
+      errors.email = "Please enter your email";
+    }
+    if (user.password === "") {
+      errors.password = "Please enter your password";
+    }
+    if (!validateEmail(user.email)) {
+      errors.email = "Please enter a valid email address.";
+    }
+    setValidationMessages(errors);
+    return Object.keys(errors).length === 0;
+  }
+
   async function onSubmit(e) {
     e.preventDefault();
+    if (!validate()) return;
+
     try {
       var response = await axios.post(http + "login", user);
       dispatch(setToken(response.data.accessToken));
@@ -53,6 +89,9 @@ function Login() {
       });
       dispatch(setId(res.data.userId));
       dispatch(setRole(resForRole.data.userRole));
+      console.log(resForRole.data.userRole);
+      console.log(res.data.userId);
+      console.log(myToken);
       if (response.status === 200) {
         navigate("/");
       }
@@ -62,6 +101,7 @@ function Login() {
         password: ""
       });
       setMessage("Wrong credentials try again");
+      handleMessage();
       console.log(error.message);
     }
   }
@@ -80,12 +120,16 @@ function Login() {
                     id="login"
                     className="fadeIn second"
                     name="email"
-                    placeholder="email"
+                    placeholder="email@user.com"
                     value={user.email}
                     onChange={getUser}
                   />
                 </label>
               </div>
+              {validationMessages.email && (
+                <p className="error-message">{validationMessages.email}</p>
+              )}
+
               <div className="my-inner-login">
                 <label className="my-label-login">
                   Password:
@@ -100,18 +144,22 @@ function Login() {
                   />
                 </label>
               </div>
+              {validationMessages.password && (
+                <p className="error-message">{validationMessages.password}</p>
+              )}
+
             </div>
             <button type="submit" class="fadeIn fourth" value="Log In">
               Login
             </button>
-            {message !== "" && (
+            {check !== "" && (
               <div className="my-label-wrong">
                 <p>{message}</p>
               </div>
             )}
             <div className="my-label">
-              <p>If you don't have an account yet click here</p>
-              <Link to="/register">Register</Link>
+              <p>If you don't have an account yet click register</p>
+              <div className="my-label-register"><Link to="/register">Register</Link></div>
             </div>
           </div>
         </div>

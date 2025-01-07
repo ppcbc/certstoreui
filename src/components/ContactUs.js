@@ -23,7 +23,7 @@ function ContactUs() {
     setCheck(true);
     setTimeout(() => {
       setCheck(false);
-    }, 700);
+    }, 1400);
   }
 
   const handleChange = e => {
@@ -160,7 +160,7 @@ function ContactUs() {
               <button type="submit" className="sendcontact-button">
                 Send Message
               </button>
-              <p>{added && <div className="message-status">{added}</div>}</p>
+              <p>{check && <div className="message-status">{added}</div>}</p>
             </div>
           </div>
         </div>

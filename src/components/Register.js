@@ -8,6 +8,19 @@ import Footer from "./Footer";
 import "../css/Register.css";
 
 function Register() {
+
+  const [validationMessages, setValidationMessages] = useState({});
+  const [check, setCheck] = useState(false);
+  const [added, setAdded] = useState("");
+
+
+  function handleMessage() {
+    setCheck(true);
+    setTimeout(() => {
+      setCheck(false);
+    }, 1400);
+  }
+
   let navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
@@ -32,8 +45,31 @@ function Register() {
     });
   }
 
+    // Email validation function
+    const validateEmail = email => {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    };
+  
+    // Validation function
+    const validate = () => {
+      let errors = {};
+      if (user.email === "") {
+        errors.email = "Please enter your email";
+      }
+      if (user.password === "") {
+        errors.password = "Please enter your password";
+      }
+      if (!validateEmail(user.email)) {
+        errors.email = "Please enter a valid email address.";
+      }
+      setValidationMessages(errors);
+      return Object.keys(errors).length === 0;
+    }
+
   async function onSubmit(e) {
     e.preventDefault();
+    if (!validate()) return;
     try {
       var response = await axios.post(http + "register", user);
       await console.log(response.status);
@@ -51,6 +87,7 @@ function Register() {
         password: ""
       });
       setMessage("Wrong credentials try again");
+      handleMessage();
     }
   }
   return (
@@ -65,21 +102,26 @@ function Register() {
                   <input
                     type="text"
                     id="login"
-                    className="fadeIn second"
+                    className="fadeIn third"
                     name="email"
-                    placeholder="email"
+                    placeholder="email@user.com"
                     value={user.email}
                     onChange={getUser}
                   />
                 </label>
               </div>
+              {validationMessages.email && (
+                <p className="error-message">{validationMessages.email}</p>
+              )}
+
+
               <div className="my-inner-register">
                 <label className="my-label-register">
                   Password:
                   <input
-                    type="password"
+                    typ="password"
                     id="password"
-                    class="fadeIn third"
+                    class="fadeIn second"
                     name="password"
                     placeholder="password"
                     value={user.password}
@@ -87,18 +129,22 @@ function Register() {
                   />
                 </label>
               </div>
+              {validationMessages.email && (
+                <p className="error-message">{validationMessages.password}</p>
+              )}
             </div>
+
             <button type="submit" class="fadeIn fourth" value="Log In">
               Register
             </button>
-            {message !== "" && (
-              <div className="my-label-wrong">
+            {check !== "" && (
+              <div className="my-label-register-wrong">
                 <p>{message}</p>
               </div>
             )}
             <div className="my-label">
               <p>If you are registered user click here</p>
-              <Link to="/login">Login</Link>
+              <div className="my-label-log"><Link to="/login">Login</Link></div>
             </div>
           </div>
         </div>

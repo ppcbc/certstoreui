@@ -146,10 +146,12 @@ function CertExam() {
       tempErrors.testDescription = "Certification description is required";
     if (!certExam.price) tempErrors.price = "Certification price is required";
     if (!certExam.fullId) tempErrors.fullId = "Category is required";
-    if (!excategoryIds.some(item => item.selected))
+    if (certExam.fullId && !excategoryIds.some(item => item.selected)) {
       tempErrors.examQuestions = "At least one category must be selected";
-    if (!selectedExams.length)
+    }
+    if (certExam.fullId && !selectedExams.length) {
       tempErrors.examQuestions = "At least one question must be selected";
+    }
 
     setErrors(tempErrors);
     setValidationMessages(tempErrors);

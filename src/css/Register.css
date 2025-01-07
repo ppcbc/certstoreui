@@ -11,15 +11,16 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  margin-top: 40px;
 }
 
 .register-box {
-  background-color: var(--color1);
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 40px;
-  width: 500px;
-  transform: translateY(20px);
+  background-color: var(--color1); /* White background for contrast */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 40px; /* Increased padding for a spacious layout */
+  width: 500px; /* Increased width for the box */
+  transform: translateY(20px); 
 }
 
 .register-box input:focus {
@@ -29,15 +30,17 @@
 }
 
 .register-box input {
-  flex: 7;
-  padding: 10px;
-  margin: 5px;
-  width: 100%;
-  border: 1px solid var(--color6);
-  border-radius: 5px;
-  font-size: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  flex: 1; /* Allow input/select to take available space */
+  padding: 10px; /* Add padding for comfort */
+  border: 1px solid #ccc; /* Subtle border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1rem; /* Font size for readability */
+  width: auto; 
+  margin-top: 40px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+  color: var(--color8);
 }
 
 .my-inner-register {
@@ -53,8 +56,9 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 1px;
-  width: calc(100%);
+  gap: 8px;
+  width: 100%; 
+  vertical-align: center;
 }
 
 .register-box button {
@@ -68,20 +72,41 @@
   width: 100%;
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-top: 10px;
 }
 
+.my-label {
+  margin-top: 30px;
+}
+
+.my-label-register input {
+  padding: 0.5em;
+}
 .register-box button:hover {
   background-color: var(--color3);
   transform: translateY(-2px);
   font-weight: 600;
 }
 
-.my-label-wrong {
-  color: red;
+.my-label-register-wrong {
   font-size: 16px;
   text-align: center;
   margin-top: 15px;
   margin-bottom: 0px;
   font-weight: 300;
+}
+.my-label-log{
+  margin-top: -38px;
+  justify-content: flex-end;
+  text-align: right;
+  align-items: left;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  text-align: right;
+  margin-top: -5px;
+  margin-bottom: 15px;
+  margin-left: 5px;
+  padding-right: 3px;
 }

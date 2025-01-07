@@ -129,9 +129,8 @@ function Finish({
       // console.log(selectedExams);
       // console.log(test1);
       setMyDetails1(test1);
-      console.log(test1);
+      // console.log(test1);
       test(test1);
-      createMyCertificate();
       deleteStaf();
     } catch (error) {
       console.log(error.message);
@@ -150,14 +149,15 @@ function Finish({
       }, {})
     );
 
-    console.log(myCategory);
+    // console.log(myCategory);
 
     let x = calculateScoresForAllGroups(myCategory);
-    console.log(x);
+    // console.log(x);
     setScores(x);
     let y = calculateFullScores(x, myDetails);
-    console.log(y);
+    // console.log(y);
     setTotalScores(y);
+    createMyCertificate(y);
   }
 
   function calculateScoreForGroup(questions) {
@@ -230,13 +230,17 @@ function Finish({
     };
   }
 
-  async function createMyCertificate() {
+  async function createMyCertificate(cert) {
     try {
-      var response = await axios.get(http + `api/Certificates`, totalScores, {
-        headers: {
-          Authorization: "Bearer " + myToken
+      var response = await axios.post(
+        "https://localhost:7117/api/Certificates",
+        cert,
+        {
+          headers: {
+            Authorization: "Bearer " + myToken
+          }
         }
-      });
+      );
       console.log("response");
       console.log(response.status);
     } catch (error) {

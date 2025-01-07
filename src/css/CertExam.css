@@ -219,9 +219,10 @@ input[type="file"] {
 .certexam-my-message{
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  align-items: left;
+  margin: 10px;
   width: 100%;
   color: var(--color9);
 }
