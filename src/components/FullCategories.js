@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { setFullCategoryId } from "../features/loginSlice";
+import { useSelector } from "react-redux";
 import "../css/FullCategories.css";
 import http from "../data/http";
 import Footer from "./Footer";

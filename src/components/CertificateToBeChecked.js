@@ -1,6 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
-import { jsPDF } from "jspdf";
-import html2canvas from "html2canvas";
+import React, { useEffect, useState } from "react";
 import "../css/Finish.css";
 import axios from "axios";
 import http from "../data/http";

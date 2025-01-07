@@ -1,9 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import React from "react";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { setFullCategoryId } from "../features/loginSlice";
-//import "../css/AddExamCategory.css";
+import { useSelector } from "react-redux";
 import "../css/UpdateExamCategory.css";
 import http from "../data/http";
 import Footer from "./Footer";
@@ -250,9 +248,7 @@ function UpdateExamCategory() {
                 <p style={{ color: "red" }}>{error}</p>
               </div>
             )}
-            <div className="update-exam-label">
-              {check && <p>{message}</p>}
-            </div>
+            <div className="update-exam-label">{check && <p>{message}</p>}</div>
           </div>
         </div>
       </form>

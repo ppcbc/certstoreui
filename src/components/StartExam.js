@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../css/StartExam.css";
-import axios, { all } from "axios";
+import axios from "axios";
 import { useSelector } from "react-redux";
 import http from "../data/http";
 import shuffle from "../data/shuffle";

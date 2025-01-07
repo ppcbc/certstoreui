@@ -4,10 +4,7 @@ import { useSelector } from "react-redux";
 import Footer from "./Footer";
 import axios from "axios";
 import http from "../data/http";
-import formatDate from "../data/formatDate";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import MyCertificateButton from "./MyCertificateButton";
-import MyAcquiredCertificateButton from "./MyAcquiredCertificateButton";
+import { useNavigate, useParams } from "react-router-dom";
 import fixDateToStringGmtPlusTwo from "../data/fixDateToGmtPlusTwo";
 import CertificateResultsButton from "./CertificateResultsButton";
 

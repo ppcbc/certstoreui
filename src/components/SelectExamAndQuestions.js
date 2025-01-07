@@ -3,12 +3,10 @@ import "../css/CertExam.css";
 
 function SelectExamAndQuestions({
   exam,
-  onChange,
   handleExCategoryId,
   handleSelectedExams,
   allExams,
-  catId,
-  exId
+  catId
 }) {
   const [isChecked, setIsChecked] = useState(false);
 

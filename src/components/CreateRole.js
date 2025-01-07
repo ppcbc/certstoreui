@@ -2,7 +2,6 @@ import { useState } from "react";
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import http from "../data/http";
 import "../css/AssignRole.css";
 import Footer from "./Footer";
 import { useSelector } from "react-redux";

@@ -2,13 +2,7 @@ import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "../css/Header.css";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setBasketNewItem,
-  setId,
-  setLogReg,
-  setRole,
-  setToken
-} from "../features/loginSlice";
+import { setId, setLogReg, setRole, setToken } from "../features/loginSlice";
 
 export default function Header() {
   const myLog = useSelector(state => state.token.value.log);
