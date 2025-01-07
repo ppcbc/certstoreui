@@ -46,12 +46,14 @@ function Finish({
     const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
 
     pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-    pdf.save("Software-Development-Skills-Foundation-C#.pdf");
+    pdf.save(`${totalScores.finishTitle}.pdf`);
   };
 
   async function getExams() {
     try {
       let selectedExams = [];
+
+      selectedExams = originalExams;
       for (let i = 0; i < originalExams.length; i++) {
         for (let y = 0; y < myAnswers.length; y++) {
           if (originalExams[i].examId == myAnswers[y].id) {
@@ -59,14 +61,10 @@ function Finish({
               ...originalExams[i],
               ...myAnswers[y]
             };
-          } else {
-            selectedExams[i] = {
-              ...originalExams[i]
-            };
           }
         }
       }
-      console.log(originalExams);
+
       var response = await axios.get(http + `api/UserStafs/${userStafId}`, {
         headers: {
           Authorization: "Bearer " + myToken

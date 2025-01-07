@@ -191,6 +191,7 @@ export default function MyCertificates() {
                         Mark: {certification.successRate}
                       </p>
                       <MyAcquiredCertificateButton
+                        certificateKey={certification.certificateKey}
                         bkgrColor={"color10"}
                         clas={"acquired-certificates-button"}
                         redeem={certification.passed}

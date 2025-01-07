@@ -42,6 +42,7 @@ import DeleteCertExam from "./components/DeleteCertExam";
 import CreateRole from "./components/CreateRole";
 import Diploma from "./components/Diploma";
 import UpdateCertExam from "./components/UpdateCertExam";
+import CertificateResults from "./components/CertificateResults";
 
 function Layout() {
   const location = useLocation();
@@ -74,7 +75,11 @@ function Layout() {
         <Route path="/user-details/:userStafId" element={<UserDetails />} />
         <Route path="/addfull-category" element={<FullCategories />} />
         <Route path="/finish" element={<Finish />} />
-        <Route path="/diploma" element={<Diploma />} />
+        <Route
+          path="/certificateResults/:certificateKey"
+          element={<CertificateResults />}
+        />
+        <Route path="/diploma:/certificateKey" element={<Diploma />} />
         <Route path="/add-certexam" element={<CertExam />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/about-us" element={<About />} />
