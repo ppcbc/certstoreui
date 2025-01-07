@@ -3,7 +3,6 @@ import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setFullCategoryId } from "../features/loginSlice";
 import "../css/AddExamCategory.css";
 import http from "../data/http";
 import Footer from "./Footer";

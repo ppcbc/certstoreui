@@ -1,6 +1,5 @@
 import React, { useState } from "react"; // Import useState here
 import "../css/ContactUs.css";
-import http from "../data/http";
 import emailjs from "emailjs-com";
 import Footer from "./Footer";
 

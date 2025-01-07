@@ -3,15 +3,9 @@ import React from "react";
 import axios from "axios";
 import http from "../data/http";
 import "../css/CertExam.css";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  setFullCategoryId,
-  setId,
-  setLogReg,
-  setRole,
-  setToken
-} from "../features/loginSlice";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import SelectExamAndQuestions from "./SelectExamAndQuestions";
 import Footer from "./Footer";
 
@@ -325,7 +319,9 @@ function CertExam() {
                 Cancel
               </button>
             </div>
-            <div className="certexam-my-message">{check && <p>{message}</p>}</div>
+            <div className="certexam-my-message">
+              {check && <p>{message}</p>}
+            </div>
           </div>
         </div>
       </form>

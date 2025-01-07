@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import "../css/ExamButton.css";
-import fixDateToStringGmtPlusTwo from "../data/fixDateToGmtPlusTwo";
-import formatDate from "../data/formatDate";
 
 function MyCertificateButton({
-                               onClick,
-                               bkgrColor,
-                               clas,
-                               dateOfSendCertExam,
-                               userStafId,
-                               today
-                             }) {
+  onClick,
+  bkgrColor,
+  clas,
+  dateOfSendCertExam,
+  userStafId,
+  today
+}) {
   const [isMouseOver, setIsMouseOver] = useState(false);
 
   function checkMouseOver() {
@@ -32,15 +30,15 @@ function MyCertificateButton({
   }
 
   return (
-      <div
-          className={clas}
-          onMouseOut={checkMouseOver}
-          onMouseOver={checkMouseOver}
-          style={{ backgroundColor: isMouseOver && `var(--${bkgrColor})` }}
-          onClick={() => onClick(userStafId)}
-      >
-        {buttonText}
-      </div>
+    <div
+      className={clas}
+      onMouseOut={checkMouseOver}
+      onMouseOver={checkMouseOver}
+      style={{ backgroundColor: isMouseOver && `var(--${bkgrColor})` }}
+      onClick={() => onClick(userStafId)}
+    >
+      {buttonText}
+    </div>
   );
 }
 

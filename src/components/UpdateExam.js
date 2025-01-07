@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
 import http from "../data/http";
-// import "../css/ScheduleExam.css";
 import "../css/AddExam.css";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import Footer from "./Footer";
 

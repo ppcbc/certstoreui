@@ -5,7 +5,6 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import http from "../data/http";
-import formatDate from "../data/formatDate";
 
 export default function ScheduleExam() {
   const [selectedDate, setSelectedDate] = useState("");

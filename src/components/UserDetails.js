@@ -3,9 +3,8 @@ import "../App.css";
 import "../css/UserDetails.css";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { setLogReg } from "../features/loginSlice";
 import http from "../data/http";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "./Footer";
 
 const getTodayDateForAgeLimit = ageLimit => {

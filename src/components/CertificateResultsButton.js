@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import "../css/ExamButton.css";
-import fixDateToStringGmtPlusTwo from "../data/fixDateToGmtPlusTwo";
-import formatDate from "../data/formatDate";
-import CertificateResults from "./CertificateResults";
 import { useNavigate } from "react-router-dom";
 
 function CertificateResultsButton({

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import http from "../data/http";
 import fixDateToGmtPlusTwo from "../data/fixDateToGmtPlusTwo";
 import { setBasketNewItem } from "../features/loginSlice";

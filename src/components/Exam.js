@@ -4,7 +4,7 @@ import http from "../data/http";
 import axios from "axios";
 import Question from "./Question";
 import AllQuestions from "./AllQuestions";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Finish from "./Finish";
 import shuffle from "../data/shuffle";
 import { useSelector } from "react-redux";

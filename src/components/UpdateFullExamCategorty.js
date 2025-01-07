@@ -3,7 +3,6 @@ import React from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setFullCategoryId } from "../features/loginSlice";
 import "../css/UpdateFullExamCategory.css";
 import http from "../data/http";
 import Footer from "./Footer";
@@ -199,13 +198,11 @@ function UpdateFullExamCategory() {
                 </>
               )}
             </div>
-            
-              <button type="submit" className="fadeIn fourth">
-                Update
-              </button>
-            
-            
-          
+
+            <button type="submit" className="fadeIn fourth">
+              Update
+            </button>
+
             <button
               type="cancel"
               className="fadeIn fourth"
@@ -213,7 +210,7 @@ function UpdateFullExamCategory() {
             >
               Cancel
             </button>
-          
+
             <div className="update-full-exam-laybel">
               {check && <p>{message}</p>}
             </div>
