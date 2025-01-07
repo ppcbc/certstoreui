@@ -5,12 +5,13 @@ import "../css/Finish.css";
 import axios from "axios";
 import http from "../data/http";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function CertificateToBeChecked() {
   const [totalScores, setTotalScores] = useState(null);
   const myToken = useSelector(state => state.token.value.tok);
   const { certificateKey } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getCertificate();
@@ -28,6 +29,26 @@ function CertificateToBeChecked() {
       );
       console.log(response.data);
       setTotalScores(response.data);
+    } catch (error) {
+      console.error("Error fetching certificate data:", error.message);
+    }
+  }
+  async function approve() {
+    try {
+      let approve = {
+        ...totalScores,
+        marked: true
+      };
+      const response = await axios.put(
+        `${http}api/Certificates/${certificateKey}`,
+        approve,
+        {
+          headers: {
+            Authorization: `Bearer ${myToken}`
+          }
+        }
+      );
+      console.log(response.data);
     } catch (error) {
       console.error("Error fetching certificate data:", error.message);
     }
@@ -158,11 +179,14 @@ function CertificateToBeChecked() {
           </tbody>
         </table>
 
-        <button onClick={""} className="download-button">
+        <button onClick={approve} className="download-button">
           Approve
         </button>
-        <button onClick={""} className="download-button">
-          Dissaprove
+        <button
+          onClick={() => navigate("/marker-panel")}
+          className="download-button"
+        >
+          Back
         </button>
       </div>
     </div>
