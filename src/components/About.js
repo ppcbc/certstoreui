@@ -2,6 +2,13 @@ import React from "react";
 import "../css/About.css";
 import ProfileCard from "./ProfileCard";
 import Footer from "./Footer";
+import pho5 from "../images/creators/pho5.jpg"
+import pho4 from "../images/creators/pho4.jpg"
+import pho3 from "../images/creators/pho3.jpg" 
+import pho1 from "../images/creators/pho1.jpg"
+import pho6 from "../images/creators/pho6.jpg"
+import pho2 from "../images/creators/pho2.jpg"
+
 
 function About() {
   return (
@@ -37,37 +44,40 @@ function About() {
           </div>
           <div className="box-cards">
             <ProfileCard
-              avatar="https://i.imgur.com/yXOvdOSs.jpg"
+              avatar={pho1}
               name="Mantzinos Efthymios"
-              occupation="Leader  Software Engineer"
-              interest="Developing,Gaming"
+              occupation="Leader Software Engineer"
+              interest="Developing, 9ball, Gaming"
             />
             <ProfileCard
-              avatar=""
+              avatar={pho4}
               name="Pattichi Ioanna"
-              occupation="FullStack Software Engineer"
-              interest="Foreign languages. Exploring new places and cultures."
+              occupation="FullStack Developer Engineer"
+              interest="Foreign languages. Exploring new places and cultures"
             />
             <ProfileCard
-              avatar=""
+              avatar={pho6}
               name="Laoudis Kostas"
-              occupation="Frontend Software Engineer"
+              occupation="Fullstack Developer Engineer"
+              interest="Exploring new places and learning new things"
             />
             <ProfileCard
-              avatar=""
+              avatar={pho2}
               name="Antonopoulos Zois"
-              occupation="Backend Software Engineer"
+              occupation="Fullstack Developer Engineer"
+              interest="Developing and Trading"
             />
             <ProfileCard
-              avatar=""
+              avatar={pho5}
               name="Gkarlaouni Christina"
-              occupation="Backend Software Engineer"
-              interest="Beekeeping,Speleology"
+              occupation="Fullstack Developer Engineer"
+              interest="Photography, Beekeeping, Speleology"
             />
             <ProfileCard
-              avatar=""
+              avatar={pho3}
               name="Efstratiou Nikos"
-              occupation="FullStack Software Engineer"
+              occupation="FullStack Developer Engineer"
+              interest="Music,Psychology"
             />
           </div>
         </div>
