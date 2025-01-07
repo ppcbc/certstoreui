@@ -194,8 +194,8 @@ export default function MyCertificates() {
                         certificateKey={certification.certificateKey}
                         bkgrColor={"color10"}
                         clas={"acquired-certificates-button"}
-                        redeem={certification.passed}
                         dateOfSendCertExam={"Select an exam date"}
+                        marked={certification.marked}
                       >
                         Show
                       </MyAcquiredCertificateButton>

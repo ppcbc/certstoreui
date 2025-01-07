@@ -2,7 +2,7 @@ import React from "react";
 import "../css/ExamButton.css";
 import { useNavigate } from "react-router-dom";
 
-function MyAcquiredCertificateButton({ certificateKey, redeem }) {
+function MyAcquiredCertificateButton({ certificateKey, redeem, marked }) {
   const navigate = useNavigate();
   return (
     <div className="acquired-certificates-buttons-container">
@@ -12,7 +12,8 @@ function MyAcquiredCertificateButton({ certificateKey, redeem }) {
       >
         View Results
       </button>
-      {redeem && (
+
+      {marked && (
         <button
           className="acquired-certificates-button"
           onClick={() => navigate(`/diploma/${certificateKey}`)}
