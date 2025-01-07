@@ -71,35 +71,35 @@ function PaymentPage() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    beCandidate();
+    // beCandidate();
     updateStaf();
   };
 
-  async function beCandidate() {
-    try {
-      var res = await axios.get(http + `api/AddRole/get-my-email`, {
-        headers: {
-          Authorization: "Bearer " + myToken
-        }
-      });
-      let myCurrentEmail = res.data.email;
-      console.log(myCurrentEmail);
-      if (myRole != "Candidate" && myRole != "Admin") {
-        await axios.post(http + "api/AddRole/remove-user-role", {
-          email: myCurrentEmail,
-          role: myRole
-        });
-        let user = {
-          email: myCurrentEmail,
-          role: "Candidate"
-        };
-        var response = await axios.post(http + "api/AddRole/assign-role", user);
-      }
-      console.log(myRole);
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
+  // async function beCandidate() {
+  //   try {
+  //     var res = await axios.get(http + `api/AddRole/get-my-email`, {
+  //       headers: {
+  //         Authorization: "Bearer " + myToken
+  //       }
+  //     });
+  //     let myCurrentEmail = res.data.email;
+  //     console.log(myCurrentEmail);
+  //     if (myRole != "Candidate" && myRole != "Admin") {
+  //       await axios.post(http + "api/AddRole/remove-user-role", {
+  //         email: myCurrentEmail,
+  //         role: myRole
+  //       });
+  //       let user = {
+  //         email: myCurrentEmail,
+  //         role: "Candidate"
+  //       };
+  //       var response = await axios.post(http + "api/AddRole/assign-role", user);
+  //     }
+  //     console.log(myRole);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // }
 
   return (
     <form action="">
