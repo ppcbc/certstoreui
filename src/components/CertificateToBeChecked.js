@@ -33,11 +33,12 @@ function CertificateToBeChecked() {
       console.error("Error fetching certificate data:", error.message);
     }
   }
-  async function approve() {
+  async function approve(marked, reject) {
     try {
       let approve = {
         ...totalScores,
-        marked: true
+        marked: marked,
+        reject: reject
       };
       const response = await axios.put(
         `${http}api/Certificates/${certificateKey}`,
@@ -49,6 +50,7 @@ function CertificateToBeChecked() {
         }
       );
       console.log(response.data);
+      navigate("/marker-panel");
     } catch (error) {
       console.error("Error fetching certificate data:", error.message);
     }
@@ -179,14 +181,17 @@ function CertificateToBeChecked() {
           </tbody>
         </table>
 
-        <button onClick={approve} className="download-button">
+        <button
+          onClick={() => approve(true, false)}
+          className="download-button"
+        >
           Approve
         </button>
         <button
-          onClick={() => navigate("/marker-panel")}
+          onClick={() => approve(false, true)}
           className="download-button"
         >
-          Back
+          Regect
         </button>
       </div>
     </div>

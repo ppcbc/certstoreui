@@ -42,7 +42,9 @@ export default function MyCertificates() {
           Authorization: `Bearer ${myToken}`
         }
       });
-      let myCertificates = response.data.filter(cert => cert.marked == false);
+      let myCertificates = response.data.filter(
+        cert => cert.marked == false && cert.reject == false
+      );
       setAcquiredCertificates(myCertificates);
     } catch (error) {
       console.error("Failed to fetch certifications:", error.message);
