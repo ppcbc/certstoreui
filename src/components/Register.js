@@ -8,11 +8,9 @@ import Footer from "./Footer";
 import "../css/Register.css";
 
 function Register() {
-
   const [validationMessages, setValidationMessages] = useState({});
   const [check, setCheck] = useState(false);
   const [added, setAdded] = useState("");
-
 
   function handleMessage() {
     setCheck(true);
@@ -45,27 +43,27 @@ function Register() {
     });
   }
 
-    // Email validation function
-    const validateEmail = email => {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return emailRegex.test(email);
-    };
-  
-    // Validation function
-    const validate = () => {
-      let errors = {};
-      if (user.email === "") {
-        errors.email = "Please enter your email";
-      }
-      if (user.password === "") {
-        errors.password = "Please enter your password";
-      }
-      if (!validateEmail(user.email)) {
-        errors.email = "Please enter a valid email address.";
-      }
-      setValidationMessages(errors);
-      return Object.keys(errors).length === 0;
+  // Email validation function
+  const validateEmail = email => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  // Validation function
+  const validate = () => {
+    let errors = {};
+    if (user.email === "") {
+      errors.email = "Please enter your email";
     }
+    if (user.password === "") {
+      errors.password = "Please enter your password";
+    }
+    if (!validateEmail(user.email)) {
+      errors.email = "Please enter a valid email address.";
+    }
+    setValidationMessages(errors);
+    return Object.keys(errors).length === 0;
+  };
 
   async function onSubmit(e) {
     e.preventDefault();
@@ -114,12 +112,11 @@ function Register() {
                 <p className="error-message">{validationMessages.email}</p>
               )}
 
-
               <div className="my-inner-register">
                 <label className="my-label-register">
                   Password:
                   <input
-                    typ="password"
+                    type="password"
                     id="password"
                     class="fadeIn second"
                     name="password"
@@ -144,7 +141,9 @@ function Register() {
             )}
             <div className="my-label">
               <p>If you are registered user click here</p>
-              <div className="my-label-log"><Link to="/login">Login</Link></div>
+              <div className="my-label-log">
+                <Link to="/login">Login</Link>
+              </div>
             </div>
           </div>
         </div>

@@ -86,8 +86,8 @@ export default function MyCertificates() {
           Authorization: `Bearer ${myToken}`
         }
       });
-      // let myCertificates = response.data.filter(cert => cert.userId == myId);
-      let myCertificates = response.data;
+      let myCertificates = response.data.filter(cert => cert.userId == myId);
+      // let myCertificates = response.data;
       setAcquiredCertificates(myCertificates);
     } catch (error) {
       console.error("Failed to fetch certifications:", error.message);

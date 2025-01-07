@@ -44,6 +44,7 @@ import Diploma from "./components/Diploma";
 import UpdateCertExam from "./components/UpdateCertExam";
 import CertificateResults from "./components/CertificateResults";
 import UnmarketResults from "./components/UnmarkedResults";
+import CertificateToBeChecked from "./components/CertificateToBeChecked";
 
 function Layout() {
   const location = useLocation();
@@ -89,6 +90,8 @@ function Layout() {
         <Route path="/delete-exam" element={<DeleteExam />} />
         <Route path="/delete-exam-category" element={<DeleteExamCategory />} />
         <Route path="/basket" element={<Basket />} />
+        <Route path="/marker-panel" element={<UnmarketResults />} />
+
         <Route
           path="/delete-full-exam-category"
           element={<DeleteFullExamCategory />}
@@ -103,7 +106,10 @@ function Layout() {
         <Route path="/delete-certexam" element={<DeleteCertExam />} />
         <Route path="/create-role" element={<CreateRole />} />
         <Route path="/update-certexam" element={<UpdateCertExam />} />
-        <Route path="/unmarked-results" element={<UnmarketResults />} />
+        <Route
+          path="/cert-to-check/:certificateKey"
+          element={<CertificateToBeChecked />}
+        />
       </Routes>
       {/* </div> */}
       {/* {shouldShowHeader && <Footer color={"red"} />} */}

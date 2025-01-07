@@ -81,7 +81,6 @@ export default function Header() {
               MY CERTIFICATES
             </NavLink>
           </li>
-
           {myRole === "Admin" && (
             <li className="nav-item">
               <NavLink
@@ -94,7 +93,18 @@ export default function Header() {
               </NavLink>
             </li>
           )}
-
+          {myRole === "Marker" && (
+            <li className="nav-item">
+              <NavLink
+                to="/marker-panel"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                MARKER PANEL
+              </NavLink>
+            </li>
+          )}
           {/* <li className="nav-item">
             <NavLink
               to="/user-details"
@@ -117,7 +127,6 @@ export default function Header() {
               </NavLink>
             </li>
           )} */}
-
           {/* {myToken !== "" && (
             <li className="nav-item">
               <NavLink
