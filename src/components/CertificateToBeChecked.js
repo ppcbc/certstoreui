@@ -191,7 +191,7 @@ function CertificateToBeChecked() {
           onClick={() => approve(false, true)}
           className="download-button"
         >
-          Regect
+          Reject
         </button>
       </div>
     </div>

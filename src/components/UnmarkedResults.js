@@ -55,30 +55,34 @@ export default function MyCertificates() {
     <div className="my-certificates-main">
       <div className="my-certificates-container">
         <div className="future-exams">
-          <h1 className={acquiredCertificates.length === 0 ? "hidden" : ""}>
-            Exams results to be checked
-          </h1>
+          <h1>Exams results to be checked</h1>
           <ul>
-            {acquiredCertificates.map(cert => (
-              <li key={cert.certificateKey}>
-                <h2>{cert.finishTitle}</h2>
-                <p className="myfutureexams-description">
-                  {truncateDescription(cert.testDescription, 150)}
-                </p>
-                <div className="future-certificates-buttons-container">
-                  <p className="myfutureexams-date">Date: {cert.reportDate}</p>
-                  <CertificateResultsButton
-                    clas={"future-certificates-button"}
-                    bkgrColor={"color16"}
-                    onClick={""}
-                    // haveUserDetails={haveUserDetails}
-                    certificateKey={cert.certificateKey}
-                    dateOfSendCertExam={cert.startTime}
-                    today={fixDateToStringGmtPlusTwo()}
-                  />
-                </div>
-              </li>
-            ))}
+            {acquiredCertificates.length === 0 ? (
+              <p>No certificates to check for the moment.</p>
+            ) : (
+              acquiredCertificates.map(cert => (
+                <li key={cert.certificateKey}>
+                  <h2>{cert.finishTitle}</h2>
+                  <p className="myfutureexams-description">
+                    {truncateDescription(cert.testDescription, 150)}
+                  </p>
+                  <div className="future-certificates-buttons-container">
+                    <p className="myfutureexams-date">
+                      Date: {cert.reportDate}
+                    </p>
+                    <CertificateResultsButton
+                      clas={"future-certificates-button"}
+                      bkgrColor={"color16"}
+                      onClick={""}
+                      // haveUserDetails={haveUserDetails}
+                      certificateKey={cert.certificateKey}
+                      dateOfSendCertExam={cert.startTime}
+                      today={fixDateToStringGmtPlusTwo()}
+                    />
+                  </div>
+                </li>
+              ))
+            )}
           </ul>
         </div>
       </div>
