@@ -43,6 +43,7 @@ import CreateRole from "./components/CreateRole";
 import Diploma from "./components/Diploma";
 import UpdateCertExam from "./components/UpdateCertExam";
 import CertificateResults from "./components/CertificateResults";
+import UnmarketResults from "./components/UnmarkedResults";
 
 function Layout() {
   const location = useLocation();
@@ -79,7 +80,7 @@ function Layout() {
           path="/certificateResults/:certificateKey"
           element={<CertificateResults />}
         />
-        <Route path="/diploma:/certificateKey" element={<Diploma />} />
+        <Route path="/diploma/:certificateKey" element={<Diploma />} />
         <Route path="/add-certexam" element={<CertExam />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/about-us" element={<About />} />
@@ -102,6 +103,7 @@ function Layout() {
         <Route path="/delete-certexam" element={<DeleteCertExam />} />
         <Route path="/create-role" element={<CreateRole />} />
         <Route path="/update-certexam" element={<UpdateCertExam />} />
+        <Route path="/unmarked-results" element={<UnmarketResults />} />
       </Routes>
       {/* </div> */}
       {/* {shouldShowHeader && <Footer color={"red"} />} */}
