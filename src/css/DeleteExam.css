@@ -1,0 +1,114 @@
+/* Style for the .delete-full-exam-category-main container */
+.delete-question-main {
+  background-color: var(--color2);
+}
+
+.delete-question {
+  background-color: var(--color2);
+  color: var(--color9);
+  padding: 40px 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Style for the box containing the form elements */
+.delete-question-box {
+  background-color: var(--color1);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 800px;
+  transform: translateY(20px);
+}
+
+.delete-question-box select:focus {
+  border-color: var(--color7);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+/* Style for the h1 (main heading) */
+.delete-question-box h1 {
+  font-size: 2rem;
+  margin: 3px 10px;
+  margin-bottom: 30px;
+  color: var(--color8);
+  text-align: center;
+}
+
+/* Style for the input */
+.delete-question-box select {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: calc(100% - 80px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--color8);
+}
+
+/* Focus effect for input */
+.elete-question-box select:focus {
+  border-color: var(--color7);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+/* Style for the button */
+.delete-question-box button {
+  background-color: var(--color7);
+  color: var(--color1);
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect for the button */
+.elete-question-box button:hover {
+  background-color: var(--color3);
+  transform: translateY(-2px);
+  font-weight: 600;
+}
+
+/* Inner box styles */
+.delete-question-my-inner-box {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+/* Label styles */
+.delete-question-my-label {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: left;
+  gap: 8px;
+  width: 100%;
+  color: var(--color9);
+}
+
+/* Error message styles */
+.delete-question-error-message {
+  color: red;
+  font-size: 12px;
+  text-align: right;
+  margin-top: -5px;
+  margin-bottom: 15px;
+  margin-left: 5px;
+  padding-right: 3px;
+}
+

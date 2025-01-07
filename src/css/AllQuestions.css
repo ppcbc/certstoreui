@@ -1,0 +1,21 @@
+.Questions-container {
+  /* width: 100px;
+  background-color: var(--color1);
+  border: 2px solid var(--color3);
+  border-radius: 5px;
+  cursor: pointer;
+  height: 15px;
+  margin: 4px;
+  padding: 6px; */
+  background-color: var(--color1);
+  border: 2px solid var(--color3);
+  margin: 4px 0 4px 0;
+  padding: 4px;
+  border-radius: 5px;
+  text-align: left;
+  cursor: pointer;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,193 @@
+.my-home-main {
+  /* background-color: var(--color5); */
+  background-color: #b4b5b0;
+}
+
+.my-home {
+  background-color: #b4b5b0;
+  /* background-color: #2e4854; */
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+  color: #fff;
+  display: flex; /* Use flexbox to center content */
+  flex-direction: column; /* Align children (h1 and p) vertically */
+  justify-content: flex-start; /* Vertically center the content */
+  align-items: center; /* Horizontally center the content */
+  text-align: center; /* Center the text */
+  padding: 70px 20px 20px 20px; /* Add padding around the content */
+  word-wrap: break-word;
+  min-height: 100vh; /* Ensure the section takes up at least the full viewport height */
+  box-sizing: border-box; /* Include padding in height calculation */
+  margin-bottom: -25px;
+}
+.my-home-upper {
+  display: flex; /* Use flexbox to center content */
+  flex-direction: column; /* Align children (h1 and p) vertically */
+  justify-content: flex-start; /* Vertically center the content */
+  align-items: center; /* Horizontally center the content */
+  text-align: center; /* Center the text */
+  background-color: #2e4854; /* Fallback background color */
+  padding: 70px 20px 60px 20px; /* Add padding around the content */
+
+  background-image: url("../images/main_image_grayscale_cropped.jpg");
+  background-blend-mode: overlay; /* Blend the image with the background color */
+  background-size: cover; /* Ensure the image covers the entire section */
+  background-position: center; /* Center the image */
+  color: #fff; /* White text color */
+  width: 100%;
+  word-wrap: break-word;
+  margin-top: -5px;
+}
+
+/* Style for h1 (headline) */
+.my-home h1 {
+  color: lightgray;
+  font-weight: 500;
+  font-size: 3.5rem; /* Larger font size for the heading */
+  margin-bottom: 10px; /* Space between heading and paragraph */
+  padding-bottom: 20px; /* Space between heading text and line */
+  letter-spacing: 0.5px;
+}
+
+.divider {
+  border: none; /* Remove default border */
+  border-top: 1px solid lightgray; /* Thin solid line */
+  margin: 20px 0 30px 0; /* Add spacing above and below */
+  width: 60%; /* Center the line */
+  align-self: center; /* Center for flexbox containers if needed */
+}
+
+/* Style for p (paragraph) */
+.my-home .main-text {
+  color: lightgray;
+  font-size: 1.2rem; /* Slightly larger text for the paragraph */
+  max-width: 850px;
+  letter-spacing: 0.5px;
+  margin-bottom: 50px;
+  padding-bottom: 20px;
+}
+
+/* Style for the .certifications container */
+.preview-certifications {
+  background-color: #b4b5b0; /* Light background for the section */
+  color: #2c3e50; /* Text color matching the header palette */
+  padding: 40px 20px; /* Padding for the container */
+  text-align: center; /* Center the heading and general text */
+  width: 100%;
+  position: relative; /* Prevent it from overlapping other sections */
+  margin-top: 0;
+}
+
+/* Style for the h1 (Featured Certifications title) */
+.preview-certifications h1 {
+  font-size: 2.5rem; /* Large heading */
+  margin-top: 1px;
+  margin-bottom: 20px; /* Space below the heading */
+  color: #4b5052; /* Match the palette */
+  font-weight: bold;
+  letter-spacing: 0.1px;
+}
+
+/* Style for the list of certifications */
+.preview-certifications ul {
+  list-style: none; /* Remove default list styling */
+  padding: 0; /* Remove padding */
+  flex-grow: 1;
+  display: flex; /* Use flexbox to align items */
+  flex-wrap: wrap; /* Allow wrapping to next line for responsiveness */
+  justify-content: center; /* Center the items in the container */
+  gap: 20px; /* Space between items */
+}
+
+/* Style for each certification box */
+.preview-certifications li {
+  background-color: #2e4854; /* Darker background for each box */
+  border: 1px solid gray; /* Subtle border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  padding: 20px; /* Internal padding */
+  width: 280px; /* Fixed width for each box */
+  min-height: 265px; /* Accommodate extra description text */
+  text-align: center; /* Center the content */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover effect for each box */
+.preview-certifications li:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
+
+/* Style for certification name (h2) */
+.preview-certifications li h2 {
+  font-size: 1.5rem; /* Medium font size */
+  margin-bottom: 20px; /* Space below the title */
+  color: white; /* White text for titles */
+}
+
+/* Style for certification description */
+.preview-certifications li p:nth-of-type(1) {
+  font-size: 0.9rem; /* Slightly smaller font for descriptions */
+  margin-bottom: 10px; /* Space below description */
+  color: #dfe6e9; /* Slightly lighter text color for contrast */
+  line-height: 1.4; /* Improve readability */
+}
+
+/* Style for the price text (p) */
+.preview-certifications li p:nth-of-type(2) {
+  font-size: 1.3rem; /* Slightly larger font for visibility */
+  margin-top: 25px;
+  margin-bottom: 12px; /* Space below the price */
+  color: white; /* White text for prices */
+}
+
+/* Style for the "Buy Voucher" button */
+.preview-certifications li button {
+  background-color: #597785; /* Blue button background */
+  color: #fff; /* White text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 20px; /* Button padding */
+  margin-top: 20px;
+  margin-bottom: 0px;
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1rem; /* Font size for button text */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover effect for the button */
+.preview-certifications li button:hover {
+  background-color: #78909c; /* Darker blue on hover */
+  font-weight: 600; /* Make text bolder on hover */
+}
+
+/* Style for the "Explore All Certifications" link */
+.explore-link {
+  display: inline-block;
+  margin-top: 5px; /* Space above the link */
+  padding: 10px 20px; /* Padding for the link */
+  color: #5b5c55; /* Standard link blue */
+  font-size: 1.1rem; /* Font size */
+  text-decoration: underline; /* Underline to indicate a link */
+  text-underline-offset: 4px;
+  font-weight: 600; /* Medium font weight for visibility */
+  transition: color 0.3s ease; /* Smooth hover effect */
+}
+
+.explore-link:hover {
+  color: #5b5c55;
+  font-weight: 800;
+}
+.certification-link {
+  text-decoration: none;
+}
+
+.question-certify {
+  color: lightgray;
+  font-weight: 500;
+  font-size: 2rem; /* Larger font size for the heading */
+  margin-bottom: 10px; /* Space between heading and paragraph */
+  padding-bottom: 10px; /* Space between heading text and line */
+  letter-spacing: 0.5px;
+}

@@ -1,0 +1,109 @@
+/* Style for the .certifications container */
+.certifications-main {
+  background-color: var(--color2);
+}
+
+/* Style for the .certifications container */
+.certifications {
+  background-color: #b4b5b0; /* Light background for the page */
+  color: #2c3e50; /* Text color matching the header palette */
+  padding: 40px 20px; /* Padding for the container */
+  text-align: center; /* Center the heading and general text */
+  min-height: 100vh; /* Full height of the viewport */
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style for the h1 (main heading) */
+.certifications h1 {
+  font-size: 2.5rem; /* Large heading */
+  margin-bottom: 30px; /* Space below the heading */
+  color: var(--color8);
+}
+
+/* Style for the list of certifications */
+.certifications ul {
+  list-style: none; /* Remove default list styling */
+  padding: 0; /* Remove padding */
+  display: flex; /* Use flexbox to align items */
+  flex-wrap: wrap; /* Allow wrapping to next line for responsiveness */
+  justify-content: center; /* Center the items in the container */
+  gap: 20px; /* Space between items */
+}
+
+/* Style for each certification box */
+.certifications li {
+  background-color: #2e4854; /* Darker background for each box */
+  border: 1px solid gray; /* Subtle border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  padding: 20px; /* Internal padding */
+  width: 280px; /* Fixed width for each box */
+  min-height: 265px; /* Accommodate extra description text */
+  text-align: center; /* Center the content */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover effect for each box */
+.certifications li:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
+
+/* Style for certification name (h2) */
+.certifications li h2 {
+  font-size: 1.5rem; /* Medium font size */
+  margin-bottom: 20px; /* Space below the title */
+  color: white; /* White text for titles */
+}
+
+/* Style for certification description */
+.certifications li p:nth-of-type(1) {
+  font-size: 0.9rem; /* Slightly smaller font for descriptions */
+  margin-bottom: 25px; /* Space below description */
+  color: #dfe6e9; /* Slightly lighter text color for contrast */
+  line-height: 1.4; /* Improve readability */
+}
+
+/* Style for the price text (p) */
+.certifications li p:nth-of-type(2) {
+  font-size: 1.3rem; /* Slightly larger font for visibility */
+  margin-bottom: 30px; /* Space below the price */
+  color: white; /* White text for prices */
+}
+
+/* Style for the "Buy Voucher" button */
+.certifications li button {
+  background-color: #597785; /* Blue button background */
+  color: #fff; /* White text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 20px; /* Button padding */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1rem; /* Font size for button text */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover effect for the button */
+.certifications li button:hover {
+  background-color: #78909c; /* Darker blue on hover */
+  font-weight: 600; /* Make text bolder on hover */
+}
+.certification-buttons {
+  display: flex;
+  flex-direction: column;
+}
+.certification-button {
+  margin-bottom: 20px;
+}
+/* .certification-paragraph-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 90px;
+  text-align: center;
+} */

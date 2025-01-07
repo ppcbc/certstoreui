@@ -1,0 +1,66 @@
+/* About.css */
+.about-main-container {
+  background-color: var(--color5);
+}
+.about-container {
+  background-color: var(--color5);
+  background-image: -moz-linear-gradient("");
+  color: var(--color9);
+  padding: 40px 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 40px;
+}
+
+.about-container .text-about-p {
+  position: relative;
+  margin: 10px; /* Optional spacing below the text */
+  padding: 20px;
+  border: 2px solid var(--color7);
+  border-radius: 8px;
+  color: var(--color1);
+  background-color: var(--color7);
+}
+
+.about-box .h1-about {
+  font-size: 2rem; /* Larger heading for the wider box */
+  margin: 3px 10px; /* Space below the heading */
+  margin-bottom: 10px; /* Space below the heading */
+  color: var(--color8); /* Match the palette */
+  text-align: center; /* Keep the heading centered */
+}
+
+.about-box {
+  background-color: var(--color1); /* White background for contrast */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 40px; /* Increased padding for a spacious layout */
+  /*text-align: left; !* Align text to the left for a form layout *!*/
+  width: 800px; /* Increased width for the box */
+  transform: translateY(20px);
+}
+
+.box-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 10px; /* Space between cards */
+  padding: 16px;
+}
+
+.profile-card {
+  text-size-adjust: none;
+  text-align: center;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  width: auto;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.h2-card {
+  font-weight: 900;
+  font-size: medium;
+}

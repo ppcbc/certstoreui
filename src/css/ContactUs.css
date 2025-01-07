@@ -1,0 +1,114 @@
+/* Style for the .add-exam-category container */
+.contactus-main-container {
+  background-color: var(--color2); /* Light background for the page */
+}
+.contactus-container {
+  background-color: var(--color2); /* Light background for the page */
+  color: var(--color9); /* Text color matching the header palette */
+  padding: 40px 20px; /* Padding for the container */
+  min-height: 100vh; /* Full height of the viewport */
+  display: flex; /* Center align items */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  position: relative; /* Enable precise positioning of child elements */
+}
+
+.contactus-box h1 {
+  font-size: 2rem; /* Larger heading for the wider box */
+  margin: 3px 10px; /* Space below the heading */
+  margin-bottom: 20px; /* Space below the heading */
+  color: var(--color8); /* Match the palette */
+  text-align: center; /* Keep the heading centered */
+}
+
+.contactus-box {
+  background-color: var(--color1); /* White background for contrast */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 40px; /* Increased padding for a spacious layout */
+  /*text-align: left; !* Align text to the left for a form layout *!*/
+  width: 800px; /* Increased width for the box */
+  transform: translateY(20px); /* Slightly higher positioning */
+}
+
+.contactus-box-label {
+  /* font-size: 1.2rem; */
+  font-size: 1.8rem;
+  color: #4b5052;
+  /* margin-bottom: 5px; */
+  margin: 3px 10px;
+}
+
+.mycontact-box input[type="text"],
+.mycontact-box textarea {
+  flex: 1; /* Allow input/select to take available space */
+  padding: 10px; /* Add padding for comfort */
+  border: 1px solid #ccc; /* Subtle border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1rem; /* Font size for readability */
+  width: auto; /* Prevent full-width stretching */
+  /*width: calc(100% - 20px);*/
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth interaction */
+}
+
+.contact-box textarea:focus,
+.contact-box input[type="text"]:focus {
+  border-color: var(--color7); /* Highlight border on focus */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  outline: none; /* Remove default outline */
+}
+
+.contactus-box button {
+  background-color: var(--color7); /* Blue button background */
+  margin-top: 15px;
+  color: white; /* White text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 12px 20px; /* Button padding */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1rem; /* Font size for button text */
+  width: 100%; /* Full width for uniformity */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.mycontact-box button:hover {
+  background-color: var(--color3); /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+  font-weight: 600; /* Make text bolder on hover */
+}
+
+.my-inner-contactbox {
+  display: flex;
+  width: 98.5%;
+  flex-direction: row; /* Keep elements on the same line */
+  align-items: center; /* Align elements vertically */
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.sendcontact-button {
+  padding: 10px;
+}
+
+.align-left {
+  text-align: left;
+}
+.contactus-container input:focus,
+.contactus-container select:focus,
+.contactus-container textarea:focus {
+  border-color: var(--color7); /* Highlight border on focus */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  outline: none; /* Remove default outline */
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  text-align: right;
+  margin-top: -5px;
+  margin-bottom: 15px;
+  margin-left: 5px;
+  padding-right: 3px;
+}

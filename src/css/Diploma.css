@@ -1,0 +1,164 @@
+/* Styling for the main container */
+.diploma-container {
+    background-color: var(--color2);
+    color: var(--color9);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 120vh;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    position: relative;
+    box-sizing: border-box;
+    flex-direction: column;
+}
+
+/* Styling for the diploma box */
+.diploma-box {
+    background-color: var(--color1);
+    border-radius: 10px;
+    padding: 30px;
+    margin-top: 50px;
+    width: 25.35cm;
+    height: 17.9cm;
+    box-sizing: border-box;
+    position: relative;
+    border: 20px solid var(--color3);
+}
+
+/* Logo styling */
+.logo-diploma {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+}
+
+/* Text styling */
+.diploma-certify-text {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 100px;
+}
+
+.diploma-candidate-name {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: -10px;
+}
+
+.diploma-achieved-text {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 30px;
+}
+
+.diploma-certificate-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: -5px;
+}
+
+.diploma-effective-date {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 1rem;
+}
+
+/* Details row styling */
+.diploma-details-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 45px 0;
+    font-size: 0.7rem;
+}
+
+/* Signature section */
+.diploma-signature-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.diploma-signature {
+    width: 150px;
+}
+
+.diploma-signature-line {
+    border: none;
+    border-top: 1px solid #000;
+    width: 200px;
+    margin: 0px auto;
+}
+
+.diploma-signature-name {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.diploma-signature-title {
+    font-size: 0.8rem;
+    color: var(--color8);
+    margin-top: 3px;
+}
+
+/* Footer styling */
+.diploma-footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    font-size: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+/* Styling for "Printed on" text */
+.diploma-footer .printed-date {
+    text-align: left;
+    color: var(--color8);
+    margin-left: -5px;
+}
+
+.diploma-footer .rights {
+    text-align: right;
+    color: var(--color8);
+    width: 40%;
+    line-height: 1;
+    margin-right: 50px;
+}
+
+/* Button wrapper */
+.diploma-button-wrapper {
+    width: 250px; /* Match diploma-box width */
+    display: flex;
+    justify-content: center;
+}
+
+/* Download Button */
+.download-button {
+    background-color: var(--color7);
+    margin-top: 15px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%; /* Now it will take the full width of its container */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+.download-button:hover {
+    background-color: var(--color3);
+    transform: translateY(-2px);
+    font-weight: 600;
+}

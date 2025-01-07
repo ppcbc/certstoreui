@@ -1,0 +1,169 @@
+/* Style for the .update-user container */
+.update-user-main {
+  background-color: var(--color2);
+}
+
+.update-user {
+  background-color: var(--color2);
+  color: var(--color9);
+  padding: 40px 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 40px;
+}
+
+/* Style for the box containing the form elements */
+.update-user-box {
+  background-color: var(--color1); /* White background for contrast */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 40px; /* Increased padding for a spacious layout */
+  /*text-align: left; !* Align text to the left for a form layout *!*/
+  width: 800px; /* Increased width for the box */
+  transform: translateY(20px);
+}
+
+.update-user-box h1 {
+  font-size: 2rem;
+  margin: 3px 10px;
+  margin-bottom: 30px;
+  color: var(--color8);
+  text-align: center;
+}
+
+/* Style for the label */
+.update-user-label {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  width: 100%; 
+  color: var(--color9);
+}
+
+.update-user-box select {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: calc(100% - 80px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--color8);
+}
+/* Style for input fields */
+.update-user-box input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--color8);
+}
+
+/* Style for input focus */
+.update-user-box input:focus,
+.update-user-box select:focus {
+  border-color: var(--color7); /* Highlight border on focus */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  outline: none; /* Remove default outline */
+}
+
+/* Style for the button */
+.update-user-box button {
+  background-color: var(--color7); /* Blue button background */
+  margin-top: 15px;
+  color: white; /* White text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 12px 20px; /* Button padding */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1rem; /* Font size for button text */
+  width: 100%; /* Full width for uniformity */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect for the button */
+.update-user-box button:hover {
+  background-color: var(--color3);
+  transform: translateY(-2px);
+  font-weight: 600;
+}
+
+.update-user-inner-box {
+  display: flex;
+  width: 98.5%;
+  flex-direction: column; /* Keep elements on the same line */
+  align-items: center; /* Align elements vertically */
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.update-user-inner-field {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 100%;
+  align-items: flex-start;
+}
+
+/* Style for hiding spin buttons in number inputs */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  /* Remove default margins */
+}
+
+/* Firefox style for number inputs */
+input[type="number"] {
+  -moz-appearance: textfield;
+  /* Firefox */
+}
+
+/* Alignment class */
+.align-left {
+  text-align: left;
+}
+
+/* Error message style */
+.update-user-error-message {
+  color: red;
+  font-size: 12px;
+  text-align: right;
+  margin-right: -3px;
+  margin-left: auto;
+  margin-top: -10px;
+}
+
+.update-user-success-message {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: left;
+  gap: 8px;
+  width: 100%;
+  color: var(--color9);
+  margin-top: 10px;
+}
+
+.my-inner-updateuser-genderbox {
+  display: flex;
+  align-items: center;
+  padding: 0.5px 10px 1px;
+}
+.my-genderlabel-updateuser-title {
+  margin-right: 10px;
+}
+.my-update-user-genderlabel {
+  margin-right: 10px;
+}

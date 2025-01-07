@@ -1,0 +1,68 @@
+.header {
+  background-color: var(--color6);
+  z-index: 10000;
+  position: fixed;
+  width: 100%;
+  padding: 8px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  display: flex; /* Make nav-item a flex container */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin: 0 0.5rem;
+  height: 100%; /* Allow the item to take full height */
+}
+
+.nav-right {
+  margin-left: auto;
+  margin-right: 40px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+  font-size: 0.9em;
+  display: inline-block; /* Make it behave like a block element */
+  text-align: center; /* Center the text horizontally inside the nav-link */
+}
+
+.nav-link.active {
+  font-weight: 600;
+  border-radius: 2px;
+}
+
+.nav-link:hover {
+  color: white;
+  font-weight: 600;
+}
+
+/* Ensure nav-link text is centered when wrapping into multiple lines */
+.nav-item > .nav-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center content */
+  align-items: center; /* Horizontally center content */
+}
+.logo {
+  width: 50px;
+  height: auto;
+}
+
+.logo-item {
+  margin-right: 20px;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

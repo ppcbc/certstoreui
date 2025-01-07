@@ -1,0 +1,149 @@
+/* Style for the .schedule-exam container */
+.schedule-exam-main {
+  background-color: var(--color2);
+}
+.schedule-exam {
+  background-color: #b4b5b0; /* Light background for the page */
+  color: #2c3e50; /* Text color matching the header palette */
+  padding: 40px 20px; /* Padding for the container */
+  min-height: 100vh;
+  display: flex; /* Center align items */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  position: relative;
+}
+
+/* Style for the box containing the form elements */
+.schedule-box {
+  background-color: #ffffff; /* White background for contrast */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 40px; /* Increased padding for a spacious layout */
+  text-align: left; /* Align text to the left for a form layout */
+  width: 500px; /* Increased width for the box */
+  transform: translateY(-130px); /* Slightly higher positioning */
+  margin-top: 100px;
+}
+
+.schedule-box h1 {
+  font-size: 2rem;
+  margin: 3px 10px;
+  margin-bottom: 20px;
+  color: #4b5052;
+  text-align: center;
+}
+
+.schedule-label {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+/* Style for the input (date picker) */
+.schedule-box input[type="date"] {
+  padding: 10px; /* Add padding for comfort */
+  border: 1px solid #ccc; /* Subtle border */
+  border-radius: 5px; /* Rounded corners */
+  margin-top: 5px; /* Space above the input */
+  margin-bottom: 20px; /* Space below the input */
+  font-size: 1rem; /* Font size for readability */
+  width: calc(100% - 23px); /* Full width minus padding for responsiveness */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth interaction */
+}
+
+/* Style for input focus */
+.schedule-box input[type="date"]:focus {
+  border-color: #597785; /* Highlight border on focus */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  outline: none; /* Remove default outline */
+}
+
+/* Style for the button */
+.schedule-box button {
+  background-color: #597785; /* Blue button background */
+  color: white; /* White text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 12px 20px; /* Button padding */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1rem; /* Font size for button text */
+  width: 100%; /* Full width for uniformity */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Hover effect for the button */
+.schedule-box button:hover {
+  background-color: #78909c;
+  transform: translateY(-2px);
+  font-weight: 600;
+}
+
+/*.my-box {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*  justify-content: space-between;*/
+/*  padding-bottom: 20px;*/
+/*}*/
+
+/*.add-some {*/
+/*  align-items: flex-start;*/
+/*}*/
+
+/*.my-inner-box {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  justify-content: space-around;*/
+/*  padding: 10px;*/
+/*}*/
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+align-left {
+  text-align: left;
+}
+
+.schedule-error-message {
+  color: red;
+  font-size: 12px;
+  text-align: right;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  margin-left: 5px;
+  padding-right: 3px;
+}
+
+.schedule-success-message {
+  color: var(--color4);
+  font-size: 16px;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 0px;
+}
+
+.submitschedule-error-message {
+  color: red;
+  font-size: 12px;
+  text-align: right;
+  margin-top: 4px;
+  margin-bottom: 15px;
+  margin-left: 5px;
+  padding-right: 3px;
+}
+.shedule-buttons {
+  display: flex;
+  flex-direction: column;
+}
+.shedule-buttons button {
+  margin: 10px 0;
+}

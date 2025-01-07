@@ -1,0 +1,199 @@
+.my-certificates-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  height: 100vh;
+  background-color: var(--color2);
+}
+
+.my-certificates-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 60px;
+  flex-grow: 1;
+  background-color: var(--color2);
+}
+
+.my-certificates-container.single {
+  justify-content: center;
+}
+
+/* Future Exams Section */
+.future-exams {
+  width: 60%;
+  background-color: var(--color2);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  box-sizing: border-box;
+  flex-grow: 1;
+}
+
+.future-exams h1.hidden {
+  display: none;
+}
+
+.future-exams h1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  color: var(--color10);
+}
+
+.future-exams ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.future-exams li {
+  background-color: var(--color7);
+  border: 1.5px solid var(--color10);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  color: var(--color1);
+}
+
+.future-exams li h2 {
+  font-size: 2rem;
+  font-weight: 750;
+  margin-top: 20px;
+  color: var(--color5);
+}
+
+.myfutureexams-description {
+  font-size: 0.9rem;
+  margin: 0 0 20px;
+  color: var(--color1);
+}
+
+.myfutureexams-date {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  color: var(--color5);
+  font-weight: 600;
+}
+
+.future-exams li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Acquired Certificates Section */
+.acquired-certificates {
+  width: 60%;
+  background-color: var(--color2);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  box-sizing: border-box;
+  flex-grow: 1;
+}
+
+.acquired-certificates.centered {
+  margin: 0 auto;
+}
+
+.acquired-certificates h1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  color: var(--color8);
+}
+
+.acquired-certificates ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.acquired-certificates li {
+  background-color: var(--color11);
+  border: 1.5px solid var(--color9);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.acquired-certificates li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.acquired-certificates li h2 {
+  font-size: 2rem;
+  font-weight: 750;
+  margin-top: 20px;
+  color: var(--color10);
+}
+
+
+.myacquiredcertificates-description {
+  font-size: 0.9rem;
+  margin: 0 0 20px;
+  color: var(--color1);
+}
+
+.myacquiredcertificates-mark {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  color: var(--color10);
+  font-weight: 500;
+}
+
+.future-certificates-button {
+  background-color: var(--color10);
+  color: var(--color13);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 10px 30px;
+  margin-left: 20px;
+}
+
+.future-certificates-button:hover {
+  background-color: #506f7e;
+  font-weight: 600;
+}
+
+.acquired-certificates-button {
+  background-color: var(--color4);
+  color: var(--color2);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 10px 30px;
+  margin-left: 20px;
+}
+
+.acquired-certificates-button:hover {
+  background-color: #506f7e;
+  font-weight: 600;
+}
+
+.acquired-certificates-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.future-certificates-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 15px;
+}
+

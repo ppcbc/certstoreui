@@ -1,0 +1,168 @@
+/* Style for the .register-details container */
+.user-details-main {
+  background-color: var(--color2);
+}
+.user-details {
+  background-color: var(--color2);
+  color: var(--color9);
+  padding: 40px 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 40px;
+}
+
+/* Style for the h1 (main heading) */
+.user-details-box h1 {
+  font-size: 2rem; /* Larger heading for the wider box */
+  margin: 3px 10px; /* Space below the heading */
+  margin-bottom: 30px; /* Space below the heading */
+  color: var(--color8); /* Match the palette */
+  text-align: center; /* Keep the heading centered */
+}
+
+/* Style for the box containing the form elements */
+.user-details-box {
+  background-color: var(--color1); /* White background for contrast */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 40px; /* Increased padding for a spacious layout */
+  /*text-align: left; !* Align text to the left for a form layout *!*/
+  width: 800px; /* Increased width for the box */
+  transform: translateY(20px); /* Slightly higher positioning */
+}
+
+.my-inner-genderbox {
+  display: flex;
+  align-items: center;
+  padding: 0.5px 10px 1px;
+}
+.my-genderlabel-title {
+  margin-right: 5px;
+}
+.my-genderlabel {
+  margin-right: 10px;
+}
+
+/* Style for input and select fields */
+.user-details-box input {
+  flex: 1; /* Allow input/select to take available space */
+  padding: 10px; /* Add padding for comfort */
+  border: 1px solid #ccc; /* Subtle border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1rem; /* Font size for readability */
+  width: auto; /* Prevent full-width stretching */
+  /*width: calc(100% - 20px);*/
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth interaction */
+}
+
+.user-details-box select {
+  flex: 1; /* Allow input/select to take available space */
+  padding: 10px; /* Add padding for comfort */
+  border: 1px solid #ccc; /* Subtle border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1rem; /* Font size for readability */
+  /*width: 100%; !* Prevent full-width stretching *!*/
+  width: calc(100% - 20px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth interaction */
+}
+
+/* Style for input focus */
+.user-details-box input:focus,
+.user-details-box select:focus {
+  border-color: var(--color7); /* Highlight border on focus */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  outline: none; /* Remove default outline */
+}
+
+/* Style for the button */
+.user-details-box button {
+  background-color: var(--color7); /* Blue button background */
+  margin-top: 15px;
+  color: white; /* White text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 12px 20px; /* Button padding */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1rem; /* Font size for button text */
+  width: 100%; /* Full width for uniformity */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Hover effect for the button */
+.user-details-box button:hover {
+  background-color: var(--color3); /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+  font-weight: 600; /* Make text bolder on hover */
+}
+
+/*.my-box {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: flex-start;*/
+/*    justify-content: space-between;*/
+/*    padding-bottom: 20px;*/
+/*}*/
+
+.userdetails-inner-box {
+  display: flex;
+  width: 98.5%;
+  flex-direction: row; /* Keep elements on the same line */
+  align-items: center; /* Align elements vertically */
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.userdetails-label {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  width: 100%; /* Make the label take full width */
+}
+
+.button {
+  padding: 10px;
+}
+
+.userdetails-error-message {
+  color: red;
+  font-size: 12px;
+  text-align: right;
+  margin-top: -5px;
+  margin-bottom: 15px;
+  margin-left: 5px;
+  padding-right: 3px;
+}
+
+.userdetails-error-message.gender-error {
+  color: red;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 15px;
+  padding: 0 5px;
+}
+
+.userdetails-success-message {
+  color: var(--color4);
+  font-size: 16px;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 0px;
+}
+
+.submituserdetails-error-message {
+  color: red;
+  font-size: 12px;
+  text-align: right;
+  margin-top: 4px;
+  margin-bottom: 15px;
+  margin-left: 5px;
+  padding-right: 3px;
+}

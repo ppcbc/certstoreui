@@ -1,0 +1,112 @@
+.login-container-main {
+  background-color: var(--color2);
+}
+
+.login-container {
+  background-color: var(--color2);
+  color: var(--color9);
+  padding: 40px 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 40px;
+}
+
+.login-box {
+  background-color: var(--color1);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 500px;
+  transform: translateY(20px);
+}
+
+.login-box input:focus {
+  border-color: var(--color7);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+.login-box input {
+  flex: 7;
+  padding: 10px;
+  margin: 10px;
+  width: 100%;
+  border: 1px solid  #ccc;;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--color8);
+}
+
+.my-inner-login {
+  display: flex;
+  width: 98.5%;
+  flex-direction: row; /* Keep elements on the same line */
+  align-items: center; /* Align elements vertically */
+  justify-content: space-between;
+
+}
+
+.my-label-login {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1px;
+  width: calc(100% - 1px);
+  color: var(--color8);
+}
+
+.login-box button {
+  background-color: var(--color7);
+  color: var(--color1);
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.login-box button:hover {
+  background-color: var(--color3);
+  transform: translateY(-2px);
+  font-weight: 600;
+}
+
+.my-label-wrong {
+  color: red;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 0px;
+  font-weight: 300;
+}
+
+.my-label-register {
+margin-top: -38px;
+  justify-content: flex-end;
+  text-align: right;
+  align-items: left;
+}
+
+.my-label {
+  margin-top: 30px;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  text-align: right;
+  margin-top: -5px;
+  margin-bottom: 15px;
+  margin-left: 5px;
+  padding-right: 3px;
+}
