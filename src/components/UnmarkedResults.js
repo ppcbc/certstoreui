@@ -54,7 +54,7 @@ export default function MyCertificates() {
       <div className="my-certificates-container">
         <div className="future-exams">
           <h1 className={acquiredCertificates.length === 0 ? "hidden" : ""}>
-            Exams results
+            Exams results to be checked
           </h1>
           <ul>
             {acquiredCertificates.map(cert => (
