@@ -88,7 +88,7 @@ export default function MyCertificates() {
       });
       let myCertificates = response.data.filter(cert => cert.userId == myId);
       // let myCertificates = response.data;
-      setAcquiredCertificates(myCertificates);
+      setAcquiredCertificates(myCertificates.reverse());
     } catch (error) {
       console.error("Failed to fetch certifications:", error.message);
     }
