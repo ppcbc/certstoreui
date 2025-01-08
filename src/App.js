@@ -45,6 +45,7 @@ import UpdateCertExam from "./components/UpdateCertExam";
 import CertificateResults from "./components/CertificateResults";
 import UnmarketResults from "./components/UnmarkedResults";
 import CertificateToBeChecked from "./components/CertificateToBeChecked";
+import UpdateUserNavbar from "./components/UpdateUserNavbar";
 
 function Layout() {
   const location = useLocation();
@@ -75,6 +76,7 @@ function Layout() {
         <Route path="/addexam-category" element={<AddExamCategory />} />
         <Route path="/updateexam-category" element={<UpdateExamCategory />} />
         <Route path="/user-details/:userStafId" element={<UserDetails />} />
+        <Route path="/user-details/" element={<UserDetails />} />
         <Route path="/addfull-category" element={<FullCategories />} />
         <Route path="/finish" element={<Finish />} />
         <Route
@@ -102,6 +104,7 @@ function Layout() {
         />
         <Route path="/update-exam" element={<UpdateExam />} />
         <Route path="/update-user" element={<UpdateUser />} />
+        <Route path="/update-user-nav" element={<UpdateUserNavbar />} />
         <Route path="/delete-user" element={<DeleteUser />} />
         <Route path="/delete-certexam" element={<DeleteCertExam />} />
         <Route path="/create-role" element={<CreateRole />} />

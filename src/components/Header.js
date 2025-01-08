@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../css/Header.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setId, setLogReg, setRole, setToken } from "../features/loginSlice";
+import axios from "axios";
+import http from "../data/http";
 
 export default function Header() {
   const myLog = useSelector(state => state.token.value.log);
@@ -10,9 +12,13 @@ export default function Header() {
   const myRole = useSelector(state => state.token.value.role);
   const basketIn = useSelector(state => state.token.value.basketNewItem);
   const dispatch = useDispatch();
+  const myId = useSelector(state => state.token.value.id);
+
+  const [selectedUserId, setSelectedUserId] = useState("");
 
   useEffect(() => {
     dispatch(setLogReg("LOGIN"));
+    fetchUserDetail();
   }, []);
 
   function logOut() {
@@ -21,6 +27,23 @@ export default function Header() {
     dispatch(setRole(""));
     localStorage.clear();
   }
+  const fetchUserDetail = async () => {
+    try {
+      const res = await axios.get(http + "api/UserDetails");
+      console.log(res.data);
+      //   setUsers(response.data);
+      let currentUser = res.data.filter(a => a.id == myId);
+      console.log(currentUser);
+      let myUserId = currentUser[0].detailId;
+      console.log(myUserId);
+      const response = await axios.get(http + `api/UserDetails/${myUserId}`);
+      console.log("USER DETAILS");
+      console.log(response.data);
+      setSelectedUserId(response.data);
+    } catch (error) {
+      console.error("There was an error fetching the user details!", error);
+    }
+  };
 
   return (
     <header className="header">
@@ -154,6 +177,31 @@ export default function Header() {
                 </NavLink>
               </li>
             )}
+
+            {myToken !== "" && selectedUserId && (
+              <li className="nav-item nav-right">
+                <NavLink
+                  to="/update-user-nav"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
+                >
+                  PROFILE
+                </NavLink>
+              </li>
+            )}
+            {/* {myToken !== "" && selectedUserId == "" && (
+              <li className="nav-item nav-right">
+                <NavLink
+                  to="/user-details/"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
+                >
+                  PROFILE
+                </NavLink>
+              </li>
+            )} */}
             {myToken === "" ? (
               <li className="nav-item nav-right">
                 <NavLink
