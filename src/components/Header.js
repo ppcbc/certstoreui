@@ -88,16 +88,18 @@ export default function Header() {
               SCHEDULE EXAM
             </NavLink>
           </li> */}
-          <li className="nav-item">
-            <NavLink
-              to="/my-certificates"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-            >
-              MY CERTIFICATES
-            </NavLink>
-          </li>
+          {myToken !== "" && (
+            <li className="nav-item">
+              <NavLink
+                to="/my-certificates"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                MY CERTIFICATES
+              </NavLink>
+            </li>
+          )}
           {myRole === "Admin" && (
             <li className="nav-item">
               <NavLink
