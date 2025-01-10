@@ -68,26 +68,7 @@ export default function Header() {
               CERTIFICATIONS
             </NavLink>
           </li>
-          {/* <li className="nav-item">
-            <NavLink
-              to="/diploma"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-            >
-              DIPLOMA
-            </NavLink>
-          </li> */}
-          {/* <li className="nav-item">
-            <NavLink
-              to="/schedule-exam"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-            >
-              SCHEDULE EXAM
-            </NavLink>
-          </li> */}
+
           {myToken !== "" && (
             <li className="nav-item">
               <NavLink
@@ -124,40 +105,7 @@ export default function Header() {
               </NavLink>
             </li>
           )}
-          {/* <li className="nav-item">
-            <NavLink
-              to="/user-details"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-            >
-              USER DETAILS
-            </NavLink>
-          </li> */}
-          {/* {myToken !== "" && (
-            <li className="nav-item">
-              <NavLink
-                to="/payment"
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-              >
-                PAYMENT
-              </NavLink>
-            </li>
-          )} */}
-          {/* {myToken !== "" && (
-            <li className="nav-item">
-              <NavLink
-                to="/exam"
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-              >
-                EXAM
-              </NavLink>
-            </li>
-          )} */}
+
           <div className="nav-item nav-right">
             {myToken !== "" && (
               <li className="nav-item nav-right">
