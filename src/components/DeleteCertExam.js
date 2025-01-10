@@ -12,6 +12,23 @@ const DeleteCertExam = () => {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
+  const [certExams, setCertExams] = useState([]);
+
+  useEffect(() => {
+    const fetchCertExams = async () => {
+      try {
+        const res = await axios.get(http + "api/CertExams", {
+          headers: {
+            Authorization: "Bearer " + myToken
+          }
+        });
+        setCertExams(res.data);
+      } catch (error) {
+        console.error("Error fetching certifications:", error.message);
+      }
+    };
+    fetchCertExams();
+  }, [myToken]);
 
   const handleIdChange = e => {
     setCertExamId(e.target.value);
@@ -57,7 +74,7 @@ const DeleteCertExam = () => {
         <div className="delete-cert-exam">
           <div className="delete-cert-exam-box">
             <h1>Delete Exam</h1>
-            <div className="delete-cert-exam-my-inner-box">
+            {/* <div className="delete-cert-exam-my-inner-box">
               <label className="delete-cert-exam-my-label">
                 Enter Exam ID:
                 <input
@@ -67,6 +84,24 @@ const DeleteCertExam = () => {
                   onChange={handleIdChange}
                   className="delete-input"
                 />
+              </label>
+            </div> */}
+            <div className="delete-cert-exam-my-inner-box">
+              <label className="delete-cert-exam-my-label">
+                Select Exam:
+                <select
+                  name="certExamId"
+                  value={certExamId}
+                  onChange={handleIdChange}
+                  className="delete-select"
+                >
+                  <option value="">Select an Exam</option>
+                  {certExams.map(Exam => (
+                    <option key={Exam.certExamId} value={Exam.certExamId}>
+                      {Exam.testTitle}
+                    </option>
+                  ))}
+                </select>
               </label>
             </div>
             {errors.certExamId && (

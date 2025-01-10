@@ -51,6 +51,15 @@ function Finish({
 
   async function getExams() {
     try {
+      console.log("ORIGINAL EXAMS");
+      console.log("ORIGINAL EXAMS");
+      console.log("ORIGINAL EXAMS");
+      console.log("ORIGINAL EXAMS");
+      console.log(originalExams);
+      console.log("ORIGINAL EXAMS");
+      console.log("ORIGINAL EXAMS");
+      console.log("ORIGINAL EXAMS");
+      console.log("ORIGINAL EXAMS");
       let selectedExams = [];
 
       selectedExams = originalExams;
@@ -64,6 +73,15 @@ function Finish({
           }
         }
       }
+      console.log("SELECTED");
+      console.log("SELECTED");
+      console.log("SELECTED");
+      console.log("SELECTED");
+      console.log(selectedExams);
+      console.log("SELECTED");
+      console.log("SELECTED");
+      console.log("SELECTED");
+      console.log("SELECTED");
 
       var response = await axios.get(http + `api/UserStafs/${userStafId}`, {
         headers: {

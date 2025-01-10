@@ -142,7 +142,7 @@ const UpdateUser = () => {
                 First Name:
                 <input
                   type="text"
-                  name="First name"
+                  name="name"
                   value={userDetail.name}
                   placeholder="First name"
                   onChange={handleChange}

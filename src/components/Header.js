@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../css/Header.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setId, setLogReg, setRole, setToken } from "../features/loginSlice";
+import axios from "axios";
+import http from "../data/http";
 
 export default function Header() {
   const myLog = useSelector(state => state.token.value.log);
@@ -10,9 +12,13 @@ export default function Header() {
   const myRole = useSelector(state => state.token.value.role);
   const basketIn = useSelector(state => state.token.value.basketNewItem);
   const dispatch = useDispatch();
+  const myId = useSelector(state => state.token.value.id);
+
+  const [selectedUserId, setSelectedUserId] = useState("");
 
   useEffect(() => {
     dispatch(setLogReg("LOGIN"));
+    fetchUserDetail();
   }, []);
 
   function logOut() {
@@ -21,6 +27,23 @@ export default function Header() {
     dispatch(setRole(""));
     localStorage.clear();
   }
+  const fetchUserDetail = async () => {
+    try {
+      const res = await axios.get(http + "api/UserDetails");
+      console.log(res.data);
+      //   setUsers(response.data);
+      let currentUser = res.data.filter(a => a.id == myId);
+      console.log(currentUser);
+      let myUserId = currentUser[0].detailId;
+      console.log(myUserId);
+      const response = await axios.get(http + `api/UserDetails/${myUserId}`);
+      console.log("USER DETAILS");
+      console.log(response.data);
+      setSelectedUserId(response.data);
+    } catch (error) {
+      console.error("There was an error fetching the user details!", error);
+    }
+  };
 
   return (
     <header className="header">
@@ -45,36 +68,19 @@ export default function Header() {
               CERTIFICATIONS
             </NavLink>
           </li>
-          {/* <li className="nav-item">
-            <NavLink
-              to="/diploma"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-            >
-              DIPLOMA
-            </NavLink>
-          </li> */}
-          {/* <li className="nav-item">
-            <NavLink
-              to="/schedule-exam"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-            >
-              SCHEDULE EXAM
-            </NavLink>
-          </li> */}
-          <li className="nav-item">
-            <NavLink
-              to="/my-certificates"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-            >
-              MY CERTIFICATES
-            </NavLink>
-          </li>
+
+          {myToken !== "" && (
+            <li className="nav-item">
+              <NavLink
+                to="/my-certificates"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                MY CERTIFICATES
+              </NavLink>
+            </li>
+          )}
           {myRole === "Admin" && (
             <li className="nav-item">
               <NavLink
@@ -99,40 +105,7 @@ export default function Header() {
               </NavLink>
             </li>
           )}
-          {/* <li className="nav-item">
-            <NavLink
-              to="/user-details"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-            >
-              USER DETAILS
-            </NavLink>
-          </li> */}
-          {/* {myToken !== "" && (
-            <li className="nav-item">
-              <NavLink
-                to="/payment"
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-              >
-                PAYMENT
-              </NavLink>
-            </li>
-          )} */}
-          {/* {myToken !== "" && (
-            <li className="nav-item">
-              <NavLink
-                to="/exam"
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-              >
-                EXAM
-              </NavLink>
-            </li>
-          )} */}
+
           <div className="nav-item nav-right">
             {myToken !== "" && (
               <li className="nav-item nav-right">
@@ -151,6 +124,31 @@ export default function Header() {
                   >
                     <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm0 3c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm10-3c-1.1 0-1.99.9-1.99 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 3c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zM7.12 6l1.2 5.1c.14.58.68 1 1.29 1h7.77c.62 0 1.16-.42 1.3-1.01L20.9 6H7.12zm-2.54 0H1v2h2.25L5 15.9C5.11 16.54 5.69 17 6.34 17H19v-2H6.34l-.22-.9L18.4 6H4.58z" />
                   </svg>
+                </NavLink>
+              </li>
+            )}
+
+            {myToken !== "" && selectedUserId && (
+              <li className="nav-item nav-right">
+                <NavLink
+                  to="/update-user-nav"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
+                >
+                  PROFILE
+                </NavLink>
+              </li>
+            )}
+            {myToken !== "" && selectedUserId == "" && (
+              <li className="nav-item nav-right">
+                <NavLink
+                  to="/user-details/"
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
+                >
+                  PROFILE
                 </NavLink>
               </li>
             )}

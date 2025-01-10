@@ -182,7 +182,7 @@ export default function MyCertificates() {
                   className="certification-box"
                 >
                   <div>
-                    <h2>{certification.description}</h2>
+                    <h2>{certification.finishTitle}</h2>
                     <p className="myacquiredcertificates-description">
                       {truncateDescription(certification.testDescription, 150)}
                     </p>

@@ -21,7 +21,7 @@
   width: 800px;
   transform: translateY(20px);
 }
-
+.delete-cert-exam-box select:focus,
 .delete-cert-exam-box input:focus {
   border-color: var(--color7);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
