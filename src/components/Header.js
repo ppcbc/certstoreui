@@ -192,7 +192,7 @@ export default function Header() {
                 </NavLink>
               </li>
             )}
-            {/* {myToken !== "" && selectedUserId == "" && (
+            {myToken !== "" && selectedUserId == "" && (
               <li className="nav-item nav-right">
                 <NavLink
                   to="/user-details/"
@@ -203,7 +203,7 @@ export default function Header() {
                   PROFILE
                 </NavLink>
               </li>
-            )} */}
+            )}
             {myToken === "" ? (
               <li className="nav-item nav-right">
                 <NavLink
