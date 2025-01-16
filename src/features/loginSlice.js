@@ -9,7 +9,8 @@ export const logSlice = createSlice({
       id: localStorage.getItem("id") ?? "",
       role: localStorage.getItem("role") ?? "",
       stafId: localStorage.getItem("stafId") ?? "",
-      basketNewItem: false
+      basketNewItem: false,
+      basketCount: 0
     }
   },
   reducers: {
@@ -35,6 +36,9 @@ export const logSlice = createSlice({
     },
     setBasketNewItem: (state, action) => {
       state.value.basketNewItem = !state.value.basketNewItem;
+    },
+    setBasketCount: (state, action) => {
+      state.value.basketCount = action.payload;
     }
   }
 });
@@ -46,7 +50,8 @@ export const {
   setId,
   setRole,
   setStafId,
-  setBasketNewItem
+  setBasketNewItem,
+  setBasketCount
 } = logSlice.actions;
 
 export default logSlice.reducer;

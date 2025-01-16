@@ -11,6 +11,7 @@ export default function Header() {
   const myToken = useSelector(state => state.token.value.tok);
   const myRole = useSelector(state => state.token.value.role);
   const basketIn = useSelector(state => state.token.value.basketNewItem);
+  const basketCount = useSelector(state => state.token.value.basketCount);
   const dispatch = useDispatch();
   const myId = useSelector(state => state.token.value.id);
 
@@ -125,6 +126,12 @@ export default function Header() {
                     <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm0 3c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm10-3c-1.1 0-1.99.9-1.99 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 3c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zM7.12 6l1.2 5.1c.14.58.68 1 1.29 1h7.77c.62 0 1.16-.42 1.3-1.01L20.9 6H7.12zm-2.54 0H1v2h2.25L5 15.9C5.11 16.54 5.69 17 6.34 17H19v-2H6.34l-.22-.9L18.4 6H4.58z" />
                   </svg>
                 </NavLink>
+                <p
+                  className="basket-paragraph"
+                  style={{ color: basketIn ? "#2e4854" : "white" }}
+                >
+                  {basketCount}
+                </p>
               </li>
             )}
 

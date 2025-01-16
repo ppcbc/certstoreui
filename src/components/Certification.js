@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import http from "../data/http";
 import fixDateToGmtPlusTwo from "../data/fixDateToGmtPlusTwo";
-import { setBasketNewItem } from "../features/loginSlice";
+import { setBasketCount, setBasketNewItem } from "../features/loginSlice";
 
 function Certification({ certification }) {
   const dispatch = useDispatch();
@@ -21,17 +21,26 @@ function Certification({ certification }) {
   const navigate = useNavigate();
   const myToken = useSelector(state => state.token.value.tok);
   const myId = useSelector(state => state.token.value.id);
+  const basketCount = useSelector(state => state.token.value.basketCount);
   const truncateDescription = (text, maxLength) => {
     if (text.length > maxLength) {
       return (
-          <>
-            {text.slice(0, maxLength)}... <span style={{ textDecoration: "underline", cursor: "pointer", fontSize: "0.9em"  }}>more</span>
-          </>
+        <>
+          {text.slice(0, maxLength)}...{" "}
+          <span
+            style={{
+              textDecoration: "underline",
+              cursor: "pointer",
+              fontSize: "0.9em"
+            }}
+          >
+            more
+          </span>
+        </>
       );
     }
     return text;
   };
-
 
   function handleMessage() {
     setCheck(true);
@@ -69,6 +78,8 @@ function Certification({ certification }) {
       handleMessage();
       setTimeout(() => {
         dispatch(setBasketNewItem());
+        dispatch(setBasketCount(basketCount + 1));
+
         setTimeout(() => {
           dispatch(setBasketNewItem());
         }, 700);

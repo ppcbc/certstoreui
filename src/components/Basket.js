@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "../App.css";
 import "../css/Basket.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import axios from "axios";
 import formatDate from "../data/formatDate";
 import { BasketItem } from "./BasketItem";
 import http from "../data/http";
+import { setBasketCount } from "../features/loginSlice";
 
 export default function Basket() {
   const myToken = useSelector(state => state.token.value.tok);
@@ -15,6 +16,7 @@ export default function Basket() {
   const navigate = useNavigate();
   const [myStaf, setMyStaf] = useState([]);
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getStaf();
@@ -60,6 +62,7 @@ export default function Basket() {
       );
 
       setMyStaf(finalStafs);
+      dispatch(setBasketCount(finalStafs.length));
     } catch (error) {
       console.error("Failed to fetch staff:", error.message);
     } finally {
@@ -72,6 +75,7 @@ export default function Basket() {
       await axios.delete(`${http}api/UserStafs/${id}`, {
         headers: { Authorization: `Bearer ${myToken}` }
       });
+      dispatch(setBasketCount(myStaf.length - 1));
 
       setMyStaf(prev => prev.filter(staf => staf.userStafId !== id));
     } catch (error) {

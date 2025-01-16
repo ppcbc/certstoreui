@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import http from "../data/http";
 import fixDateToGmtPlusTwo from "../data/fixDateToGmtPlusTwo";
-import { setBasketNewItem } from "../features/loginSlice";
+import { setBasketCount, setBasketNewItem } from "../features/loginSlice";
 import Footer from "./Footer";
 import "../css/DetailedCertification.css";
 
@@ -25,6 +25,7 @@ function DetailedCertification() {
   const myId = useSelector(state => state.token.value.id);
   const { certExamId } = useParams();
   const [certification, setCertification] = useState(1);
+  const basketCount = useSelector(state => state.token.value.basketCount);
 
   useEffect(() => {
     const fetchCertification = async () => {
@@ -76,6 +77,7 @@ function DetailedCertification() {
       handleMessage();
       setTimeout(() => {
         dispatch(setBasketNewItem());
+        dispatch(setBasketCount(basketCount + 1));
         setTimeout(() => {
           dispatch(setBasketNewItem());
         }, 700);
